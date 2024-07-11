@@ -1,0 +1,7 @@
+[INFO ] 2024-01-19 18:12:13.239 - com.web.orangehrm.basetest.MyLogger:startTestCase: Line Number Is :19 
+
+************** Execution Started : verifyLogInFunctionality**************
+
+[INFO ] 2024-01-19 18:12:25.927 - com.web.orangehrm.utills.reusableComponents.SoftAssertTest:logToConsole: Line Number Is :148 Soft Assert Passed for method: 'assertEquals' - project name is visible  [Expected: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'] [Actual: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'][ TestId Is :290 ]
+[INFO ] 2024-01-19 18:12:33.605 - com.web.orangehrm.utills.reusableComponents.SoftAssertTest:logToConsole: Line Number Is :148 Soft Assert Passed for method: 'assertEquals' - verfiy error message  [Expected: 'Email/Username or Password is not Valid'] [Actual: 'Email/Username or Password is not Valid'][ TestId Is :220 ]
+[INFO ] 2024-01-19 18:12:33.605 - com.web.orangehrm.utills.reusableComponents.ITestListeners:onTestSuccess: Line Number Is :44 Test Case :verifyLogInFunctionalityIs Pass

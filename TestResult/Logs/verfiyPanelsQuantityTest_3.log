@@ -1,0 +1,6 @@
+[INFO ] 2024-01-29 12:16:51.946 - com.awt.testbase.MyLogger:startTestCase: Line Number Is :21 
+
+************** Execution Started : verfiyPanelsQuantityTest**************
+
+[INFO ] 2024-01-29 12:16:59.804 - com.awt.utills.reusablecomponents.SoftAssertTest:logToConsole: Line Number Is :149 Soft Assert Passed for method: 'assertEquals' - HomePage Total Oms Qaunatiy Is Equal To The The Oms Details Panel Total Oms Quantity [Expected: '798'] [Actual: '798'][ TestId Is :231 ]
+[INFO ] 2024-01-29 12:16:59.805 - com.awt.utills.reusablecomponents.ITestListener:onTestSuccess: Line Number Is :42 Test Case :verfiyPanelsQuantityTestIs Pass

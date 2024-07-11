@@ -1,0 +1,5 @@
+[INFO ] 2024-02-03 11:02:34.252 - startTestCase:
+
+************** Execution Started : verifyLogInFunctionalityTest**************
+
+[INFO ] 2024-02-03 11:07:42.858 - logToConsole:Soft Assert Failed for method: 'assertEquals' - project name is visible  [Expected: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'] [Actual: 'null'][TestId :290]

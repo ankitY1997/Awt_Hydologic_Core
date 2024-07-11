@@ -1,0 +1,6 @@
+[INFO ] 2024-02-06 18:53:28.327 - startTestCase:
+
+************** Execution Started : verfiyOmsAddingFunctionalityTest**************
+
+[INFO ] 2024-02-06 19:10:46.087 - logToConsole:Soft Assert Failed for method: 'assertTrue' - Oms Id Is Present In OMS View Table [Expected: 'true'] [Actual: 'false'][TestId :290]
+[INFO ] 2024-02-06 19:10:52.858 - onTestFailure:CAPTURED FAILURE SCREEN SHOT FOR :verfiyOmsAddingFunctionalityTest Method

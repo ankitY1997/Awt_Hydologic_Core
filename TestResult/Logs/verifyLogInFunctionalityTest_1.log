@@ -1,0 +1,43 @@
+[INFO ] 2024-01-29 12:16:53.268 - com.awt.testbase.MyLogger:startTestCase: Line Number Is :21 
+
+************** Execution Started : verifyLogInFunctionalityTest**************
+
+[DEBUG] 2024-01-29 12:16:53.340 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.342 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.343 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:53.397 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.404 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.408 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:53.517 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.519 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.524 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:53.618 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.618 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.618 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:53.780 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.923 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.923 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:53.954 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:53.954 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:53.954 - Parsing relationship: /_rels/.rels
+[INFO ] 2024-01-29 12:16:58.196 - com.awt.utills.reusablecomponents.SoftAssertTest:logToConsole: Line Number Is :149 Soft Assert Passed for method: 'assertEquals' - project name is visible  [Expected: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'] [Actual: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'][ TestId Is :290 ]
+[DEBUG] 2024-01-29 12:16:58.790 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.790 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.791 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:58.820 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.821 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.822 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:58.849 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.851 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.852 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:58.867 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.868 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.869 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:58.882 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.883 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.883 - Parsing relationship: /_rels/.rels
+[DEBUG] 2024-01-29 12:16:58.899 - Parsing relationship: /xl/_rels/workbook.xml.rels
+[DEBUG] 2024-01-29 12:16:58.899 - Parsing relationship: /xl/worksheets/_rels/sheet1.xml.rels
+[DEBUG] 2024-01-29 12:16:58.900 - Parsing relationship: /_rels/.rels
+[INFO ] 2024-01-29 12:16:59.472 - com.awt.utills.reusablecomponents.SoftAssertTest:logToConsole: Line Number Is :149 Soft Assert Passed for method: 'assertEquals' - verfiy error message  [Expected: 'Email/Username or Password is not Valid'] [Actual: 'Email/Username or Password is not Valid'][ TestId Is :220 ]
+[INFO ] 2024-01-29 12:16:59.479 - com.awt.utills.reusablecomponents.ITestListener:onTestSuccess: Line Number Is :42 Test Case :verifyLogInFunctionalityTestIs Pass

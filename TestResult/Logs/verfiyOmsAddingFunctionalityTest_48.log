@@ -1,0 +1,6 @@
+[INFO ] 2024-06-08 14:04:22.801 - startTestCase:
+
+************** Execution Started : verfiyOmsAddingFunctionalityTest**************
+
+[INFO ] 2024-06-08 14:04:47.826 - selectByVisibleText:Unable To Select :Natakhadi By Visible Text
+[INFO ] 2024-06-08 14:04:58.798 - onTestFailure:CAPTURED FAILURE SCREEN SHOT FOR :verfiyOmsAddingFunctionalityTest Method

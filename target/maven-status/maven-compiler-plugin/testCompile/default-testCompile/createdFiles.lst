@@ -1,0 +1,10 @@
+com\awt\constants\Genral\OmsDetailsPageConstants.class
+com\awt\constants\Genral\HomePageConstants.class
+com\awt\constants\Menu\MainMenuConstants.class
+com\awt\constants\Menu\SubMenuConstants.class
+com\awt\test\Oms_Add\VerifyOmsAddingFunctionalityTest.class
+com\awt\constants\Genral\LoginPageConstants.class
+com\awt\constants\Genral\OmsDashboardPageConstants.class
+com\awt\constants\Genral\OmsDetailsGetPageConstants.class
+com\awt\test\Home\VerifyPanelsQuantityTest.class
+com\awt\test\Login\VerifyLogInFunctionalityTest.class

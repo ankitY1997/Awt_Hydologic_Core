@@ -1,0 +1,6 @@
+[INFO ] 2024-01-19 17:05:37.546 - com.web.orangehrm.basetest.MyLogger:startTestCase: Line Number Is :19 
+
+************** Execution Started : verfiyOmsAddingFunctionality**************
+
+[INFO ] 2024-01-19 17:06:29.942 - com.web.orangehrm.utills.reusableComponents.SoftAssertTest:logToConsole: Line Number Is :148 Soft Assert Passed for method: 'assertTrue' - Oms Id Is Present In OMS View Table [Expected: 'true'] [Actual: 'true'][ TestId Is :230 ]
+[INFO ] 2024-01-19 17:06:30.474 - com.web.orangehrm.utills.reusableComponents.ITestListeners:onTestSuccess: Line Number Is :44 Test Case :verfiyOmsAddingFunctionalityIs Pass

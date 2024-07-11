@@ -1,0 +1,6 @@
+[INFO ] 2024-02-01 12:51:09.772 - startTestCase:
+
+************** Execution Started : verfiyPanelsQuantityTest**************
+
+[INFO ] 2024-02-01 12:51:25.934 - logToConsole:Soft Assert Passed for method: 'assertEquals' - HomePage Total Oms Qaunatiy Is Equal To The The Oms Details Panel Total Oms Quantity [Expected: '810'] [Actual: '810'][ TestId Is :231 ]
+[INFO ] 2024-02-01 12:51:25.940 - onTestSuccess:Test Case :verfiyPanelsQuantityTest Is Pass

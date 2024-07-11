@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Demo" parallel="methods" thread-count="3">
+	<listeners>
+		<listener
+			class-name="com.awt.utills.reusablecomponents.ITestListeners"></listener>
+		<listener
+			class-name="com.awt.utills.reusablecomponents.RetryListener"></listener>
+	</listeners>
+	<test name="Test">
+
+		<classes>
+			<class name="com.awt.test.Home.VerifyPanelsQuantityTest">
+				<methods>
+					<include name="verfiyPanelsQuantityTest"></include>
+				</methods>
+
+			</class>
+
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

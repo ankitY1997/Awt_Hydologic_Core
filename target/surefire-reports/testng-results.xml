@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results retried="2" ignored="2" total="10" passed="0" failed="6" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-06-08T14:04:04 IST" name="Demo" finished-at="2024-06-08T14:10:01 IST" duration-ms="356626">
+    <groups>
+    </groups>
+    <test started-at="2024-06-08T14:04:04 IST" name="Test" finished-at="2024-06-08T14:10:01 IST" duration-ms="356626">
+      <class name="com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest@6aba2b86]" started-at="2024-06-08T14:04:04 IST" name="launchBrowser" finished-at="2024-06-08T14:04:21 IST" duration-ms="16409" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verfiyOmsAddingFunctionalityTest()[pri:0, instance:com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest@6aba2b86]" started-at="2024-06-08T14:04:21 IST" name="verfiyOmsAddingFunctionalityTest" finished-at="2024-06-08T14:04:58 IST" duration-ms="37490" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//label[contains(text(),'OMS Area  (Ha) *')]/following-sibling::input"}
+  (Session info: chrome=125.0.6422.142)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [93fb8da9eaae056bcb405b917b85cd2e, findElement {value=//label[contains(text(),'OMS Area  (Ha) *')]/following-sibling::input, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.142, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58331}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58331/devtoo..., se:cdpVersion: 125.0.6422.142, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 93fb8da9eaae056bcb405b917b85cd2e]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//label[contains(text(),'OMS Area  (Ha) *')]/following-sibling::input"}
+  (Session info: chrome=125.0.6422.142)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [93fb8da9eaae056bcb405b917b85cd2e, findElement {value=//label[contains(text(),'OMS Area  (Ha) *')]/following-sibling::input, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.142, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58331}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58331/devtoo..., se:cdpVersion: 125.0.6422.142, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 93fb8da9eaae056bcb405b917b85cd2e
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+at com.awt.page.oms_Add.OmsDetailsPage.fillOmsDetails(OmsDetailsPage.java:66)
+at com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest.verfiyOmsAddingFunctionalityTest(VerifyOmsAddingFunctionalityTest.java:46)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verfiyOmsAddingFunctionalityTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest@6aba2b86]" started-at="2024-06-08T14:04:58 IST" name="tearUp" finished-at="2024-06-08T14:04:59 IST" duration-ms="288" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+      </class> <!-- com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest -->
+      <class name="com.awt.test.Login.VerifyLogInFunctionalityTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:04:04 IST" name="launchBrowser" finished-at="2024-06-08T14:04:21 IST" duration-ms="16920" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyLogInFunctionalityTest()[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:04:21 IST" name="verifyLogInFunctionalityTest" finished-at="2024-06-08T14:06:05 IST" duration-ms="103962" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInFunctionalityTest(VerifyLogInFunctionalityTest.java:46)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLogInFunctionalityTest -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:04:54 IST" name="launchBrowser" finished-at="2024-06-08T14:05:00 IST" duration-ms="6421" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyLogInCredentialsTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:05:00 IST" name="verifyLogInCredentialsTest" data-provider="LogInCrendenital" finished-at="2024-06-08T14:06:35 IST" duration-ms="95194" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[default]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[AWT]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[AWTScada#@2023]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLogInCredentialsTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:06:05 IST" name="tearUp" finished-at="2024-06-08T14:06:06 IST" duration-ms="332" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:06:35 IST" name="tearUp" finished-at="2024-06-08T14:06:36 IST" duration-ms="310" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:06:36 IST" name="launchBrowser" finished-at="2024-06-08T14:06:42 IST" duration-ms="6487" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyLogInCredentialsTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:06:42 IST" name="verifyLogInCredentialsTest" data-provider="LogInCrendenital" finished-at="2024-06-08T14:08:17 IST" duration-ms="95147" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[290]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[AdminScada#@2023]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLogInCredentialsTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:08:18 IST" name="tearUp" finished-at="2024-06-08T14:08:18 IST" duration-ms="298" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:08:18 IST" name="launchBrowser" finished-at="2024-06-08T14:08:24 IST" duration-ms="6462" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyLogInCredentialsTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:08:24 IST" name="verifyLogInCredentialsTest" data-provider="LogInCrendenital" finished-at="2024-06-08T14:10:00 IST" duration-ms="95309" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[290]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Operator ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[OperatorScada#@2023]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLogInCredentialsTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.VerifyLogInFunctionalityTest@158da8e]" started-at="2024-06-08T14:10:00 IST" name="tearUp" finished-at="2024-06-08T14:10:01 IST" duration-ms="307" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+      </class> <!-- com.awt.test.Login.VerifyLogInFunctionalityTest -->
+      <class name="com.awt.test.Home.VerifyPanelsQuantityTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:04 IST" name="launchBrowser" finished-at="2024-06-08T14:04:21 IST" duration-ms="16595" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method retried="true" signature="verfiyPanelsQuantityTest()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:21 IST" name="verfiyPanelsQuantityTest" finished-at="2024-06-08T14:04:28 IST" duration-ms="7449" status="SKIP">
+          <exception class="java.lang.NumberFormatException">
+            <message>
+              <![CDATA[For input string: ""]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NumberFormatException: For input string: ""
+at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+at java.base/java.lang.Integer.parseInt(Integer.java:678)
+at java.base/java.lang.Integer.parseInt(Integer.java:786)
+at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NumberFormatException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verfiyPanelsQuantityTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:28 IST" name="tearUp" finished-at="2024-06-08T14:04:29 IST" duration-ms="1043" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:29 IST" name="launchBrowser" finished-at="2024-06-08T14:04:36 IST" duration-ms="6690" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method retried="true" signature="verfiyPanelsQuantityTest()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:36 IST" name="verfiyPanelsQuantityTest" finished-at="2024-06-08T14:04:41 IST" duration-ms="5131" status="SKIP">
+          <exception class="java.lang.NumberFormatException">
+            <message>
+              <![CDATA[For input string: ""]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NumberFormatException: For input string: ""
+at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+at java.base/java.lang.Integer.parseInt(Integer.java:678)
+at java.base/java.lang.Integer.parseInt(Integer.java:786)
+at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:248)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:62)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NumberFormatException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verfiyPanelsQuantityTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:41 IST" name="tearUp" finished-at="2024-06-08T14:04:41 IST" duration-ms="217" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:41 IST" name="launchBrowser" finished-at="2024-06-08T14:04:48 IST" duration-ms="6639" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verfiyPanelsQuantityTest()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:48 IST" name="verfiyPanelsQuantityTest" finished-at="2024-06-08T14:04:53 IST" duration-ms="5322" status="FAIL">
+          <exception class="java.lang.NumberFormatException">
+            <message>
+              <![CDATA[For input string: ""]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NumberFormatException: For input string: ""
+at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+at java.base/java.lang.Integer.parseInt(Integer.java:678)
+at java.base/java.lang.Integer.parseInt(Integer.java:786)
+at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:248)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:62)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NumberFormatException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verfiyPanelsQuantityTest -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Home.VerifyPanelsQuantityTest@188715b5]" started-at="2024-06-08T14:04:54 IST" name="tearUp" finished-at="2024-06-08T14:04:54 IST" duration-ms="207" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+      </class> <!-- com.awt.test.Home.VerifyPanelsQuantityTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Demo -->
+</testng-results>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 6 failed tests</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Demo" class="navigator-link">
+              <span class="suite-name border-failed">Demo</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Demo" class="navigator-link ">
+                    <span>C:\Users\AWT Tester\eclipse-workspace\Awt_Automation_Project\TestRunner\Parallel\Parallel.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Demo" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Demo" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Demo" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Demo" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Demo" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Demo" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">8 methods, 6 failed,  2 skipped,  </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Demo" class="hide-methods failed suite-Demo"> (hide)</a> <!-- hide-methods failed suite-Demo -->
+                      <a href="#" panel-name="suite-Demo" class="show-methods failed suite-Demo"> (show)</a> <!-- show-methods failed suite-Demo -->
+                    </span>
+                    <div class="method-list-content failed suite-Demo">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest" class="method navigator-link" hash-for-method="verfiyOmsAddingFunctionalityTest">verfiyOmsAddingFunctionalityTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Home.VerifyPanelsQuantityTest" class="method navigator-link" hash-for-method="verfiyPanelsQuantityTest">verfiyPanelsQuantityTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Login.VerifyLogInFunctionalityTest" class="method navigator-link" hash-for-method="verifyLogInCredentialsTest(290, Admin, AdminScada#@2023)">verifyLogInCredentialsTest(290, Admin, AdminScada#@2023)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Login.VerifyLogInFunctionalityTest" class="method navigator-link" hash-for-method="verifyLogInCredentialsTest(default, AWT, AWTScada#@2023)">verifyLogInCredentialsTest(default, AWT, AWTScada#@2023)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Login.VerifyLogInFunctionalityTest" class="method navigator-link" hash-for-method="verifyLogInCredentialsTest(290, Operator , OperatorScada#@2023)">verifyLogInCredentialsTest(290, Operator , OperatorScada#@2023)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Login.VerifyLogInFunctionalityTest" class="method navigator-link" hash-for-method="verifyLogInFunctionalityTest">verifyLogInFunctionalityTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Demo -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Retried methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Demo" class="hide-methods skipped suite-Demo"> (hide)</a> <!-- hide-methods skipped suite-Demo -->
+                      <a href="#" panel-name="suite-Demo" class="show-methods skipped suite-Demo"> (show)</a> <!-- show-methods skipped suite-Demo -->
+                    </span>
+                    <div class="method-list-content skipped suite-Demo">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Home.VerifyPanelsQuantityTest" class="method navigator-link" hash-for-method="verfiyPanelsQuantityTest">verfiyPanelsQuantityTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Home.VerifyPanelsQuantityTest" class="method navigator-link" hash-for-method="verfiyPanelsQuantityTest">verfiyPanelsQuantityTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Demo -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Demo" class="panel Demo">
+          <div class="suite-Demo-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verfiyOmsAddingFunctionalityTest">
+                  </a> <!-- verfiyOmsAddingFunctionalityTest -->
+                  <span class="method-name">verfiyOmsAddingFunctionalityTest</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//label[contains(text(),&apos;OMS Area  (Ha) *&apos;)]/following-sibling::input&quot;}
+  (Session info: chrome=125.0.6422.142)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [93fb8da9eaae056bcb405b917b85cd2e, findElement {value=//label[contains(text(),&apos;OMS Area  (Ha) *&apos;)]/following-sibling::input, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 125.0.6422.142, chrome: {chromedriverVersion: 125.0.6422.141 (4b1e8393712..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58331}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58331/devtoo..., se:cdpVersion: 125.0.6422.142, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 93fb8da9eaae056bcb405b917b85cd2e
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at com.awt.page.oms_Add.OmsDetailsPage.fillOmsDetails(OmsDetailsPage.java:66)
+	at com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest.verfiyOmsAddingFunctionalityTest(VerifyOmsAddingFunctionalityTest.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 17 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Demo-class-failed -->
+          <div class="suite-Demo-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.awt.test.Login.VerifyLogInFunctionalityTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLogInCredentialsTest(290, Admin, AdminScada#@2023)">
+                  </a> <!-- verifyLogInCredentialsTest(290, Admin, AdminScada#@2023) -->
+                  <span class="method-name">verifyLogInCredentialsTest</span>
+                  <span class="parameters">(290,Admin,AdminScada#@2023)</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+	at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLogInCredentialsTest(default, AWT, AWTScada#@2023)">
+                  </a> <!-- verifyLogInCredentialsTest(default, AWT, AWTScada#@2023) -->
+                  <span class="method-name">verifyLogInCredentialsTest</span>
+                  <span class="parameters">(default,AWT,AWTScada#@2023)</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+	at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLogInCredentialsTest(290, Operator , OperatorScada#@2023)">
+                  </a> <!-- verifyLogInCredentialsTest(290, Operator , OperatorScada#@2023) -->
+                  <span class="method-name">verifyLogInCredentialsTest</span>
+                  <span class="parameters">(290,Operator ,OperatorScada#@2023)</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+	at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInCredentialsTest(VerifyLogInFunctionalityTest.java:67)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLogInFunctionalityTest">
+                  </a> <!-- verifyLogInFunctionalityTest -->
+                  <span class="method-name">verifyLogInFunctionalityTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT] but found [null]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:154)
+	at com.awt.test.Login.VerifyLogInFunctionalityTest.verifyLogInFunctionalityTest(VerifyLogInFunctionalityTest.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Demo-class-failed -->
+          <div class="suite-Demo-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.awt.test.Home.VerifyPanelsQuantityTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verfiyPanelsQuantityTest">
+                  </a> <!-- verfiyPanelsQuantityTest -->
+                  <span class="method-name">verfiyPanelsQuantityTest</span>
+                  <div class="stack-trace">java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:678)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+	at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+	at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 12 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Demo-class-failed -->
+          <div class="suite-Demo-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">com.awt.test.Home.VerifyPanelsQuantityTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verfiyPanelsQuantityTest">
+                  </a> <!-- verfiyPanelsQuantityTest -->
+                  <span class="method-name">verfiyPanelsQuantityTest</span>
+                  <div class="stack-trace">java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:678)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+	at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+	at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 12 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verfiyPanelsQuantityTest">
+                  </a> <!-- verfiyPanelsQuantityTest -->
+                  <span class="method-name">verfiyPanelsQuantityTest</span>
+                  <div class="stack-trace">java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:678)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at com.awt.utills.reusablecomponents.AwtUtilities.removeAllAlphabets(AwtUtilities.java:57)
+	at com.awt.page.Home.HomePage.getCountOfSpecifiedPanels(HomePage.java:62)
+	at com.awt.test.Home.VerifyPanelsQuantityTest.verfiyPanelsQuantityTest(VerifyPanelsQuantityTest.java:38)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 12 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Demo-class-skipped -->
+        </div> <!-- panel Demo -->
+        <div panel-name="test-xml-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\AWT Tester\eclipse-workspace\Awt_Automation_Project\TestRunner\Parallel\Parallel.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Demo&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.awt.utills.reusablecomponents.ITestListeners&quot;/&gt;
+    &lt;listener class-name=&quot;com.awt.utills.reusablecomponents.RetryListener&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Test&quot; verbose=&quot;0&quot;&gt;
+    &lt;parameter name=&quot;MaxRetry&quot; value=&quot;2&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.awt.test.Home.VerifyPanelsQuantityTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;verfiyPanelsQuantityTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Home.VerifyPanelsQuantityTest --&gt;
+      &lt;class name=&quot;com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;verfiyOmsAddingFunctionalityTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest --&gt;
+      &lt;class name=&quot;com.awt.test.Login.VerifyLogInFunctionalityTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;verifyLogInFunctionalityTest&quot;/&gt;
+          &lt;include name=&quot;verifyLogInCredentialsTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Login.VerifyLogInFunctionalityTest --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Test --&gt;
+&lt;/suite&gt; &lt;!-- Demo --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Demo</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Test (3 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Demo</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Demo</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Demo');
+function tableData_Demo() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(8);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'verifyLogInFunctionalityTest')
+data.setCell(0, 2, 'com.awt.test.Login.VerifyLogInFunctionalityTest')
+data.setCell(0, 3, 103962);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifyLogInCredentialsTest')
+data.setCell(1, 2, 'com.awt.test.Login.VerifyLogInFunctionalityTest')
+data.setCell(1, 3, 95309);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyLogInCredentialsTest')
+data.setCell(2, 2, 'com.awt.test.Login.VerifyLogInFunctionalityTest')
+data.setCell(2, 3, 95194);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'verifyLogInCredentialsTest')
+data.setCell(3, 2, 'com.awt.test.Login.VerifyLogInFunctionalityTest')
+data.setCell(3, 3, 95147);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'verfiyOmsAddingFunctionalityTest')
+data.setCell(4, 2, 'com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest')
+data.setCell(4, 3, 37490);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'verfiyPanelsQuantityTest')
+data.setCell(5, 2, 'com.awt.test.Home.VerifyPanelsQuantityTest')
+data.setCell(5, 3, 7449);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'verfiyPanelsQuantityTest')
+data.setCell(6, 2, 'com.awt.test.Home.VerifyPanelsQuantityTest')
+data.setCell(6, 3, 5322);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'verfiyPanelsQuantityTest')
+data.setCell(7, 2, 'com.awt.test.Home.VerifyPanelsQuantityTest')
+data.setCell(7, 3, 5131);
+window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 7 minutes</span>
+              <div id="times-div-Demo">
+              </div> <!-- times-div-Demo -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Demo</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Demo" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Home.VerifyPanelsQuantityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Login.VerifyLogInFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verfiyOmsAddingFunctionalityTest</span>
+                <span class="method-start">16519 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Home.VerifyPanelsQuantityTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verfiyPanelsQuantityTest</span>
+                <span class="method-start">16595 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Login.VerifyLogInFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyLogInFunctionalityTest</span>
+                <span class="method-start">16920 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Home.VerifyPanelsQuantityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">24050 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">25094 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verfiyPanelsQuantityTest</span>
+                <span class="method-start">31784 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">36917 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">37134 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verfiyPanelsQuantityTest</span>
+                <span class="method-start">43773 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">49328 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Login.VerifyLogInFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">49562 ms</span>
+              </div> <!-- configuration-method before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">54115 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.awt.test.Login.VerifyLogInFunctionalityTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyLogInCredentialsTest(default, AWT, AWTScada#@2023)</span>
+                <span class="method-start">55983 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">121083 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">151314 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">151625 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyLogInCredentialsTest(290, Admin, AdminScada#@2023)</span>
+                <span class="method-start">158112 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">253357 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchBrowser(2)</span>
+                <span class="method-start">253656 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyLogInCredentialsTest(290, Operator , OperatorScada#@2023)</span>
+                <span class="method-start">260118 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearUp</span>
+                <span class="method-start">356107 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>
