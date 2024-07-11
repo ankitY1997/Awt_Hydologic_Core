@@ -10,11 +10,12 @@
 	<test name="Test">
        <parameter name="MaxRetry" value="1"></parameter>
 		<classes>
-			<class name="com.awt.test.Home.VerifyPanelsQuantityTest">
+			<class name="com.awt.admin.Home.logIn_Functionaliy">
 				<methods>
-					<include name="verfiyPanelsQuantityTest"></include>
+					<include name="verifyLoginFunctionalityTest"></include>
 				</methods>
 
+			</class>
 
 		</classes>
 	</test> <!--
