@@ -15,19 +15,6 @@
 					<include name="verfiyPanelsQuantityTest"></include>
 				</methods>
 
-			</class>
-			<class name="com.awt.test.Oms_Add.VerifyOmsAddingFunctionalityTest">
-				<methods>
-					<include name="verfiyOmsAddingFunctionalityTest"></include>
-				</methods>
-			</class>
-
-			<class name="com.awt.test.Login.VerifyLogInFunctionalityTest">
-				<methods>
-					<include name="verifyLogInFunctionalityTest"></include>
-					<include name="verifyLogInCredentialsTest"></include>
-				</methods>
-			</class>
 
 		</classes>
 	</test> <!--

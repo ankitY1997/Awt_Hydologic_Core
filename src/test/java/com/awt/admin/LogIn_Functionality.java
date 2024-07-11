@@ -13,7 +13,7 @@ import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
 import com.awt.utills.reusablecomponents.TestId;
 
-public class LogIn_Functionaliy extends BaseTest {
+public class LogIn_Functionality extends BaseTest {
 
 	@Description(description = "check the login functionality")
 	@Owner(name = "ankit")
