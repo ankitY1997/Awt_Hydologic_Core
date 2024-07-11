@@ -1,6 +1,0 @@
-[INFO ] 2024-01-30 12:07:30.217 - startTestCase:
-
-************** Execution Started : verfiyOmsAddingFunctionalityTest**************
-
-[INFO ] 2024-01-30 12:08:48.934 - logToConsole:Soft Assert Passed for method: 'assertTrue' - Oms Id Is Present In OMS View Table [Expected: 'true'] [Actual: 'true'][ TestId Is :290 ]
-[INFO ] 2024-01-30 12:08:52.128 - onTestSuccess:Test Case :verfiyOmsAddingFunctionalityTest Is Pass

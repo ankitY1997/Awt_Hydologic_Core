@@ -1,7 +1,0 @@
-[INFO ] 2024-02-14 17:58:36.545 - startTestCase:
-
-************** Execution Started : verifyLogInFunctionalityTest**************
-
-[INFO ] 2024-02-14 17:58:45.045 - logToConsole:Soft Assert Passed for method: 'assertEquals' - project name is visible  [Expected: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'] [Actual: 'WELCOME TO NARMADA KSHIPRA MULTIPURPOSE PROJECT'][TestId :290]
-[INFO ] 2024-02-14 17:59:02.726 - logToConsole:Soft Assert Passed for method: 'assertEquals' - verfiy error message  [Expected: 'Email/Username or Password is not Valid'] [Actual: 'Email/Username or Password is not Valid'][TestId :220]
-[INFO ] 2024-02-14 17:59:02.743 - onTestSuccess:Test Case :verifyLogInFunctionalityTest Is Pass

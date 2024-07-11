@@ -1,6 +1,0 @@
-[INFO ] 2024-01-19 18:12:13.342 - com.web.orangehrm.basetest.MyLogger:startTestCase: Line Number Is :19 
-
-************** Execution Started : verfiyPanelsQuantity**************
-
-[INFO ] 2024-01-19 18:12:25.093 - com.web.orangehrm.utills.reusableComponents.SoftAssertTest:logToConsole: Line Number Is :148 Soft Assert Passed for method: 'assertEquals' - HomePage Total Oms Qaunatiy Is Equal To The The Oms Details Panel Total Oms Quantity [Expected: '741'] [Actual: '741'][ TestId Is :231 ]
-[INFO ] 2024-01-19 18:12:25.140 - com.web.orangehrm.utills.reusableComponents.ITestListeners:onTestSuccess: Line Number Is :44 Test Case :verfiyPanelsQuantityIs Pass

@@ -1,5 +1,0 @@
-[INFO ] 2024-01-19 17:01:48.546 - com.web.orangehrm.basetest.MyLogger:startTestCase: Line Number Is :19 
-
-************** Execution Started : verfiyOmsAddingFunctionality**************
-
-[INFO ] 2024-01-19 17:01:51.441 - com.web.orangehrm.utills.reusableComponents.ITestListeners:onTestFailure: Line Number Is :79 CAPTURED FAILURE SCREEN SHOT FOR :verfiyOmsAddingFunctionality Method

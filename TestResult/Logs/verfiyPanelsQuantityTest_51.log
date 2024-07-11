@@ -1,5 +1,0 @@
-[INFO ] 2024-02-16 20:44:44.500 - startTestCase:
-
-************** Execution Started : verfiyPanelsQuantityTest**************
-
-[INFO ] 2024-02-16 20:44:55.390 - logToConsole:Soft Assert Failed for method: 'assertEquals' - HomePage Total Oms Qaunatiy Is Equal To The The Oms Details Panel Total Oms Quantity [Expected: '938'] [Actual: '937'][TestId :231]
