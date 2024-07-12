@@ -6,11 +6,11 @@
 			class-name="com.awt.utills.reusablecomponents.ITestListeners"></listener>
 		<listener
 			class-name="com.awt.utills.reusablecomponents.RetryListener"></listener>
-		<listener
-			class-name="com.awt.utills.reusablecomponents.Genrate_Excel_Report"></listener>
+		<!--<listener
+			class-name="com.awt.utills.reusablecomponents.Genrate_Excel_Report"></listener>-->
 	</listeners>
 	<test name="Test">
-		<parameter name="MaxRetry" value="1"></parameter>
+		<parameter name="MaxRetry" value="1000"></parameter>
 		<classes>
 			<class name="com.awt.admin.LogIn_Functionality">
 				<methods>
