@@ -29,7 +29,7 @@ public class LogIn_Functionality extends BaseTest {
 		// -->enter the username and password -> log in to the application
 		lp.logInToTheApplication(ExcelOperations.getCellData("LoginCredentialDetails", "Username", "231"),
 				ExcelOperations.getCellData("LoginCredentialDetails", "Password", "231"));
-		asert.assertEquals(lp.getModuleName(),"OUTLET MANAGEMENT SYSTEM",
+		asert.assertEquals(lp.getModuleName(),"OUTLET MANAGEMENT SYSTEM (OMS)'",
 				"After log in OUTLET MANAGEMENT SYSTEM (OMS) Module Name Should be Visible" , 01);
 		asert.assertAll();
 
