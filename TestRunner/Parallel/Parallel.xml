@@ -10,7 +10,7 @@
 			class-name="com.awt.utills.reusablecomponents.Genrate_Excel_Report"></listener>-->
 	</listeners>
 	<test name="Test">
-		<parameter name="MaxRetry" value="1000"></parameter>
+		<parameter name="MaxRetry" value="0"></parameter>
 		<classes>
 			<class name="com.awt.admin.LogIn_Functionality">
 				<methods>
