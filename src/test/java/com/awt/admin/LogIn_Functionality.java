@@ -16,8 +16,8 @@ import com.awt.utills.reusablecomponents.TestId;
 public class LogIn_Functionality extends BaseTest {
 
 	@Description(description = "check the login functionality")
-	@Owner(name = "ankit")
 	@TestId(id = { 1 })
+	@Owner(name = "ankit")
 	@Test
 	public void verifyLoginFunctionalityTest() {
 		// logger instance

@@ -78,48 +78,7 @@ public class HomePage {
 		// click on the log out button
 		action.clickOn(btn_logout,"logout");
 	}
-	/**
-	 * this method helps we can navigate to any module to any sub module page
-	 *
-	 * @param mainModuleName {"OMS","AMS"}
-	 * @param moduleName     { OMS Dashboard ,OMS Details View,Command Area OMS,
-	 *                       Bulk Upload,Village Area Add/View,Farmer Details
-	 *                       Add/View,OMS Report,OMS Site Assign }
-	 * @param subModuleName  {Village Add,Village View,OMS Add,OMS View,Farmer
-	 *                       Details Add,Farmer Details View,OMS Main Report,OMS
-	 *                       Event Report,Add OMS Site Assign ,View OMS Site Assign}
-	 * @author Ankit Yadav
-	 */
-	public HomePage moveToAnyModuleToAnySubModule(String mainModuleName, String moduleName, String subModuleName) {
-		// main module name
-		if (mainModuleName.contains("OMS")) {
-			// click on side bar menu
-			clickOnSideBarMenu();
-			// click on the oms sub-module
-			if (moduleName.contains("OMS Dashboard") || moduleName.contains("OMS Details")
-					|| moduleName.contains("View Command Area") || moduleName.contains("OMS Bulk Upload")) {
-				action.clickOn(driver.findElement(By.xpath("//span[text()='OMS']/../following-sibling::i")),mainModuleName+" drop-down");
-				action.clickOn(driver.findElement(
-						By.xpath("//span[text()='OMS']/../parent::div/following-sibling::div/a[contains(text(),'"
-								+ moduleName.trim() + "')]")),moduleName);
-
-			} else if (moduleName.contains("Village Area Add/View") || moduleName.contains("OMS Add/View")
-					|| moduleName.contains("Farmer Details Add/View") || moduleName.contains("OMS Report")
-					|| moduleName.contains("OMS Site Assign")) {
-				action.clickOn(driver.findElement(By.xpath("//span[text()='OMS']/../following-sibling::i")),mainModuleName+" drop-down");
-				// click on sub module name
-				action.clickOn(driver
-						.findElement(By.xpath("//span[contains(text(),'" + moduleName.trim() + "')]/../parent::div")),moduleName+" drop-down");
-				action.clickOn(driver.findElement(By.xpath("//span[contains(text(),'" + moduleName.trim()
-						+ "')]/../parent::div/following-sibling::div/a[contains(text(),'" + subModuleName + "')]")),subModuleName);
-
-			}
-
-		} else if (mainModuleName.contains("AMS")) {
-			// not for today
-		}
-		return new HomePage(driver);
-	}
+	
 }
 
 
