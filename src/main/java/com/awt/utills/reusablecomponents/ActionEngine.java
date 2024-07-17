@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -49,6 +50,7 @@ public class ActionEngine {
 			// wait for element
 			implicitWait(element, implicit_wait);
 			element.clear();
+			element.click();
 			element.sendKeys(valueToBeSend);
 			ExtentFactory.extentObject().getExtent().log(Status.PASS,
 					field_name.toUpperCase() + " Entered Value as :" + valueToBeSend);
@@ -100,6 +102,16 @@ public class ActionEngine {
 	}
 
 	/**
+	 *  Implicit Wait
+	 * @param driver
+	 * @param time
+	 * @return
+	 */
+	public Timeouts implictWait(int time) {
+		return driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
+	}
+
+	/**
 	 * this method is used to get the text
 	 *
 	 * @param element
@@ -126,6 +138,42 @@ public class ActionEngine {
 	public String getUrl(WebDriver driver) {
 		String url = driver.getCurrentUrl();
 		return url;
+	}
+
+	/**
+	 * this method is used for clicking operation
+	 *
+	 * @param element
+	 * @author AWT Tester
+	 */
+	public void clickOn(WebElement element) {
+		// wait for page loading it will wait until dom structure will not be ready
+		AwtUtilities.waitFor(2000);
+		AwtUtilities.waitForPageLoading(driver);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(explicit_wait));
+		int i = 0;
+		try {
+			while (i <= 3) {
+				try {
+					wait.until(ExpectedConditions.visibilityOf(element));
+					wait.until(ExpectedConditions.elementToBeClickable(element));
+					element.click();
+
+					break;
+				} catch (StaleElementReferenceException e) {
+
+				} catch (ElementClickInterceptedException e) {
+					AwtUtilities.javascriptClick(driver, element);
+					break;
+				} catch (Exception e) {
+					AwtUtilities.javascriptClick(driver, element);
+				}
+				i++;
+			}
+		} catch (Exception e) {
+			logFail("Unable To Get click On Due To This Exception :", e);
+		}
+		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicit_wait));
 	}
 
 	/**
@@ -803,18 +851,16 @@ public class ActionEngine {
 		}
 	}
 
-
-
 	/**
 	 * this is the logger methods used to do logging action
 	 *
 	 * @param message
 	 */
-	private void logPass(String message) {
+	public void logPass(String message) {
 		ExtentFactory.extentObject().getExtent().log(Status.PASS, message);
 	}
 
-	private void logFail(String message, Exception e) {
+	public void logFail(String message, Exception e) {
 		ExtentFactory.extentObject().getExtent().log(Status.FAIL, message + " Error: " + e.getMessage());
 	}
 

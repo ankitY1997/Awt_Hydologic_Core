@@ -124,7 +124,7 @@ public class ExcelOperations {
 		FileInputStream fis = null;
 		XSSFWorkbook workbook = null;
 		String data = null;
-		String path = "./TestDataRev/" + fileName + ".xlsx";
+		String path = "./TestData/Excel_Files" + fileName + ".xlsx";
 		try {
 			fis = new FileInputStream(path);
 			workbook = new XSSFWorkbook(fis);
@@ -251,7 +251,7 @@ public class ExcelOperations {
 
 		FileInputStream fis = null;
 		XSSFWorkbook workbook = null;
-		String path = "./TestDataRev/" + fileName + ".xlsx";
+		String path = "./TestData/Excel_Files" + fileName + ".xlsx";
 		String[][] table = null;
 		try {
 			fis = new FileInputStream(path);
@@ -355,7 +355,7 @@ public class ExcelOperations {
 
 		FileInputStream fis = null;
 		XSSFWorkbook workbook = null;
-		String path = "./TestDataRev/" + fileName + ".xlsx";
+		String path = "./TestData/Excel_Files" + fileName + ".xlsx";
 		String[][] table = null;
 		try {
 			fis = new FileInputStream(path);

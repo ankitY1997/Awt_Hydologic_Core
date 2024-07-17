@@ -1,1 +1,11 @@
 /target/
+test-output/Demo/Test.html
+test-output/Demo/Test.xml
+test-output/emailable-report.html
+test-output/index.html
+test-output/old/Demo/classes.html
+test-output/old/Demo/methods-alphabetical.html
+test-output/old/Demo/methods.html
+test-output/old/Demo/testng.xml.html
+test-output/testng-results.xml
+/Awt_Project_Managment/src/main/java/com/awt/utills/reusablecomponents/Genrate_Excel_Report.java
