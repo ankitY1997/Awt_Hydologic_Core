@@ -12,9 +12,9 @@
 	<test name="Test">
 		<parameter name="MaxRetry" value="0"></parameter>
 		<classes>
-			<class name="com.awt.admin.LogIn_Functionality">
+			<class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
 				<methods>
-					<include name="verifyLoginFunctionalityTest"></include>
+					<include name="verify_AddedProjectDetails"></include>
 				</methods>
 
 			</class>
