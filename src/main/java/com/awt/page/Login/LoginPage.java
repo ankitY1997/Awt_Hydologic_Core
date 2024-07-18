@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.awt.page.Admin.CreateProject.AdminPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
@@ -14,11 +16,11 @@ import com.awt.utills.reusablecomponents.PropertiesOperations;
 public class LoginPage {
 
 	/* xpath for enter project name text field */
-	@FindAll({ @FindBy(xpath = "//div[text()='Enter Project Name']") })
+	@FindAll({ @FindBy(xpath = "//input[@role='combobox']") })
 	private WebElement txt_entr_project_name;
 
 	/* xpath for get started button */
-	@FindAll({ @FindBy(xpath = "//div[text()='Enter Project Name']") })
+	@FindAll({ @FindBy(xpath = "//button[text()='Get Started']") })
 	private WebElement btn_get_started;
 
 	/* xpath of username text field */
@@ -55,8 +57,8 @@ public class LoginPage {
 	 * @author Ankit
 	 */
 	public void logInToTheApplication(String username, String password) {
-		// Enter the Project Name
-		enterProjectName(Properties.getPropertyValue("Project_Name"));
+//		// Enter the Project Name
+//		enterProjectName(Properties.getPropertyValue("Project_Name"));
 		// enter username
 		action.type(txt_email, "username", username);
 		// enter password
@@ -96,9 +98,10 @@ public class LoginPage {
 	 *
 	 * @return
 	 */
-	public void navigateToAdminPage() {
+	public AdminPage loginAndnavigateToAdminPage() {
 		logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
 				PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
+		return new AdminPage(driver);
 	}
 
 }

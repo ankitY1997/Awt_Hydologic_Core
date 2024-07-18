@@ -124,7 +124,7 @@ public class ExcelOperations {
 		FileInputStream fis = null;
 		XSSFWorkbook workbook = null;
 		String data = null;
-		String path = "./TestData/Excel_Files" + fileName + ".xlsx";
+		String path = "./TestData/Excel_Files/" + fileName + ".xlsx";
 		try {
 			fis = new FileInputStream(path);
 			workbook = new XSSFWorkbook(fis);

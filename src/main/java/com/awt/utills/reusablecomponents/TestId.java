@@ -16,5 +16,5 @@ import java.lang.annotation.Target;
 @Target(METHOD)
 public @interface TestId {
 
-	public String[] id();
+	public int[] id();
 }

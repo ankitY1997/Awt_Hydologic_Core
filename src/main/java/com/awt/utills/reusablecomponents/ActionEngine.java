@@ -49,8 +49,8 @@ public class ActionEngine {
 		try {
 			// wait for element
 			implicitWait(element, implicit_wait);
-			element.clear();
 			element.click();
+			element.clear();
 			element.sendKeys(valueToBeSend);
 			ExtentFactory.extentObject().getExtent().log(Status.PASS,
 					field_name.toUpperCase() + " Entered Value as :" + valueToBeSend);
@@ -102,7 +102,8 @@ public class ActionEngine {
 	}
 
 	/**
-	 *  Implicit Wait
+	 * Implicit Wait
+	 * 
 	 * @param driver
 	 * @param time
 	 * @return
@@ -157,6 +158,7 @@ public class ActionEngine {
 				try {
 					wait.until(ExpectedConditions.visibilityOf(element));
 					wait.until(ExpectedConditions.elementToBeClickable(element));
+					performMoveToElement(element);
 					element.click();
 
 					break;
@@ -758,7 +760,7 @@ public class ActionEngine {
 		try {
 			Actions actions = new Actions(driver);
 			actions.moveToElement(webElement).perform();
-			logPass("Successfully moved to the element.");
+			//logPass("Successfully moved to the element.");
 		} catch (Exception e) {
 			logFail("Failed to move to the element.", e);
 		}

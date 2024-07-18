@@ -6,15 +6,14 @@
     <listener class-name="com.awt.utills.reusablecomponents.RetryListener"/>
   </listeners>
   <test thread-count="3" parallel="methods" name="Test(failed)">
-    <parameter name="MaxRetry" value="0"/>
     <classes>
-      <class name="com.awt.admin.LogIn_Functionaliy">
+      <class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
         <methods>
-          <include name="verifyLoginFunctionalityTest"/>
+          <include name="verify_AddedProjectDetails"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.admin.LogIn_Functionaliy -->
+      </class> <!-- com.awt.test.Admin.CreateProject.AdminCreatePageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

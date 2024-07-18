@@ -14,7 +14,7 @@ import com.awt.utills.reusablecomponents.TestId;
 public class LoginPageTest extends BaseTest {
 
 	@Description(description = "check the login functionality")
-	@TestId(id = { "T-01" })
+	@TestId(id = { 01 })
 	@Owner(name = "ankit")
 	@Test
 	public void verifyLoginFunctionalityTest() {
