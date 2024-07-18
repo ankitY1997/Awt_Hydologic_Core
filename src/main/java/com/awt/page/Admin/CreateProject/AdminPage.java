@@ -1,4 +1,4 @@
-package com.awt.page.Admin;
+package com.awt.page.Admin.CreateProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,24 +7,24 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.awt.page.Admin.CreateProject.AdminCreateProjectPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
 public class AdminPage {
 
-
 	// ***********constant variable *********************//
-	
+
 	public static final String create_project = "Create Project";
-	
-	//************Xpaths ***************************//
-	
+	public static final String report="Report";
+
+	// ************Xpaths ***************************//
+
 	// ** xpath for project management drop down button **/
 	@FindAll({ @FindBy(xpath = "//span[text()='Project Management']") })
 	private WebElement project_mang_drop_down;
 
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
-	
 
 	// **WebDriver instance variable **//
 	private WebDriver driver;
@@ -53,9 +53,8 @@ public class AdminPage {
 		// click on project management menu
 		action.clickOn(project_mang_drop_down, "Project Management");
 		// select menus items
-		action.clickOn(
-				driver.findElement(By.xpath(
-						"//span[text()='Project Management']/../following-sibling::ul//*[text()='" + menu_item + "']")),
+		action.clickOn(driver.findElement(By.xpath(
+				"//span[text()='Project Management']/../following-sibling::ul//*[text()='" + menu_item.trim() + "']")),
 				menu_item);
 	}
 
@@ -66,9 +65,22 @@ public class AdminPage {
 	 * @return
 	 */
 
-	public AdminCreateProjectPage navigateToAdminCreateProjectPage() {
+	public AdminCreateProjectPage clickCreateProjectButtonAndNavigateToAdminCreateProjectPage() {
 		// select the create project menu
 		selectProjectManagementMenuItem(create_project);
 		return new AdminCreateProjectPage(driver);
 	}
+
+	/**
+	 * To Check The Project Management Button Is VIsible
+	 * 
+	 * @return
+	 */
+	public boolean isProjectManagmentButtonPresent() {
+		action.implicitWait(project_mang_drop_down, action.implicit_wait);
+		return action.isDisplay(project_mang_drop_down);
+	}
+
+
+
 }
