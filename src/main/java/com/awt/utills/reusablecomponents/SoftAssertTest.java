@@ -44,11 +44,11 @@ public class SoftAssertTest {
 	/**
 	 * Assert True
 	 *
-	 * @param testId
+	 * @param TestCase
 	 * @param condition
 	 * @param message
 	 */
-	public void assertTrue(boolean condition, String message, int testIds) {
+	public void assertTrue(boolean condition, String message, String TestCase) {
 		boolean isPass = false;
 		try {
 			softAssert.assertTrue(condition, message);
@@ -58,19 +58,19 @@ public class SoftAssertTest {
 		} finally {
 			String reportMessage = "Soft Assert " + ((isPass) ? "Passed" : "Failed") + " for method: 'assertTrue' - "
 					+ message + " [Expected: 'true'] [Actual: '" + condition + "']";
-			logToReport(isPass, reportMessage, testIds);
-			logToConsole(isPass, reportMessage, testIds);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
 		}
 	}
 
 	/**
 	 * Assert False
 	 *
-	 * @param testId
+	 * @param TestCase
 	 * @param condition
 	 * @param message
 	 */
-	public void assertFalse(boolean condition, String message, int testIds) {
+	public void assertFalse(boolean condition, String message, String TestCase) {
 		boolean isPass = false;
 		try {
 			softAssert.assertFalse(condition, message);
@@ -80,20 +80,20 @@ public class SoftAssertTest {
 		} finally {
 			String reportMessage = "Soft Assert " + ((isPass) ? "Passed" : "Failed") + " for method: 'assertFalse' - "
 					+ message + " [Expected: 'false'] [Actual: '" + condition + "']";
-			logToReport(isPass, reportMessage, testIds);
-			logToConsole(isPass, reportMessage, testIds);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
 		}
 	}
 
 	/**
 	 * Assert Equals
 	 *
-	 * @param testId
+	 * @param TestCase
 	 * @param actual
 	 * @param expected
 	 * @param message
 	 */
-	public void assertEquals(Object actual, Object expected, String message, int testIds) {
+	public void assertEquals(Object actual, Object expected, String message, String TestCase) {
 		boolean isPass = false;
 		try {
 			softAssert.assertEquals(actual, expected);
@@ -103,8 +103,8 @@ public class SoftAssertTest {
 		} finally {
 			String reportMessage = "Soft Assert " + ((isPass) ? "Passed" : "Failed") + " for method: 'assertEquals' - "
 					+ message + " [Expected: '" + expected + "'] [Actual: '" + actual + "']";
-			logToReport(isPass, reportMessage, testIds);
-			logToConsole(isPass, reportMessage, testIds);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
 		}
 	}
 
@@ -114,9 +114,9 @@ public class SoftAssertTest {
 	 * @param actual
 	 * @param expected
 	 * @param message
-	 * @param testIds
+	 * @param TestCase
 	 */
-	public void assertNotEquals(Object actual, Object expected, String message, int testIds) {
+	public void assertNotEquals(Object actual, Object expected, String message, String TestCase) {
 		boolean isPass = false;
 		try {
 			softAssert.assertNotEquals(actual, expected);
@@ -129,21 +129,21 @@ public class SoftAssertTest {
 					+ " for method: 'assertNotEquals' - " + message + " [Expected: '" + expected + "'] [Actual: '"
 					+ actual + "']";
 			// System.out.println(reportMessage);
-			logToReport(isPass, reportMessage, testIds);
-			logToConsole(isPass, reportMessage, testIds);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
 		}
 	}
 
-	public void logToReport(boolean flag, String message, int testIds) {
+	public void logToReport(boolean flag, String message, String TestCase) {
 		if (flag) {
-			logger.log(Status.PASS, message + " [ TestId :" + (testIds) + "]");
+			logger.log(Status.PASS, message + " [ TestCase :" + (TestCase) + "]");
 		} else {
-			logger.log(Status.FAIL, message + " [ TestId :" + (testIds) + "]");
+			logger.log(Status.FAIL, message + " [ TestCase :" + (TestCase) + "]");
 		}
 	}
 
-	public void logToConsole(boolean flag, String message, int testIds) {
-		MyLogger.info(message + "[TestId :" + (testIds) + "]");
+	public void logToConsole(boolean flag, String message, String TestCase) {
+		MyLogger.info(message + "[TestCase :" + (TestCase) + "]");
 
 	}
 

@@ -1,5 +1,6 @@
 package com.awt.page.Admin.CreateProject;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.aventstack.extentreports.Status;
 import com.awt.testbase.ExtentFactory;
+import com.awt.testbase.MyLogger;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
@@ -73,6 +75,10 @@ public class AdminCreateProjectPage {
 	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='previousbutton']") })
 	private WebElement previous_button;
 
+	// ** For Finding A Rows In The Table **/
+	@FindAll({ @FindBy(xpath = "//tr[@role='row' and @data-pc-section='row']") })
+	private List<WebElement> numRowInTable;
+
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
 
@@ -122,6 +128,78 @@ public class AdminCreateProjectPage {
 	public boolean isCreateProjectButtonDispaly() {
 		action.implicitWait(crate_project_btn, action.implicit_wait);
 		return action.isDisplay(crate_project_btn);
+	}
+
+	/**
+	 * To get the newly added projects data
+	 */
+	public String getColumnDataFromProjectDetailsTable(String columnName) {
+
+		switch (columnName) {
+		case "Project Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Client Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Consultant Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Start Date":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Actual End Date":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Due Days":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Module Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Mobile Number":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		case "Email ID":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+		default:
+			MyLogger.error(" You Have Passed Wrong Column "+columnName+" Please Enter The Correct Column Name");
+			return null; 
+		}
+
+	}
+
+	/**
+	 * To get the column index number by entering the column name
+	 * 
+	 * @param columnName
+	 * @return
+	 */
+	public Integer getColumnIndexNumber(String columnName) {
+		LinkedHashMap<String, Integer> columnIndexlist = new LinkedHashMap<String, Integer>();
+		columnIndexlist.put("Project Name", 1);
+		columnIndexlist.put("Client Name", 2);
+		columnIndexlist.put("Client Logo", 3);
+		columnIndexlist.put("Consultant Name", 4);
+		columnIndexlist.put("Consultant Logo", 5);
+		columnIndexlist.put("Start Date", 6);
+		columnIndexlist.put("Actual End Date", 7);
+		columnIndexlist.put("Due Days", 8);
+		columnIndexlist.put("Module Name", 9);
+		columnIndexlist.put("Mobile Number", 10);
+		columnIndexlist.put("Email ID", 11);
+		return columnIndexlist.get(columnName);
+
 	}
 
 }

@@ -18,50 +18,95 @@ import com.awt.utills.reusablecomponents.ExcelOperations;
 import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
 import com.awt.utills.reusablecomponents.Story;
-import com.awt.utills.reusablecomponents.TestId;
+import com.awt.utills.reusablecomponents.TestCaseId;
+import com.awt.utills.reusablecomponents.Version;
 import com.awt.utills.reusablecomponents.WorkArea;
 
 public class AdminCreatePageTest extends BaseTest {
 
 	/**
-	 * Description: Perform the verification on Contract Folder details page<br>
-	 * TestMethodName: verify_AddProjectDetails <br>
-	 * ManualTestCases: 01,02,03 <br>
+	 * Description: Perform the verification on new Project Details Panels
+	 * Fields<br>
+	 * TestMethodName: verify_NewProjectDetailsPanel <br>
+	 * ManualTestCases: APMS-T1,APMS-T2,APMS-T3,APMS-T4<br>
 	 * 
 	 * @author ankit
 	 */
 
+	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
-	@Description(description = "Perform the verfication on  new Project Detais Panel")
-	@Story(story = "Contracts ExistingContracts Tab Contract Folder Details Page")
+	@Description(description = "Perform the verfication on  New Project Details Panel")
+	@Story(story = "Create Project Details Panel")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestId(id = { 01, 02, 03 })
-	public void verify_AddedProjectDetails() {
+	@TestCaseId(id = { "APMS-T1", "APMS-T2", "APMS-T3", "APMS-T4" })
+	public void verify_NewProjectDetailsPanel() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// SoftAssert instance
 		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		// Enter the project name
-		lp.enterProjectName(LoginPageConstants.project_name);
-		// login and navigate to the admin page
-		AdminPage admin_page = lp.loginAndnavigateToAdminPage();
+		// Enter the Project Name and login and navigate to the admin page
+		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
 		// verify Project Management Button Is Present
 		asert.assertEquals(admin_page.isProjectManagmentButtonPresent(), true,
-				"verify Project Managment button Is Display", 01);
+				"verify Project Managment button Is Display", "APMS-T0");
 		// click on project management drop-down menu and Select "Create Project" menu
 		AdminCreateProjectPage admin_create_page = admin_page
 				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage();
 		// verify "Create Project" button is display
 		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
-				"verify Create Project button Is Display", 02);
-		// now click on the "Create project button" --> Navigate to "New Project Details
-		// Panel
+				"Verify that the Create Project button is visible", "APMS-T1");
+		/*
+		 * Click on Create Project Button --> Navigate to "New Project Details Panel
+		 * 
+		 */
 		NewProjectDetailsPanel project_details = admin_create_page
 				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
-		// enter the project details
+		asert.assertAll();
+
+	}
+
+	/**
+	 * Description: Perform the verfication on new Project Details Panel<br>
+	 * TestMethodName: verify_NewProjectDetailsPanel <br>
+	 * ManualTestCases: APMS-T1,APMS-T2,APMS-T3,APMS-T4<br>
+	 * 
+	 * @author ankit
+	 */
+
+	@Version(number = "V-0.1")
+	@Test(groups = { "Admin", "Functional" })
+	@Description(description = "Perform the verfication To Create A New Project And Validate The Details Of Project Under The Details Table")
+	@Story(story = "Create Project Details Panel")
+	@Owner(name = "Ankit")
+	@WorkArea(areaName = "Admin")
+	@TestCaseId(id = { "APMS-T7", "APMS-T2", "APMS-T3", "APMS-T4" })
+	public void verifyAddProjectDetails() {
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
+		// SoftAssert instance
+		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
+		// log in Page instance
+		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
+		// Enter the Project Name and login and navigate to the admin page
+		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
+		// click on project management drop-down menu and Select "Create Project" menu
+		AdminCreateProjectPage admin_create_page = admin_page
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage();
+		/*
+		 * Click on Create Project Button --> Navigate to "New Project Details Panel
+		 * 
+		 */
+		NewProjectDetailsPanel project_details = admin_create_page
+				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+		/*
+		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
+		 * Name, Consultant Logo, Licenses Key, Module Name, User Name, Password, Mobile
+		 * Number, Email Address Start Date, Expected Date, Actual Completion Date)
+		 * 
+		 */
 		String projectName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.project_name, "3");
 		String clientName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
@@ -89,7 +134,6 @@ public class AdminCreatePageTest extends BaseTest {
 		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.actual_compeltion_date, "3");
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
-		
 		project_details.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
 				consultantImagePath, licensesKey, userName, password, moduleName, mobNumber, emailAddress, startDate,
 				expectedDate, actualCompletionDate);
@@ -97,12 +141,18 @@ public class AdminCreatePageTest extends BaseTest {
 		project_details.clickAddProject();
 		// verify The Success Pop-up Message
 		asert.assertEquals(project_details.getSuccessMessage(), "Project created successfully!",
-				"verify The Success Pop-up Message", 3);
+				"verify The Project successfully created Pop-Up Message", "APMS-T8");
+		// Click On Again Create Project Button and Navigate to the New Project Details
+		// Panel
+//		admin_create_page.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+//		//enter the created Project Name
+//		project_details.enterProjectName(projectName);
+//		// click on Add Project Button 
+//		project_details.clickAddProject();
+		// Verify the user is not able to create 
+		
 		// click on the pop-up
 		project_details.acceptPopup();
 
-		asert.assertAll();
-
 	}
-
 }

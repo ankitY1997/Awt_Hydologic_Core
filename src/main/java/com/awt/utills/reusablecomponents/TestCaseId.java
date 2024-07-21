@@ -6,18 +6,15 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
 /**
  * @author Ankit Yadav
  */
 @Inherited
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RUNTIME)
 @Target(METHOD)
-public @interface Description {
+public @interface TestCaseId {
 
-	public String  description();
-
+	public String[] id();
 }

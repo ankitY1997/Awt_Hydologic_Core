@@ -7,14 +7,11 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-/**
- * @author Ankit Yadav
- */
 @Inherited
 @Documented
 @Retention(RUNTIME)
 @Target(METHOD)
-public @interface TestId {
+public @interface Version {
 
-	public int[] id();
+	public String[] number();
 }

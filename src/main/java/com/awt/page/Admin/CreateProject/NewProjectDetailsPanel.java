@@ -281,11 +281,11 @@ public class NewProjectDetailsPanel {
 		try {
 			// Select date type
 			selectDateType(dateType);
-			String exp_date = req_date.replaceAll("/", "-");
+			String exp_date = req_date.replaceAll("/", "-"); 
 			if (exp_date.contains("-")) {
 				String[] date = exp_date.split("-");
 				// *************Expected Date ************/
-				String exp_day = date[0];
+				String exp_day = date[0].replace("0"," ").trim();
 				String exp_month = date[1];
 				String exp_year = date[2];
 

@@ -9,12 +9,12 @@ import com.awt.utills.reusablecomponents.Description;
 import com.awt.utills.reusablecomponents.ExcelOperations;
 import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
-import com.awt.utills.reusablecomponents.TestId;
+import com.awt.utills.reusablecomponents.TestCaseId;
 
 public class LoginPageTest extends BaseTest {
 
 	@Description(description = "check the login functionality")
-	@TestId(id = { 01 })
+	@TestCaseId(id = {"APMS-O1"})
 	@Owner(name = "ankit")
 	@Test
 	public void verifyLoginFunctionalityTest() {

@@ -54,6 +54,7 @@ public class LoginPage {
 
 	/**
 	 * log in to the Scada application
+	 * 
 	 * @author Ankit
 	 */
 	public void logInToTheApplication(String username, String password) {
@@ -98,7 +99,8 @@ public class LoginPage {
 	 *
 	 * @return
 	 */
-	public AdminPage loginAndnavigateToAdminPage() {
+	public AdminPage loginAndnavigateToAdminPage(String projectName) {
+		enterProjectName(projectName);
 		logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
 				PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
 		return new AdminPage(driver);
