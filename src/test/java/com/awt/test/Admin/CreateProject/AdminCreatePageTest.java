@@ -30,7 +30,9 @@ public class AdminCreatePageTest extends BaseTest {
 	 * Description: Perform the verification on new Project Details Panels
 	 * Fields<br>
 	 * TestMethodName: verify_NewProjectDetailsPanel <br>
-	 * ManualTestCases: APMS-T1,APMS-T2,APMS-T3,APMS-T4<br>
+	 * ManualTestCases: "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7",
+	 * "APMS-T8", "APMS-T9", "APMS-T10", "APMS-T13", "APMS-T14", "APMS-T19",
+	 * "APMS-T28", "APMS-T29"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -41,7 +43,8 @@ public class AdminCreatePageTest extends BaseTest {
 	@Story(story = "Create Project Details Panel")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T1", "APMS-T2", "APMS-T3", "APMS-T4" })
+	@TestCaseId(id = { "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7", "APMS-T8", "APMS-T9", "APMS-T10",
+			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29" })
 	public void verify_NewProjectDetailsPanel() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -203,9 +206,9 @@ public class AdminCreatePageTest extends BaseTest {
 	}
 
 	/**
-	 * Description: Perform the verfication on new Project Details Panel<br>
+	 * Description: Perform the verification Awt-Project Table Column<br>
 	 * TestMethodName: verify_NewProjectDetailsPanel <br>
-	 * ManualTestCases: APMS-T1,APMS-T2,APMS-T3,APMS-T4<br>
+	 * ManualTestCases: "APMS-T48", "APMS-T49"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -216,7 +219,7 @@ public class AdminCreatePageTest extends BaseTest {
 	@Story(story = "Create Project Details Panel")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T7", "APMS-T2", "APMS-T3", "APMS-T4" })
+	@TestCaseId(id = { "APMS-T48", "APMS-T49" })
 	public void verifyAddProjectDetails() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -276,21 +279,71 @@ public class AdminCreatePageTest extends BaseTest {
 		// verify The Success Pop-up Message
 		asert.assertEquals(project_details.getSuccessMessage(), "Project created successfully!",
 				"verify The Project successfully created Pop-Up Message", "APMS-T48");
-//		 Click On Again Create Project Button and Navigate to the New Project Details
-//		 Panel
-//		admin_create_page.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
-//		//enter the created Project Name
-//		project_details.enterProjectName(projectName);
-//		// click on Add Project Button 
-//		project_details.clickAddProject();
-//		 Verify the user is not able to create 
-
 		// click on the pop-up
 		project_details.acceptPopup();
+
+		// APMS-T49 -> Verify that the created project details are correctly displayed
+		// in the "project details" table.
+		// Verify Project Name
 		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.project_name,projectName),
-				projectName, "verify", "APMS-T48");
-		AwtUtilities.waitFor(5000);
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.project_name),
+				projectName, "Verify that the created project name are correctly displayed in the Project Name Column.",
+				"APMS-T49");
+		// verify Client Name
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.client_name),
+				clientName, "Verify that the created client name are correctly displayed in the Client Name Column.",
+				"APMS-T49");
+		// verify Consultant Name
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.consultant_name),
+				consultantName,
+				"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
+				"APMS-T49");
+		// verify Mobile Number
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.mobile_number),
+				mobNumber, "Verify that the created mobile number are correctly displayed in the Mobile Number Column.",
+				"APMS-T49");
+		// verify Email Id
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_address),
+				emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
+				"APMS-T49");
+		// verify Username
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
+				userName, "Verify that the created user name are correctly displayed in the username Column.",
+				"APMS-T49");
+		// verify Password
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
+				password, "Verify that the created password are correctly displayed in the Password Column.",
+				"APMS-T49");
+		// verify Due Days
+		String due_days = AwtUtilities.getTimeDiff(expectedDate, actualCompletionDate);
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
+				due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
+				"APMS-T49");
+		// verify Start Date
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
+				startDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
+				"APMS-T49");
+		// verify Expected Date
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.expected_date),
+				expectedDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
+				"APMS-T49");
+		// verify Actual Completion Date
+		asert.assertEquals(
+				admin_create_page.getColumnDataFromProjectDetailsTable(
+						NewProjectDetailsPanelConstants.actual_compeltion_date),
+				actualCompletionDate,
+				"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
+				"APMS-T49");
+
 		asert.assertAll();
 
 	}

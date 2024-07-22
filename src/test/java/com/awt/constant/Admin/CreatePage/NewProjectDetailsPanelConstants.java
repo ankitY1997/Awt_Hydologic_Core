@@ -21,6 +21,8 @@ public class NewProjectDetailsPanelConstants {
 	public static final String expected_date = "Expected Date";
 	public static final String actual_compeltion_date = "Actual Completion Date";
 	public static final String file_name = "New_Poject_Details";
+	public static final String due_days = "Due Days";
+	
 	public static final String[] module_name = { "OMS", "AMS" };
 	public static final String panel_Name = "Panel Name";
 	// **List Of New Project Details Panel Fields */

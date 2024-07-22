@@ -1,6 +1,9 @@
 package com.awt.utills.reusablecomponents;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +16,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
+ * Utilities Only For This Project 
  * @author Ankit Yadav
  */
 public class AwtUtilities {
 
 	/** Random String Object **/
 	protected static RandomStringUtils random = new RandomStringUtils();
+
+	/** boolean flag **/
+	private static boolean flag = true;
 
 	/**
 	 * this method is used to generate random string according to the length
@@ -290,6 +297,82 @@ public class AwtUtilities {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Help of this method we can get the time difference between if actual date is
+	 * there
+	 * 
+	 * @param exp_Date
+	 * @param actualDate
+	 */
+	public static String getTimeDiff(String expDate, String... actualDate) {
+		LocalDate current_Date = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		String currentDate = current_Date.format(formatter);
+		String timeDiff = "";
+
+		if (actualDate[0].isBlank()) {
+			LocalDate date1 = parseToLocalDate(currentDate, "dd-MM-yyyy");
+			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+
+			// Calculate days between date1 and date2
+			long daysBetween = calculateDaysBetween(date1, date2);
+			if (flag) {
+				timeDiff = "-" + daysBetween;
+			} else
+				timeDiff = String.valueOf(daysBetween);
+		} else if (!actualDate[0].isBlank()) {
+			LocalDate date1 = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
+			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+
+			// Calculate days between date1 and date2
+			long daysBetween = calculateDaysBetween(date1, date2);
+			if (flag) {
+				timeDiff = "-" + daysBetween;
+			} else
+				timeDiff = String.valueOf(daysBetween);
+
+		}
+		return timeDiff;
+
+	}
+
+	/**
+	 * To Set The Date Format
+	 * 
+	 * @param dateString
+	 * @param format
+	 * @return { return Date according to Time Format
+	 */
+	public static LocalDate parseToLocalDate(String dateString, String format) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+		return LocalDate.parse(dateString, formatter);
+	}
+
+	/**
+	 * Calculate The Days Between Two Dates
+	 * 
+	 * @param date1
+	 * @param date2
+	 * @return " Difference between Two Dates
+	 */
+	public static long calculateDaysBetween(LocalDate date1, LocalDate date2) {
+		// Ensure date1 is before date2
+		if (date1.isAfter(date2)) {
+			LocalDate temp = date1;
+			date1 = date2;
+			date2 = temp;
+			flag = true;
+		}
+
+		// Calculate period between date1 and date2
+		Period period = Period.between(date1, date2);
+
+		// Extract the number of days from the period
+		long daysBetween = period.getDays();
+
+		return daysBetween;
 	}
 
 }
