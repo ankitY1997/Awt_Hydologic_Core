@@ -1,5 +1,7 @@
 package com.awt.page.Admin.CreateProject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -133,48 +135,66 @@ public class AdminCreateProjectPage {
 	/**
 	 * To get the newly added projects data
 	 */
-	public String getColumnDataFromProjectDetailsTable(String columnName) {
+	public String getColumnDataFromProjectDetailsTable(String columnName,String project_name) {
 
 		switch (columnName) {
 		case "Project Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Client Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Consultant Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Start Date":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Actual End Date":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Due Days":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Module Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Mobile Number":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		case "Email ID":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-					+ getColumnIndexNumber(columnName.trim()) + "]/td[" + numRowInTable.size() + "]/span"))).trim();
+			return action
+					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+							+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
 		default:
-			MyLogger.error(" You Have Passed Wrong Column "+columnName+" Please Enter The Correct Column Name");
-			return null; 
+			MyLogger.error(" You Have Passed Wrong Column " + columnName + " Please Enter The Correct Column Name");
+			return null;
 		}
 
 	}
@@ -200,6 +220,27 @@ public class AdminCreateProjectPage {
 		columnIndexlist.put("Email ID", 11);
 		return columnIndexlist.get(columnName);
 
+	}
+
+	/**
+	 * Get the Created Project Row Number From Awt Project Details Table
+	 * 
+	 * @param projectName
+	 * @return
+	 */
+	public Integer getRowNumber(String projectName) {
+
+		int rowNum = 0;
+		for (int i = 0; i < numRowInTable.size(); i++) {
+
+			String actual_column_row = action.getText(driver
+					.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row'][" + (i + 1) + "]/td[1]")));
+			if (projectName.contains(actual_column_row.trim())) {
+				rowNum = i + 1;
+			}
+
+		}
+		return rowNum;
 	}
 
 }

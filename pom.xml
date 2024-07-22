@@ -67,6 +67,12 @@
 			<artifactId>json</artifactId>
 			<version>20231013</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -94,7 +100,9 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>C:\Users\AWT Tester\eclipse-workspace\Awt_Project_Managment\TestRunner\Parallel\Parallel.xml</suiteXmlFile>
+						<suiteXmlFile>
+							C:\Users\AWT
+							Tester\eclipse-workspace\Awt_Project_Managment\TestRunner\Parallel\Parallel.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

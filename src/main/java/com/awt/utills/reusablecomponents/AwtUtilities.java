@@ -27,7 +27,7 @@ public class AwtUtilities {
 	 * @return String
 	 */
 	public static String genrateRandomString(int length) {
-		return RandomStringUtils.randomAlphabetic(length);
+		return random.randomAlphabetic(length);
 	}
 
 	/**
@@ -37,7 +37,17 @@ public class AwtUtilities {
 	 * @return
 	 */
 	public static String genrateRandomNumber(int length) {
-		return RandomStringUtils.randomNumeric(length);
+		return random.randomNumeric(length);
+	}
+
+	/**
+	 * To generate alphanumeric value
+	 * 
+	 * @param length
+	 * @return
+	 */
+	public static String genrateRandomAlphaNeumric(int length) {
+		return random.randomAlphanumeric(length);
 	}
 
 	/**
@@ -259,7 +269,7 @@ public class AwtUtilities {
 	/**
 	 * By this method we can do edit and delete operation inside the action column
 	 *
-	 * @param driver-> instance of driver
+	 * @param driver->    instance of driver
 	 * @param operation-> {Edit,Delete,Operational}
 	 */
 	public static void actionColumnOperaion(WebDriver driver, String operation) {
@@ -268,7 +278,8 @@ public class AwtUtilities {
 			try {
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 				List<WebElement> elements = driver.findElements(By.xpath(
-						"//table[@aria-label='sticky table']/tbody/tr/td[count(//table[@aria-label='sticky table']/thead/tr/th[contains(text(),'Action')]/preceding-sibling::th)+1]/button[@title='"+operation+"']"));
+						"//table[@aria-label='sticky table']/tbody/tr/td[count(//table[@aria-label='sticky table']/thead/tr/th[contains(text(),'Action')]/preceding-sibling::th)+1]/button[@title='"
+								+ operation + "']"));
 				wait.until(ExpectedConditions.visibilityOf(elements.get(0)));
 				elements.get(0).click();
 

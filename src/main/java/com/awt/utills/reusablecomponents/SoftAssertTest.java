@@ -1,5 +1,7 @@
 package com.awt.utills.reusablecomponents;
 
+import java.util.Collection;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
@@ -133,6 +135,61 @@ public class SoftAssertTest {
 			logToConsole(isPass, reportMessage, TestCase);
 		}
 	}
+	
+	/**
+	 * Assert Equals  For Asserting Multiple Object
+	 * 
+	 * @param actual
+	 * @param expected
+	 * @param message
+	 * @param TestCase
+	 */
+	public void assertEquals(Collection actual, Collection expected, String message, String TestCase)
+	{
+		boolean isPass = false;
+		try {
+			softAssert.assertEquals(actual, expected);
+			org.testng.Assert.assertEquals(actual, expected);
+			isPass = true;
+		} catch (AssertionError error) {
+
+		} finally {
+			String reportMessage = "Soft Assert " + ((isPass) ? "Passed" : "Failed")
+					+ " for method: 'assertEquals' - " + message + " [Expected: '" + expected + "'] [Actual: '"
+					+ actual + "']";
+			// System.out.println(reportMessage);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
+		}
+	}
+	
+	/**
+	 * Assert NotEquals  For Asserting Multiple Object
+	 * 
+	 * @param actual
+	 * @param expected
+	 * @param message
+	 * @param TestCase
+	 */
+	public void assertNotEquals(Collection actual, Collection expected, String message, String TestCase)
+	{
+		boolean isPass = false;
+		try {
+			softAssert.assertNotEquals(actual, expected);
+			org.testng.Assert.assertNotEquals(actual, expected);
+			isPass = true;
+		} catch (AssertionError error) {
+
+		} finally {
+			String reportMessage = "Soft Assert " + ((isPass) ? "Passed" : "Failed")
+					+ " for method: 'assertNotEquals' - " + message + " [Expected: '" + expected + "'] [Actual: '"
+					+ actual + "']";
+			// System.out.println(reportMessage);
+			logToReport(isPass, reportMessage, TestCase);
+			logToConsole(isPass, reportMessage, TestCase);
+		}
+	}
+	
 
 	public void logToReport(boolean flag, String message, String TestCase) {
 		if (flag) {
@@ -147,6 +204,7 @@ public class SoftAssertTest {
 
 	}
 
+	
 	/**
 	 * Assert All
 	 */

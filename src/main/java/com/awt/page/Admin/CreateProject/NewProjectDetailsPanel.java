@@ -1,5 +1,7 @@
 package com.awt.page.Admin.CreateProject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -98,6 +100,13 @@ public class NewProjectDetailsPanel {
 			@FindBy(xpath = "//div[@role='dialog']/child::div/following-sibling::div[text()='Success']/following-sibling::div") })
 	private List<WebElement> success_message;
 
+	// ** xpath of all fields which are available new Projected details Panel**/
+	@FindAll({ @FindBy(xpath = "//div[contains(@class,'formgrid')]/div/label") })
+	private List<WebElement> newProjectDetais_fields;
+
+	// ** Panel Name X Path *****//
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headertitle']") })
+	private WebElement panel_name;
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
 
@@ -281,11 +290,11 @@ public class NewProjectDetailsPanel {
 		try {
 			// Select date type
 			selectDateType(dateType);
-			String exp_date = req_date.replaceAll("/", "-"); 
+			String exp_date = req_date.replaceAll("/", "-");
 			if (exp_date.contains("-")) {
 				String[] date = exp_date.split("-");
 				// *************Expected Date ************/
-				String exp_day = date[0].replace("0"," ").trim();
+				String exp_day = date[0].replace("0", " ").trim();
 				String exp_month = date[1];
 				String exp_year = date[2];
 
@@ -489,6 +498,63 @@ public class NewProjectDetailsPanel {
 		}
 		return value;
 
+	}
+
+	/**
+	 * This methods return all the text field which are available in the "new
+	 * project Details Panel"
+	 * 
+	 * @return List<String> { name of all the text fields}
+	 */
+	public List<String> getNewProjectDetailsPanelFiledsName() {
+		action.implicitWait(newProjectDetais_fields.get(newProjectDetais_fields.size() - 1), action.implicit_wait);
+		List<String> text_field_name = new ArrayList<String>();
+		for (WebElement field_name : newProjectDetais_fields) {
+			text_field_name.add(field_name.getText().trim());
+		}
+		return text_field_name;
+	}
+
+	/**
+	 * This method helps we can get the panel name
+	 * 
+	 * @return { panel name}
+	 */
+	public String getPanelName() {
+		action.implicitWait(panel_name, action.implicit_wait);
+		return action.getText(panel_name);
+	}
+
+	/**
+	 * By Help of this method we can get all text field value which are present
+	 * under the new project details panel
+	 * 
+	 * @param field_name
+	 * @return
+	 */
+	public String getNewProjectDetailsPanelsTextFieldValue(String field_name) {
+
+		switch (field_name.trim()) {
+		case "Project Name":
+			return action.getAttributeValue(project_name_txt, "value").trim();
+		case "Client Name":
+			return action.getAttributeValue(client_name_txt, "value").trim();
+		case "Consultant Name":
+			return action.getAttributeValue(consultant_name_txt, "value").trim();
+		case "License Key":
+			return action.getAttributeValue(license_key_txt, "value").trim();
+		case "User Name":
+			return action.getAttributeValue(username_txt, "value").trim();
+		case "Password":
+			return action.getAttributeValue(password_txt, "value").trim();
+		case "Mobile Number":
+			return action.getAttributeValue(mobile_number_txt, "value").trim();
+		case "Email Address":
+			return action.getAttributeValue(email_add_txt, "value").trim();
+		default:
+			return null;
+
+		}
 	}
 
 }

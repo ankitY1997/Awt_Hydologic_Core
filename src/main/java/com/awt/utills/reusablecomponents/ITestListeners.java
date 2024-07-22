@@ -29,7 +29,7 @@ public class ITestListeners implements ITestListener {
 	static ExtentFactory extent_factory = ExtentFactory.extentObject();
 
 	@Override
-	public  void onTestStart(ITestResult result) {
+	public void onTestStart(ITestResult result) {
 
 		test = report.createTest(result.getMethod().getMethodName().toString());
 		extent_factory.setExtent(test);
@@ -40,7 +40,7 @@ public class ITestListeners implements ITestListener {
 	}
 
 	@Override
-	public  void onTestSuccess(ITestResult result) {
+	public void onTestSuccess(ITestResult result) {
 		try {
 			extent_factory.getExtent().log(Status.PASS,
 					"Test Case :" + result.getMethod().getMethodName() + " Is Pass");
@@ -51,7 +51,7 @@ public class ITestListeners implements ITestListener {
 	}
 
 	@Override
-	public synchronized void onTestFailure(ITestResult result) {
+	public void onTestFailure(ITestResult result) {
 		try {
 			extent_factory.getExtent().log(Status.FAIL,
 					"Test Case :" + result.getMethod().getMethodName() + " Is Fail");
@@ -92,7 +92,8 @@ public class ITestListeners implements ITestListener {
 		} catch (Exception e) {
 			MyLogger.info("Test Case :" + result.getMethod().getMethodName() + " Is Skip Due To This Exception :", e);
 		} finally {
-			//MyLogger.info("Test Case :" + result.getMethod().getMethodName() + " Is Skip Due To This Exception :", th);
+			// MyLogger.info("Test Case :" + result.getMethod().getMethodName() + " Is Skip
+			// Due To This Exception :", th);
 			extent_factory.removeExtentTestObject();
 		}
 
@@ -104,7 +105,7 @@ public class ITestListeners implements ITestListener {
 	}
 
 	@Override
-	public synchronized void onTestFailedWithTimeout(ITestResult result) {
+	public void onTestFailedWithTimeout(ITestResult result) {
 		try {
 			MyLogger.info("Test Case :" + result.getMethod().getMethodName() + " Is Failed Due To Time Out");
 		} finally {
@@ -113,12 +114,12 @@ public class ITestListeners implements ITestListener {
 	}
 
 	@Override
-	public   void onStart(ITestContext context) {
+	public void onStart(ITestContext context) {
 		report = ExtentReportNG.setupExtentReport();
 	}
 
 	@Override
-	public synchronized void onFinish(ITestContext context) {
+	public void onFinish(ITestContext context) {
 		// to flush the report
 		report.flush();
 
