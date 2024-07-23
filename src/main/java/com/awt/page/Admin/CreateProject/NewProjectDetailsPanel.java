@@ -225,10 +225,10 @@ public class NewProjectDetailsPanel {
 	public void uploadLogo(String logoName, String imagePath) {
 		switch (logoName.toLowerCase()) {
 		case "client":
-			client_logo.sendKeys(imagePath);
+			client_logo.sendKeys(System.getProperty("user.dir")+imagePath);
 			break;
 		case "consultant":
-			consultant_logo.sendKeys(imagePath);
+			consultant_logo.sendKeys(System.getProperty("user.dir")+imagePath);
 			break;
 		default:
 			System.out.println("Please Enter The Correct Logo Name You Have Entered Wrong Logo :" + logoName);
