@@ -14,7 +14,7 @@
 		<classes>
 			<class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
 				<methods>
-					<include name="verify_AddedProjectDetails"></include>
+					<include name="verifyAddProjectDetails"></include>
 				</methods>
 
 			</class>
