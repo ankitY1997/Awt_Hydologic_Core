@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,6 +31,9 @@ public class ActionEngine {
 	public static final int implicit_wait = 10;
 	// Explicit time
 	public static final int explicit_wait = 10;
+	/** xpath of Project Created Sucessfully pop-up *****/
+	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']") })
+	private WebElement accept_popup;
 
 	// constructor
 	public ActionEngine(WebDriver driver) {
@@ -865,5 +870,9 @@ public class ActionEngine {
 	public void logFail(String message, Exception e) {
 		ExtentFactory.extentObject().getExtent().log(Status.FAIL, message + " Error: " + e.getMessage());
 	}
+	
+	//************Common Method'S Related To The Project ***********/
+	
 
+	
 }

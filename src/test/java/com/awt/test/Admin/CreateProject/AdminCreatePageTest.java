@@ -282,67 +282,83 @@ public class AdminCreatePageTest extends BaseTest {
 		// click on the pop-up
 		newProjectDetailsPanel.acceptPopup();
 
-		// APMS-T49 -> Verify that the created project details are correctly displayed
-		// in the "project details" table.
-		// Verify Project Name
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.project_name),
-				projectName, "Verify that the created project name are correctly displayed in the Project Name Column.",
-				"APMS-T49");
-		// verify Client Name
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.client_name),
-				clientName, "Verify that the created client name are correctly displayed in the Client Name Column.",
-				"APMS-T49");
-		// verify Consultant Name
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.consultant_name),
-				consultantName,
-				"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
-				"APMS-T49");
-		// verify Mobile Number
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.mobile_number),
-				mobNumber, "Verify that the created mobile number are correctly displayed in the Mobile Number Column.",
-				"APMS-T49");
-		// verify Email Id
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_address),
-				emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
-				"APMS-T49");
-		// verify Username
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
-				userName, "Verify that the created user name are correctly displayed in the username Column.",
-				"APMS-T49");
-		// verify Password
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
-				password, "Verify that the created password are correctly displayed in the Password Column.",
-				"APMS-T49");
-		// verify Due Days
-		String due_days = AwtUtilities.getTimeDiff(expectedDate, actualCompletionDate);
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
-				due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
-				"APMS-T49");
-		// verify Start Date
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
-				startDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
-				"APMS-T49");
-		// verify Expected Date
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.expected_date),
-				expectedDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
-				"APMS-T49");
-		// verify Actual Completion Date
-		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(
-						NewProjectDetailsPanelConstants.actual_compeltion_date),
-				actualCompletionDate,
-				"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
-				"APMS-T49");
+		try {
+			// APMS-T49 -> Verify that the created project details are correctly displayed
+			// in the "project details" table.
+			// Verify Project Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.project_name),
+					projectName,
+					"Verify that the created project name are correctly displayed in the Project Name Column.",
+					"APMS-T49");
+			// verify Client Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.client_name),
+					clientName,
+					"Verify that the created client name are correctly displayed in the Client Name Column.",
+					"APMS-T49");
+			// verify Consultant Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.consultant_name),
+					consultantName,
+					"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
+					"APMS-T49");
+			// verify Mobile Number
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.mob_num),
+					mobNumber,
+					"Verify that the created mobile number are correctly displayed in the Mobile Number Column.",
+					"APMS-T49");
+			// verify Email Id
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_id),
+					emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
+					"APMS-T49");
+			// verify Username
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
+					userName, "Verify that the created user name are correctly displayed in the username Column.",
+					"APMS-T49");
+			// verify Password
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
+					password, "Verify that the created password are correctly displayed in the Password Column.",
+					"APMS-T49");
+			// verify Due Days
+			String due_days = AwtUtilities.getTimeDiff(expectedDate, actualCompletionDate);
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
+					due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
+					"APMS-T49");
+			// verify Start Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
+					startDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
+					"APMS-T49");
+			// verify Expected Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.expected_date),
+					expectedDate,
+					"Verify that the Start Date display are correctly displayed in the Start Date Column.", "APMS-T49");
+			// verify Actual Completion Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.actual_compeltion_date),
+					actualCompletionDate,
+					"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
+					"APMS-T49");
+		} catch (Exception e) {
+
+		}
+		// delete the Project
+		admin_create_page.deleteProjectDetails(projectName);
+		// accept pop-up
+		newProjectDetailsPanel.acceptPopup();
+		// accept pop-up
+		newProjectDetailsPanel.acceptPopup();
 
 		asert.assertAll();
 

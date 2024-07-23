@@ -318,4 +318,17 @@ public class AdminCreateProjectPage {
 		return rowNum;
 	}
 
+	/**
+	 * By help of this method we can delete the project details
+	 * 
+	 * @param projectName { We Need To Enter The Project Name Which Project You Want
+	 *                    To Delete
+	 */
+	public void deleteProjectDetails(String projectName) {
+		WebElement delete_button = driver.findElement(By.xpath(
+				"//tr[@data-pc-section='row'][" + getRowNumber(projectName) + "]//*[@data-pr-tooltip='Delete']"));
+		action.performMoveToElement(delete_button);
+		action.clickOn(delete_button);
+	}
+
 }
