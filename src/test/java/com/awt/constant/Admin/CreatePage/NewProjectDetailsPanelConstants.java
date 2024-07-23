@@ -5,7 +5,7 @@ import java.util.List;
 
 public class NewProjectDetailsPanelConstants {
 
-	// ** New Project Details Panel Constants *********/
+	// ** New Project Details Panel Constants  For Excel File*********/
 
 	public static final String project_name = "Project Name";
 	public static final String client_name = "Client Name";
@@ -17,6 +17,11 @@ public class NewProjectDetailsPanelConstants {
 	public static final String password = "Passowrd";
 	public static final String mobile_number = "Mobile number";
 	public static final String email_address = "Email Address";
+	
+	/* FOr Dynamic X Path **/
+	public static final String email_id = "Email ID";
+	public static final String mob_num = "Mobile Number";
+	
 	public static final String start_date = "Start Date";
 	public static final String expected_date = "Expected Date";
 	public static final String actual_compeltion_date = "Actual Completion Date";

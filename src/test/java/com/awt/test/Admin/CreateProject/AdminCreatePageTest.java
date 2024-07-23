@@ -236,7 +236,7 @@ public class AdminCreatePageTest extends BaseTest {
 		 * Click on Create Project Button --> Navigate to "New Project Details Panel
 		 * 
 		 */
-		NewProjectDetailsPanel project_details = admin_create_page
+		NewProjectDetailsPanel newProjectDetailsPanel = admin_create_page
 				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
 		/*
 		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
@@ -271,16 +271,16 @@ public class AdminCreatePageTest extends BaseTest {
 		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
-		project_details.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
+		newProjectDetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
 				consultantImagePath, licensesKey, userName, password, moduleName, mobNumber, emailAddress, startDate,
 				expectedDate, actualCompletionDate);
 		// --> click on add project button
-		project_details.clickAddProject();
+		newProjectDetailsPanel.clickAddProject();
 		// verify The Success Pop-up Message
-		asert.assertEquals(project_details.getSuccessMessage(), "Project created successfully!",
+		asert.assertEquals(newProjectDetailsPanel.getSuccessMessage(), "Project created successfully!",
 				"verify The Project successfully created Pop-Up Message", "APMS-T48");
 		// click on the pop-up
-		project_details.acceptPopup();
+		newProjectDetailsPanel.acceptPopup();
 
 		// APMS-T49 -> Verify that the created project details are correctly displayed
 		// in the "project details" table.
