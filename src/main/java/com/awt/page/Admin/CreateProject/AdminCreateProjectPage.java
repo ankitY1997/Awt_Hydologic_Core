@@ -19,7 +19,7 @@ import com.awt.testbase.MyLogger;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
-public class AdminCreateProjectPage  {
+public class AdminCreateProjectPage {
 
 	// ** Create Project button xpath **/
 	@FindAll({ @FindBy(xpath = "//span[text()='Create Project']") })
@@ -100,6 +100,11 @@ public class AdminCreateProjectPage  {
 		PageFactory.initElements(driver, this);
 	}
 
+	// constructor
+	public AdminCreateProjectPage() {
+		// nothing
+	}
+
 	/***
 	 * By this method we can click on the "Create Project" button
 	 * 
@@ -145,7 +150,7 @@ public class AdminCreateProjectPage  {
 		switch (columnName) {
 		case "Project Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			action.performMoveToElement(numRowInTable.get(numRowInTable.size()-1));
+			action.performMoveToElement(numRowInTable.get(numRowInTable.size() - 1));
 			return action
 					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
@@ -326,10 +331,14 @@ public class AdminCreateProjectPage  {
 	 *                    To Delete
 	 */
 	public void deleteProjectDetails(String projectName) {
-		WebElement delete_button = driver.findElement(By.xpath(
-				"//tr[@data-pc-section='row'][" + getRowNumber(projectName) + "]//*[@data-pr-tooltip='Delete']"));
-		action.performMoveToElement(delete_button);
-		action.clickOn(delete_button);
+		try {
+			WebElement delete_button = driver.findElement(By.xpath(
+					"//tr[@data-pc-section='row'][" + getRowNumber(projectName) + "]//*[@data-pr-tooltip='Delete']"));
+			action.performMoveToElement(delete_button);
+			action.clickOn(delete_button);
+		} catch (Exception e) {
+			// do nothing
+		}
 	}
 
 }

@@ -2,7 +2,7 @@
 <testng-results ignored="1" total="2" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-24T10:23:46 IST" name="Demo" finished-at="2024-07-24T10:25:17 IST" duration-ms="90725">
+  <suite started-at="2024-07-24T15:11:29 IST" name="Demo" finished-at="2024-07-24T15:13:18 IST" duration-ms="108664">
     <groups>
       <group name="Functional">
         <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
@@ -11,9 +11,9 @@
         <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-07-24T10:23:46 IST" name="Test" finished-at="2024-07-24T10:25:17 IST" duration-ms="90725">
+    <test started-at="2024-07-24T15:11:29 IST" name="Test" finished-at="2024-07-24T15:13:18 IST" duration-ms="108664">
       <class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T10:23:46 IST" name="launchBrowser" finished-at="2024-07-24T10:23:50 IST" duration-ms="4163" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:11:29 IST" name="launchBrowser" finished-at="2024-07-24T15:11:34 IST" duration-ms="4770" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,45 +24,45 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T10:23:50 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-07-24T10:25:16 IST" duration-ms="85546" status="FAIL">
+        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:11:34 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-07-24T15:13:17 IST" duration-ms="103044" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
 did not expect [Acmo12!] but found [Acmo12!],
-did not expect [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n] but found [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n],
+did not expect [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2] but found [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2],
 did not expect [Vandana C] but found [Vandana C],
-did not expect [Myh0H12] but found [Myh0H12],
-did not expect [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx] but found [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx],
-did not expect [3SAPW12] but found [3SAPW12],
-did not expect [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl] but found [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl],
-did not expect [LYZKUrKp9zV9qJUb6] but found [LYZKUrKp9zV9qJUb6],
-did not expect [IMkTJoRkTbmWnFgkAM] but found [IMkTJoRkTbmWnFgkAM],
-did not expect [ssMwGaspijoi&@] but found [ssMwGaspijoi&@],
-did not expect [T] but found [T],
-did not expect [soD2K7q0lW8c2a8s] but found [soD2K7q0lW8c2a8s],
-did not expect [ukrhlqyV] but found [ukrhlqyV],
+did not expect [027o312] but found [027o312],
+did not expect [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr] but found [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr],
+did not expect [xjHaV12] but found [xjHaV12],
+did not expect [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu] but found [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu],
+did not expect [B8g6N6mdMGxV5lAKI] but found [B8g6N6mdMGxV5lAKI],
+did not expect [DdAuywbUIeitNWUVkr] but found [DdAuywbUIeitNWUVkr],
+did not expect [awgqfOcKEcop&@] but found [awgqfOcKEcop&@],
+did not expect [O] but found [O],
+did not expect [IUFmkCyCGjiEWcdA] but found [IUFmkCyCGjiEWcdA],
+did not expect [GqoXBdIW] but found [GqoXBdIW],
 did not expect [ankit123!] but found [ankit123!]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
 did not expect [Acmo12!] but found [Acmo12!],
-did not expect [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n] but found [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n],
+did not expect [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2] but found [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2],
 did not expect [Vandana C] but found [Vandana C],
-did not expect [Myh0H12] but found [Myh0H12],
-did not expect [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx] but found [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx],
-did not expect [3SAPW12] but found [3SAPW12],
-did not expect [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl] but found [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl],
-did not expect [LYZKUrKp9zV9qJUb6] but found [LYZKUrKp9zV9qJUb6],
-did not expect [IMkTJoRkTbmWnFgkAM] but found [IMkTJoRkTbmWnFgkAM],
-did not expect [ssMwGaspijoi&@] but found [ssMwGaspijoi&@],
-did not expect [T] but found [T],
-did not expect [soD2K7q0lW8c2a8s] but found [soD2K7q0lW8c2a8s],
-did not expect [ukrhlqyV] but found [ukrhlqyV],
+did not expect [027o312] but found [027o312],
+did not expect [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr] but found [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr],
+did not expect [xjHaV12] but found [xjHaV12],
+did not expect [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu] but found [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu],
+did not expect [B8g6N6mdMGxV5lAKI] but found [B8g6N6mdMGxV5lAKI],
+did not expect [DdAuywbUIeitNWUVkr] but found [DdAuywbUIeitNWUVkr],
+did not expect [awgqfOcKEcop&@] but found [awgqfOcKEcop&@],
+did not expect [O] but found [O],
+did not expect [IUFmkCyCGjiEWcdA] but found [IUFmkCyCGjiEWcdA],
+did not expect [GqoXBdIW] but found [GqoXBdIW],
 did not expect [ankit123!] but found [ankit123!]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
 at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-at com.awt.test.Admin.CreateProject.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:435)
+at com.awt.test.Admin.CreateProject.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:472)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -84,7 +84,7 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verify_NewProjectDetailsPanel -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T10:25:16 IST" name="tearUp" finished-at="2024-07-24T10:25:17 IST" duration-ms="360" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:13:18 IST" name="tearUp" finished-at="2024-07-24T15:13:18 IST" duration-ms="254" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->

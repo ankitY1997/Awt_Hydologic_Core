@@ -1,10 +1,14 @@
 package com.awt.test.Admin.CreateProject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.bouncycastle.util.Properties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.awt.constant.Admin.AdminPageContants;
+import com.awt.constant.Admin.CreatePage.AdminPageConstants;
 import com.awt.constant.Admin.CreatePage.NewProjectDetailsPanelConstants;
 import com.awt.constant.Login.LoginPageConstants;
 import com.awt.page.Admin.CreateProject.AdminCreateProjectPage;
@@ -46,7 +50,8 @@ public class AdminCreatePageTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7", "APMS-T8", "APMS-T9", "APMS-T10",
-			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29", "APMS-T48", "APMS-T49" })
+			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29", "APMS-T32", "APMS-T33", "APMS-T34", "APMS-T35",
+			"APMS-T37", "APMS-T38", "APMS-T39", "APMS-T48", "APMS-T49" })
 	public void verify_NewProjectDetailsPanel() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -54,14 +59,14 @@ public class AdminCreatePageTest extends BaseTest {
 		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		// Enter the Project Name and login and navigate to the admin page
+		// Enter the Project Name and login and navigate to the home  page
 		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
-		// verify Project Management Button Is Present
-		asert.assertEquals(admin_page.isProjectManagmentButtonPresent(), true,
-				"verify Project Managment button Is Display", "APMS-T0");
+		// verify Home Page Title
+		asert.assertEquals(admin_page.getHomePageTitle(),AdminPageConstants.expected_home_page_title,
+				"verify Home Page Title Should Be Display Correct", "APMS-T0");
 		// click on project management drop-down menu and Select "Create Project" menu
 		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage();
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,AdminPageContants.project_setting);
 		// verify "Create Project" button is display
 		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
 				"Verify that the Create Project button is visible", "APMS-T1");
@@ -181,6 +186,7 @@ public class AdminCreatePageTest extends BaseTest {
 						NewProjectDetailsPanelConstants.consultant_name),
 				consultant_name, "Verify that Consultant Name text field should not exceed more than 30 character",
 				"APMS-T19");
+
 		// APMS-28--> To Verify that "License Key" text field should accept 16
 		// characters consisting alphabets and numbers.
 		String License_Key = AwtUtilities.genrateRandomAlphaNeumric(14);
@@ -304,6 +310,10 @@ public class AdminCreatePageTest extends BaseTest {
 						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.email_address),
 				invalid_email_add, "To verify that email ID's  text field with valid format are accepted.", "APMS-T39");
 
+		//APMS-T45-->To Verify that "Cancel" button should be visible in the "New Project Details" panel
+		asert.assertTrue(newProject_DetailsPanel.isCancelButtonIsVisible(),"To Verify that Cancel button should be visible in the New Project Details  panel","APMS-T45");
+		
+		//
 		// close the New Project Details Panel
 		newProject_DetailsPanel.clickOnCloseProject();
 		/*
@@ -311,12 +321,7 @@ public class AdminCreatePageTest extends BaseTest {
 		 * 
 		 */
 		admin_create_page.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
-		/*
-		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
-		 * Name, Consultant Logo, Licenses Key, Module Name, User Name, Password, Mobile
-		 * Number, Email Address Start Date, Expected Date, Actual Completion Date)
-		 * 
-		 */
+		// ********All Text Field Details ********/
 		String projectName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.project_name, "APMS-T48");
 		String clientName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
@@ -344,11 +349,42 @@ public class AdminCreatePageTest extends BaseTest {
 		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
+
+		// APMS-31 -->To verify that user is not selected any module in the "modulename" dropdown, Error message should be thrown.
+		// Enter All The Details but Don't Select Any Module Name
 		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
-				consultantImagePath, licensesKey, userName, password, moduleName, mobNumber, emailAddress, startDate,
-				expectedDate, actualCompletionDate);
+				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
+				actualCompletionDate);
+		// --> click on add project button {Try TO Add Project With Out Selecting Module Name
+		newProject_DetailsPanel.clickAddProject();
+		// Validate The Error Message
+		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(), NewProjectDetailsPanelConstants.error_message,
+				"To verify that user is not selected any module in the modulename dropdown, Error message should be thrown.",
+				"APMS-31");
+		// accept the pop-up
+		newProject_DetailsPanel.acceptPopup();
+
+		/*
+		 * Enter Whole Details In New Project Details Panel
+		 *
+		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
+		 * Name, Consultant Logo, Licenses Key, User Name, Password, Mobile Number,
+		 * Email Address Start Date, Expected Date, Actual Completion Date,Module Name)
+		 * 
+		 */
+		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
+				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
+				actualCompletionDate, moduleName);
+		// APMS-30--> To verify that user should able to select the multiple modules in the "module name" drop down.
+		boolean isModuleSelected = newProject_DetailsPanel.getAllSelectedModule()
+				.containsAll(new ArrayList(Arrays.asList(NewProjectDetailsPanelConstants.module_name)));
+		asert.assertTrue(isModuleSelected,
+				"To verify that user should able to select the multiple modules in the module name drop down.",
+				"APMS-30");
+		
 		// --> click on add project button
 		newProject_DetailsPanel.clickAddProject();
+
 		// verify The Success Pop-up Message
 		asert.assertEquals(newProject_DetailsPanel.getSuccessMessage(), "Project created successfully!",
 				"verify The Project successfully created Pop-Up Message", "APMS-T48");
@@ -463,7 +499,7 @@ public class AdminCreatePageTest extends BaseTest {
 		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
 		// click on project management drop-down menu and Select "Create Project" menu
 		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage();
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,AdminPageContants.project_setting);
 		/*
 		 * Click on Create Project Button --> Navigate to "New Project Details Panel
 		 * 
@@ -504,8 +540,8 @@ public class AdminCreatePageTest extends BaseTest {
 				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
 		newProjectDetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
-				consultantImagePath, licensesKey, userName, password, moduleName, mobNumber, emailAddress, startDate,
-				expectedDate, actualCompletionDate);
+				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
+				actualCompletionDate, moduleName);
 		// --> click on add project button
 		newProjectDetailsPanel.clickAddProject();
 		// verify The Success Pop-up Message

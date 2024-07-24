@@ -99,7 +99,7 @@ public class LoginPage  {
 	 * @return
 	 */
 	public AdminPage loginAndnavigateToAdminPage(String projectName) {
-		enterProjectName(projectName);
+		//enterProjectName(projectName);
 		logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
 				PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
 		return new AdminPage(driver);

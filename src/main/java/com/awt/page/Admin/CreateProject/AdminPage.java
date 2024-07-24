@@ -14,13 +14,15 @@ public class AdminPage {
 	// ***********constant variable *********************//
 
 	public static final String create_project = "Create Project";
-	public static final String report="Report";
+	public static final String report = "Report";
 
 	// ************Xpaths ***************************//
 
 	// ** xpath for project management drop down button **/
 	@FindAll({ @FindBy(xpath = "//span[text()='Project Management']") })
 	private WebElement project_mang_drop_down;
+
+	// ** Number Of Project **/
 
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
@@ -57,6 +59,17 @@ public class AdminPage {
 				menu_item);
 	}
 
+	// over loaded method
+	public void selectProjectManagementMenuItem(String menu, String sub_menu) {
+		// select menu
+		action.clickOn(driver.findElement(
+				By.xpath("//ul[@role='menu'][1]/li/a/i/following-sibling::span[text()='" + menu + "'][1]")));
+		// select sub menu
+		action.clickOn(driver.findElement(
+				By.xpath("//ul[@role='menu'][1]/li/a/i/following-sibling::span[text()='" + sub_menu + "'][1]")));
+
+	}
+
 	/**
 	 * By this method we can navigate to the "Admin_Create_Project_Page".
 	 * 
@@ -70,6 +83,14 @@ public class AdminPage {
 		return new AdminCreateProjectPage(driver);
 	}
 
+	// over loaded method
+	public AdminCreateProjectPage clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(String menu,
+			String sub_menu) {
+		// select the create project menu
+		selectProjectManagementMenuItem(menu, sub_menu);
+		return new AdminCreateProjectPage(driver);
+	}
+
 	/**
 	 * To Check The Project Management Button Is VIsible
 	 * 
@@ -80,6 +101,12 @@ public class AdminPage {
 		return action.isDisplay(project_mang_drop_down);
 	}
 
-
+	/**
+	 * To get home Page Title
+	 * @return
+	 */
+	public String getHomePageTitle() {
+		return driver.getTitle().trim();
+	}
 
 }

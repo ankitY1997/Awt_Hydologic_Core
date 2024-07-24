@@ -56,6 +56,10 @@ public class NewProjectDetailsPanel {
 	@FindAll({ @FindBy(xpath = "//input[@id='password']") })
 	private WebElement password_txt;
 
+	// **To Get Selected Module Name**/
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='labelcontainer']/div/div/span") })
+	private List<WebElement> getSelectedModuleName;
+
 	// **mobile number text field xpath**/
 	@FindAll({ @FindBy(xpath = "//input[@id='mobile_number']") })
 	private WebElement mobile_number_txt;
@@ -90,11 +94,16 @@ public class NewProjectDetailsPanel {
 
 	// **Close Project button xpath**/
 	@FindAll({ @FindBy(xpath = "//span[text()='Cancel']") })
-	private WebElement close_project_button;
+	private WebElement cancel_project_button;
+
+	// **Get Error Message xpath**/
+	@FindAll({ @FindBy(xpath = "//div[text()='Warning']/following-sibling::div") })
+	private WebElement error_message;
 
 	/** xpath of Project Created Sucessfully pop-up *****/
 	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']") })
 	private WebElement accept_popup;
+
 	// **New Project Details Panel xpath**/
 	@FindAll({
 			@FindBy(xpath = "//div[@role='dialog']/child::div/following-sibling::div[text()='Success']/following-sibling::div") })
@@ -225,10 +234,10 @@ public class NewProjectDetailsPanel {
 	public void uploadLogo(String logoName, String imagePath) {
 		switch (logoName.toLowerCase()) {
 		case "client":
-			client_logo.sendKeys(System.getProperty("user.dir")+imagePath);
+			client_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
 		case "consultant":
-			consultant_logo.sendKeys(System.getProperty("user.dir")+imagePath);
+			consultant_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
 		default:
 			System.out.println("Please Enter The Correct Logo Name You Have Entered Wrong Logo :" + logoName);
@@ -258,8 +267,8 @@ public class NewProjectDetailsPanel {
 	 */
 	public void enterProjectDetails(String project_name, String client_name, String client_image_path,
 			String consultant_name, String consultant_image_path, String license_key, String username, String password,
-			String[] module_name, String mob_num, String email_add, String start_date, String expected_date,
-			String actual_completion_date) {
+			String mob_num, String email_add, String start_date, String expected_date, String actual_completion_date,
+			String[]... module_name) {
 		// wait for loading new project details panel
 		waitForLoadingNewProjectDetails();
 		enterProjectName(project_name);
@@ -268,7 +277,11 @@ public class NewProjectDetailsPanel {
 		enterConsultantName(consultant_name);
 		uploadLogo(AdminConstants.consultantLogo, consultant_image_path);
 		enterLicenseKey(license_key);
-		selectModuleName(module_name);
+		if (module_name.length == 0) {
+			// do nothing
+		} else {
+			selectModuleName(module_name[0]);
+		}
 		enterUsername(username);
 		enterPassword(password);
 		enterMobileNum(mob_num);
@@ -438,6 +451,20 @@ public class NewProjectDetailsPanel {
 	}
 
 	/**
+	 * TO get the name of selected module in Module Name Drop-Down Button
+	 * 
+	 */
+	public List<String> getAllSelectedModule() {
+		List<String> selectedModule = new ArrayList<String>();
+		for (WebElement element : getSelectedModuleName) {
+			action.waitForVisibility(element, action.implicit_wait);
+			selectedModule.add(element.getText().trim());
+		}
+		return selectedModule;
+
+	}
+
+	/**
 	 * Help to Select Date Type Like Start Date, Expected Date, Actual Completion
 	 * Date
 	 * 
@@ -464,8 +491,8 @@ public class NewProjectDetailsPanel {
 	 */
 
 	public void clickOnCloseProject() {
-		action.implicitWait(close_project_button, action.implicit_wait);
-		action.clickOn(close_project_button, "Close Project");
+		action.implicitWait(cancel_project_button, action.implicit_wait);
+		action.clickOn(cancel_project_button, "Close Project");
 	}
 
 	/**
@@ -497,6 +524,16 @@ public class NewProjectDetailsPanel {
 			value = "Project Is Not Created";
 		}
 		return value;
+
+	}
+
+	/**
+	 * To get Error Message
+	 */
+
+	public String getErrorMessage() {
+		action.waitForVisibility(error_message, action.implicit_wait);
+		return action.getText(error_message).trim();
 
 	}
 
@@ -556,5 +593,18 @@ public class NewProjectDetailsPanel {
 
 		}
 	}
+
+	/**
+	 * To check cancel button visibility
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCancelButtonIsVisible() {
+		action.waitForVisibility(cancel_project_button, 0);
+		return action.isDisplay(cancel_project_button);
+
+	}
+	
+	
 
 }
