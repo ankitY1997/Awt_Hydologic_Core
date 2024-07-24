@@ -133,7 +133,7 @@ public class AdminCreatePageTest extends BaseTest {
 				"APMS-T8");
 		// APMS-T9-->Verify that "client name" text field should not accept any
 		// special character except space and any number
-		String inValidClientName = AwtUtilities.genrateRandomAlphaNeumric(5) + "12";
+		String inValidClientName = AwtUtilities.genrateRandomAlphaNeumric(5)+"#$";
 		newProject_DetailsPanel.enterClientName(inValidClientName);
 		asert.assertNotEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(

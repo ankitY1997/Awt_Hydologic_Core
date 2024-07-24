@@ -2,7 +2,7 @@
 <testng-results ignored="1" total="2" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-24T15:11:29 IST" name="Demo" finished-at="2024-07-24T15:13:18 IST" duration-ms="108664">
+  <suite started-at="2024-07-24T15:31:47 IST" name="Demo" finished-at="2024-07-24T15:33:35 IST" duration-ms="108834">
     <groups>
       <group name="Functional">
         <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
@@ -11,9 +11,9 @@
         <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-07-24T15:11:29 IST" name="Test" finished-at="2024-07-24T15:13:18 IST" duration-ms="108664">
+    <test started-at="2024-07-24T15:31:47 IST" name="Test" finished-at="2024-07-24T15:33:35 IST" duration-ms="108834">
       <class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:11:29 IST" name="launchBrowser" finished-at="2024-07-24T15:11:34 IST" duration-ms="4770" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:31:47 IST" name="launchBrowser" finished-at="2024-07-24T15:31:51 IST" duration-ms="3837" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,40 +24,40 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:11:34 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-07-24T15:13:17 IST" duration-ms="103044" status="FAIL">
+        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:31:51 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-07-24T15:33:35 IST" duration-ms="104016" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
 did not expect [Acmo12!] but found [Acmo12!],
-did not expect [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2] but found [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2],
+did not expect [yAsgwroqWiYxQZYhuxixh8ABnFZ9iA8AXgmRb1YVzw9k5XsT7vGjF9HwHacyyJmtSrDmKTGn9WkknhLXYUd0k3XRo2rjS0wh23Beb] but found [yAsgwroqWiYxQZYhuxixh8ABnFZ9iA8AXgmRb1YVzw9k5XsT7vGjF9HwHacyyJmtSrDmKTGn9WkknhLXYUd0k3XRo2rjS0wh23Beb],
 did not expect [Vandana C] but found [Vandana C],
-did not expect [027o312] but found [027o312],
-did not expect [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr] but found [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr],
-did not expect [xjHaV12] but found [xjHaV12],
-did not expect [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu] but found [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu],
-did not expect [B8g6N6mdMGxV5lAKI] but found [B8g6N6mdMGxV5lAKI],
-did not expect [DdAuywbUIeitNWUVkr] but found [DdAuywbUIeitNWUVkr],
-did not expect [awgqfOcKEcop&@] but found [awgqfOcKEcop&@],
-did not expect [O] but found [O],
-did not expect [IUFmkCyCGjiEWcdA] but found [IUFmkCyCGjiEWcdA],
-did not expect [GqoXBdIW] but found [GqoXBdIW],
+did not expect [LyqA112] but found [LyqA112],
+did not expect [nlhzUtrJAFBJqCRPsCKHRmKpmbFGMAmBpQC] but found [nlhzUtrJAFBJqCRPsCKHRmKpmbFGMAmBpQC],
+did not expect [UUFFC12] but found [UUFFC12],
+did not expect [fofRkzLzgWLpXRtoyCetSJIwGwgiQDPABvz] but found [fofRkzLzgWLpXRtoyCetSJIwGwgiQDPABvz],
+did not expect [VvAv4l3i0bcu0uXV4] but found [VvAv4l3i0bcu0uXV4],
+did not expect [jKZxQyTNccfPoecPQg] but found [jKZxQyTNccfPoecPQg],
+did not expect [XvPvXxQOlRiu&@] but found [XvPvXxQOlRiu&@],
+did not expect [Q] but found [Q],
+did not expect [BYQm7vA6cgbWtU45] but found [BYQm7vA6cgbWtU45],
+did not expect [hpMLNyFJ] but found [hpMLNyFJ],
 did not expect [ankit123!] but found [ankit123!]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
 did not expect [Acmo12!] but found [Acmo12!],
-did not expect [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2] but found [rg2N1rzoo1fJnTcoc4SV9S5RN9kwgUll6LryceBOopzPFedLTohlicl840ls5mwLy1L4et3x4aFIQWG9BL0VUL1UbWzr1CvVbDsC2],
+did not expect [yAsgwroqWiYxQZYhuxixh8ABnFZ9iA8AXgmRb1YVzw9k5XsT7vGjF9HwHacyyJmtSrDmKTGn9WkknhLXYUd0k3XRo2rjS0wh23Beb] but found [yAsgwroqWiYxQZYhuxixh8ABnFZ9iA8AXgmRb1YVzw9k5XsT7vGjF9HwHacyyJmtSrDmKTGn9WkknhLXYUd0k3XRo2rjS0wh23Beb],
 did not expect [Vandana C] but found [Vandana C],
-did not expect [027o312] but found [027o312],
-did not expect [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr] but found [suwfgmgeVMTLhqGVYqSGMDOrflZjxAlWSrr],
-did not expect [xjHaV12] but found [xjHaV12],
-did not expect [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu] but found [FRDJnSSTjXmDJQKFRwrMSWkKMSFzMtCzSYu],
-did not expect [B8g6N6mdMGxV5lAKI] but found [B8g6N6mdMGxV5lAKI],
-did not expect [DdAuywbUIeitNWUVkr] but found [DdAuywbUIeitNWUVkr],
-did not expect [awgqfOcKEcop&@] but found [awgqfOcKEcop&@],
-did not expect [O] but found [O],
-did not expect [IUFmkCyCGjiEWcdA] but found [IUFmkCyCGjiEWcdA],
-did not expect [GqoXBdIW] but found [GqoXBdIW],
+did not expect [LyqA112] but found [LyqA112],
+did not expect [nlhzUtrJAFBJqCRPsCKHRmKpmbFGMAmBpQC] but found [nlhzUtrJAFBJqCRPsCKHRmKpmbFGMAmBpQC],
+did not expect [UUFFC12] but found [UUFFC12],
+did not expect [fofRkzLzgWLpXRtoyCetSJIwGwgiQDPABvz] but found [fofRkzLzgWLpXRtoyCetSJIwGwgiQDPABvz],
+did not expect [VvAv4l3i0bcu0uXV4] but found [VvAv4l3i0bcu0uXV4],
+did not expect [jKZxQyTNccfPoecPQg] but found [jKZxQyTNccfPoecPQg],
+did not expect [XvPvXxQOlRiu&@] but found [XvPvXxQOlRiu&@],
+did not expect [Q] but found [Q],
+did not expect [BYQm7vA6cgbWtU45] but found [BYQm7vA6cgbWtU45],
+did not expect [hpMLNyFJ] but found [hpMLNyFJ],
 did not expect [ankit123!] but found [ankit123!]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
@@ -84,7 +84,7 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verify_NewProjectDetailsPanel -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:13:18 IST" name="tearUp" finished-at="2024-07-24T15:13:18 IST" duration-ms="254" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@6ae5aa72]" started-at="2024-07-24T15:33:35 IST" name="tearUp" finished-at="2024-07-24T15:33:35 IST" duration-ms="377" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
