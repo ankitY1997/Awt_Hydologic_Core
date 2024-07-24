@@ -1,6 +1,5 @@
 package com.awt.page.Login;
 
-import org.bouncycastle.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +12,7 @@ import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
 
-public class LoginPage {
+public class LoginPage  {
 
 	/* xpath for enter project name text field */
 	@FindAll({ @FindBy(xpath = "//input[@role='combobox']") })

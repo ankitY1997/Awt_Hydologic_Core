@@ -40,6 +40,7 @@ public class AwtUtilities {
 		return random.randomAlphabetic(length);
 	}
 
+	
 	/**
 	 * this method is used to generate random number according to the given length
 	 *
@@ -59,6 +60,30 @@ public class AwtUtilities {
 	public static String genrateRandomAlphaNeumric(int length) {
 		return random.randomAlphanumeric(length);
 	}
+	
+	public static String genrateRandomAlphaNeumric(int min_length,int max_length) {
+		return random.randomAlphanumeric(min_length,max_length);
+	}
+
+	
+	
+	
+	/**
+	 * To generate alphabets
+	 * 
+	 * @param length
+	 * @return
+	 */
+	public static String genrateRandomAlphaBets(int length) {
+		return random.randomAlphabetic(length);
+	
+	}
+	
+	public static String genrateRandomAlphaBets(int min_length,int max_length) {
+		return random.randomAlphabetic(min_length,max_length);
+	
+	}
+	
 
 	/**
 	 * this method is used to remove all the alphabets from the string

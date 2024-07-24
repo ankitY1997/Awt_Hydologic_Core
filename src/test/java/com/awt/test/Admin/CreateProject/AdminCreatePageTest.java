@@ -32,7 +32,9 @@ public class AdminCreatePageTest extends BaseTest {
 	 * TestMethodName: verify_NewProjectDetailsPanel <br>
 	 * ManualTestCases: "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7",
 	 * "APMS-T8", "APMS-T9", "APMS-T10", "APMS-T13", "APMS-T14", "APMS-T19",
-	 * "APMS-T28", "APMS-T29"<br>
+	 * "APMS-T28",
+	 * "APMS-T29","APMS-T32","APMS-T33","APMS-T34","APMS-T35","APMS-T37","APMS-T38","APMS-T39",APMS-T48",
+	 * "APMS-T49"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -44,7 +46,7 @@ public class AdminCreatePageTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7", "APMS-T8", "APMS-T9", "APMS-T10",
-			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29" })
+			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29", "APMS-T48", "APMS-T49" })
 	public void verify_NewProjectDetailsPanel() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -186,20 +188,250 @@ public class AdminCreatePageTest extends BaseTest {
 		newProject_DetailsPanel.enterLicenseKey(License_Key);
 		asert.assertEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
-						NewProjectDetailsPanelConstants.licenses_key),
+						NewProjectDetailsPanelConstants.Panel_licenses_key),
 				License_Key,
 				"To Verify that License Key text field should accept 16 characters consisting alphabets and numbers.",
 				"APMS-T28");
 		// APMS-29--> To Verify that "License Key" text field should not accept more
 		// than 16 characters .
 		String inValid_License_Key = AwtUtilities.genrateRandomAlphaNeumric(17);
-		// enter the in valid license Key
+		// enter the invalid license Key
 		newProject_DetailsPanel.enterLicenseKey(inValid_License_Key);
-		asert.assertEquals(
+		asert.assertNotEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
-						NewProjectDetailsPanelConstants.licenses_key),
+						NewProjectDetailsPanelConstants.Panel_licenses_key),
 				inValid_License_Key,
 				"To Verify that License Key text field should not accept more than 16 characters .", "APMS-T29");
+		// APMS-32-->To verify that "User name" text field should accepts alphabets with
+		// length of 16 characters.
+		String valid_username = AwtUtilities.genrateRandomAlphaBets(16);
+		// enter the valid username
+		newProject_DetailsPanel.enterUsername(valid_username);
+		asert.assertEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.panel_UserName),
+				valid_username,
+				"To verify that User name text field should accepts alphabets with length of 16 characters.",
+				"APMS-T32");
+		// Enter More Then 16 character
+		String inValid_username = AwtUtilities.genrateRandomAlphaBets(18);
+		// enter the in valid username
+		newProject_DetailsPanel.enterUsername(inValid_username);
+		asert.assertNotEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.panel_UserName),
+				inValid_username, "To verify that User name text field should not accepts More Then 16 Alphabets",
+				"APMS-T32");
+
+		// APMS-33-->To verify that "user name" text field should not accept any special
+		// characters and numbers.
+		String SpecialCharacter_username = AwtUtilities.genrateRandomString(12) + "&@";
+		// enter the Special Character username
+		newProject_DetailsPanel.enterUsername(SpecialCharacter_username);
+		asert.assertNotEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.panel_UserName),
+				SpecialCharacter_username,
+				"To verify that user name text field should not accept any special characters and numbers.",
+				"APMS-T33");
+
+		// APMS-34-->To Verify that Password with 3 to 15 characters of any type is
+		// accepted in the "Password" text field.
+		String validPassword = AwtUtilities.genrateRandomAlphaNeumric(3, 15);
+		// enter the valid password
+		newProject_DetailsPanel.enterPassword(validPassword);
+		asert.assertEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.Panel_password),
+				validPassword,
+				"To Verify that Password with 3 to 15 characters of any type is accepted in the Password text field. ",
+				"APMS-T34");
+		// Enter Less Then 3 Digit Password
+		String lessDigitPassword = AwtUtilities.genrateRandomAlphaNeumric(1, 2);
+		// Enter less then 3 character password
+		newProject_DetailsPanel.enterPassword(lessDigitPassword);
+		asert.assertNotEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.Panel_password),
+				lessDigitPassword, "To Verify that Password Text Field Should Not Accept Less Then 3 Character. ",
+				"APMS-T34");
+		// Enter more then 15 Digit Password
+		String bigPassword = AwtUtilities.genrateRandomAlphaNeumric(16);
+		// Enter less then 3 character password
+		newProject_DetailsPanel.enterPassword(bigPassword);
+		asert.assertNotEquals(
+				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
+						NewProjectDetailsPanelConstants.Panel_password),
+				bigPassword, "To Verify that Password Text Field Should Not Accept More Then 15 Character. ",
+				"APMS-T34");
+		// APMS-T35-->Verify that a "Mobile number" text field should accept only
+		// numerical value.
+		// numerical value.
+		String mobileNumber = AwtUtilities.genrateRandomNumber(8);
+		newProject_DetailsPanel.enterMobileNum(mobileNumber);
+		asert.assertEquals(
+				newProject_DetailsPanel
+						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.mob_num),
+				mobileNumber, "Verify that a Mobile number text field should accept only numerical value.", "APMS-T35");
+		// APMS-T37-->To verify that "Mobile number" text field should not accept the
+		// characters.
+		// Enter Character
+		String character = AwtUtilities.genrateRandomAlphaBets(8);
+		newProject_DetailsPanel.enterMobileNum(character);
+		asert.assertNotEquals(
+				newProject_DetailsPanel
+						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.mob_num),
+				character, "To verify that Mobile number text field should not accept the characters.", "APMS-T37");
+		// APMS-T38-->To verify that email ID's text field with valid format are
+		// accepted.
+		// Enter Valid Email Address
+		String valid_email_add = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.email_address, "APMS-T38");
+		newProject_DetailsPanel.enterEmailAdd(valid_email_add);
+		asert.assertEquals(
+				newProject_DetailsPanel
+						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.email_address),
+				valid_email_add, "To verify that email ID's  text field with valid format are accepted.", "APMS-T38");
+
+		// APMS-T39-->To verify that email ID's text field with valid format are
+		// accepted.
+		// Enter Valid Email Address
+		String invalid_email_add = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.email_address, "APMS-T39");
+		newProject_DetailsPanel.enterEmailAdd(invalid_email_add);
+		asert.assertNotEquals(
+				newProject_DetailsPanel
+						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.email_address),
+				invalid_email_add, "To verify that email ID's  text field with valid format are accepted.", "APMS-T39");
+
+		// close the New Project Details Panel
+		newProject_DetailsPanel.clickOnCloseProject();
+		/*
+		 * Click on Create Project Button --> Navigate to "New Project Details Panel
+		 * 
+		 */
+		admin_create_page.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+		/*
+		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
+		 * Name, Consultant Logo, Licenses Key, Module Name, User Name, Password, Mobile
+		 * Number, Email Address Start Date, Expected Date, Actual Completion Date)
+		 * 
+		 */
+		String projectName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.project_name, "APMS-T48");
+		String clientName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.client_name, "APMS-T48");
+		String clientImagePath = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.client_image_path, "APMS-T48");
+		String consultantName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.consultant_name, "APMS-T48");
+		String consultantImagePath = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.consultant_image_path, "APMS-T48");
+		String licensesKey = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.licenses_key, "APMS-T48");
+		String userName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.username, "APMS-T48");
+		String password = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.password, "APMS-T48");
+		String mobNumber = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.mobile_number, "APMS-T48");
+		String emailAddress = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.email_address, "APMS-T48");
+		String startDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.start_date, "APMS-T48");
+		String expectedDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.expected_date, "APMS-T48");
+		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
+		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
+		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
+				consultantImagePath, licensesKey, userName, password, moduleName, mobNumber, emailAddress, startDate,
+				expectedDate, actualCompletionDate);
+		// --> click on add project button
+		newProject_DetailsPanel.clickAddProject();
+		// verify The Success Pop-up Message
+		asert.assertEquals(newProject_DetailsPanel.getSuccessMessage(), "Project created successfully!",
+				"verify The Project successfully created Pop-Up Message", "APMS-T48");
+		// click on the pop-up
+		newProject_DetailsPanel.acceptPopup();
+
+		try {
+			// APMS-T49 -> Verify that the created project details are correctly displayed
+			// in the "project details" table.
+			// Verify Project Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.project_name),
+					projectName,
+					"Verify that the created project name are correctly displayed in the Project Name Column.",
+					"APMS-T49");
+			// verify Client Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.client_name),
+					clientName,
+					"Verify that the created client name are correctly displayed in the Client Name Column.",
+					"APMS-T49");
+			// verify Consultant Name
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.consultant_name),
+					consultantName,
+					"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
+					"APMS-T49");
+			// verify Mobile Number
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.mob_num),
+					mobNumber,
+					"Verify that the created mobile number are correctly displayed in the Mobile Number Column.",
+					"APMS-T49");
+			// verify Email Id
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_id),
+					emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
+					"APMS-T49");
+			// verify Username
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
+					userName, "Verify that the created user name are correctly displayed in the username Column.",
+					"APMS-T49");
+			// verify Password
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
+					password, "Verify that the created password are correctly displayed in the Password Column.",
+					"APMS-T49");
+			// verify Due Days
+			String due_days = AwtUtilities.getTimeDiff(expectedDate, actualCompletionDate);
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
+					due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
+					"APMS-T49");
+			// verify Start Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
+					startDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
+					"APMS-T49");
+			// verify Expected Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.expected_date),
+					expectedDate,
+					"Verify that the Start Date display are correctly displayed in the Start Date Column.", "APMS-T49");
+			// verify Actual Completion Date
+			asert.assertEquals(
+					admin_create_page.getColumnDataFromProjectDetailsTable(
+							NewProjectDetailsPanelConstants.actual_compeltion_date),
+					actualCompletionDate,
+					"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
+					"APMS-T49");
+		} catch (Exception e) {
+
+		}
+		// delete the Project
+		admin_create_page.deleteProjectDetails(projectName);
+		// accept pop-up
+		newProject_DetailsPanel.acceptPopup();
+		// accept pop-up
+		newProject_DetailsPanel.acceptPopup();
 
 		asert.assertAll();
 

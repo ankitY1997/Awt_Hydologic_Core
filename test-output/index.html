@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Demo" class="navigator-link">
-              <span class="suite-name border-passed">Demo</span>
+              <span class="suite-name border-failed">Demo</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Demo" class="hide-methods passed suite-Demo"> (hide)</a> <!-- hide-methods passed suite-Demo -->
-                      <a href="#" panel-name="suite-Demo" class="show-methods passed suite-Demo"> (show)</a> <!-- show-methods passed suite-Demo -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Demo" class="hide-methods failed suite-Demo"> (hide)</a> <!-- hide-methods failed suite-Demo -->
+                      <a href="#" panel-name="suite-Demo" class="show-methods failed suite-Demo"> (show)</a> <!-- show-methods failed suite-Demo -->
                     </span>
-                    <div class="method-list-content passed suite-Demo">
+                    <div class="method-list-content failed suite-Demo">
                       <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Admin.CreateProject.AdminCreatePageTest" class="method navigator-link" hash-for-method="verifyAddProjectDetails">verifyAddProjectDetails</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Admin.CreateProject.AdminCreatePageTest" class="method navigator-link" hash-for-method="verify_NewProjectDetailsPanel">verify_NewProjectDetailsPanel</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Demo -->
+                    </div> <!-- method-list-content failed suite-Demo -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,21 +119,43 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Demo" class="panel Demo">
-          <div class="suite-Demo-class-passed">
+          <div class="suite-Demo-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.awt.test.Admin.CreateProject.AdminCreatePageTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyAddProjectDetails">
-                  </a> <!-- verifyAddProjectDetails -->
-                  <span class="method-name">verifyAddProjectDetails</span>
+                  <a name="verify_NewProjectDetailsPanel">
+                  </a> <!-- verify_NewProjectDetailsPanel -->
+                  <span class="method-name">verify_NewProjectDetailsPanel</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	did not expect [Acmo12!] but found [Acmo12!],
+	did not expect [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n] but found [Wv4JLkhVUThIojA1zK0HK6H8LgoQlQRDfjzcgNd6gzhFcMlqEXhl1S2KWumPlTrjPa0eqweOWRIse8ZBljDIDcx5I1ysrjra7L85n],
+	did not expect [Vandana C] but found [Vandana C],
+	did not expect [Myh0H12] but found [Myh0H12],
+	did not expect [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx] but found [IMtjWBIUFxpKkGCBmWXxhESFpdSAZwuVlWx],
+	did not expect [3SAPW12] but found [3SAPW12],
+	did not expect [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl] but found [torJycrXfMuVXJVUCbzzapPClFxqNqsgmfl],
+	did not expect [LYZKUrKp9zV9qJUb6] but found [LYZKUrKp9zV9qJUb6],
+	did not expect [IMkTJoRkTbmWnFgkAM] but found [IMkTJoRkTbmWnFgkAM],
+	did not expect [ssMwGaspijoi&amp;@] but found [ssMwGaspijoi&amp;@],
+	did not expect [T] but found [T],
+	did not expect [soD2K7q0lW8c2a8s] but found [soD2K7q0lW8c2a8s],
+	did not expect [ukrhlqyV] but found [ukrhlqyV],
+	did not expect [ankit123!] but found [ankit123!]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
+	at com.awt.test.Admin.CreateProject.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:435)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Demo-class-passed -->
+          </div> <!-- suite-Demo-class-failed -->
         </div> <!-- panel Demo -->
         <div panel-name="test-xml-Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -152,7 +174,7 @@
     &lt;classes&gt;
       &lt;class name=&quot;com.awt.test.Admin.CreateProject.AdminCreatePageTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verifyAddProjectDetails&quot;/&gt;
+          &lt;include name=&quot;verify_NewProjectDetailsPanel&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- com.awt.test.Admin.CreateProject.AdminCreatePageTest --&gt;
     &lt;/classes&gt;
@@ -182,7 +204,7 @@
               <span class="test-group-name">Admin</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAddProjectDetails</span>
+                <span class="method-in-group-name">verify_NewProjectDetailsPanel</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -190,7 +212,7 @@
               <span class="test-group-name">Functional</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAddProjectDetails</span>
+                <span class="method-in-group-name">verify_NewProjectDetailsPanel</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -212,9 +234,9 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyAddProjectDetails')
+data.setCell(0, 1, 'verify_NewProjectDetailsPanel')
 data.setCell(0, 2, 'com.awt.test.Admin.CreateProject.AdminCreatePageTest')
-data.setCell(0, 3, 74734);
+data.setCell(0, 3, 85546);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
@@ -240,7 +262,7 @@ return data;
             <div class="ignored-class-div">
               <span class="ignored-class-name">com.awt.test.Admin.CreateProject.AdminCreatePageTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verify_NewProjectDetailsPanel</span>
+                <span class="ignored-method-name">verifyAddProjectDetails</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -258,12 +280,14 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyAddProjectDetails</span>
-                <span class="method-start">5989 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verify_NewProjectDetailsPanel</span>
+                <span class="method-start">4165 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">80732 ms</span>
+                <span class="method-start">90001 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

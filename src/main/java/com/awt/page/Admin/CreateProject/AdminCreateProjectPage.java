@@ -19,7 +19,7 @@ import com.awt.testbase.MyLogger;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
-public class AdminCreateProjectPage {
+public class AdminCreateProjectPage  {
 
 	// ** Create Project button xpath **/
 	@FindAll({ @FindBy(xpath = "//span[text()='Create Project']") })
@@ -145,6 +145,7 @@ public class AdminCreateProjectPage {
 		switch (columnName) {
 		case "Project Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			action.performMoveToElement(numRowInTable.get(numRowInTable.size()-1));
 			return action
 					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))

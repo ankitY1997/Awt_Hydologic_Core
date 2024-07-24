@@ -10,7 +10,7 @@
       <class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
         <methods>
           <include name="launchBrowser"/>
-          <include name="verifyAddProjectDetails"/>
+          <include name="verify_NewProjectDetailsPanel"/>
           <include name="tearUp"/>
         </methods>
       </class> <!-- com.awt.test.Admin.CreateProject.AdminCreatePageTest -->
