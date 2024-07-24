@@ -216,7 +216,7 @@ public class AdminCreateProjectPage {
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
 					.trim();
 		default:
-			MyLogger.error(" You Have Passed Wrong Column " + columnName + " Please Enter The Correct Column Name");
+			MyLogger.error(" You Have Passed Wrong Column Name : " + columnName + " Please Enter The Correct Column Name");
 			return null;
 		}
 
