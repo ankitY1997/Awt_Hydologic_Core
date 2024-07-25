@@ -414,7 +414,7 @@ public class NewProjectDetailsPanel {
 	}
 
 	/**
-	 * Method is Used to Select A Module
+	 * Method is Used to Select A Module if you pass "All" so it should all modules
 	 * 
 	 * @param module_name
 	 */
@@ -445,6 +445,36 @@ public class NewProjectDetailsPanel {
 				// Select All Module Name
 				action.clickOn(driver.findElement(
 						By.xpath("//input[@type='checkbox']/../following-sibling::div[@data-pc-section='input']")));
+			}
+		}
+
+	}
+
+	/**
+	 * Method is Used to de-select the module and if you pass "All" so it should
+	 * de-select all selected modules
+	 * 
+	 * @param module_name {OMS,AMS}
+	 */
+
+	public void deSelectModuleName(String[] module_name) {
+		// wait for some time
+		action.implictWait(action.implicit_wait);
+		action.clickOn(driver.findElement(By.xpath("//div[@data-pc-section='label']")));
+		String moduleName = null;
+		if (!module_name[0].equalsIgnoreCase("All")) {
+			for (String ModuleName : module_name) {
+				action.clickOn(driver.findElement(
+						By.xpath("//div[@data-pc-section='label']/div/span[text()='" + ModuleName + "']")));
+
+			}
+		} else {
+			action.waitForVisibility(driver.findElements(By.xpath("//div[@data-pc-section='label']/div")).get(0),
+					action.implicit_wait);
+
+			List<WebElement> selected_module = driver.findElements(By.xpath("//div[@data-pc-section='label']/div"));
+			for (WebElement element : selected_module) {
+				action.clickOn(element);
 			}
 		}
 
@@ -490,7 +520,7 @@ public class NewProjectDetailsPanel {
 	 * To click on Close Project Button
 	 */
 
-	public void clickOnCloseProject() {
+	public void clickOnCancelProject() {
 		action.implicitWait(cancel_project_button, action.implicit_wait);
 		action.clickOn(cancel_project_button, "Close Project");
 	}
@@ -600,11 +630,19 @@ public class NewProjectDetailsPanel {
 	 * @return boolean
 	 */
 	public boolean isCancelButtonIsVisible() {
-		action.waitForVisibility(cancel_project_button, 0);
+		action.waitForVisibility(cancel_project_button, action.implicit_wait);
 		return action.isDisplay(cancel_project_button);
 
 	}
-	
-	
+
+	/**
+	 * To cehck the add Project Button visibility
+	 * 
+	 * @return
+	 */
+	public boolean isAddProjectButtonIsVisible() {
+		action.waitForVisibility(add_project_button, action.implicit_wait);
+		return action.isDisplay(add_project_button);
+	}
 
 }

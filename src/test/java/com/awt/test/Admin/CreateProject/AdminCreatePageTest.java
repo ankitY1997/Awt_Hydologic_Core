@@ -59,14 +59,15 @@ public class AdminCreatePageTest extends BaseTest {
 		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		// Enter the Project Name and login and navigate to the home  page
+		// Enter the Project Name and login and navigate to the home page
 		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
 		// verify Home Page Title
-		asert.assertEquals(admin_page.getHomePageTitle(),AdminPageConstants.expected_home_page_title,
+		asert.assertEquals(admin_page.getHomePageTitle(), AdminPageConstants.expected_home_page_title,
 				"verify Home Page Title Should Be Display Correct", "APMS-T0");
 		// click on project management drop-down menu and Select "Create Project" menu
 		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,AdminPageContants.project_setting);
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,
+						AdminPageContants.project_setting);
 		// verify "Create Project" button is display
 		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
 				"Verify that the Create Project button is visible", "APMS-T1");
@@ -133,7 +134,7 @@ public class AdminCreatePageTest extends BaseTest {
 				"APMS-T8");
 		// APMS-T9-->Verify that "client name" text field should not accept any
 		// special character except space and any number
-		String inValidClientName = AwtUtilities.genrateRandomAlphaNeumric(5)+"#$";
+		String inValidClientName = AwtUtilities.genrateRandomAlphaNeumric(5) + "#$";
 		newProject_DetailsPanel.enterClientName(inValidClientName);
 		asert.assertNotEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
@@ -208,6 +209,26 @@ public class AdminCreatePageTest extends BaseTest {
 						NewProjectDetailsPanelConstants.Panel_licenses_key),
 				inValid_License_Key,
 				"To Verify that License Key text field should not accept more than 16 characters .", "APMS-T29");
+		// APMS-30--> To verify that user should able to select the multiple modules in
+		// the "module name" drop down.
+		// select the multiple module
+		newProject_DetailsPanel.selectModuleName(NewProjectDetailsPanelConstants.module_name);
+		boolean isModuleSelected = newProject_DetailsPanel.getAllSelectedModule()
+				.containsAll(new ArrayList(Arrays.asList(NewProjectDetailsPanelConstants.module_name)));
+		asert.assertTrue(isModuleSelected,
+				"To verify that user should able to select the multiple modules in the module name drop down.",
+				"APMS-30");
+		//APMS-31--> To verify that user is not selected any module in the module name drop down, Error message should be thrown. 
+		// de-select all the selected module
+		newProject_DetailsPanel.deSelectModuleName(NewProjectDetailsPanelConstants.module_name);
+		newProject_DetailsPanel.clickAddProject();
+		// Validate The Error Message
+		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(), NewProjectDetailsPanelConstants.error_message,
+				"To verify that user is not selected any module in the modulename dropdown, Error message should be thrown.",
+				"APMS-31");
+		// accept the pop-up
+		newProject_DetailsPanel.acceptPopup();
+
 		// APMS-32-->To verify that "User name" text field should accepts alphabets with
 		// length of 16 characters.
 		String valid_username = AwtUtilities.genrateRandomAlphaBets(16);
@@ -310,12 +331,22 @@ public class AdminCreatePageTest extends BaseTest {
 						.getNewProjectDetailsPanelsTextFieldValue(NewProjectDetailsPanelConstants.email_address),
 				invalid_email_add, "To verify that email ID's  text field with valid format are accepted.", "APMS-T39");
 
-		//APMS-T45-->To Verify that "Cancel" button should be visible in the "New Project Details" panel
-		asert.assertTrue(newProject_DetailsPanel.isCancelButtonIsVisible(),"To Verify that Cancel button should be visible in the New Project Details  panel","APMS-T45");
-		
-		//
-		// close the New Project Details Panel
-		newProject_DetailsPanel.clickOnCloseProject();
+		// APMS-T45-->To Verify that "Cancel" button should be visible in the "New
+		// Project Details" panel
+		asert.assertTrue(newProject_DetailsPanel.isCancelButtonIsVisible(),
+				"To Verify that Cancel button should be visible in the New Project Details  panel", "APMS-T45");
+
+		// APMS-46-->To verify that the "Add Project" button is present in the "New
+		// Project Details" panel.
+		asert.assertTrue(newProject_DetailsPanel.isAddProjectButtonIsVisible(),
+				"To verify that the Add Project button is present in the New Project Details panel.", "APMS-46");
+
+		// APMS-T47 -->To verify that functionality of the "Cancel" button
+		// click on cancel button
+		newProject_DetailsPanel.clickOnCancelProject();
+		asert.assertTrue(admin_create_page.isTableNameDisplay(), "To verify that functionality of the Cancel button",
+				"APMS-T47");
+
 		/*
 		 * Click on Create Project Button --> Navigate to "New Project Details Panel
 		 * 
@@ -350,20 +381,6 @@ public class AdminCreatePageTest extends BaseTest {
 				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
 
-		// APMS-31 -->To verify that user is not selected any module in the "modulename" dropdown, Error message should be thrown.
-		// Enter All The Details but Don't Select Any Module Name
-		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
-				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
-				actualCompletionDate);
-		// --> click on add project button {Try TO Add Project With Out Selecting Module Name
-		newProject_DetailsPanel.clickAddProject();
-		// Validate The Error Message
-		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(), NewProjectDetailsPanelConstants.error_message,
-				"To verify that user is not selected any module in the modulename dropdown, Error message should be thrown.",
-				"APMS-31");
-		// accept the pop-up
-		newProject_DetailsPanel.acceptPopup();
-
 		/*
 		 * Enter Whole Details In New Project Details Panel
 		 *
@@ -375,13 +392,7 @@ public class AdminCreatePageTest extends BaseTest {
 		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
 				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
 				actualCompletionDate, moduleName);
-		// APMS-30--> To verify that user should able to select the multiple modules in the "module name" drop down.
-		boolean isModuleSelected = newProject_DetailsPanel.getAllSelectedModule()
-				.containsAll(new ArrayList(Arrays.asList(NewProjectDetailsPanelConstants.module_name)));
-		asert.assertTrue(isModuleSelected,
-				"To verify that user should able to select the multiple modules in the module name drop down.",
-				"APMS-30");
-		
+
 		// --> click on add project button
 		newProject_DetailsPanel.clickAddProject();
 
@@ -499,7 +510,8 @@ public class AdminCreatePageTest extends BaseTest {
 		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
 		// click on project management drop-down menu and Select "Create Project" menu
 		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,AdminPageContants.project_setting);
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,
+						AdminPageContants.project_setting);
 		/*
 		 * Click on Create Project Button --> Navigate to "New Project Details Panel
 		 * 

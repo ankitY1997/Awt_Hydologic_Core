@@ -77,6 +77,10 @@ public class AdminCreateProjectPage {
 	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='previousbutton']") })
 	private WebElement previous_button;
 
+	// **In calendar previous button xpath**/
+	@FindAll({ @FindBy(xpath = "//h5[text()='AWT - Projects']") })
+	private WebElement table_name;
+
 	// ** For Finding A Rows In The Table **/
 	@FindAll({ @FindBy(xpath = "//tr[@role='row' and @data-pc-section='row']") })
 	private List<WebElement> numRowInTable;
@@ -135,6 +139,16 @@ public class AdminCreateProjectPage {
 	public boolean isCreateProjectButtonDispaly() {
 		action.implicitWait(crate_project_btn, action.implicit_wait);
 		return action.isDisplay(crate_project_btn);
+	}
+
+	/**
+	 * To check the visibility of awt projects table
+	 * 
+	 * @return
+	 */
+	public boolean isTableNameDisplay() {
+		action.waitForVisibility(table_name, action.implicit_wait);
+		return table_name.isDisplayed();
 	}
 
 	/**
@@ -216,7 +230,8 @@ public class AdminCreateProjectPage {
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
 					.trim();
 		default:
-			MyLogger.error(" You Have Passed Wrong Column Name : " + columnName + " Please Enter The Correct Column Name");
+			MyLogger.error(
+					" You Have Passed Wrong Column Name : " + columnName + " Please Enter The Correct Column Name");
 			return null;
 		}
 

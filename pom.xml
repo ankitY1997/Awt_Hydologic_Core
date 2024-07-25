@@ -101,8 +101,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>
-							C:\Users\AWT
-							Tester\eclipse-workspace\Awt_Project_Managment\TestRunner\Parallel\Parallel.xml</suiteXmlFile>
+							${project.basedir}\TestRunner\Parallel\Parallel.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
