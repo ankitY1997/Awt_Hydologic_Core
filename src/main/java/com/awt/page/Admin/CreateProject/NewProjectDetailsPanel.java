@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.awt.page.Admin.AdminConstants;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
+import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class NewProjectDetailsPanel {
 
@@ -421,7 +422,7 @@ public class NewProjectDetailsPanel {
 	public void selectModuleName(String[] module_name) {
 		// wait for some time
 		action.implictWait(action.implicit_wait);
-		action.clickOn(driver.findElement(By.xpath("//div[text()='Select Modules']")));
+		action.clickOn(driver.findElement(By.xpath("//div[@data-pc-section='label']")));
 		String moduleName = null;
 		for (String Module_name : module_name) {
 			if (!Module_name.equalsIgnoreCase("All")) {
@@ -460,21 +461,25 @@ public class NewProjectDetailsPanel {
 	public void deSelectModuleName(String[] module_name) {
 		// wait for some time
 		action.implictWait(action.implicit_wait);
+		action.clickOn(username_txt);
 		action.clickOn(driver.findElement(By.xpath("//div[@data-pc-section='label']")));
 		String moduleName = null;
 		if (!module_name[0].equalsIgnoreCase("All")) {
 			for (String ModuleName : module_name) {
-				action.clickOn(driver.findElement(
-						By.xpath("//div[@data-pc-section='label']/div/span[text()='" + ModuleName + "']")));
+				action.clickOn(driver.findElement(By
+						.xpath("//li[@role='option' and @aria-selected='true']/div/following-sibling::span//*[text()='"
+								+ ModuleName.trim() + "']")));
+				AwtUtilities.waitFor(1000);
 
 			}
-		} else {
-			action.waitForVisibility(driver.findElements(By.xpath("//div[@data-pc-section='label']/div")).get(0),
-					action.implicit_wait);
-
-			List<WebElement> selected_module = driver.findElements(By.xpath("//div[@data-pc-section='label']/div"));
+		} else if (module_name[0].equalsIgnoreCase("All")) {
+			action.implictWait(action.implicit_wait);
+			List<WebElement> selected_module = driver
+					.findElements(By.xpath("//li[@role='option' and @aria-selected='true']/div/div//*[local-name()='svg']"));
+			action.waitForVisibility(selected_module.get(selected_module.size()-1), action.implicit_wait);
 			for (WebElement element : selected_module) {
 				action.clickOn(element);
+				AwtUtilities.waitFor(1000);
 			}
 		}
 
