@@ -28,6 +28,7 @@ public class NewProjectDetailsPanelConstants {
 	public static final String start_date = "Start Date";
 	public static final String expected_date = "Expected Date";
 	public static final String actual_compeltion_date = "Actual Completion Date";
+	public static final String actual_end_date = "Actual End Date";
 	public static final String file_name = "New_Poject_Details";
 	public static final String due_days = "Due Days";
 

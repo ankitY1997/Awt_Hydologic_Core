@@ -1,10 +1,16 @@
 package com.awt.utills.reusablecomponents;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -18,7 +24,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Utilities Only For This Project 
+ * Utilities Only For This Project
+ * 
  * @author Ankit Yadav
  */
 public class AwtUtilities {
@@ -28,7 +35,6 @@ public class AwtUtilities {
 
 	/** boolean flag **/
 	private static boolean flag = true;
-	
 
 	/**
 	 * this method is used to generate random string according to the length
@@ -40,7 +46,6 @@ public class AwtUtilities {
 		return random.randomAlphabetic(length);
 	}
 
-	
 	/**
 	 * this method is used to generate random number according to the given length
 	 *
@@ -60,14 +65,11 @@ public class AwtUtilities {
 	public static String genrateRandomAlphaNeumric(int length) {
 		return random.randomAlphanumeric(length);
 	}
-	
-	public static String genrateRandomAlphaNeumric(int min_length,int max_length) {
-		return random.randomAlphanumeric(min_length,max_length);
+
+	public static String genrateRandomAlphaNeumric(int min_length, int max_length) {
+		return random.randomAlphanumeric(min_length, max_length);
 	}
 
-	
-	
-	
 	/**
 	 * To generate alphabets
 	 * 
@@ -76,14 +78,13 @@ public class AwtUtilities {
 	 */
 	public static String genrateRandomAlphaBets(int length) {
 		return random.randomAlphabetic(length);
-	
+
 	}
-	
-	public static String genrateRandomAlphaBets(int min_length,int max_length) {
-		return random.randomAlphabetic(min_length,max_length);
-	
+
+	public static String genrateRandomAlphaBets(int min_length, int max_length) {
+		return random.randomAlphabetic(min_length, max_length);
+
 	}
-	
 
 	/**
 	 * this method is used to remove all the alphabets from the string
@@ -333,37 +334,68 @@ public class AwtUtilities {
 	 * 
 	 * @param exp_Date
 	 * @param actualDate
+	 * 
+	 */
+//	public static String getTimeDiff(String expDate, String... actualDate) {
+//		LocalDate current_Date = LocalDate.now();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//		String currentDate = current_Date.format(formatter);
+//		
+//		String timeDiff = "";
+//		if (actualDate[0].isBlank()) {
+//			LocalDate date1 = parseToLocalDate(currentDate, "dd-MM-yyyy");
+//			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+//
+//			// Calculate days between date1 and date2
+//			long daysBetween = calculateDaysBetween(date1, date2);
+//			if (flag) {
+//				timeDiff = "-" + daysBetween;
+//			} else
+//				timeDiff = String.valueOf(daysBetween);
+//		} else if (!actualDate[0].isBlank()) {
+//			LocalDate date1 = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
+//			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+//
+//			// Calculate days between date1 and date2
+//			long daysBetween = calculateDaysBetween(date1, date2);
+//			if (flag) {
+//				timeDiff = "-" + daysBetween;
+//			} else
+//				timeDiff = String.valueOf(daysBetween);
+//
+//		}
+//		return timeDiff;
+//
+//	}
+
+	/**
+	 * Help of this method we can get the time difference between if actual date is
+	 * there
+	 * 
+	 * @param exp_Date
+	 * @param actualDate
+	 * 
 	 */
 	public static String getTimeDiff(String expDate, String... actualDate) {
 		LocalDate current_Date = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String currentDate = current_Date.format(formatter);
+
 		String timeDiff = "";
 
-		if (actualDate[0].isBlank()) {
-			LocalDate date1 = parseToLocalDate(currentDate, "dd-MM-yyyy");
-			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+		LocalDate curr_date = parseToLocalDate(currentDate, "dd-MM-yyyy");
+		LocalDate exp_date = parseToLocalDate(expDate, "dd-MM-yyyy");
+		LocalDate actual_date = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
 
-			// Calculate days between date1 and date2
-			long daysBetween = calculateDaysBetween(date1, date2);
-			if (flag) {
-				timeDiff = "-" + daysBetween;
-			} else
-				timeDiff = String.valueOf(daysBetween);
-		} else if (!actualDate[0].isBlank()) {
-			LocalDate date1 = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
-			LocalDate date2 = parseToLocalDate(expDate, "dd-MM-yyyy");
+		if (curr_date.isBefore(exp_date)) {
+			int days = (int) calculateDaysBetween(curr_date, exp_date);
+			timeDiff = "+" + days;
 
-			// Calculate days between date1 and date2
-			long daysBetween = calculateDaysBetween(date1, date2);
-			if (flag) {
-				timeDiff = "-" + daysBetween;
-			} else
-				timeDiff = String.valueOf(daysBetween);
-
+		} else if (curr_date.isAfter(exp_date)) {
+			int days = (int) calculateDaysBetween(exp_date, actual_date);
+			timeDiff = "-" + days;
 		}
 		return timeDiff;
-
 	}
 
 	/**
@@ -391,16 +423,46 @@ public class AwtUtilities {
 			LocalDate temp = date1;
 			date1 = date2;
 			date2 = temp;
-			flag = true;
 		}
-
-		// Calculate period between date1 and date2
-		Period period = Period.between(date1, date2);
-
-		// Extract the number of days from the period
-		long daysBetween = period.getDays();
+		// Calculate total days between date1 and date2 using ChronoUnit.DAYS
+		long daysBetween = ChronoUnit.DAYS.between(date1, date2);
 
 		return daysBetween;
 	}
 
+	/**
+	 * This is method is used to change the date format
+	 * 
+	 * @param inputDateString
+	 * @param inputFormat
+	 * @param outputFormat
+	 * @return
+	 */
+	public static String convertDateFormat(String inputDateString, String inputFormat, String outputFormat) {
+		SimpleDateFormat inputSdf = new SimpleDateFormat(inputFormat);
+		SimpleDateFormat outputSdf = new SimpleDateFormat(outputFormat);
+
+		try {
+			Date date = inputSdf.parse(inputDateString);
+			return outputSdf.format(date);
+		} catch (ParseException e) {
+			System.out.println("Error parsing or formatting date: " + e.getMessage());
+			return null;
+		}
+	}
+
+	
+	/**
+	 * Converting String to COlletion
+	 * @param obj
+	 * @return
+	 */
+	public static Collection<String> convertStringToCollection(String obj) {
+		String[] array = obj.split(",");
+		List<String> list = new ArrayList<String>();
+		for (String arr : array) {
+			list.add(arr.trim());
+		}
+		return list;
+	}
 }

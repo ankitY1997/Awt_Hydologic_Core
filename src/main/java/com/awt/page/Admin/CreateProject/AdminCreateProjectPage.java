@@ -187,6 +187,12 @@ public class AdminCreateProjectPage {
 					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
 					.trim();
+//		case "Expected Date":
+//			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+//			return action
+//					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+//							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+//					.trim();
 		case "Actual End Date":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
 			return action
@@ -217,18 +223,18 @@ public class AdminCreateProjectPage {
 					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
 							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
 					.trim();
-		case "Username":
-			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action
-					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
-					.trim();
-		case "Passowrd":
-			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
-			return action
-					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
-					.trim();
+//		case "Username":
+//			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+//			return action
+//					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+//							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+//					.trim();
+//		case "Passowrd":
+//			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+//			return action
+//					.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+//							+ numRowInTable.size() + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+//					.trim();
 		default:
 			MyLogger.error(
 					" You Have Passed Wrong Column Name : " + columnName + " Please Enter The Correct Column Name");
