@@ -35,10 +35,10 @@ public class NewProjectDetailsPanel {
 	private WebElement client_name_txt;
 
 	// **client Logo File Upload Xpath**/
-	@FindAll({ @FindBy(xpath = "//input[contains(@id,'clientLogo')]") })
+	@FindAll({ @FindBy(xpath = "//input[contains(@id,'client_logo')]") })
 	private WebElement client_logo;
 	// **consultant logo File Upload Xpath**/
-	@FindAll({ @FindBy(xpath = "//input[contains(@id,'consultantLogo')]") })
+	@FindAll({ @FindBy(xpath = "//input[contains(@id,'consultant_logo')]") })
 	private WebElement consultant_logo;
 
 	// **consultant Name text field xpath**/
@@ -102,7 +102,8 @@ public class NewProjectDetailsPanel {
 	private WebElement error_message;
 
 	/** xpath of Project Created Sucessfully pop-up *****/
-	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']") })
+	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']"),
+			@FindBy(xpath = "//button[@aria-label='Yes']") })
 	private WebElement accept_popup;
 
 	// **New Project Details Panel xpath**/
@@ -234,10 +235,10 @@ public class NewProjectDetailsPanel {
 	 */
 	public void uploadLogo(String logoName, String imagePath) {
 		switch (logoName.toLowerCase()) {
-		case "client":
+		case "Client Logo":
 			client_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
-		case "consultant":
+		case "Consultant Logo":
 			consultant_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
 		default:
@@ -462,21 +463,19 @@ public class NewProjectDetailsPanel {
 		// wait for some time
 		action.implictWait(action.implicit_wait);
 		action.clickOn(username_txt);
-		action.clickOn(driver.findElement(By.xpath("//div[@data-pc-section='label']")));
 		String moduleName = null;
 		if (!module_name[0].equalsIgnoreCase("All")) {
 			for (String ModuleName : module_name) {
-				action.clickOn(driver.findElement(By
-						.xpath("//li[@role='option' and @aria-selected='true']/div/following-sibling::span//*[text()='"
-								+ ModuleName.trim() + "']")));
+				action.clickOn(driver.findElement(By.xpath("//div[@data-pc-section='label']/div/span[text()='"
+						+ ModuleName + "']/..//*[local-name()='svg']")));
 				AwtUtilities.waitFor(1000);
 
 			}
 		} else if (module_name[0].equalsIgnoreCase("All")) {
 			action.implictWait(action.implicit_wait);
 			List<WebElement> selected_module = driver
-					.findElements(By.xpath("//li[@role='option' and @aria-selected='true']/div/div//*[local-name()='svg']"));
-			action.waitForVisibility(selected_module.get(selected_module.size()-1), action.implicit_wait);
+					.findElements(By.xpath("//div[@data-pc-section='label']/div//*[local-name()='svg']"));
+			action.waitForVisibility(selected_module.get(selected_module.size() - 1), action.implicit_wait);
 			for (WebElement element : selected_module) {
 				action.clickOn(element);
 				AwtUtilities.waitFor(1000);
@@ -543,33 +542,6 @@ public class NewProjectDetailsPanel {
 	public void acceptPopup() {
 		action.waitForVisibility(accept_popup, action.implicit_wait);
 		action.clickOn(accept_popup);
-	}
-
-	/**
-	 * TO get the Message
-	 * 
-	 * @return
-	 */
-	public String getSuccessMessage() {
-		action.waitForVisibility(success_message.get(0), action.implicit_wait);
-		String value = null;
-		try {
-			value = success_message.get(0).getText().trim();
-		} catch (Exception e) {
-			value = "Project Is Not Created";
-		}
-		return value;
-
-	}
-
-	/**
-	 * To get Error Message
-	 */
-
-	public String getErrorMessage() {
-		action.waitForVisibility(error_message, action.implicit_wait);
-		return action.getText(error_message).trim();
-
 	}
 
 	/**
@@ -650,4 +622,32 @@ public class NewProjectDetailsPanel {
 		return action.isDisplay(add_project_button);
 	}
 
+	/**
+	 * By Help Of The Method We Can Get Any Text Field Error Message
+	 */
+	public String getErrorMessage(String text_field_name) {
+
+		return action.getText(driver.findElement(
+				By.xpath("//label[contains(text(),'" + text_field_name + "')]/./following-sibling::small")));
+
+	}
+
+	/**
+	 * By This Method Accrording To Field We Can Check Error Message if it's visible
+	 * it should be return true other wise false
+	 * 
+	 * @param text_field_name
+	 * @return
+	 */
+
+	public boolean isErrorMessageVisible(String text_field_name) {
+		boolean flag = false;
+		try {
+			getErrorMessage(text_field_name);
+			flag = true;
+		} catch (Exception e) {
+			flag = false;
+		}
+		return flag;
+	}
 }

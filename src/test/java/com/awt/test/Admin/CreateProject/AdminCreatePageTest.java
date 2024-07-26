@@ -31,6 +31,38 @@ import com.awt.utills.reusablecomponents.WorkArea;
 
 public class AdminCreatePageTest extends BaseTest {
 
+	AdminPage admin_page = null;
+	AdminCreateProjectPage admin_create_page = null;
+	SoftAssertTest asert = null;
+	NewProjectDetailsPanel newProject_DetailsPanel = null;
+
+	/**
+	 * 
+	 * Navigate To New Project Details Panel
+	 * 
+	 */
+	public void navigateToNewProjectDetailsPanel() {
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
+		// SoftAssert instance
+		asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
+		// log in Page instance
+		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
+		// Enter the Project Name and login and navigate to the home page
+		admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
+		// verify Home Page Title
+		asert.assertEquals(admin_page.getHomePageTitle(), AdminPageConstants.expected_home_page_title,
+				"verify Home Page Title Should Be Display Correct", "APMS-T0");
+		// click on project management drop-down menu and Select "Create Project" menu
+		admin_create_page = admin_page.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(
+				AdminPageContants.project, AdminPageContants.project_setting);
+		// verify "Create Project" button is display
+		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
+				"Verify that the Create Project button is visible", "APMS-T1");
+		// * Click on Create Project Button --> Navigate to "New Project Details Panel
+		newProject_DetailsPanel = admin_create_page.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+	}
+
 	/**
 	 * Description: Perform the verification on new Project Details Panels
 	 * Fields<br>
@@ -55,28 +87,9 @@ public class AdminCreatePageTest extends BaseTest {
 			"APMS-T34", "APMS-T35", "APMS-T37", "APMS-T38", "APMS-T39", "APMS-T45", "APMS-46", "APMS-T47", "APMS-T48",
 			"APMS-T50" })
 	public void verify_NewProjectDetailsPanel() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
-		// SoftAssert instance
-		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
-		// log in Page instance
-		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		// Enter the Project Name and login and navigate to the home page
-		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
-		// verify Home Page Title
-		asert.assertEquals(admin_page.getHomePageTitle(), AdminPageConstants.expected_home_page_title,
-				"verify Home Page Title Should Be Display Correct", "APMS-T0");
-		// click on project management drop-down menu and Select "Create Project" menu
-		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,
-						AdminPageContants.project_setting);
-		// verify "Create Project" button is display
-		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
-				"Verify that the Create Project button is visible", "APMS-T1");
-		// * Click on Create Project Button --> Navigate to "New Project Details Panel
-		NewProjectDetailsPanel newProject_DetailsPanel = admin_create_page
-				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
 
+		// Navigate To New Project Details Panel
+		navigateToNewProjectDetailsPanel();
 		// APMS-T2-> Verify That New Project Details Panel Should Be Visible -->
 		// Expected Panel Name
 		String exp_panel_name = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
@@ -84,10 +97,24 @@ public class AdminCreatePageTest extends BaseTest {
 		// Verify that new Project Details Panel Should be visible
 		asert.assertEquals(newProject_DetailsPanel.getPanelName(), exp_panel_name,
 				"Verify That New Project Details Panel Should Be Visible", "APMS-T2");
+		// Validate The Text Fields Of New Project Details Panel
+		verifyTextField();
+		// Verify the panels for adding a new project and ensure that the entered data
+		// is correctly displayed in the table
+		verifyAddFunctionality();
+		// verify Awt Tables
+
+		asert.assertAll();
+
+	}
+
+	/**
+	 * Validate The Text Fields Of New Project Details Panel
+	 */
+	public void verifyTextField() {
 		// Verify Fields In "New Project Details Panel"
 		asert.assertEquals(newProject_DetailsPanel.getNewProjectDetailsPanelFiledsName(),
 				NewProjectDetailsPanelConstants.list_field, "Verify Fields In New Project Details Panel", "APMS-T3");
-
 		// AMPS-T4-> Verify that project name text field accept the project name with a
 		// hyphen and number-->
 		// Enter The Project Name
@@ -129,7 +156,7 @@ public class AdminCreatePageTest extends BaseTest {
 				NewProjectDetailsPanelConstants.client_name, "APMS-T8");
 		// enter the valid client name-->
 		newProject_DetailsPanel.enterClientName(valid_clientName);
-		asert.assertNotEquals(
+		asert.assertEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
 						NewProjectDetailsPanelConstants.client_name),
 				valid_clientName, "Verify that a Client Name text field should accept only the alphabets and spaces.",
@@ -155,6 +182,27 @@ public class AdminCreatePageTest extends BaseTest {
 				client_name,
 				"Verify that client name text field should not accept any character accept space and any number",
 				"APMS-T10");
+
+		// APMS-T11-->To verify that "client logo" button should accept only the JPEG OR
+		// PNG formats
+		// enter valid file
+		String validClientFile = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.client_image_path, "APMS-T11");
+		newProject_DetailsPanel.uploadLogo(NewProjectDetailsPanelConstants.panel_client_logo, validClientFile);
+		asert.assertFalse(
+				newProject_DetailsPanel.isErrorMessageVisible(NewProjectDetailsPanelConstants.panel_client_logo),
+				"To verify that client logo button should accept only the JPEG OR PNG", validClientFile);
+
+		// APMS-12 ->To verify that "client logo" button should not support other than
+		// Jpeg or png format
+		// Enter The Invalid File
+		String invalidClientFile = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.file_path, "APMS-T12");
+		newProject_DetailsPanel.uploadLogo(NewProjectDetailsPanelConstants.panel_client_logo, invalidClientFile);
+		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.panel_client_logo),
+				NewProjectDetailsPanelConstants.client_name_error_msg,
+				"To verify that client logo button should not support other than Jpeg or png format", "APMS-T12");
+
 		// APMS-T13 --> To Verify that a "consultant name" text field should accept only
 		// the alphabets and spaces
 		String valid_consultantName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
@@ -189,6 +237,27 @@ public class AdminCreatePageTest extends BaseTest {
 						NewProjectDetailsPanelConstants.consultant_name),
 				consultant_name, "Verify that Consultant Name text field should not exceed more than 30 character",
 				"APMS-T19");
+
+		// APMS-26-->To verify that "consultant logo" button should accepts only the
+		// JPEG or PNG formats
+		// enter the valid file path
+		String validConsultantFile = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.consultant_image_path, "APMS-T26");
+		newProject_DetailsPanel.uploadLogo(NewProjectDetailsPanelConstants.panel_consltant_logo, validClientFile);
+		asert.assertFalse(
+				newProject_DetailsPanel.isErrorMessageVisible(NewProjectDetailsPanelConstants.panel_consltant_logo),
+				"To verify that consultant logo button should accepts only the JPEG or PNG formats",
+				validConsultantFile);
+
+		// APMS-27 ->To verify that consultant logo button should not support other than
+		// Jpeg or png format
+		String inValidConsultantFile = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
+				NewProjectDetailsPanelConstants.file_path, "APMS-T27");
+		newProject_DetailsPanel.uploadLogo(NewProjectDetailsPanelConstants.panel_consltant_logo, invalidClientFile);
+		asert.assertEquals(
+				newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.panel_consltant_logo),
+				NewProjectDetailsPanelConstants.consultant_name_error_msg,
+				"To verify that client logo button should not support other than Jpeg or png format", "APMS-T12");
 
 		// APMS-28--> To Verify that "License Key" text field should accept 16
 		// characters consisting alphabets and numbers.
@@ -226,11 +295,10 @@ public class AdminCreatePageTest extends BaseTest {
 		newProject_DetailsPanel.deSelectModuleName(NewProjectDetailsPanelConstants.module_name);
 		newProject_DetailsPanel.clickAddProject();
 		// Validate The Error Message
-		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(), NewProjectDetailsPanelConstants.error_message,
+		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.Panel_module_name),
+				NewProjectDetailsPanelConstants.module_name_error_msg,
 				"To verify that user is not selected any module in the modulename dropdown, Error message should be thrown.",
 				"APMS-31");
-		// accept the pop-up
-		newProject_DetailsPanel.acceptPopup();
 
 		// APMS-32-->To verify that "User name" text field should accepts alphabets with
 		// length of 16 characters.
@@ -350,6 +418,14 @@ public class AdminCreatePageTest extends BaseTest {
 		asert.assertTrue(admin_create_page.isTableNameDisplay(), "To verify that functionality of the Cancel button",
 				"APMS-T47");
 
+	}
+
+	/**
+	 * Verify the panels for adding a new project and ensure that the entered data
+	 * is correctly displayed in the table
+	 * 
+	 */
+	public void verifyAddFunctionality() {
 		/*
 		 * Click on Create Project Button --> Navigate to "New Project Details Panel
 		 * 
@@ -399,11 +475,9 @@ public class AdminCreatePageTest extends BaseTest {
 		// --> click on add project button
 		newProject_DetailsPanel.clickAddProject();
 
-		// verify The Success Pop-up Message
-		asert.assertEquals(newProject_DetailsPanel.getSuccessMessage(), "Project created successfully!",
-				"verify The Project successfully created Pop-Up Message", "APMS-T48");
-		// click on the pop-up
-		newProject_DetailsPanel.acceptPopup();
+		// verify The project name
+		asert.assertTrue(admin_create_page.isProjectNameVIsibleInTable(projectName),
+				"verify The Created Project Name Should be Visible In Table", "APMS-T48");
 
 		// APMS-T50 -> Verify that the created project details are correctly displayed
 		// in the "project details" table.
@@ -449,16 +523,6 @@ public class AdminCreatePageTest extends BaseTest {
 				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_id),
 				emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
 				"APMS-T50");
-//		// verify Username
-//		asert.assertEquals(
-//				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
-//				userName, "Verify that the created user name are correctly displayed in the username Column.",
-//				"APMS-T50");
-//		// verify Password
-//		asert.assertEquals(
-//				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
-//				password, "Verify that the created password are correctly displayed in the Password Column.",
-//				"APMS-T50");
 		// verify Start Date
 		asert.assertEquals(
 				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
@@ -470,175 +534,11 @@ public class AdminCreatePageTest extends BaseTest {
 				AwtUtilities.convertDateFormat(actualCompletionDate, "dd/MMM/yyyy", "dd-MM-yyyy"),
 				"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
 				"APMS-T50");
-
 		// delete the Project
 		admin_create_page.deleteProjectDetails(projectName);
 		// accept pop-up
 		newProject_DetailsPanel.acceptPopup();
-		// accept pop-up
-		newProject_DetailsPanel.acceptPopup();
-
-		asert.assertAll();
 
 	}
 
-	/**
-	 * Description: Perform the verification Awt-Project Table Column<br>
-	 * TestMethodName: verify_NewProjectDetailsPanel <br>
-	 * ManualTestCases: "APMS-T48", "APMS-T49"<br>
-	 * 
-	 * @author ankit
-	 */
-
-	@Version(number = "V-0.1")
-	@Test(groups = { "Admin", "Functional" })
-	@Description(description = "Perform the verfication To Create A New Project And Validate The Details Of Project Under The Details Table")
-	@Story(story = "Create Project Details Panel")
-	@Owner(name = "Ankit")
-	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T48", "APMS-T49" })
-	public void verifyAddProjectDetails() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
-		// SoftAssert instance
-		SoftAssertTest asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
-		// log in Page instance
-		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		// Enter the Project Name and login and navigate to the admin page
-		AdminPage admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
-		// click on project management drop-down menu and Select "Create Project" menu
-		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(AdminPageContants.project,
-						AdminPageContants.project_setting);
-		/*
-		 * Click on Create Project Button --> Navigate to "New Project Details Panel
-		 * 
-		 */
-		NewProjectDetailsPanel newProjectDetailsPanel = admin_create_page
-				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
-		/*
-		 * enter the project details (Project Name,Client Name, CLient logo, Consultant
-		 * Name, Consultant Logo, Licenses Key, Module Name, User Name, Password, Mobile
-		 * Number, Email Address Start Date, Expected Date, Actual Completion Date)
-		 * 
-		 */
-		String projectName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.project_name, "APMS-T48");
-		String clientName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.client_name, "APMS-T48");
-		String clientImagePath = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.client_image_path, "APMS-T48");
-		String consultantName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.consultant_name, "APMS-T48");
-		String consultantImagePath = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.consultant_image_path, "APMS-T48");
-		String licensesKey = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.licenses_key, "APMS-T48");
-		String userName = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.username, "APMS-T48");
-		String password = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.password, "APMS-T48");
-		String mobNumber = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.mobile_number, "APMS-T48");
-		String emailAddress = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.email_address, "APMS-T48");
-		String startDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.start_date, "APMS-T48");
-		String expectedDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.expected_date, "APMS-T48");
-		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.actual_compeltion_date, "APMS-T48");
-		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
-		newProjectDetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
-				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
-				actualCompletionDate, moduleName);
-		// --> click on add project button
-		newProjectDetailsPanel.clickAddProject();
-		// verify The Success Pop-up Message
-		asert.assertEquals(newProjectDetailsPanel.getSuccessMessage(), "Project created successfully!",
-				"verify The Project successfully created Pop-Up Message", "APMS-T48");
-		// click on the pop-up
-		newProjectDetailsPanel.acceptPopup();
-
-		try {
-			// APMS-T49 -> Verify that the created project details are correctly displayed
-			// in the "project details" table.
-			// Verify Project Name
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(
-							NewProjectDetailsPanelConstants.project_name),
-					projectName,
-					"Verify that the created project name are correctly displayed in the Project Name Column.",
-					"APMS-T49");
-			// verify Client Name
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.client_name),
-					clientName,
-					"Verify that the created client name are correctly displayed in the Client Name Column.",
-					"APMS-T49");
-			// verify Consultant Name
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(
-							NewProjectDetailsPanelConstants.consultant_name),
-					consultantName,
-					"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
-					"APMS-T49");
-			// verify Mobile Number
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.mob_num),
-					mobNumber,
-					"Verify that the created mobile number are correctly displayed in the Mobile Number Column.",
-					"APMS-T49");
-			// verify Email Id
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.email_id),
-					emailAddress, "Verify that the created email address are correctly displayed in the Email Column.",
-					"APMS-T49");
-			// verify Username
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.username),
-					userName, "Verify that the created user name are correctly displayed in the username Column.",
-					"APMS-T49");
-			// verify Password
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.password),
-					password, "Verify that the created password are correctly displayed in the Password Column.",
-					"APMS-T49");
-			// verify Due Days
-			String due_days = AwtUtilities.getTimeDiff(expectedDate, actualCompletionDate);
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
-					due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
-					"APMS-T49");
-			// verify Start Date
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.start_date),
-					startDate, "Verify that the Start Date display are correctly displayed in the Start Date Column.",
-					"APMS-T49");
-			// verify Expected Date
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(
-							NewProjectDetailsPanelConstants.expected_date),
-					expectedDate,
-					"Verify that the Start Date display are correctly displayed in the Start Date Column.", "APMS-T49");
-			// verify Actual Completion Date
-			asert.assertEquals(
-					admin_create_page.getColumnDataFromProjectDetailsTable(
-							NewProjectDetailsPanelConstants.actual_compeltion_date),
-					actualCompletionDate,
-					"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
-					"APMS-T49");
-		} catch (Exception e) {
-
-		}
-		// delete the Project
-		admin_create_page.deleteProjectDetails(projectName);
-		// accept pop-up
-		newProjectDetailsPanel.acceptPopup();
-		// accept pop-up
-		newProjectDetailsPanel.acceptPopup();
-
-		asert.assertAll();
-
-	}
 }

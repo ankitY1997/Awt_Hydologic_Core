@@ -81,9 +81,17 @@ public class AdminCreateProjectPage {
 	@FindAll({ @FindBy(xpath = "//h5[text()='AWT - Projects']") })
 	private WebElement table_name;
 
+	/** All Columns Name Under Awt Project Table ********/
+	@FindAll({ @FindBy(xpath = "//tr[@role='row']/th/div/span") })
+	private List<WebElement> columnNames;
+
 	// ** For Finding A Rows In The Table **/
 	@FindAll({ @FindBy(xpath = "//tr[@role='row' and @data-pc-section='row']") })
 	private List<WebElement> numRowInTable;
+
+	// ** Get All Projects Name From The Table****/
+	@FindAll({ @FindBy(xpath = "//tr[@role='row' and @data-pc-section='row']/td[1]/span") })
+	private List<WebElement> projectsName;
 
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
@@ -362,4 +370,37 @@ public class AdminCreateProjectPage {
 		}
 	}
 
+	/**
+	 * To get the column names of AWT Projects Table
+	 * 
+	 * @return list of column name
+	 */
+	public List<String> getAllAwtProjectColumsName() {
+		action.waitForVisibility(columnNames.get(0), action.implicit_wait);
+		List<String> column_list = new ArrayList<String>();
+		for (WebElement element : columnNames) {
+			column_list.add(element.getText().trim());
+		}
+		return column_list;
+	}
+
+	/**
+	 * To Check The Project Name is Visible
+	 * 
+	 * @param project_name {pass the project name}
+	 * @return {if project name is visible in the table so it return true
+	 */
+	public boolean isProjectNameVIsibleInTable(String project_name) {
+
+		boolean flag = false;
+		for (WebElement projectName : projectsName) {
+			System.out.println();
+			action.waitForVisibility(projectName, action.implicit_wait);
+			if (projectName.getText().trim().contains(project_name)) {
+				flag = true;
+			}
+		}
+		return flag;
+
+	}
 }
