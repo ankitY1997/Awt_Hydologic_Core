@@ -35,7 +35,7 @@ public class NewProjectDetailsPanel {
 	private WebElement client_name_txt;
 
 	// **client Logo File Upload Xpath**/
-	@FindAll({ @FindBy(xpath = "//input[contains(@id,'client_logo')]") })
+	@FindAll({ @FindBy(xpath = "//input[@type='file' and @name='client_logo']") })
 	private WebElement client_logo;
 	// **consultant logo File Upload Xpath**/
 	@FindAll({ @FindBy(xpath = "//input[contains(@id,'consultant_logo')]") })
@@ -102,8 +102,7 @@ public class NewProjectDetailsPanel {
 	private WebElement error_message;
 
 	/** xpath of Project Created Sucessfully pop-up *****/
-	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']"),
-			@FindBy(xpath = "//button[@aria-label='Yes']") })
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Yes']") })
 	private WebElement accept_popup;
 
 	// **New Project Details Panel xpath**/
@@ -234,7 +233,7 @@ public class NewProjectDetailsPanel {
 	 * @param logoName
 	 */
 	public void uploadLogo(String logoName, String imagePath) {
-		switch (logoName.toLowerCase()) {
+		switch (logoName) {
 		case "Client Logo":
 			client_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
@@ -302,6 +301,7 @@ public class NewProjectDetailsPanel {
 	 * @author Ankit yadav
 	 */
 	public void datePicker(String dateType, String req_date) {
+		boolean flag = false;
 		try {
 			// Select date type
 			selectDateType(dateType);
@@ -310,7 +310,7 @@ public class NewProjectDetailsPanel {
 				String[] date = exp_date.split("-");
 				// *************Expected Date ************/
 				String exp_day = date[0].replace("0", " ").trim();
-				String exp_month = date[1];
+				String exp_month = date[1].substring(0, 3);
 				String exp_year = date[2];
 
 				// *************Acutal Date In Calendar***********//
@@ -627,6 +627,8 @@ public class NewProjectDetailsPanel {
 	 */
 	public String getErrorMessage(String text_field_name) {
 
+		action.performMoveToElement(driver.findElement(
+				By.xpath("//label[contains(text(),'" + text_field_name + "')]/./following-sibling::small")));
 		return action.getText(driver.findElement(
 				By.xpath("//label[contains(text(),'" + text_field_name + "')]/./following-sibling::small")));
 

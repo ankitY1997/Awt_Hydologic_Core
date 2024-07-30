@@ -1,6 +1,8 @@
 package com.awt.utills.reusablecomponents;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -57,16 +59,15 @@ public class ITestListeners implements ITestListener {
 					"Test Case :" + result.getMethod().getMethodName() + " Is Fail");
 			extent_factory.getExtent().log(Status.FAIL, result.getThrowable());
 			// taking Screen shot
-//		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy HH:mm:ss");
-//		Date date = new Date();
-//		String actual_date = format.format(date);
+			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy HH:mm:ss");
+			Date date = new Date();
+			String actual_date = format.format(date);
 			String screenshot_path = "./TestResult/Screenshot/" + result.getMethod().getMethodName().toString()
-					+ ".jpeg";
+					+".jpeg";
 			File dest = new File(screenshot_path);
 			File src = ((TakesScreenshot) DriverFactory.iuiDriver().getDriver()).getScreenshotAs(OutputType.FILE);
 			String screen_shot = ((TakesScreenshot) DriverFactory.iuiDriver().getDriver())
 					.getScreenshotAs(OutputType.BASE64);
-
 			FileUtils.copyFile(src, dest);
 			extent_factory.getExtent().addScreenCaptureFromPath(screenshot_path,
 					"" + result.getMethod().getMethodName() + "Test Case Failure ScreenShot");

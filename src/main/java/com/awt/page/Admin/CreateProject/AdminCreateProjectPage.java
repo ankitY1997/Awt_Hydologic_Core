@@ -18,6 +18,7 @@ import com.awt.testbase.ExtentFactory;
 import com.awt.testbase.MyLogger;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
+import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class AdminCreateProjectPage {
 
@@ -92,6 +93,31 @@ public class AdminCreateProjectPage {
 	// ** Get All Projects Name From The Table****/
 	@FindAll({ @FindBy(xpath = "//tr[@role='row' and @data-pc-section='row']/td[1]/span") })
 	private List<WebElement> projectsName;
+
+	// *** Edit Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Edit']") })
+	private WebElement edit_button;
+
+	// *****Delete Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Delete']") })
+	private WebElement delete_button;
+	
+	/** xpath of Project Created Sucessfully pop-up *****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Yes']") })
+	private WebElement accept_popup;
+
+
+	// *****upload Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Attach Document']") })
+	private WebElement upload_button;
+
+	// *****upload Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Device Configuration']") })
+	private WebElement device_config_button;
+
+	// *****upload Button****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Update Project']") })
+	private WebElement update_button;
 
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
@@ -250,64 +276,65 @@ public class AdminCreateProjectPage {
 		}
 
 	}
+
 	/**
-	 * To get the newly added projects data
+	 * By THis Method We Can Fetch The Column Data Accroding to column wise
 	 */
-	/*
-	 * public String getColumnDataFromProjectDetailsTable(String columnName, String
-	 * project_name) {
-	 * 
-	 * switch (columnName) { case "Project Name":
-	 * action.waitForVisibility(numRowInTable.get(0), action.explicit_wait); return
-	 * action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Client Name": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Consultant Name": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Start Date": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Actual End Date": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Due Days": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Module Name": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Mobile Number": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); case
-	 * "Email ID": action.waitForVisibility(numRowInTable.get(0),
-	 * action.explicit_wait); return action.getText(driver.findElement(By.
-	 * xpath("//tr[@role='row' and @data-pc-section='row'][" +
-	 * getRowNumber(project_name) + "]/td[" +
-	 * getColumnIndexNumber(columnName.trim()) + "]/span"))) .trim(); default:
-	 * MyLogger.error(" You Have Passed Wrong Column " + columnName +
-	 * " Please Enter The Correct Column Name"); return null; }
-	 * 
-	 * }
-	 */
+
+	public String getColumnDataFromProjectDetailsTable(String project_name, String columnName) {
+		AwtUtilities.waitFor(5000);
+		switch (columnName) {
+		case "Project Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Client Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Consultant Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Start Date":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Actual End Date":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Due Days":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Module Name":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Mobile Number":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		case "Email ID":
+			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
+			return action.getText(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
+					+ getRowNumber(project_name) + "]/td[" + getColumnIndexNumber(columnName.trim()) + "]/span")))
+					.trim();
+		default:
+			MyLogger.error(" You Have Passed Wrong Column " + columnName + " Please Enter The Correct Column Name");
+			return null;
+		}
+
+	}
 
 	/**
 	 * To get the column index number by entering the column name
@@ -371,6 +398,23 @@ public class AdminCreateProjectPage {
 	}
 
 	/**
+	 * By help of this method we can edit the project details
+	 * 
+	 * @param projectName { We Need To Enter The Project Name Which Project You Want
+	 *                    To edit
+	 */
+	public void editProjectDetails(String projectName) {
+		try {
+			WebElement edit_button = driver.findElement(By.xpath(
+					"//tr[@data-pc-section='row'][" + getRowNumber(projectName) + "]//*[@data-pr-tooltip='Edit']"));
+			action.performMoveToElement(edit_button);
+			action.clickOn(edit_button);
+		} catch (Exception e) {
+			// do nothing
+		}
+	}
+
+	/**
 	 * To get the column names of AWT Projects Table
 	 * 
 	 * @return list of column name
@@ -402,5 +446,72 @@ public class AdminCreateProjectPage {
 		}
 		return flag;
 
+	}
+
+	/**
+	 * By Help Of THis Method we Can check Edit Button Should be visible
+	 * 
+	 * @return
+	 */
+	public boolean isEditButtonVisible() {
+		try {
+			return action.isDisplay(edit_button);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * By Help Of THis Method we Can check Delete Button Should be visible
+	 * 
+	 * @return
+	 */
+	public boolean isDeleteButtonVisible() {
+		try {
+			return action.isDisplay(delete_button);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * By Help Of THis Method we Can check upload Button Should be visible
+	 * 
+	 * @return
+	 */
+	public boolean isUploadButtonVisible() {
+		try {
+			return action.isDisplay(upload_button);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * By Help Of THis Method we Can check device_config Button Should be visible
+	 * 
+	 * @return
+	 */
+	public boolean isDeviceConfigdButtonVisible() {
+		try {
+			return action.isDisplay(device_config_button);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	/**
+	 * By Help Of This Method We Can Click On Update Button
+	 */
+	public void clickOnUpdateProjectButton() {
+		action.clickOn(update_button);
+	}
+	
+	/**
+	 * To accept pop up
+	 */
+	public void acceptPopup() {
+		action.waitForVisibility(accept_popup, action.implicit_wait);
+		action.clickOn(accept_popup);
 	}
 }
