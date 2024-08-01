@@ -1,6 +1,6 @@
 package com.awt.constant.Admin;
 
-public class AdminPageContants {
+public class ProjectDashboardPageContants {
 	//**************Admin Page Constants **********/
 	
 	public static final String create_project="Create Project";

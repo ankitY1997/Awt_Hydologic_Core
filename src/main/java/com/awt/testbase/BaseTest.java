@@ -24,14 +24,12 @@ public class BaseTest {
 			Retry.setRetryCount(retryCount);
 			DriverFactory.iuiDriver().setDriver(
 					new BrowserFactory().createBrowserInstance(PropertiesOperations.getPropertyValueByKey("Browser")));
-			System.out.println("*********************Sucessfully launch To The Browser*********************");
+			System.out.println("*********************Sucessfully launch The Browser*********************");
 			DriverFactory.iuiDriver().getDriver().manage().window().maximize();
 			DriverFactory.iuiDriver().getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			DriverFactory.iuiDriver().getDriver().get(PropertiesOperations.getPropertyValueByKey("URL"));
-			System.out.println("*********************Sucessfully Navigate To The Url*********************");
-			AwtUtilities.waitForPageLoading(DriverFactory.iuiDriver().getDriver());
+			//DriverFactory.iuiDriver().getDriver().get(PropertiesOperations.getPropertyValueByKey("URL"));
 		} catch (Exception e) {
-			System.out.println("*****************Unable To Navigate To The Url**********");
+			System.out.println("*****************Unable To Launch The Browser **********");
 			e.printStackTrace();
 		}
 

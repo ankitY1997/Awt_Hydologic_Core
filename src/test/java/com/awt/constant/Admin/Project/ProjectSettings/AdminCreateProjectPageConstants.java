@@ -1,10 +1,10 @@
-package com.awt.constant.Admin.CreatePage;
+package com.awt.constant.Admin.Project.ProjectSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdminCreatePageConstants {
+public class AdminCreateProjectPageConstants {
 
 	/** Module Name COlumn **/
 	public static final String module_name = "Module Name";

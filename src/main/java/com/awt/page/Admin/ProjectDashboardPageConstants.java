@@ -1,6 +1,6 @@
 package com.awt.page.Admin;
 
-public class AdminConstants {
+public class ProjectDashboardPageConstants {
 	
 	//*********NewProjectDetailPanel Constants ***********/
 	public static final String clientLogo="Client Logo";

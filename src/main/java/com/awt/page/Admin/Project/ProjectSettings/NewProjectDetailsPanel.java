@@ -1,4 +1,4 @@
-package com.awt.page.Admin.CreateProject;
+package com.awt.page.Admin.Project.ProjectSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,10 +11,13 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.awt.page.Admin.AdminConstants;
+import com.awt.page.Admin.ProjectDashboardPageConstants;
+import com.awt.testbase.ExtentFactory;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
+
+import jdk.internal.org.jline.utils.Log;
 
 public class NewProjectDetailsPanel {
 
@@ -274,9 +277,9 @@ public class NewProjectDetailsPanel {
 		waitForLoadingNewProjectDetails();
 		enterProjectName(project_name);
 		enterClientName(client_name);
-		uploadLogo(AdminConstants.clientLogo, client_image_path);
+		uploadLogo(ProjectDashboardPageConstants.clientLogo, client_image_path);
 		enterConsultantName(consultant_name);
-		uploadLogo(AdminConstants.consultantLogo, consultant_image_path);
+		uploadLogo(ProjectDashboardPageConstants.consultantLogo, consultant_image_path);
 		enterLicenseKey(license_key);
 		if (module_name.length == 0) {
 			// do nothing
@@ -287,9 +290,9 @@ public class NewProjectDetailsPanel {
 		enterPassword(password);
 		enterMobileNum(mob_num);
 		enterEmailAdd(email_add);
-		datePicker(AdminConstants.startDate, start_date);
-		datePicker(AdminConstants.ExpectedDate, expected_date);
-		datePicker(AdminConstants.actualCompletionDate, actual_completion_date);
+		datePicker(ProjectDashboardPageConstants.startDate, start_date);
+		datePicker(ProjectDashboardPageConstants.ExpectedDate, expected_date);
+		datePicker(ProjectDashboardPageConstants.actualCompletionDate, actual_completion_date);
 
 	}
 
@@ -410,7 +413,7 @@ public class NewProjectDetailsPanel {
 				throw new Date_Format_Exception("Please Pass The Correct Date Format Correct Syntax Is : DD-Mmm-YYYY ");
 			}
 		} catch (Exception e) {
-			action.logFail("Failed To Select The Date", e);
+			ExtentFactory.extentObject().getExtent().info("Failed To Select The Date");
 		}
 
 	}

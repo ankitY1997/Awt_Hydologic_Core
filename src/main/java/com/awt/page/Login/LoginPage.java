@@ -7,12 +7,14 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.awt.page.Admin.CreateProject.AdminPage;
+import com.awt.page.Admin.ProjectDashboardPage;
+import com.awt.page.User.ParentLandingPage;
+import com.awt.testbase.DriverFactory;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
 
-public class LoginPage  {
+public class LoginPage {
 
 	/* xpath for enter project name text field */
 	@FindAll({ @FindBy(xpath = "//input[@role='combobox']") })
@@ -94,15 +96,47 @@ public class LoginPage  {
 	}
 
 	/**
-	 * this methods helps we can directly navigate to the login Page with outs
+	 * this methods helps we can directly navigate to the login Page -->
+	 * DashboardsPage
 	 *
 	 * @return
 	 */
-	public AdminPage loginAndnavigateToAdminPage(String projectName) {
-		//enterProjectName(projectName);
-		logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
-				PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
-		return new AdminPage(driver);
+	public ProjectDashboardPage loginAndProjectDashboardPage(String url, String projectName) {
+		// enterProjectName(projectName);
+		try {
+			driver.get(url);
+			AwtUtilities.waitForPageLoading(driver);
+			logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
+					PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
+			System.out.println("*********************Sucessfully Navigate To The Url*********************");
+			return new ProjectDashboardPage(driver);
+		} catch (Exception e) {
+			System.out.println("*********************Unable To Navigate  The Url*********************");
+			return null;
+		}
+	}
+
+	/**
+	 * this methods helps we can directly navigate to the login Page-->Parent
+	 * Landing Page
+	 *
+	 * @r
+	 */
+	public ParentLandingPage loginAndNavigateToTheParentLandingPage(String url, String projectName, String username,
+			String password) {
+		try {
+			driver.get(url);
+			AwtUtilities.waitForPageLoading(driver);
+			enterProjectName(projectName);
+			logInToTheApplication(username,password);
+			System.out.println("*********************Sucessfully Navigate To The Url*********************");
+			return new ParentLandingPage(driver);
+		}
+
+		catch (Exception e) {
+			System.out.println("*********************Unable To Navigate  The Url*********************");
+			return null;
+		}
 	}
 
 }

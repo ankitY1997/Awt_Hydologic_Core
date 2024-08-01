@@ -1,4 +1,4 @@
-package com.awt.page.Admin.CreateProject;
+package com.awt.page.Admin.Project.ProjectSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;

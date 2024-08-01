@@ -1,4 +1,4 @@
-package com.awt.constant.Admin.CreatePage;
+package com.awt.constant.Admin.Project.ProjectSettings;
 
 import java.util.Arrays;
 import java.util.List;

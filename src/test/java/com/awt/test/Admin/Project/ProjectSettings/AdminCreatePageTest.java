@@ -1,4 +1,4 @@
-package com.awt.test.Admin.CreateProject;
+package com.awt.test.Admin.Project.ProjectSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,14 +7,14 @@ import org.bouncycastle.util.Properties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.awt.constant.Admin.AdminPageContants;
-import com.awt.constant.Admin.CreatePage.AdminCreatePageConstants;
-import com.awt.constant.Admin.CreatePage.AdminPageConstants;
-import com.awt.constant.Admin.CreatePage.NewProjectDetailsPanelConstants;
+import com.awt.constant.Admin.ProjectDashboardPageContants;
+import com.awt.constant.Admin.ProjectDashboardPageConstants;
+import com.awt.constant.Admin.Project.ProjectSettings.AdminCreateProjectPageConstants;
+import com.awt.constant.Admin.Project.ProjectSettings.NewProjectDetailsPanelConstants;
 import com.awt.constant.Login.LoginPageConstants;
-import com.awt.page.Admin.CreateProject.AdminCreateProjectPage;
-import com.awt.page.Admin.CreateProject.AdminPage;
-import com.awt.page.Admin.CreateProject.NewProjectDetailsPanel;
+import com.awt.page.Admin.ProjectDashboardPage;
+import com.awt.page.Admin.Project.ProjectSettings.AdminCreateProjectPage;
+import com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel;
 import com.awt.page.Login.LoginPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
@@ -23,6 +23,7 @@ import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.Description;
 import com.awt.utills.reusablecomponents.ExcelOperations;
 import com.awt.utills.reusablecomponents.Owner;
+import com.awt.utills.reusablecomponents.PropertiesOperations;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
 import com.awt.utills.reusablecomponents.Story;
 import com.awt.utills.reusablecomponents.TestCaseId;
@@ -31,7 +32,8 @@ import com.awt.utills.reusablecomponents.WorkArea;
 
 public class AdminCreatePageTest extends BaseTest {
 
-	AdminPage admin_page = null;
+	public static final String url=PropertiesOperations.getPropertyValueByKey("ADMINURL");
+	ProjectDashboardPage admin_page = null;
 	AdminCreateProjectPage admin_create_page = null;
 	SoftAssertTest asert = null;
 	NewProjectDetailsPanel newProject_DetailsPanel = null;
@@ -50,13 +52,13 @@ public class AdminCreatePageTest extends BaseTest {
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
 		// Enter the Project Name and login and navigate to the home page
-		admin_page = lp.loginAndnavigateToAdminPage(LoginPageConstants.project_name);
+		admin_page = lp.loginAndProjectDashboardPage(url,LoginPageConstants.project_name);
 		// verify Home Page Title
-		asert.assertEquals(admin_page.getHomePageTitle(), AdminPageConstants.expected_home_page_title,
+		asert.assertEquals(admin_page.getHomePageTitle(), ProjectDashboardPageConstants.expected_home_page_title,
 				"verify Home Page Title Should Be Display Correct", "APMS-T0");
 		// click on project management drop-down menu and Select "Create Project" menu
 		admin_create_page = admin_page.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage(
-				AdminPageContants.project, AdminPageContants.project_setting);
+				ProjectDashboardPageContants.project, ProjectDashboardPageContants.project_setting);
 		// verify "Create Project" button is display
 		asert.assertEquals(admin_create_page.isCreateProjectButtonDispaly(), true,
 				"Verify that the Create Project button is visible", "APMS-T1");
@@ -88,7 +90,6 @@ public class AdminCreatePageTest extends BaseTest {
 			"APMS-T34", "APMS-T35", "APMS-T37", "APMS-T38", "APMS-T39", "APMS-T45", "APMS-46", "APMS-T47", "APMS-T48",
 			"APMS-T50" })
 	public void verify_NewProjectDetailsPanel() {
-
 		// Navigate To New Project Details Panel
 		navigateToNewProjectDetailsPanel();
 		// APMS-T2-> Verify That New Project Details Panel Should Be Visible -->
@@ -538,7 +539,8 @@ public class AdminCreatePageTest extends BaseTest {
 				"APMS-T50");
 		// verify Consultant Name
 		asert.assertEquals(
-				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.xl_consultant_name),
+				admin_create_page.getColumnDataFromProjectDetailsTable(
+						NewProjectDetailsPanelConstants.xl_consultant_name),
 				consultantName,
 				"Verify that the created consultant name are correctly displayed in the Consultant Name Column.",
 				"APMS-T50");
@@ -555,7 +557,7 @@ public class AdminCreatePageTest extends BaseTest {
 		asert.assertTrue(
 				AwtUtilities
 						.convertStringToCollection(admin_create_page
-								.getColumnDataFromProjectDetailsTable(AdminCreatePageConstants.module_name))
+								.getColumnDataFromProjectDetailsTable(AdminCreateProjectPageConstants.module_name))
 						.containsAll(new ArrayList<String>(Arrays.asList(NewProjectDetailsPanelConstants.module_name))),
 				"Verify that the added module name should be display ", "APMS-50");
 		// verify Mobile Number
@@ -587,7 +589,7 @@ public class AdminCreatePageTest extends BaseTest {
 		// -->To verify that the "AWT- Projects" Table contains "Project Name, Client
 		// Name, Client Logo, Consultant Name, Consultant Logo, Start Date, Actual End
 		// Date, Due Days, Module Name, Mobile Number, Email ID, Action "column
-		asert.assertEquals(admin_create_page.getAllAwtProjectColumsName(), AdminCreatePageConstants.columnName,
+		asert.assertEquals(admin_create_page.getAllAwtProjectColumsName(), AdminCreateProjectPageConstants.columnName,
 				"To verify that the AWT- Projects Table contains Project Name, Client Name, Client Logo, Consultant Name, Consultant Logo, Start Date, Actual End Date, Due Days, Module Name, Mobile Number, Email ID, Action column",
 				"APMS-51");
 		// APMS-> 52

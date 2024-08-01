@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-30T18:33:13 IST" name="Demo" finished-at="2024-07-30T18:36:45 IST" duration-ms="212587">
+  <suite started-at="2024-08-01T09:52:26 IST" name="Demo" finished-at="2024-08-01T09:53:31 IST" duration-ms="65499">
     <groups>
       <group name="Functional">
-        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@5158b42f]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
+        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@55b699ef]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@38c6f217]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest"/>
       </group> <!-- Functional -->
       <group name="Admin">
-        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@5158b42f]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.CreateProject.AdminCreatePageTest"/>
+        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@55b699ef]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@38c6f217]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-07-30T18:33:13 IST" name="Test" finished-at="2024-07-30T18:36:45 IST" duration-ms="212587">
-      <class name="com.awt.test.Admin.CreateProject.AdminCreatePageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@5158b42f]" started-at="2024-07-30T18:33:13 IST" name="launchBrowser" finished-at="2024-07-30T18:33:17 IST" duration-ms="3491" status="PASS">
+    <test started-at="2024-08-01T09:52:26 IST" name="Test" finished-at="2024-08-01T09:53:31 IST" duration-ms="65499">
+      <class name="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@55b699ef]" started-at="2024-08-01T09:52:26 IST" name="launchBrowser" finished-at="2024-08-01T09:52:31 IST" duration-ms="4488" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,21 +26,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@5158b42f]" started-at="2024-07-30T18:33:17 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-07-30T18:36:45 IST" duration-ms="208027" status="FAIL">
+        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@55b699ef]" started-at="2024-08-01T09:52:31 IST" name="verifyAdminAddRolePage" finished-at="2024-08-01T09:52:59 IST" duration-ms="28615" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-expected [2TYCDE0NEIQMwE0R] but found [2TYCDE0NEIQMwE0],
-expected [-235] but found [252 days]]]>
+did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-expected [2TYCDE0NEIQMwE0R] but found [2TYCDE0NEIQMwE0],
-expected [-235] but found [252 days]
+did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
 at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-at com.awt.test.Admin.CreateProject.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:111)
+at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:94)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -59,12 +59,59 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_NewProjectDetailsPanel -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.CreateProject.AdminCreatePageTest@5158b42f]" started-at="2024-07-30T18:36:45 IST" name="tearUp" finished-at="2024-07-30T18:36:45 IST" duration-ms="372" status="PASS">
+        </test-method> <!-- verifyAdminAddRolePage -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@55b699ef]" started-at="2024-08-01T09:53:00 IST" name="tearUp" finished-at="2024-08-01T09:53:00 IST" duration-ms="297" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
-      </class> <!-- com.awt.test.Admin.CreateProject.AdminCreatePageTest -->
+      </class> <!-- com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest -->
+      <class name="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@38c6f217]" started-at="2024-08-01T09:52:26 IST" name="launchBrowser" finished-at="2024-08-01T09:52:31 IST" duration-ms="4480" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@38c6f217]" started-at="2024-08-01T09:52:31 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-08-01T09:53:31 IST" duration-ms="60644" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "com.awt.page.Admin.ProjectDashboardPage.getHomePageTitle()" because "this.admin_page" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.awt.page.Admin.ProjectDashboardPage.getHomePageTitle()" because "this.admin_page" is null
+at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.navigateToNewProjectDetailsPanel(AdminCreatePageTest.java:57)
+at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:94)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_NewProjectDetailsPanel -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@38c6f217]" started-at="2024-08-01T09:53:31 IST" name="tearUp" finished-at="2024-08-01T09:53:31 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearUp -->
+      </class> <!-- com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest -->
     </test> <!-- Test -->
   </suite> <!-- Demo -->
 </testng-results>

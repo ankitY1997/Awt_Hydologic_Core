@@ -38,7 +38,11 @@ public class ExtentReportNG {
 		spark_report.config().setTheme(Theme.STANDARD);
 		spark_report.config().setReportName("Report");
 		// configuration of extent report
-		extent.setSystemInfo("Executed  on Enviorment :", PropertiesOperations.getPropertyValueByKey("URL"));
+		try {
+		extent.setSystemInfo("Executed  on Enviorment :", PropertiesOperations.getPropertyValueByKey("ADMINURL"));
+		}catch(Exception e) {
+			extent.setSystemInfo("Executed  on Enviorment :", PropertiesOperations.getPropertyValueByKey("USERURL"));
+		}
 		extent.setSystemInfo("Executed  on Browser :", PropertiesOperations.getPropertyValueByKey("Browser"));
 		extent.setSystemInfo("Executed  on OS :", System.getProperty("os.name"));
 		extent.setSystemInfo("Executed  By USER :", System.getProperty("user.name"));
