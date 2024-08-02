@@ -36,6 +36,7 @@ public class AdminAddRoleTest extends BaseTest {
 	AdminAddRolePage admin_add_role_page = null;
 	AddNewRolePanel admin_role_panel = null;
 	String[] add_new_role_panel_fields = { "Role Name:", "Role Description:" };
+	String vaild_role_name = null;
 
 	/**
 	 * 
@@ -55,14 +56,11 @@ public class AdminAddRoleTest extends BaseTest {
 	}
 
 	/**
-	 * Description: Perform the verification on new Project Details Panels
-	 * Fields<br>
-	 * TestMethodName: verify_NewProjectDetailsPanel <br>
-	 * ManualTestCases: "APMS-T1", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7",
-	 * "APMS-T8", "APMS-T9", "APMS-T10", "APMS-T13", "APMS-T14", "APMS-T19",
-	 * "APMS-T28",
-	 * "APMS-T29","APMS-30","APMS-31","APMS-T32","APMS-T33","APMS-T34","APMS-T35","APMS-T37","APMS-T38","APMS-T39","APMS-T45","APMS-46","APMS-T47",APMS-T48",
-	 * "APMS-T50"<br>
+	 * Description: Perform the verification of AdminAddRole Page Fields<br>
+	 * TestMethodName: verifyAdminAddRolePage <br>
+	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
+	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
+	 * "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -73,12 +71,10 @@ public class AdminAddRoleTest extends BaseTest {
 	@Story(story = "Create Project Details Panel")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T87", "APMS-T2", "APMS-T4", "APMS-T6", "APMS-T7", "APMS-T8", "APMS-T9", "APMS-T10",
-			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29", "APMS-30", "APMS-31", "APMS-T32", "APMS-T33",
-			"APMS-T34", "APMS-T35", "APMS-T37", "APMS-T38", "APMS-T39", "APMS-T45", "APMS-46", "APMS-T47", "APMS-T48",
-			"APMS-T50" })
+	@TestCaseId(id = { "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",
+			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101" })
 	public void verifyAdminAddRolePage() {
-		// Navigate To New 
+		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin project and Navigate To Admin Page
 		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
@@ -91,6 +87,8 @@ public class AdminAddRoleTest extends BaseTest {
 				"To verify that New button should present in the admin-addrole page.", "APMS-T87");
 		// Verify Add New Role Panel Text Fields And Functionality
 		verifyAddNewRolePanel();
+		// Verify Role Details Table
+		verifyRoleDetailsTable();
 		asert.assertAll();
 	}
 
@@ -143,12 +141,10 @@ public class AdminAddRoleTest extends BaseTest {
 		String actual_error_message = admin_role_panel.getAddNewRolePanelErrorMessage("Role Name");
 		// Error Message Should Be Visible
 		asert.assertEquals(actual_error_message, expected_error_message,
-				"To verify that Role name text field should accepts minimum 4", "APMS-T91");
+				"To verify that Role name text field should not accepts less than 4 character", "APMS-T91");
 		// Now Enter Valid Role More Then 4 Character
-		String vaild_role_name = AwtUtilities.genrateRandomAlphaBets(4);
+		vaild_role_name = AwtUtilities.genrateRandomAlphaBets(4);
 		admin_role_panel.enterRoleName(vaild_role_name);
-		// click on create button
-		admin_role_panel.clickOnCreateButton();
 		// Actual Error Message
 		actual_error_message = admin_role_panel.getAddNewRolePanelErrorMessage("Role Name");
 		// Error Message Should Not Be Visible
@@ -166,14 +162,125 @@ public class AdminAddRoleTest extends BaseTest {
 		asert.assertNotEquals(actual_Role_Name_value, invaild_role_name,
 				"To verify that Role name text field should not exceeds more than 16 characters", "APMS-T92");
 
-		// Enter  16 Character
+		// Enter 16 Character
 		vaild_role_name = AwtUtilities.genrateRandomAlphaBets(16);
 		admin_role_panel.enterRoleName(vaild_role_name);
 		// Verify it should be accept less then or equal 16 Alphabets
 		actual_Role_Name_value = admin_role_panel.getAddNewRolePanelFieldsValue("Role Name");
 		// Actual Role Name Should be Equal To Valid Role Name
 		asert.assertEquals(actual_Role_Name_value, vaild_role_name,
-				"To verify that Role name text field should not exceeds more than 16 characters", "APMS-T92");
+				"To verify that Role name text field should exceeds  16 characters", "APMS-T92");
 
+		// APMS-93-->To verify that "Role Description" text field should accepts
+		// characters.
+		// Enter the character
+		String role_Desc_Text = AwtUtilities.genrateRandomAlphaNeumric(4);
+		admin_role_panel.enterRoleDescription(role_Desc_Text);
+		// Get Actual Value Form "Role Description Text Field
+		String actual_role_desc_text_value = admin_role_panel.getAddNewRolePanelErrorMessage("Role Descriptions");
+		// verify it should accept character
+		asert.assertEquals(actual_role_desc_text_value, role_Desc_Text,
+				"To verify that Role Description text field should accepts characters.", "APMS-T93");
+
+		// APMS-T94-->To verify that "Create" button should be visible in the "Add New
+		// Role" panel.
+		// Check Create Button Should Be Visible Or Not
+		boolean isCreateButtonVisible = admin_role_panel.isCreateButtonIsVisible();
+		asert.assertTrue(isCreateButtonVisible,
+				"To verify that Create button should be visible in the Add New Role panel.", "APMS-T94");
+
+		// APMS-T95-->To verify that created "Role" should be visible in the "Role
+		// Details" table
+		// enter valid Role Name
+		admin_role_panel.enterRoleName(vaild_role_name);
+		// enter role description
+		admin_role_panel.enterRoleDescription(role_Desc_Text);
+		// click on create button
+		admin_role_panel.clickOnCreateButton();
+		// accept the pop-up
+		admin_role_panel.acceptPopup();
+		// click on cancel the panel
+		admin_role_panel.cancelAddNewRolePanel();
+		// check The Table and Find Out This Value
+		String actual_role_name = admin_add_role_page.getRoleDetailTableValue("Role Name", vaild_role_name);
+		// Actual Role Name and Created Role Name Should be equal
+		asert.assertEquals(vaild_role_name, actual_role_name,
+				"To verify that created Role should be visible in the Role Details table", "APMS-T95");
+
+		// APMS-T96-->To verify that User should not able to create a duplicate "role".
+		// Again CLick On "New Button"
+		admin_add_role_page.clickOnNewButtonAndNavigateToAddNewRolePanel();
+		// Enter Created Role Name
+		admin_role_panel.enterRoleName(vaild_role_name);
+		// Click On Create Button
+		admin_role_panel.clickOnCreateButton();
+		// Error message "Role name already exists " should be thrown
+		asert.assertEquals(admin_role_panel.getDuplicateErrorMessage(), "Role name already exists",
+				"To verify that User should not able to create a duplicate role.", "APMS-T96");
+
+		// APMS-T97--> To verify that "cancel" button should be present in the "Add New
+		// Role" panel.
+		// Check Cancel Button Is Visible
+		boolean isCancelButtonVisible = admin_role_panel.isCancelButtonIsVisible();
+		asert.assertTrue(isCancelButtonVisible,
+				" To verify that cancel button should be present in the Add New Role Panel.", "APMS-T97");
+		// click on cancel button
+		admin_role_panel.cancelAddNewRolePanel();
+
+	}
+
+	public void verifyRoleDetailsTable() {
+		// APMS-T98-->To verify that "Role Details" table contains the "SNo, Role Name,
+		// Role Description and Action" column
+		// Expected Role Details Table Columns
+		String[] expected_columns = { "SNO", "Role Name", "Role Description", "Action" };
+		// Take The Actual Role Details Table Columns
+		List<String> actual_columns = admin_add_role_page.listOfRoleDetailsTableColumns();
+		asert.assertEquals(actual_columns, new ArrayList(Arrays.asList(expected_columns)),
+				"To verify that Role Details table contains the SNo, Role Name, Role Description and Action column",
+				"APMS-T98");
+
+		// APMS-T99-->To verify that "edit" and "delete" button should be present under
+		// the Action" column .
+		// Check Edit Button Is Visible
+		boolean isEditButtonPresent = admin_add_role_page.isEditButtonIsVisible();
+		asert.assertTrue(isEditButtonPresent, "To Verify Edit Button should be present under the Action Column",
+				"APMS-T99");
+		// check delete button is visible
+		boolean isDeleteButtonPresent = admin_add_role_page.isEditButtonIsVisible();
+		asert.assertTrue(isDeleteButtonPresent, "To Verify Delete Button should be present under the Action Column",
+				"APMS-T99");
+
+		// APMS-T100-->To verify that functionality of the "edit" button .
+		// Click On Edit Button
+		admin_add_role_page.clickOnEditButton(vaild_role_name);
+		// Edit Role Description
+		String role_desc = AwtUtilities.genrateRandomAlphaBets(6);
+		admin_role_panel.enterRoleDescription(role_desc);
+		// Click On Update Button
+		admin_add_role_page.clickOnUpdateButton();
+		// click on cancel panel button
+		admin_role_panel.cancelAddNewRolePanel();
+		// Then Check Its Update
+		String actual_role_desc_value = admin_add_role_page.getRoleDetailTableValue("Role Description",
+				vaild_role_name);
+		asert.assertEquals(actual_role_desc_value, role_desc, "To verify that functionality of the edit button .",
+				"APMS-T100");
+
+		// APMS-T101-->To verify that functionality of the "delete" button .
+		// delete create project
+		admin_add_role_page.clickOnDeleteButton(vaild_role_name);
+		// Check Deleted Role Name Should Not Be Visible Role Details Table
+		asert.assertNotEquals(vaild_role_name,
+				admin_add_role_page.getRoleDetailTableValue("Role Name", vaild_role_name),
+				"To verify that functionality of the  delete button .", "APMS-T101");
+
+		// APMS-T102-->To verify that "Rows per page" drop down button should be visible
+		// under the "Role Details" table.
+		// -->Check "Rows Per Page Drop Down" button is visible
+		boolean isRowsPerPageButton = admin_add_role_page.isRowsPerPageDropDownIsVisible();
+		asert.assertTrue(isRowsPerPageButton,
+				"To verify that Rows per page drop down button should be visible under the  Role Details table.",
+				"APMS-T102");
 	}
 }

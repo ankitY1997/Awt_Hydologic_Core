@@ -14,13 +14,6 @@
           <include name="verifyAdminAddRolePage"/>
         </methods>
       </class> <!-- com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest -->
-      <class name="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest">
-        <methods>
-          <include name="verify_NewProjectDetailsPanel"/>
-          <include name="launchBrowser"/>
-          <include name="tearUp"/>
-        </methods>
-      </class> <!-- com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

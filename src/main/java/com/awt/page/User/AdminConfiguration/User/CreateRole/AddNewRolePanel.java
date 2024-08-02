@@ -33,6 +33,14 @@ public class AddNewRolePanel extends AdminAddRolePage {
 	@FindAll({ @FindBy(xpath = "//textarea[@id='role_description']") })
 	public WebElement role_descriptions_text_feid;
 
+	// **********Cancel Add New Role Panel*****/
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headericons']/button") })
+	public WebElement cancel_button;
+
+	// **********Duplicate Error Message*****/
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headericons']/button") })
+	public WebElement duplicate_error;
+
 	// **Constructor**/
 
 	public AddNewRolePanel(WebDriver driver) {
@@ -74,6 +82,17 @@ public class AddNewRolePanel extends AdminAddRolePage {
 		action.waitForVisibility(create_button, action.implicit_wait);
 		return action.isDisplay(create_button);
 	}
+
+	/**
+	 * We Can Check Cancel Button Visibility
+	 * 
+	 * @return {if its is visible it will return true otherwise false
+	 */
+	public boolean isCancelButtonIsVisible() {
+		action.waitForVisibility(cancel_button, action.implicit_wait);
+		return action.isDisplay(cancel_button);
+	}
+	
 
 	/**
 	 * By This Text Method We Can Get Any Text Fields Value
@@ -142,4 +161,28 @@ public class AddNewRolePanel extends AdminAddRolePage {
 		action.clickOn(create_button);
 	}
 
+	/**
+	 * Accept The Pop-up
+	 */
+	public void acceptPopup() {
+		action.acceptJavaScriptPopup();
+	}
+
+	/**
+	 * Cancel The Add New Role Panel
+	 */
+	public void cancelAddNewRolePanel() {
+		action.waitForVisibility(cancel_button, action.implicit_wait);
+		action.clickOn(cancel_button);
+
+	}
+
+	/**
+	 * Get Duplicate Error Message
+	 * 
+	 * @return
+	 */
+	public String getDuplicateErrorMessage() {
+		return action.getText(duplicate_error);
+	}
 }

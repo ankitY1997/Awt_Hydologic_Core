@@ -3,6 +3,7 @@ package com.awt.utills.reusablecomponents;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
@@ -314,6 +315,24 @@ public class ActionEngine {
 				}
 			}
 		}
+	}
+
+	/**
+	 * To Accept Java Script Pop-up
+	 */
+	public void acceptJavaScriptPopup() {
+		AwtUtilities.waitFor(2000);
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+
+	/**
+	 * Dismiss Java Script Pop-up
+	 */
+	public void dismissJavaScriptPopup() {
+		AwtUtilities.waitFor(2000);
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
 	}
 
 	/**
