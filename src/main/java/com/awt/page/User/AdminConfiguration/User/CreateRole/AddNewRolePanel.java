@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.awt.testbase.MyLogger;
+import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class AddNewRolePanel extends AdminAddRolePage {
 
@@ -18,7 +19,7 @@ public class AddNewRolePanel extends AdminAddRolePage {
 	public WebElement panel_heading;
 
 	// ** Add New Role Panel Text Fields Name****/
-	@FindAll({ @FindBy(xpath = "//div[@id='pr_id_2_content']//h6") })
+	@FindAll({ @FindBy(xpath = "//h6") })
 	public List<WebElement> newRolePanelTextFields;
 
 	// *** Create button****/
@@ -38,7 +39,7 @@ public class AddNewRolePanel extends AdminAddRolePage {
 	public WebElement cancel_button;
 
 	// **********Duplicate Error Message*****/
-	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headericons']/button") })
+	@FindAll({ @FindBy(xpath = "//input[@id='role_name']/..//following-sibling::p") })
 	public WebElement duplicate_error;
 
 	// **Constructor**/
@@ -68,7 +69,7 @@ public class AddNewRolePanel extends AdminAddRolePage {
 		action.waitForVisibility(newRolePanelTextFields.get(0), action.implicit_wait);
 
 		for (WebElement element : newRolePanelTextFields) {
-			text_field_names.add(action.getText(element));
+			text_field_names.add(action.getText(element).trim());
 		}
 		return text_field_names;
 	}
@@ -183,6 +184,7 @@ public class AddNewRolePanel extends AdminAddRolePage {
 	 * @return
 	 */
 	public String getDuplicateErrorMessage() {
+		AwtUtilities.waitFor(1000);
 		return action.getText(duplicate_error);
 	}
 }

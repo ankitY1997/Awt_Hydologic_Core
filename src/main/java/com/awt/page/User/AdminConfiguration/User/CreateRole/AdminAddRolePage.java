@@ -24,9 +24,29 @@ public class AdminAddRolePage extends AdminPage {
 	@FindAll({ @FindBy(xpath = "//tr[@data-pc-section='headerrow']/th/div/span") })
 	public List<WebElement> column_names;
 
-	// ** Next Pagination Button****/
-	@FindAll({ @FindBy(xpath = "//button[@title='Go to next page'and @tabindex='0']") })
+	// ********Total Number of ROw In The Table**********/
+	@FindAll({ @FindBy(xpath = "//tbody[@data-pc-section='tbody']/tr") })
+	public List<WebElement> number_of_row;
+
+	// ** First Pagination Button****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Go to first page']") })
+	public WebElement first_page;
+
+	// ** Previous Pagination Button****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Go to previous page']") })
+	public WebElement previous_page;
+
+	// ** Last Pagination Button****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Go to last page']") })
+	public WebElement last_page;
+
+	// ** Last Pagination Button****/
+	@FindAll({ @FindBy(xpath = "//button[@title='Go to next page']") })
 	public WebElement next_page;
+
+	// ** Enable Next Pagination Button ****/
+	@FindAll({ @FindBy(xpath = "//button[@title='Go to next page'and @tabindex='0']") })
+	public WebElement enable_next_page;
 
 	// ** Delete Button****/
 	@FindAll({ @FindBy(xpath = "//button[@title='Delete'][1]") })
@@ -49,8 +69,7 @@ public class AdminAddRolePage extends AdminPage {
 	public WebElement No_button;
 
 	// ******Rows per page Drop-Down button*******/
-	@FindAll({
-			@FindBy(xpath = "//p[contains(text(),'Rows per page')]/..//*[local-name()='svg' and @data-testid='ArrowDropDownIcon']") })
+	@FindAll({ @FindBy(xpath = "//div[@role='combobox']") })
 	public WebElement rows_per_page_drop_down_button;
 
 	// **Constructor**/
@@ -94,6 +113,46 @@ public class AdminAddRolePage extends AdminPage {
 	public boolean isDeleteButtonIsVisible() {
 		action.waitForVisibility(delete_button, action.implicit_wait);
 		return action.isDisplay(delete_button);
+	}
+
+	/**
+	 * This Method Is Used To first pagination button Is Visible Or Not
+	 * 
+	 * @return
+	 */
+	public boolean isFirstPaginationButtonIsVisible() {
+		action.waitForVisibility(first_page, action.implicit_wait);
+		return action.isDisplay(first_page);
+	}
+
+	/**
+	 * This Method Is Used To next pagination button Is Visible Or Not
+	 * 
+	 * @return
+	 */
+	public boolean isNextPaginationButtonIsVisible() {
+		action.waitForVisibility(next_page, action.implicit_wait);
+		return action.isDisplay(next_page);
+	}
+
+	/**
+	 * This Method Is Used To previous pagination button Is Visible Or Not
+	 * 
+	 * @return
+	 */
+	public boolean isPreviousPaginationButtonIsVisible() {
+		action.waitForVisibility(previous_page, action.implicit_wait);
+		return action.isDisplay(previous_page);
+	}
+
+	/**
+	 * This Method Is Used To last pagination button Is Visible Or Not
+	 * 
+	 * @return
+	 */
+	public boolean isLastPaginationButtonIsVisible() {
+		action.waitForVisibility(last_page, action.implicit_wait);
+		return action.isDisplay(last_page);
 	}
 
 	/**
@@ -177,6 +236,7 @@ public class AdminAddRolePage extends AdminPage {
 	public void clickOnYesButton() {
 		action.waitForVisibility(yes_button, action.implicit_wait);
 		action.clickOn(yes_button);
+		AwtUtilities.waitFor(2000);
 	}
 
 	/**
@@ -232,7 +292,7 @@ public class AdminAddRolePage extends AdminPage {
 			if (flag == false) {
 				// click on next page
 				try {
-					next_page.click();
+					enable_next_page.click();
 					AwtUtilities.waitFor(1000);
 				} catch (Exception e) {
 					break;
@@ -262,6 +322,38 @@ public class AdminAddRolePage extends AdminPage {
 	public void clickOnUpdateButton() {
 		action.waitForVisibility(update_button, action.implicit_wait);
 		action.clickOn(update_button);
+	}
+
+	/**
+	 * By This Method We Can Select Rows Per Page Drop-Down Number
+	 * 
+	 */
+	public void selectRowPerPage(String numOfPage) {
+		// click on Rows Per Page Drop Down button
+		action.clickOn(rows_per_page_drop_down_button);
+		if (Integer.parseInt(numOfPage) <= 40 && (Integer.parseInt(numOfPage) % 5) == 0) {
+			action.waitForVisibility(
+					driver.findElement(By.xpath("//ul[@role='listbox']/li[@data-value='" + numOfPage + "']")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(By.xpath("//ul[@role='listbox']/li[@data-value='" + numOfPage + "']")));
+		}
+	}
+
+	/**
+	 * 
+	 * @param numOfPage
+	 */
+	public boolean isUpdateTheTable(String numOfPage) {
+		AwtUtilities.waitFor(1000);
+		// Take The Number Of Row In The Table
+		int before_TotalRowInTable = number_of_row.size();
+		// select The Number Of Page
+		selectRowPerPage(numOfPage);
+		// After Row In The Table
+		AwtUtilities.waitFor(1000);
+		int after_TotalRowInTable = number_of_row.size();
+		boolean flag = (after_TotalRowInTable > before_TotalRowInTable) ? true : false;
+		return flag;
 	}
 
 }

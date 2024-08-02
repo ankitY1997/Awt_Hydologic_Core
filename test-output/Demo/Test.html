@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Aug 01 18:20:05 IST 2024</td>
+<td>Started on:</td><td>Fri Aug 02 14:34:11 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>96 seconds (96790 ms)</td>
+<tr><td>Total time:</td><td>44 seconds (44913 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,26 +76,14 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage()'><b>verifyAdminAddRolePage</b><br>Test class: com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	did not expect [TaeGxA] but found [TaeGxA],
-	did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [rFmF] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [Role name already exists] but found []
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:97)
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
+	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1413486500", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1413486500'><pre>java.lang.AssertionError: The following asserts failed:
-	did not expect [TaeGxA] but found [TaeGxA],
-	did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [rFmF] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [Role name already exists] but found []
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:97)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1129189807", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1129189807'><pre>java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
+	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -112,8 +100,8 @@ function toggleAllBoxes() {
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
 </pre></div></td>
-<td>92</td>
-<td>com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2</td></tr>
+<td>42</td>
+<td>com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f</td></tr>
 </table><p>
 </body>
 </html>

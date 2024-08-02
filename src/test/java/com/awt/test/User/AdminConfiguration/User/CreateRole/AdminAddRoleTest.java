@@ -35,7 +35,7 @@ public class AdminAddRoleTest extends BaseTest {
 	AdminPage admin_page = null;
 	AdminAddRolePage admin_add_role_page = null;
 	AddNewRolePanel admin_role_panel = null;
-	String[] add_new_role_panel_fields = { "Role Name:", "Role Description:" };
+	String[] add_new_role_panel_fields = { "Role Name*", "Role Description" };
 	String vaild_role_name = null;
 
 	/**
@@ -60,7 +60,8 @@ public class AdminAddRoleTest extends BaseTest {
 	 * TestMethodName: verifyAdminAddRolePage <br>
 	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
 	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
-	 * "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101"<br>
+	 * "APMS-T98", "APMS-T99", "APMS-T100",
+	 * "APMS-T101","APMS-T102","APMS-T103","APMS-T104"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -72,7 +73,8 @@ public class AdminAddRoleTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",
-			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101" })
+			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101", "APMS-T102",
+			"APMS-T103", "APMS-T104" })
 	public void verifyAdminAddRolePage() {
 		// Navigate To New
 		navigateToParentLandingPage();
@@ -89,6 +91,7 @@ public class AdminAddRoleTest extends BaseTest {
 		verifyAddNewRolePanel();
 		// Verify Role Details Table
 		verifyRoleDetailsTable();
+
 		asert.assertAll();
 	}
 
@@ -120,7 +123,7 @@ public class AdminAddRoleTest extends BaseTest {
 		asert.assertEquals(actual_Role_Name_value, entered_alphabetes,
 				"To verify that Role name text field should accepts only the alphabets", "APMS-T90");
 		// Enter combination of numeric and alphabetes
-		String alpha_numeric = AwtUtilities.genrateRandomAlphaNeumric(6);
+		String alpha_numeric = AwtUtilities.genrateRandomAlphaNeumric(6) + 21;
 		admin_role_panel.enterRoleName(alpha_numeric);
 		// take actual role name text field value
 		actual_Role_Name_value = admin_role_panel.getAddNewRolePanelFieldsValue("Role Name");
@@ -177,7 +180,7 @@ public class AdminAddRoleTest extends BaseTest {
 		String role_Desc_Text = AwtUtilities.genrateRandomAlphaNeumric(4);
 		admin_role_panel.enterRoleDescription(role_Desc_Text);
 		// Get Actual Value Form "Role Description Text Field
-		String actual_role_desc_text_value = admin_role_panel.getAddNewRolePanelErrorMessage("Role Descriptions");
+		String actual_role_desc_text_value = admin_role_panel.getAddNewRolePanelFieldsValue("Role Descriptions");
 		// verify it should accept character
 		asert.assertEquals(actual_role_desc_text_value, role_Desc_Text,
 				"To verify that Role Description text field should accepts characters.", "APMS-T93");
@@ -197,8 +200,6 @@ public class AdminAddRoleTest extends BaseTest {
 		admin_role_panel.enterRoleDescription(role_Desc_Text);
 		// click on create button
 		admin_role_panel.clickOnCreateButton();
-		// accept the pop-up
-		admin_role_panel.acceptPopup();
 		// click on cancel the panel
 		admin_role_panel.cancelAddNewRolePanel();
 		// check The Table and Find Out This Value
@@ -282,5 +283,55 @@ public class AdminAddRoleTest extends BaseTest {
 		asert.assertTrue(isRowsPerPageButton,
 				"To verify that Rows per page drop down button should be visible under the  Role Details table.",
 				"APMS-T102");
+
+		// APMS-T103-->To verify that changing the numbers of "rows per page" drop down
+		// , updates the table accordingly
+		// Enter Number Of Rows Per Page and Check is Table Is Update
+		boolean isTableUpdated = admin_add_role_page.isUpdateTheTable("10");
+		asert.assertTrue(isTableUpdated,
+				"To verify that changing the numbers of rows per page drop down , updates the table accordingly",
+				"APMS-T103");
+
+		// APMS-T104-->To verify that "first, next, previous and last" pagination button
+		// should be visible under the "Role Details" table.
+		// Check Fist pagination button is visible
+		boolean isFirsPaginationButtonVisible = admin_add_role_page.isFirstPaginationButtonIsVisible();
+		asert.assertTrue(isFirsPaginationButtonVisible, "To veify First Pagination Button Should Be Visible",
+				"APMS-T104");
+		// check next pagination button is visible
+		boolean isNextPaginationButtonVisible = admin_add_role_page.isNextPaginationButtonIsVisible();
+		asert.assertTrue(isNextPaginationButtonVisible, "To veify Next Pagination Button Should Be Visible",
+				"APMS-T104");
+		// check previous pagination button is visible
+		boolean isPreviousPaginationButtonVisible = admin_add_role_page.isPreviousPaginationButtonIsVisible();
+		asert.assertTrue(isPreviousPaginationButtonVisible, "To veify Previous Pagination Button Should Be Visible",
+				"APMS-T104");
+		// check last pagination button is visible
+		boolean isLastPaginationButtonVisible = admin_add_role_page.isLastPaginationButtonIsVisible();
+		asert.assertTrue(isLastPaginationButtonVisible, "To veify Last Pagination Button Should Be Visible",
+				"APMS-T104");
+
+	}
+
+	public void systemTestCase() {
+
+		// APMS-T126--> To Ensure that a user can successfully create a role and view the
+		// details of the created role.
+        //--> click on new button
+		admin_add_role_page.clickOnNewButtonAndNavigateToAddNewRolePanel();
+		//--> Enter Role Name
+		String roleName=AwtUtilities.genrateRandomAlphaBets(5);
+		admin_role_panel.enterRoleName(vaild_role_name);
+		// -->click on create button
+		admin_role_panel.clickOnCreateButton();
+		//--> click on cross button to cancel the panel
+		admin_role_panel.cancelAddNewRolePanel();
+		//-->Validate Created Role Name Should be visible
+		String value=admin_add_role_page.getRoleDetailTableValue("Role Name",roleName);
+		asert.assertEquals(value, roleName,"Verify Created Role Name Should Be visible In The Role Details Table","APMS-T126");
+		// Then Click On User Drop -Down button And Navigate TO Admin User Page
+		admin_add_role_page.navigateToAdminAddUserPage();
+		
+		
 	}
 }

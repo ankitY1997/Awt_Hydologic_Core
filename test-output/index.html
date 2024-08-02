@@ -130,17 +130,12 @@
                   <a name="verifyAdminAddRolePage">
                   </a> <!-- verifyAdminAddRolePage -->
                   <span class="method-name">verifyAdminAddRolePage</span>
-                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
-	did not expect [TaeGxA] but found [TaeGxA],
-	did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [rFmF] but found [Role Name must be 4-16 alphabetic characters.],
-	expected [Role name already exists] but found []
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:97)
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
+	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 14 stack frames
+... Removed 12 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -226,12 +221,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyAdminAddRolePage')
 data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest')
-data.setCell(0, 3, 92649);
+data.setCell(0, 3, 42729);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 42 seconds</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -266,11 +261,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">verifyAdminAddRolePage</span>
-                <span class="method-start">3346 ms</span>
+                <span class="method-start">1386 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">96243 ms</span>
+                <span class="method-start">44389 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

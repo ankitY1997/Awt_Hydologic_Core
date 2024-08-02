@@ -2,18 +2,18 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-01T18:20:05 IST" name="Demo" finished-at="2024-08-01T18:21:42 IST" duration-ms="96790">
+  <suite started-at="2024-08-02T14:34:11 IST" name="Demo" finished-at="2024-08-02T14:34:56 IST" duration-ms="44913">
     <groups>
       <group name="Functional">
-        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
       </group> <!-- Functional -->
       <group name="Admin">
-        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-08-01T18:20:05 IST" name="Test" finished-at="2024-08-01T18:21:42 IST" duration-ms="96790">
+    <test started-at="2024-08-02T14:34:11 IST" name="Test" finished-at="2024-08-02T14:34:56 IST" duration-ms="44913">
       <class name="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2]" started-at="2024-08-01T18:20:06 IST" name="launchBrowser" finished-at="2024-08-01T18:20:09 IST" duration-ms="3345" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:12 IST" name="launchBrowser" finished-at="2024-08-02T14:34:13 IST" duration-ms="1386" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,25 +24,14 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2]" started-at="2024-08-01T18:20:09 IST" name="verifyAdminAddRolePage" finished-at="2024-08-01T18:21:42 IST" duration-ms="92649" status="FAIL">
-          <exception class="java.lang.AssertionError">
+        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:13 IST" name="verifyAdminAddRolePage" finished-at="2024-08-02T14:34:56 IST" duration-ms="42729" status="FAIL">
+          <exception class="java.lang.NullPointerException">
             <message>
-              <![CDATA[The following asserts failed:
-did not expect [TaeGxA] but found [TaeGxA],
-did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.],
-expected [rFmF] but found [Role Name must be 4-16 alphabetic characters.],
-expected [Role name already exists] but found []]]>
+              <![CDATA[Cannot invoke "com.awt.page.User.ParentLandingPage.goToProjectPage(String)" because "this.parent_landing_page" is null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-did not expect [TaeGxA] but found [TaeGxA],
-did not expect [Role Name must be 4-16 alphabetic characters.] but found [Role Name must be 4-16 alphabetic characters.],
-expected [rFmF] but found [Role Name must be 4-16 alphabetic characters.],
-expected [Role name already exists] but found []
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
-at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:97)
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.awt.page.User.ParentLandingPage.goToProjectPage(String)" because "this.parent_landing_page" is null
+at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -60,11 +49,11 @@ at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecut
 at java.base/java.lang.Thread.run(Thread.java:842)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAdminAddRolePage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@16293aa2]" started-at="2024-08-01T18:21:42 IST" name="tearUp" finished-at="2024-08-01T18:21:42 IST" duration-ms="243" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:56 IST" name="tearUp" finished-at="2024-08-02T14:34:56 IST" duration-ms="208" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
