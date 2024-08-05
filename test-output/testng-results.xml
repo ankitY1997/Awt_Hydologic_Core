@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-02T14:34:11 IST" name="Demo" finished-at="2024-08-02T14:34:56 IST" duration-ms="44913">
+  <suite started-at="2024-08-02T14:39:16 IST" name="Demo" finished-at="2024-08-02T14:40:02 IST" duration-ms="45547">
     <groups>
       <group name="Functional">
         <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
@@ -11,9 +11,9 @@
         <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-08-02T14:34:11 IST" name="Test" finished-at="2024-08-02T14:34:56 IST" duration-ms="44913">
+    <test started-at="2024-08-02T14:39:16 IST" name="Test" finished-at="2024-08-02T14:40:02 IST" duration-ms="45547">
       <class name="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:12 IST" name="launchBrowser" finished-at="2024-08-02T14:34:13 IST" duration-ms="1386" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:39:17 IST" name="launchBrowser" finished-at="2024-08-02T14:39:18 IST" duration-ms="1663" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,7 +24,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:13 IST" name="verifyAdminAddRolePage" finished-at="2024-08-02T14:34:56 IST" duration-ms="42729" status="FAIL">
+        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:39:18 IST" name="verifyAdminAddRolePage" finished-at="2024-08-02T14:40:01 IST" duration-ms="43014" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <message>
               <![CDATA[Cannot invoke "com.awt.page.User.ParentLandingPage.goToProjectPage(String)" because "this.parent_landing_page" is null]]>
@@ -53,7 +53,7 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAdminAddRolePage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:34:56 IST" name="tearUp" finished-at="2024-08-02T14:34:56 IST" duration-ms="208" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:40:02 IST" name="tearUp" finished-at="2024-08-02T14:40:02 IST" duration-ms="219" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->

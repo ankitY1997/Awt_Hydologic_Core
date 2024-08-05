@@ -56,7 +56,7 @@ public class AdminAddRoleTest extends BaseTest {
 	}
 
 	/**
-	 * Description: Perform the verification of AdminAddRole Page Fields<br>
+	 * Description: Perform the verification of AdminAddRole Page <br>
 	 * TestMethodName: verifyAdminAddRolePage <br>
 	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
 	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
@@ -69,7 +69,7 @@ public class AdminAddRoleTest extends BaseTest {
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
 	@Description(description = "Perform the verfication on  New Project Details Panel")
-	@Story(story = "Create Project Details Panel")
+	@Story(story = "Create Role ")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",
