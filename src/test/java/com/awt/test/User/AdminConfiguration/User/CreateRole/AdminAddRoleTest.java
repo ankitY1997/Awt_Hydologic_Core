@@ -44,8 +44,6 @@ public class AdminAddRoleTest extends BaseTest {
 	 * 
 	 */
 	public void navigateToParentLandingPage() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// SoftAssert instance
 		asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
@@ -76,6 +74,8 @@ public class AdminAddRoleTest extends BaseTest {
 			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101", "APMS-T102",
 			"APMS-T103", "APMS-T104" })
 	public void verifyAdminAddRolePage() {
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin project and Navigate To Admin Page
@@ -315,23 +315,24 @@ public class AdminAddRoleTest extends BaseTest {
 
 	public void systemTestCase() {
 
-		// APMS-T126--> To Ensure that a user can successfully create a role and view the
+		// APMS-T126--> To Ensure that a user can successfully create a role and view
+		// the
 		// details of the created role.
-        //--> click on new button
+		// --> click on new button
 		admin_add_role_page.clickOnNewButtonAndNavigateToAddNewRolePanel();
-		//--> Enter Role Name
-		String roleName=AwtUtilities.genrateRandomAlphaBets(5);
+		// --> Enter Role Name
+		String roleName = AwtUtilities.genrateRandomAlphaBets(5);
 		admin_role_panel.enterRoleName(vaild_role_name);
 		// -->click on create button
 		admin_role_panel.clickOnCreateButton();
-		//--> click on cross button to cancel the panel
+		// --> click on cross button to cancel the panel
 		admin_role_panel.cancelAddNewRolePanel();
-		//-->Validate Created Role Name Should be visible
-		String value=admin_add_role_page.getRoleDetailTableValue("Role Name",roleName);
-		asert.assertEquals(value, roleName,"Verify Created Role Name Should Be visible In The Role Details Table","APMS-T126");
+		// -->Validate Created Role Name Should be visible
+		String value = admin_add_role_page.getRoleDetailTableValue("Role Name", roleName);
+		asert.assertEquals(value, roleName, "Verify Created Role Name Should Be visible In The Role Details Table",
+				"APMS-T126");
 		// Then Click On User Drop -Down button And Navigate TO Admin User Page
 		admin_add_role_page.navigateToAdminAddUserPage();
-		
-		
+
 	}
 }

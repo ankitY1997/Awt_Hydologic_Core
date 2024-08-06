@@ -32,7 +32,7 @@ import com.awt.utills.reusablecomponents.WorkArea;
 
 public class AdminCreatePageTest extends BaseTest {
 
-	public static final String url=PropertiesOperations.getPropertyValueByKey("ADMINURL");
+	public static final String url = PropertiesOperations.getPropertyValueByKey("ADMINURL");
 	ProjectDashboardPage admin_page = null;
 	AdminCreateProjectPage admin_create_page = null;
 	SoftAssertTest asert = null;
@@ -45,14 +45,12 @@ public class AdminCreatePageTest extends BaseTest {
 	 * 
 	 */
 	public void navigateToNewProjectDetailsPanel() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// SoftAssert instance
 		asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
 		// Enter the Project Name and login and navigate to the home page
-		admin_page = lp.loginAndProjectDashboardPage(url,LoginPageConstants.project_name);
+		admin_page = lp.loginAndProjectDashboardPage(url, LoginPageConstants.project_name);
 		// verify Home Page Title
 		asert.assertEquals(admin_page.getHomePageTitle(), ProjectDashboardPageConstants.expected_home_page_title,
 				"verify Home Page Title Should Be Display Correct", "APMS-T0");
@@ -90,6 +88,8 @@ public class AdminCreatePageTest extends BaseTest {
 			"APMS-T34", "APMS-T35", "APMS-T37", "APMS-T38", "APMS-T39", "APMS-T45", "APMS-46", "APMS-T47", "APMS-T48",
 			"APMS-T50" })
 	public void verify_NewProjectDetailsPanel() {
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// Navigate To New Project Details Panel
 		navigateToNewProjectDetailsPanel();
 		// APMS-T2-> Verify That New Project Details Panel Should Be Visible -->

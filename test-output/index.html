@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Demo">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Demo" title="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest" class="method navigator-link" hash-for-method="verifyAdminAddRolePage">verifyAdminAddRolePage</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest" class="method navigator-link" hash-for-method="verify_NewProjectDetailsPanel">verify_NewProjectDetailsPanel</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Demo -->
@@ -122,16 +122,17 @@
           <div class="suite-Demo-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest</span>
+              <span class="class-name">com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyAdminAddRolePage">
-                  </a> <!-- verifyAdminAddRolePage -->
-                  <span class="method-name">verifyAdminAddRolePage</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
-	at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
+                  <a name="verify_NewProjectDetailsPanel">
+                  </a> <!-- verify_NewProjectDetailsPanel -->
+                  <span class="method-name">verify_NewProjectDetailsPanel</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.Admin.ProjectDashboardPage.getHomePageTitle()&quot; because &quot;this.admin_page&quot; is null
+	at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.navigateToNewProjectDetailsPanel(AdminCreatePageTest.java:55)
+	at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:94)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
@@ -157,11 +158,11 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest&quot;&gt;
+      &lt;class name=&quot;com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verifyAdminAddRolePage&quot;/&gt;
+          &lt;include name=&quot;verify_NewProjectDetailsPanel&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest --&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Demo --&gt;
@@ -189,7 +190,7 @@
               <span class="test-group-name">Admin</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAdminAddRolePage</span>
+                <span class="method-in-group-name">verify_NewProjectDetailsPanel</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -197,7 +198,7 @@
               <span class="test-group-name">Functional</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAdminAddRolePage</span>
+                <span class="method-in-group-name">verify_NewProjectDetailsPanel</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -219,14 +220,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyAdminAddRolePage')
-data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest')
-data.setCell(0, 3, 43014);
+data.setCell(0, 1, 'verify_NewProjectDetailsPanel')
+data.setCell(0, 2, 'com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest')
+data.setCell(0, 3, 42867);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 43 seconds</span>
+              <span class="suite-total-time">Total running time: 42 seconds</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -252,7 +253,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchBrowser(0)</span>
                 <span class="method-start">0 ms</span>
@@ -260,12 +261,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifyAdminAddRolePage</span>
-                <span class="method-start">1663 ms</span>
+                <span class="method-name">verify_NewProjectDetailsPanel</span>
+                <span class="method-start">1638 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">45012 ms</span>
+                <span class="method-start">44772 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

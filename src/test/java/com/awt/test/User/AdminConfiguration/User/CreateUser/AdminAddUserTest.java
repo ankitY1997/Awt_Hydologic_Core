@@ -41,8 +41,6 @@ public class AdminAddUserTest {
 	 * 
 	 */
 	public void navigateToParentLandingPage() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// SoftAssert instance
 		asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// log in Page instance
@@ -74,6 +72,8 @@ public class AdminAddUserTest {
 			"APMS-T103", "APMS-T104" })
 	public void verifyAdminAddRolePage() {
 
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin project and Navigate To Admin Page

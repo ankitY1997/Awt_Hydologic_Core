@@ -382,18 +382,27 @@ public class AwtUtilities {
 		String currentDate = current_Date.format(formatter);
 
 		String timeDiff = "";
-
 		LocalDate curr_date = parseToLocalDate(currentDate, "dd-MM-yyyy");
 		LocalDate exp_date = parseToLocalDate(expDate, "dd-MM-yyyy");
-		LocalDate actual_date = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
 
-		if (curr_date.isBefore(exp_date)) {
-			int days = (int) calculateDaysBetween(curr_date, exp_date);
-			timeDiff = "+" + days;
+		if (actualDate[0] != null) {
+			LocalDate actual_date = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
+			if (exp_date.isBefore(actual_date)) {
+				int days = (int) calculateDaysBetween(actual_date, exp_date);
+				timeDiff = "+" + days;
+			} else if (exp_date.isAfter(actual_date)) {
+				int days = (int) calculateDaysBetween(actual_date, exp_date);
+				timeDiff = "-" + days;
+			}
+		} else if (actualDate[0] == null) {
+			if (curr_date.isBefore(exp_date)) {
+				int days = (int) calculateDaysBetween(curr_date, exp_date);
+				timeDiff = "+" + days;
 
-		} else if (curr_date.isAfter(exp_date)) {
-			int days = (int) calculateDaysBetween(exp_date, actual_date);
-			timeDiff = "-" + days;
+			} else if (curr_date.isAfter(exp_date)) {
+				int days = (int) calculateDaysBetween(exp_date, exp_date);
+				timeDiff = "-" + days;
+			}
 		}
 		return timeDiff;
 	}
@@ -451,9 +460,9 @@ public class AwtUtilities {
 		}
 	}
 
-	
 	/**
 	 * Converting String to COlletion
+	 * 
 	 * @param obj
 	 * @return
 	 */

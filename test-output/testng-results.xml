@@ -2,18 +2,18 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-02T14:39:16 IST" name="Demo" finished-at="2024-08-02T14:40:02 IST" duration-ms="45547">
+  <suite started-at="2024-08-06T12:27:20 IST" name="Demo" finished-at="2024-08-06T12:28:05 IST" duration-ms="45336">
     <groups>
       <group name="Functional">
-        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@595b007d]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest"/>
       </group> <!-- Functional -->
       <group name="Admin">
-        <method signature="AdminAddRoleTest.verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" name="verifyAdminAddRolePage" class="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest"/>
+        <method signature="AdminCreatePageTest.verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@595b007d]" name="verify_NewProjectDetailsPanel" class="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-08-02T14:39:16 IST" name="Test" finished-at="2024-08-02T14:40:02 IST" duration-ms="45547">
-      <class name="com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:39:17 IST" name="launchBrowser" finished-at="2024-08-02T14:39:18 IST" duration-ms="1663" status="PASS">
+    <test started-at="2024-08-06T12:27:20 IST" name="Test" finished-at="2024-08-06T12:28:05 IST" duration-ms="45336">
+      <class name="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@595b007d]" started-at="2024-08-06T12:27:20 IST" name="launchBrowser" finished-at="2024-08-06T12:27:22 IST" duration-ms="1638" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,14 +24,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyAdminAddRolePage()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:39:18 IST" name="verifyAdminAddRolePage" finished-at="2024-08-02T14:40:01 IST" duration-ms="43014" status="FAIL">
+        <test-method signature="verify_NewProjectDetailsPanel()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@595b007d]" started-at="2024-08-06T12:27:22 IST" name="verify_NewProjectDetailsPanel" finished-at="2024-08-06T12:28:05 IST" duration-ms="42867" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <message>
-              <![CDATA[Cannot invoke "com.awt.page.User.ParentLandingPage.goToProjectPage(String)" because "this.parent_landing_page" is null]]>
+              <![CDATA[Cannot invoke "com.awt.page.Admin.ProjectDashboardPage.getHomePageTitle()" because "this.admin_page" is null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.awt.page.User.ParentLandingPage.goToProjectPage(String)" because "this.parent_landing_page" is null
-at com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:82)
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.awt.page.Admin.ProjectDashboardPage.getHomePageTitle()" because "this.admin_page" is null
+at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.navigateToNewProjectDetailsPanel(AdminCreatePageTest.java:55)
+at com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest.verify_NewProjectDetailsPanel(AdminCreatePageTest.java:94)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -52,12 +53,12 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAdminAddRolePage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest@5158b42f]" started-at="2024-08-02T14:40:02 IST" name="tearUp" finished-at="2024-08-02T14:40:02 IST" duration-ms="219" status="PASS">
+        </test-method> <!-- verify_NewProjectDetailsPanel -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest@595b007d]" started-at="2024-08-06T12:28:05 IST" name="tearUp" finished-at="2024-08-06T12:28:05 IST" duration-ms="240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
-      </class> <!-- com.awt.test.User.AdminConfiguration.User.CreateRole.AdminAddRoleTest -->
+      </class> <!-- com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest -->
     </test> <!-- Test -->
   </suite> <!-- Demo -->
 </testng-results>
