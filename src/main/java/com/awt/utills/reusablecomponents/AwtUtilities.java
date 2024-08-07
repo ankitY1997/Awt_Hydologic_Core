@@ -389,10 +389,10 @@ public class AwtUtilities {
 			LocalDate actual_date = parseToLocalDate(actualDate[0], "dd-MM-yyyy");
 			if (exp_date.isBefore(actual_date)) {
 				int days = (int) calculateDaysBetween(actual_date, exp_date);
-				timeDiff = "+" + days;
+				timeDiff = "-" + days;
 			} else if (exp_date.isAfter(actual_date)) {
 				int days = (int) calculateDaysBetween(actual_date, exp_date);
-				timeDiff = "-" + days;
+				timeDiff = "+" + days;
 			}
 		} else if (actualDate[0] == null) {
 			if (curr_date.isBefore(exp_date)) {

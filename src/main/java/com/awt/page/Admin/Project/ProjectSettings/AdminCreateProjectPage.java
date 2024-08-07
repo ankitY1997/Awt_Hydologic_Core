@@ -101,11 +101,10 @@ public class AdminCreateProjectPage {
 	// *****Delete Button****/
 	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Delete']") })
 	private WebElement delete_button;
-	
+
 	/** xpath of Project Created Sucessfully pop-up *****/
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='Yes']") })
 	private WebElement accept_popup;
-
 
 	// *****upload Button****/
 	@FindAll({ @FindBy(xpath = "//button[@data-pr-tooltip='Attach Document']") })
@@ -118,6 +117,31 @@ public class AdminCreateProjectPage {
 	// *****upload Button****/
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='Update Project']") })
 	private WebElement update_button;
+
+	// *****first page Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='firstpagebutton']//*[local-name()='svg']") })
+	private WebElement first_page_button;
+
+	// *****previous page Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='prevpagebutton']//*[local-name()='svg']") })
+	private WebElement previous_page_button;
+
+	// *****next page Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='nextpagebutton']//*[local-name()='svg']") })
+	private WebElement next_page_button;
+
+	// *****Last page Button****/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='lastpagebutton']//*[local-name()='svg']") })
+	private WebElement last_page_button;
+
+	// ** Next Pagination Button*****/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Next Page' and not(@disabled)]") })
+	private WebElement enable_next_page_button;
+
+	// ** Rows Per Page Drop Down Button*****/
+	@FindAll({
+			@FindBy(xpath = "//div[@aria-haspopup='listbox']//*[local-name()='svg' and @data-pc-section='dropdownicon']") })
+	private WebElement rows_per_page_drop_down;
 
 	// ** Action Engine instance variable **//
 	private ActionEngine action;
@@ -186,6 +210,56 @@ public class AdminCreateProjectPage {
 	}
 
 	/**
+	 * To check the visibility of rows per page drop-down button
+	 * 
+	 * @return
+	 */
+	public boolean isRowsPerPageDropdownDisplay() {
+		action.waitForVisibility(rows_per_page_drop_down, action.implicit_wait);
+		return rows_per_page_drop_down.isDisplayed();
+	}
+
+	/**
+	 * To check the visibility of first pagination button
+	 * 
+	 * @return
+	 */
+	public boolean isFirstPaginationButtonVisible() {
+		action.waitForVisibility(first_page_button, action.implicit_wait);
+		return first_page_button.isDisplayed();
+	}
+
+	/**
+	 * To check the visibility of previous pagination button
+	 * 
+	 * @return
+	 */
+	public boolean isPreviousPaginationButtonVisible() {
+		action.waitForVisibility(previous_page_button, action.implicit_wait);
+		return previous_page_button.isDisplayed();
+	}
+
+	/**
+	 * To check the visibility of next pagination button
+	 * 
+	 * @return
+	 */
+	public boolean isNextPaginationButtonVisible() {
+		action.waitForVisibility(last_page_button, action.implicit_wait);
+		return next_page_button.isDisplayed();
+	}
+
+	/**
+	 * To check the visibility of last pagination button
+	 * 
+	 * @return
+	 */
+	public boolean isLastPaginationButtonVisible() {
+		action.waitForVisibility(last_page_button, action.implicit_wait);
+		return last_page_button.isDisplayed();
+	}
+
+	/**
 	 * 
 	 * To get the newly added project data as per specify column name
 	 * 
@@ -194,7 +268,6 @@ public class AdminCreateProjectPage {
 	 */
 
 	public String getColumnDataFromProjectDetailsTable(String columnName) {
-
 		switch (columnName) {
 		case "Project Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
@@ -282,7 +355,6 @@ public class AdminCreateProjectPage {
 	 */
 
 	public String getColumnDataFromProjectDetailsTable(String project_name, String columnName) {
-		AwtUtilities.waitFor(5000);
 		switch (columnName) {
 		case "Project Name":
 			action.waitForVisibility(numRowInTable.get(0), action.explicit_wait);
@@ -359,25 +431,62 @@ public class AdminCreateProjectPage {
 
 	}
 
+//	/**
+//	 * Get the Created Project Row Number From Awt Project Details Table
+//	 * 
+//	 * @param projectName
+//	 * @return
+//	 * @deprecated
+//	 */
+//	public Integer getRowNumber(String projectName) {
+//
+//		int rowNum = 0;
+//		for (int i = 0; i < numRowInTable.size(); i++) {
+//
+//			String actual_column_row = action.getText(driver
+//					.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row'][" + (i + 1) + "]/td[1]")));
+//			if (projectName.contains(actual_column_row.trim())) {
+//				rowNum = i + 1;
+//			}
+//
+//		}
+//		return rowNum;
+//	}
+
 	/**
-	 * Get the Created Project Row Number From Awt Project Details Table
+	 * By This Method We Can Get The Row number of entered Project Name
 	 * 
-	 * @param projectName
+	 * @param project_name
 	 * @return
 	 */
-	public Integer getRowNumber(String projectName) {
+	public int getRowNumber(String projectName) {
+		int rowIndexNum = 0;
+		boolean flag = false;
+		while (flag == false) {
+			AwtUtilities.waitFor(2000);
+			List<WebElement> projectNames = driver
+					.findElements(By.xpath("//tr[@role='row' and @data-pc-section='row']/td[1]"));
 
-		int rowNum = 0;
-		for (int i = 0; i < numRowInTable.size(); i++) {
-
-			String actual_column_row = action.getText(driver
-					.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row'][" + (i + 1) + "]/td[1]")));
-			if (projectName.contains(actual_column_row.trim())) {
-				rowNum = i + 1;
+			for (int i = 0; i < projectNames.size(); i++) {
+				String project_name = projectNames.get(i).getText().trim();
+				if (project_name.equalsIgnoreCase(projectName)) {
+					flag = true;
+					rowIndexNum = i + 1;
+					break;
+				}
+			}
+			if (flag == false) {
+				// click on next page
+				try {
+					enable_next_page_button.click();
+					AwtUtilities.waitFor(1000);
+				} catch (Exception e) {
+					break;
+				}
 			}
 
 		}
-		return rowNum;
+		return rowIndexNum;
 	}
 
 	/**
@@ -506,7 +615,7 @@ public class AdminCreateProjectPage {
 	public void clickOnUpdateProjectButton() {
 		action.clickOn(update_button);
 	}
-	
+
 	/**
 	 * To accept pop up
 	 */

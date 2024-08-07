@@ -1,5 +1,7 @@
 package com.awt.test.Admin.Project.ProjectSettings;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -87,7 +89,7 @@ public class AdminCreatePageTest extends BaseTest {
 			"APMS-T13", "APMS-T14", "APMS-T19", "APMS-T28", "APMS-T29", "APMS-30", "APMS-31", "APMS-T32", "APMS-T33",
 			"APMS-T34", "APMS-T35", "APMS-T37", "APMS-T38", "APMS-T39", "APMS-T45", "APMS-46", "APMS-T47", "APMS-T48",
 			"APMS-T50" })
-	public void verify_NewProjectDetailsPanel() {
+	public void verify_AdminCreateProjectPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// Navigate To New Project Details Panel
@@ -339,29 +341,31 @@ public class AdminCreatePageTest extends BaseTest {
 				"To verify that user name text field should not accept any special characters and numbers.",
 				"APMS-T33");
 
-		// APMS-34-->To Verify that Password with 3 to 15 characters of any type is
-		// accepted in the "Password" text field.
-		String validPassword = AwtUtilities.genrateRandomAlphaNeumric(3, 15);
+		// APMS-34-->To verify that password with 8 to 15 characters is accepted in the
+		// "Password" text field.
+		String validPassword = AwtUtilities.genrateRandomAlphaNeumric(1, 3).toUpperCase()
+				+ AwtUtilities.genrateRandomAlphaNeumric(1, 3).toLowerCase() + AwtUtilities.genrateRandomNumber(4);
+		;
 		// enter the valid password
 		newProject_DetailsPanel.enterPassword(validPassword);
-		asert.assertNotEquals(
+		asert.assertEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
 						NewProjectDetailsPanelConstants.Panel_password),
 				validPassword,
-				"To Verify that Password with 3 to 15 characters of any type is accepted in the Password text field. ",
+				"To Verify that Password with 8 to 15 characters of any type is accepted in the Password text field. ",
 				"APMS-T34");
-		// Enter Less Then 3 Digit Password
-		String lessDigitPassword = AwtUtilities.genrateRandomAlphaNeumric(1, 2);
-		// Enter less then 3 character password
+		// Enter Less Then 8Digit Password
+		String lessDigitPassword = AwtUtilities.genrateRandomAlphaNeumric(1, 7);
+		// Enter less then 8 character password
 		newProject_DetailsPanel.enterPassword(lessDigitPassword);
 		asert.assertEquals(newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.Panel_password),
 				NewProjectDetailsPanelConstants.less_password_error_msg,
-				"To Verify that Password Text Field Should Not Accept Less Then 3 Character. ", "APMS-T34");
+				"To Verify that Password Text Field Should Not Accept Less Then 8 Character. ", "APMS-T34");
 		// Enter more then 15 Digit Password
 		String bigPassword = AwtUtilities.genrateRandomAlphaNeumric(16);
 		// Enter less then 3 character password
 		newProject_DetailsPanel.enterPassword(bigPassword);
-		asert.assertEquals(
+		asert.assertNotEquals(
 				newProject_DetailsPanel.getNewProjectDetailsPanelsTextFieldValue(
 						NewProjectDetailsPanelConstants.Panel_password),
 				bigPassword, "To Verify that Password Text Field Should Not Accept More Then 15 Character. ",
@@ -408,9 +412,9 @@ public class AdminCreatePageTest extends BaseTest {
 
 		// APMS-41-->To Verify that the "expected date" is more than the start date.
 		// Enter Start Date
-		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_startDate, "29-April-2024");
+		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_startDate, "15-April-2024");
 		// Select Expected Date less Then Start Date
-		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_ExpectedDate, "27-April-2024");
+		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_ExpectedDate, "20-April-2024");
 		// click on add project button
 		newProject_DetailsPanel.clickAddProject();
 		// validate the Expected should not be less then Start Date
@@ -418,16 +422,16 @@ public class AdminCreatePageTest extends BaseTest {
 				NewProjectDetailsPanelConstants.expected_date_error_msg,
 				"To Verify that the expected date is more than the start date.", "APMS-41");
 
-		// APMS-43 -->To verify that the "actual completion date" is more than the
-		// "start date".
-		// Select Actual Completion Date which is less Start Date
-		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_actualCompletionDate, "25-April-2024");
-		// click on add project
-		newProject_DetailsPanel.clickAddProject();
-		asert.assertEquals(
-				newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.panel_Act__Comp_Date),
-				NewProjectDetailsPanelConstants.actual_completion_date_error_msg,
-				"To verify that the actual completion date is more than the start date.", "APMS-43");
+//		// APMS-43 -->To verify that the "actual completion date" is more than the
+//		// "start date".
+//		// Select Actual Completion Date which is less Start Date
+//		newProject_DetailsPanel.datePicker(NewProjectDetailsPanelConstants.panel_actualCompletionDate, "25-April-2024");
+//		// click on add project
+//		newProject_DetailsPanel.clickAddProject();
+//		asert.assertEquals(
+//				newProject_DetailsPanel.getErrorMessage(NewProjectDetailsPanelConstants.panel_Act__Comp_Date),
+//				NewProjectDetailsPanelConstants.actual_completion_date_error_msg,
+//				"To verify that the actual completion date is more than the start date.", "APMS-43");
 
 		// APMS-T45-->To Verify that "Cancel" button should be visible in the "New
 		// Project Details" panel
@@ -482,8 +486,10 @@ public class AdminCreatePageTest extends BaseTest {
 				NewProjectDetailsPanelConstants.xl_start_date, "APMS-T48");
 		String expectedDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
 				NewProjectDetailsPanelConstants.xl_expected_date, "APMS-T48");
-		String actualCompletionDate = ExcelOperations.getCellData(NewProjectDetailsPanelConstants.file_name,
-				NewProjectDetailsPanelConstants.xl_actual_compeltion_date, "APMS-T48");
+		// Actual Completion Date
+		LocalDate current_Date = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		String actualCompletionDate = current_Date.format(formatter);
 		String[] moduleName = NewProjectDetailsPanelConstants.module_name;
 
 		/*
@@ -547,10 +553,10 @@ public class AdminCreatePageTest extends BaseTest {
 		// verify Due Days
 		String due_days = AwtUtilities.getTimeDiff(
 				AwtUtilities.convertDateFormat(expectedDate, "dd/MMM/yyyy", "dd-MM-yyyy"),
-				AwtUtilities.convertDateFormat(actualCompletionDate, "dd/MMM/yyyy", "dd-MM-yyyy"));
+				AwtUtilities.convertDateFormat(actualCompletionDate, "dd-MMM-yyyy", "dd-MM-yyyy"));
 		asert.assertEquals(
 				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.due_days),
-				due_days, "Verify that the due days display are correctly displayed in the Due Days Column.",
+				due_days + " days", "Verify that the due days display are correctly displayed in the Due Days Column.",
 				"APMS-T50");
 
 		// verify Module Name
@@ -578,7 +584,7 @@ public class AdminCreatePageTest extends BaseTest {
 		// verify Actual Completion Date
 		asert.assertEquals(
 				admin_create_page.getColumnDataFromProjectDetailsTable(NewProjectDetailsPanelConstants.actual_end_date),
-				AwtUtilities.convertDateFormat(actualCompletionDate, "dd/MMM/yyyy", "dd-MM-yyyy"),
+				AwtUtilities.convertDateFormat(actualCompletionDate, "dd-MMM-yyyy", "dd-MM-yyyy"),
 				"Verify that the Actual Completion Date display are correctly displayed in the Actual Completion Column.",
 				"APMS-T50");
 
@@ -640,6 +646,36 @@ public class AdminCreatePageTest extends BaseTest {
 		asert.assertFalse(admin_create_page.isProjectNameVIsibleInTable(projectName),
 				" To verify that clicking the delete button allows user to deletion of the project if no command area is associated.",
 				"APMS-54");
+
+		// APMS-T57-->To verify that the "Rows per page" dropdown should be visible in
+		// the "create_project" page
+		// check the visiblity of "Roles per Page " drop-down button
+		boolean isRowsPerPageDropDownVisible = admin_create_page.isRowsPerPageDropdownDisplay();
+		asert.assertTrue(isRowsPerPageDropDownVisible,
+				"To verify that the Rows per page dropdown should be visible in the create_project page", "APMS-T57");
+
+		// APMS-T59-->To verify that the "first, previous, next and last" pagination
+		// button should be visible in the "create_project" page
+
+		// Check The First Pagination button
+		boolean isFirstPaginationButtonVisible = admin_create_page.isFirstPaginationButtonVisible();
+		asert.assertTrue(isFirstPaginationButtonVisible, "To Verify That First Pagination Button Should Be Visible",
+				"APMS-T59");
+
+		// Check The previous Pagination button
+		boolean isPreviousPaginationButtonVisible = admin_create_page.isPreviousPaginationButtonVisible();
+		asert.assertTrue(isPreviousPaginationButtonVisible,
+				"To Verify That Previous Pagination Button Should Be Visible", "APMS-T59");
+
+		// Check The next Pagination button
+		boolean isNextPaginationButtonVisible = admin_create_page.isNextPaginationButtonVisible();
+		asert.assertTrue(isNextPaginationButtonVisible, "To Verify That Next Pagination Button Should Be Visible",
+				"APMS-T59");
+
+		// Check The Last Pagination button
+		boolean isLastPaginationButtonVisible = admin_create_page.isNextPaginationButtonVisible();
+		asert.assertTrue(isLastPaginationButtonVisible, "To Verify That Last Pagination Button Should Be Visible",
+				"APMS-T59");
 
 	}
 

@@ -58,7 +58,7 @@ public class NewProjectDetailsPanelConstants {
 	public static final String user_name_error_msg = "User Name is required.";
 	public static final String duplicate_username_error_msg = "User Name must be unique.";
 	public static final String password_error_msg = "Password is required.";
-	public static final String less_password_error_msg="Password must be at least 3 characters long.";
+	public static final String less_password_error_msg="Password must be at least 8 characters long, include at least one uppercase letter, one number, and one special character.";
 	public static final String mobile_number_error_msg = "Mobile Number is required.";
 	public static final String email_address_error_msg = "Email Address is required.";
 	public static final String start_date_error_msg = "Start Date is required.";
@@ -68,6 +68,6 @@ public class NewProjectDetailsPanelConstants {
 	// **List Of New Project Details Panel Fields */
 	public static final List<String> list_field = Arrays.asList("Project Name *", "Client Name *", "Client Logo",
 			"Consultant Name *", "Consultant Logo", "License Key *", "Module Name *", "User Name *", "Password *",
-			"Mobile Number *", "Email Address *", "Start Date *", "Expected End Date *", "Actual Completion Date *");
+			"Mobile Number *", "Email Address *", "Start Date *", "Expected End Date *", "Actual Completion Date");
 
 }
