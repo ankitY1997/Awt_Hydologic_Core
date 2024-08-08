@@ -95,6 +95,10 @@ public class AdminAddRoleTest extends BaseTest {
 		asert.assertAll();
 	}
 
+	/**
+	 * In this method we are checking the add new role panel
+	 * 
+	 */
 	public void verifyAddNewRolePanel() {
 		// APMS-T88--> To verify that clicking on the "New" button redirects to the "Add
 		// New Role" Panel
@@ -230,6 +234,9 @@ public class AdminAddRoleTest extends BaseTest {
 
 	}
 
+	/**
+	 * In this method we are validating only "role details table"
+	 */
 	public void verifyRoleDetailsTable() {
 		// APMS-T98-->To verify that "Role Details" table contains the "SNo, Role Name,
 		// Role Description and Action" column
@@ -313,6 +320,9 @@ public class AdminAddRoleTest extends BaseTest {
 
 	}
 
+	/**
+	 * This is System Test Cases to check End to End Scenario
+	 */
 	public void systemTestCase() {
 
 		// APMS-T126--> To Ensure that a user can successfully create a role and view

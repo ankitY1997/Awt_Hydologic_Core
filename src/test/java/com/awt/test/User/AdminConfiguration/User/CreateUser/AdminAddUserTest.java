@@ -53,10 +53,9 @@ public class AdminAddUserTest {
 	/**
 	 * Description: Perform the verification of AdminAddRole Page <br>
 	 * TestMethodName: verifyAdminAddRolePage <br>
-	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
-	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
-	 * "APMS-T98", "APMS-T99", "APMS-T100",
-	 * "APMS-T101","APMS-T102","APMS-T103","APMS-T104"<br>
+	 * ManualTestCases: "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T68", "APMS-T69",
+	 * "APMS-T70", "APMS-T71", "APMS-T72", "APMS-T74", "APMS-T75", "APMS-T76",
+	 * "APMS-T77", "APMS-T78", "APMS-T79", "APMS-T81", "APMS-T82", "APMS-T83"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -67,9 +66,9 @@ public class AdminAddUserTest {
 	@Story(story = "Create User and View User")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",
-			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101", "APMS-T102",
-			"APMS-T103", "APMS-T104" })
+	@TestCaseId(id = { "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T68", "APMS-T69", "APMS-T70", "APMS-T71", "APMS-T72",
+			"APMS-T74", "APMS-T75", "APMS-T76", "APMS-T77", "APMS-T78", "APMS-T79", "APMS-T81", "APMS-T82",
+			"APMS-T83" })
 	public void verifyAdminAddRolePage() {
 
 		// logger instance
@@ -88,6 +87,10 @@ public class AdminAddUserTest {
 
 	}
 
+	/**
+	 * In this method we are validating the add user panel
+	 * 
+	 */
 	public void verifyAddUserPanel() {
 
 		// APMS-T66-->To verify that clicking on the "New" button redirects to the "Add

@@ -1,0 +1,56 @@
+[1mdiff --git a/src/test/java/com/awt/test/Admin/Project/ProjectSettings/AdminCreatePageTest.java b/src/test/java/com/awt/test/Admin/Project/ProjectSettings/AdminCreatePageTest.java[m
+[1mindex 49737ad..c7ec5fb 100644[m
+[1m--- a/src/test/java/com/awt/test/Admin/Project/ProjectSettings/AdminCreatePageTest.java[m
+[1m+++ b/src/test/java/com/awt/test/Admin/Project/ProjectSettings/AdminCreatePageTest.java[m
+[36m@@ -590,6 +590,10 @@[m [mpublic class AdminCreatePageTest extends BaseTest {[m
+ [m
+ 	}[m
+ [m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * Validating Awt Project Table[m
+[32m+[m	[32m */[m
+[32m+[m
+ 	public void verifyAwtProjectTable() {[m
+ 		// APMS-51[m
+ 		// -->To verify that the "AWT- Projects" Table contains "Project Name, Client[m
+[36m@@ -616,6 +620,9 @@[m [mpublic class AdminCreatePageTest extends BaseTest {[m
+ [m
+ 	}[m
+ [m
+[32m+[m	[32m/**[m
+[32m+[m	[32m * In this method validating edit functionality[m
+[32m+[m	[32m */[m
+ 	public void verifyEditFunctionality() {[m
+ [m
+ 		// APMS-53[m
+[1mdiff --git a/src/test/java/com/awt/test/User/AdminConfiguration/User/CreateUser/AdminAddUserTest.java b/src/test/java/com/awt/test/User/AdminConfiguration/User/CreateUser/AdminAddUserTest.java[m
+[1mindex 4c727c0..aaa5a38 100644[m
+[1m--- a/src/test/java/com/awt/test/User/AdminConfiguration/User/CreateUser/AdminAddUserTest.java[m
+[1m+++ b/src/test/java/com/awt/test/User/AdminConfiguration/User/CreateUser/AdminAddUserTest.java[m
+[36m@@ -53,10 +53,9 @@[m [mpublic class AdminAddUserTest {[m
+ 	/**[m
+ 	 * Description: Perform the verification of AdminAddRole Page <br>[m
+ 	 * TestMethodName: verifyAdminAddRolePage <br>[m
+[31m-	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",[m
+[31m-	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",[m
+[31m-	 * "APMS-T98", "APMS-T99", "APMS-T100",[m
+[31m-	 * "APMS-T101","APMS-T102","APMS-T103","APMS-T104"<br>[m
+[32m+[m	[32m * ManualTestCases: "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T68", "APMS-T69",[m
+[32m+[m	[32m * "APMS-T70", "APMS-T71", "APMS-T72", "APMS-T74", "APMS-T75", "APMS-T76",[m
+[32m+[m	[32m * "APMS-T77", "APMS-T78", "APMS-T79", "APMS-T81", "APMS-T82", "APMS-T83"<br>[m
+ 	 * [m
+ 	 * @author ankit[m
+ 	 */[m
+[36m@@ -67,9 +66,9 @@[m [mpublic class AdminAddUserTest {[m
+ 	@Story(story = "Create User and View User")[m
+ 	@Owner(name = "Ankit")[m
+ 	@WorkArea(areaName = "Admin")[m
+[31m-	@TestCaseId(id = { "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",[m
+[31m-			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101", "APMS-T102",[m
+[31m-			"APMS-T103", "APMS-T104" })[m
+[32m+[m	[32m@TestCaseId(id = { "APMS-T65", "APMS-T66", "APMS-T67", "APMS-T68", "APMS-T69", "APMS-T70", "APMS-T71", "APMS-T72",[m
+[32m+[m			[32m"APMS-T74", "APMS-T75", "APMS-T76", "APMS-T77", "APMS-T78", "APMS-T79", "APMS-T81", "APMS-T82",[m
+[32m+[m			[32m"APMS-T83" })[m
+ 	public void verifyAdminAddRolePage() {[m
+ [m
+ 		// logger instance[m

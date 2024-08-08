@@ -590,6 +590,10 @@ public class AdminCreatePageTest extends BaseTest {
 
 	}
 
+	/**
+	 * Validating Awt Project Table
+	 */
+
 	public void verifyAwtProjectTable() {
 		// APMS-51
 		// -->To verify that the "AWT- Projects" Table contains "Project Name, Client
@@ -616,6 +620,9 @@ public class AdminCreatePageTest extends BaseTest {
 
 	}
 
+	/**
+	 * In this method validating edit functionality
+	 */
 	public void verifyEditFunctionality() {
 
 		// APMS-53
