@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="3" parallel="methods" name="Test(failed)">
     <classes>
-      <class name="com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest">
+      <class name="com.awt.test.User.AdminConfiguration.User.CreateUser.AdminAddUserTest">
         <methods>
-          <include name="verify_NewProjectDetailsPanel"/>
+          <include name="verifyAdminAddUserPage"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.Admin.Project.ProjectSettings.AdminCreatePageTest -->
+      </class> <!-- com.awt.test.User.AdminConfiguration.User.CreateUser.AdminAddUserTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

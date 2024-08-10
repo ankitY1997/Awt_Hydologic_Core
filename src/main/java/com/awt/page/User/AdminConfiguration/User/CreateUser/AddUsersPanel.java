@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import com.awt.utills.reusablecomponents.AwtUtilities;
+
 public class AddUsersPanel extends AdminAddUserPage {
 
 	// *******Panel Name*************/
@@ -42,8 +44,8 @@ public class AddUsersPanel extends AdminAddUserPage {
 	// *** Role Drop-Drop down button******/
 	@FindAll({ @FindBy(xpath = "//div[@id='role_id']") })
 	public WebElement role_button;
-	
-	//******To Know Selected Role Name***/
+
+	// ******To Know Selected Role Name***/
 	@FindAll({ @FindBy(xpath = "//div[@id='role_id']/span") })
 	public WebElement role_name;
 
@@ -51,8 +53,17 @@ public class AddUsersPanel extends AdminAddUserPage {
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='Create']") })
 	public WebElement create_button;
 
+	// *** Cancel button******/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='closebutton']") })
+	public WebElement cancel_button;
+
+	/** ROle Name Lists ***/
 	@FindAll({ @FindBy(xpath = "//ul[@role='listbox']/li") })
 	public List<WebElement> role_lists;
+
+	// *** Duplicate User Name Error Message******/
+	@FindAll({ @FindBy(xpath = "//form//P") })
+	public WebElement dup_error_msg;
 
 	/**
 	 * Constructor
@@ -70,6 +81,14 @@ public class AddUsersPanel extends AdminAddUserPage {
 	public void clickOnCreateButton() {
 		action.waitForVisibility(create_button, action.implicit_wait);
 		action.clickOn(create_button);
+	}
+
+	/**
+	 * Click On Cancel button
+	 */
+	public void clickOnCancelButton() {
+		action.waitForVisibility(cancel_button, action.implicit_wait);
+		action.clickOn(cancel_button);
 	}
 
 	/**
@@ -96,6 +115,15 @@ public class AddUsersPanel extends AdminAddUserPage {
 		}
 		return fields_name;
 
+	}
+
+	/**
+	 * Get Duplicate User Name Error Message
+	 * 
+	 * @return
+	 */
+	public String getDuplicateErrorMessage() {
+		return action.getText(dup_error_msg);
 	}
 
 	/**
@@ -133,7 +161,7 @@ public class AddUsersPanel extends AdminAddUserPage {
 	public String getPasswordTextFieldValue() {
 		return action.getAttributeValue(password_text, "value");
 	}
-	
+
 	/**
 	 * Get The first name Text Field Value
 	 * 
@@ -142,7 +170,7 @@ public class AddUsersPanel extends AdminAddUserPage {
 	public String getFirstTextFieldValue() {
 		return action.getAttributeValue(first_name_text, "value");
 	}
-	
+
 	/**
 	 * Get The last name Text Field Value
 	 * 
@@ -151,9 +179,6 @@ public class AddUsersPanel extends AdminAddUserPage {
 	public String getLastNameTextFieldValue() {
 		return action.getAttributeValue(last_name_text, "value");
 	}
-	
-	
-	
 
 	/**
 	 * BY This Method We Can Enter Email
@@ -175,7 +200,6 @@ public class AddUsersPanel extends AdminAddUserPage {
 		action.type(first_name_text, "First Name", first_name);
 	}
 
-	
 	/**
 	 * BY This Method We Can Enter Last Name
 	 * 
@@ -194,26 +218,30 @@ public class AddUsersPanel extends AdminAddUserPage {
 	public void selectRole(String roleName) {
 		action.waitForVisibility(role_button, action.implicit_wait);
 		action.clickOn(role_button);
+		String value = null;
+		for (int i = 0; i < role_lists.size(); i++) {
+			try {
+				value = action.getText(role_lists.get(i)).trim();
+				action.performMoveToElement(role_lists.get(i));
+				if (value.equals(roleName)) {
+					action.clickOn(role_lists.get(i));
+					break;
+				}
+			} catch (Exception e) {
 
-		for (WebElement element : role_lists) {
-			if (element.getText().trim().equalsIgnoreCase(roleName)) {
-				action.performMoveToElement(element);
-				action.clickOn(element);
-				break;
 			}
-
 		}
-
 	}
-	
+
 	/**
 	 * Get Selected Role Name
+	 * 
 	 * @return
 	 */
 	public String getSelectedRoleName() {
 		action.waitForVisibility(role_name, action.implicit_wait);
 		return action.getText(role_name).trim();
-		
+
 	}
 
 	/**
@@ -272,6 +300,7 @@ public class AddUsersPanel extends AdminAddUserPage {
 
 	/**
 	 * Get Error Message from All Fields
+	 * 
 	 * @param field_name
 	 * @return
 	 */

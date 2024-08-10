@@ -180,21 +180,21 @@ public class AdminAddRolePage extends AdminPage {
 			case "Role Name":
 				action.waitForVisibility(
 						driver.findElement(
-								By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getProjectRowNumber(roleName)
+								By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getRoleNameRowNumber(roleName)
 										+ "]/td[" + getRoleDetailsColumnIndexNumber(columnName) + "]")),
 						action.implicit_wait);
 				value = action.getText(driver.findElement(
-						By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getProjectRowNumber(roleName)
+						By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getRoleNameRowNumber(roleName)
 								+ "]/td[" + getRoleDetailsColumnIndexNumber(columnName) + "]")));
 				break;
 			case "Role Description":
 				action.waitForVisibility(
 						driver.findElement(
-								By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getProjectRowNumber(roleName)
+								By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getRoleNameRowNumber(roleName)
 										+ "]/td[" + getRoleDetailsColumnIndexNumber(columnName) + "]")),
 						action.implicit_wait);
 				value = action.getText(driver.findElement(
-						By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getProjectRowNumber(roleName)
+						By.xpath("//tr[@role='row' and @data-pc-section='row'][" + getRoleNameRowNumber(roleName)
 								+ "]/td[" + getRoleDetailsColumnIndexNumber(columnName) + "]")));
 				break;
 			case "SNO":
@@ -223,10 +223,10 @@ public class AdminAddRolePage extends AdminPage {
 	public void clickOnDeleteButton(String projectName) {
 		action.waitForVisibility(
 				driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-						+ getProjectRowNumber(projectName) + "]/td/div/button[@title='Delete']")),
+						+ getRoleNameRowNumber(projectName) + "]/td/div/button[@title='Delete']")),
 				action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-				+ getProjectRowNumber(projectName) + "]/td/div/button[@title='Delete']")));
+				+ getRoleNameRowNumber(projectName) + "]/td/div/button[@title='Delete']")));
 		clickOnYesButton();
 	}
 
@@ -247,9 +247,9 @@ public class AdminAddRolePage extends AdminPage {
 	 */
 	public void clickOnEditButton(String projectName) {
 		action.waitForVisibility(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-				+ getProjectRowNumber(projectName) + "]/td/div/button[@title='Edit']")), action.implicit_wait);
+				+ getRoleNameRowNumber(projectName) + "]/td/div/button[@title='Edit']")), action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-				+ getProjectRowNumber(projectName) + "]/td/div/button[@title='Edit']")));
+				+ getRoleNameRowNumber(projectName) + "]/td/div/button[@title='Edit']")));
 	}
 
 	/**
@@ -273,7 +273,7 @@ public class AdminAddRolePage extends AdminPage {
 	 * @param project_name
 	 * @return
 	 */
-	public int getProjectRowNumber(String roleName) {
+	public int getRoleNameRowNumber(String roleName) {
 		int rowIndexNum = 0;
 		boolean flag = false;
 		while (flag == false) {

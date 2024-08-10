@@ -59,6 +59,7 @@ public class ActionEngine {
 			implicitWait(element, implicit_wait);
 			element.click();
 			element.clear();
+			AwtUtilities.clearTextUsingJs(driver, element);
 			element.sendKeys(valueToBeSend);
 			ExtentFactory.extentObject().getExtent().log(Status.PASS,
 					field_name.toUpperCase() + " Entered Value as :" + valueToBeSend);
@@ -755,6 +756,22 @@ public class ActionEngine {
 		try {
 			Actions actions = new Actions(driver);
 			actions.moveByOffset(xOffset, yOffset).perform();
+			logPass("Successfully performed scroll action.");
+		} catch (Exception e) {
+			logFail("Failed to perform scroll action.", e);
+		}
+	}
+
+	/**
+	 * Perform a scroll action by the specified offsets.
+	 *
+	 * @param xOffset The horizontal offset for scrolling.
+	 * @param yOffset The vertical offset for scrolling.
+	 */
+	public void performScroll(WebElement element1, WebElement element2) {
+		try {
+			Actions actions = new Actions(driver);
+			actions.moveByOffset(element1.getLocation().getX(), element2.getLocation().getY()).perform();
 			logPass("Successfully performed scroll action.");
 		} catch (Exception e) {
 			logFail("Failed to perform scroll action.", e);
