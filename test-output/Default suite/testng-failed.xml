@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.awt.test.User.AdminConfiguration.User.CreateUser.AdminAddUserTest">
+      <class name="com.awt.test.Login.LoginPageTest">
         <methods>
-          <include name="verifyAdminAddUserPage"/>
+          <include name="verifyLoginPage"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.User.AdminConfiguration.User.CreateUser.AdminAddUserTest -->
+      </class> <!-- com.awt.test.Login.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

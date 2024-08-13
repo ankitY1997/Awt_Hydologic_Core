@@ -66,7 +66,7 @@ public class AdminAddRoleTest extends BaseTest {
 
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
-	@Description(description = "Perform the verfication on  New Project Details Panel")
+	@Description(description = "Perform the verfication on  Add Role  Panel")
 	@Story(story = "Create Role ")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
