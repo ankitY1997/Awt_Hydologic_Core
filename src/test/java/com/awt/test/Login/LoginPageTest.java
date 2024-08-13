@@ -193,6 +193,7 @@ public class LoginPageTest extends BaseTest {
 	 * To Verify Forgot Password Panel
 	 */
 	public void verifyForgotPasswordPanel() {
+		
 
 	}
 

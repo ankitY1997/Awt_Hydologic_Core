@@ -180,6 +180,18 @@ public class LoginPage {
 	}
 
 	/**
+	 * By this method we can click on forgot password button
+	 */
+	public ForgotPasswordPanel clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel() {
+		// wait for visibility
+		if (isForgotPasswordButtonVisible()) {
+			// click Forgot password button
+			action.clickOn(btn_forgot_password);
+		}
+		return new ForgotPasswordPanel(driver);
+	}
+
+	/**
 	 * log in to the Scada application
 	 * 
 	 * @author Ankit
