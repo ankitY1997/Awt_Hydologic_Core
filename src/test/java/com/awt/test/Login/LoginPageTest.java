@@ -1,6 +1,8 @@
 package com.awt.test.Login;
 
 import org.testng.annotations.Test;
+
+import com.awt.page.Login.ForgotPasswordPanel;
 import com.awt.page.Login.LoginPage;
 import com.awt.page.User.ParentLandingPage;
 import com.awt.testbase.BaseTest;
@@ -20,11 +22,13 @@ import com.awt.utills.reusablecomponents.WorkArea;
 public class LoginPageTest extends BaseTest {
 
 	// *********Instance Variables*****/
-	public static final String url = PropertiesOperations.getPropertyValueByKey("USERURL");
-	public static final String project_name = "NKMP1";
-	public SoftAssertTest asert = null;
-	public LoginPage login_page = null;
-	public ParentLandingPage home_page = null;
+	private static final String url = PropertiesOperations.getPropertyValueByKey("USERURL");
+	private static final String project_name = "NKMP1";
+	private SoftAssertTest asert = null;
+	private LoginPage login_page = null;
+	private ParentLandingPage home_page = null;
+	private ForgotPasswordPanel forgot_password_panel = null;
+	private String valid_email = null;
 
 	/**
 	 * Navigate To Login Page
@@ -56,8 +60,8 @@ public class LoginPageTest extends BaseTest {
 	@Story(story = "Log In ")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Log in")
-	@TestCaseId(id = { "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131", "APMS-T132", "APMS-T133", "APMS-T134", "APMS-T135",
-			"APMS-T136", "APMS-T137", "APMS-T138" })
+	@TestCaseId(id = { "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131", "APMS-T132", "APMS-T133", "APMS-T134",
+			"APMS-T135", "APMS-T136", "APMS-T137", "APMS-T138" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -185,6 +189,8 @@ public class LoginPageTest extends BaseTest {
 				"To verify that an error message is displayed when the password text field is left empty.",
 				"APMS-T138");
 
+		// Verify Forgot Password Panel
+		verifyForgotPasswordPanel();
 		asert.assertAll();
 
 	}
@@ -193,8 +199,112 @@ public class LoginPageTest extends BaseTest {
 	 * To Verify Forgot Password Panel
 	 */
 	public void verifyForgotPasswordPanel() {
-		
+
+		// APMS-T140-->To verify that clicking on the "Forgot Password" button
+		// ,redirects to the "Forgot Password" Panel.
+		// click on forgot password button and navigate to "Forgot Password" panel
+		forgot_password_panel = login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
+		// Check the Forgot password panel visibility
+		String actual_panel_name = forgot_password_panel.getForgotPasswordPanelName();
+		asert.assertEquals(actual_panel_name, "Forgot Password",
+				"To verify that clicking on the Forgot Password button ,redirects to the Forgot Password Panel.",
+				"APMS-T140");
+
+		// APMS-T141-->To verify that "Enter Your Email" text field should be present in
+		// the "Forgot Password" panel.
+		// check the "Email" text field is visible
+		boolean isEmailTextFieldVisible = forgot_password_panel.isEmailTextFieldVisible();
+		asert.assertTrue(isEmailTextFieldVisible,
+				"To verify that Enter Your Email text field should be present in the Forgot Password panel.",
+				"APMS-T141");
+
+		// APMS-T142-->To verify that "Submit" button should be present in the "Forgot
+		// Password" panel.
+		// Check The Submit Button Presence
+		boolean isSubmitButtonVisible = forgot_password_panel.isSubmitButtonPresent();
+		asert.assertTrue(isSubmitButtonVisible,
+				"To verify that Submit button should be present in the Forgot Password panel.", "APMS-T142");
+
+		// APMS-T143-->To verify that should accepts only the registered email id in the
+		// "Enter Your Email" text field , at the time of "User Creation".
+		// Enter Valid Email Id
+		valid_email = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "APMS-T143");
+		// enter valid email
+		forgot_password_panel.enterEmail(valid_email);
+		// click on submit button
+		forgot_password_panel.clickOnSubmitButton();
+		// Check "Reset Password Panel" is visible
+
+		actual_panel_name = forgot_password_panel.getResetPasswordPanelName();
+		asert.assertEquals(actual_panel_name, "Reset Password",
+				"To verify that should accepts only the registered email id in the Enter Your Email text field , at the time of User Creation.",
+				"APMS-T143");
+		// Then Close The "Reset Password" panel
+		forgot_password_panel.closeResetPasswordPanel();
+
+		// APMS-T144-->To verify that should not accepts the unregistered email id in
+		// the "Enter Your Email" text field
+		// Click On Forgot Password button
+		login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
+		// Enter not registered E-mail
+		String notRegisterEmail = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "APMS-T144");
+		forgot_password_panel.enterEmail(notRegisterEmail);
+		// Click On Submit Button
+		forgot_password_panel.clickOnSubmitButton();
+		// Get Error Message
+		String actual_error_message = forgot_password_panel.getInvalidEmailErrorMessage();
+		asert.assertEquals(actual_error_message, "Email not found",
+				"To verify that should not accepts the unregistered email id in the Enter Your Email text field .",
+				"APMS-T144");
 
 	}
 
+	public void verifyResetPasswordPanel() {
+
+		// APMS-T145-->To verify that "OTP" text field should be present in the "Reset
+		// Password" Panel
+		// Enter valid email
+		forgot_password_panel.enterEmail(valid_email);
+		// click on Submit button
+		forgot_password_panel.clickOnSubmitButton();
+		// Check "OTP" text field is visible
+		boolean isOtpTextFieldVisible = forgot_password_panel.isOTPTextFieldVisible();
+		asert.assertTrue(isOtpTextFieldVisible,
+				"To verify that OTP text field should be present in the Reset Password Panel", "APMS-T145");
+
+		// APMS-T146-->To verify that "New Password" text field should be present in the
+		// "Reset Password" Panel
+		// Check the "New Password" Text Field is Visible
+		boolean isNewPasswordTextFieldVisible = forgot_password_panel.isNewPasswordTextFieldVisible();
+		asert.assertTrue(isNewPasswordTextFieldVisible,
+				"To verify that New Password text field should be present in the Reset Password Panel", "APMS-T146");
+
+		// APMS-T147-->To verify that "Submit" button should be present in the "Reset
+		// Password" Panel
+		// Check The presence of submit button
+		boolean isSubmitButtonPresent = forgot_password_panel.isSubmitButtonPresent();
+		asert.assertTrue(isSubmitButtonPresent,
+				"To verify that Submit button should be present in the Reset Password Panel", "APMS-T147");
+
+		// APMS-T148-->To verify that "OTP" text field should accepts only the numeric
+		// values
+		// Enter Only Numeric Value in OTP Text Field
+		String numeric_value = AwtUtilities.genrateRandomNumber(4);
+		forgot_password_panel.enterOtp(numeric_value);
+		String acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
+		// it should accept
+		asert.assertEquals(acutal_otp_text_field_value, numeric_value,
+				"To verify that OTP text field should accepts only the numeric values", "APMS-T148");
+
+		// APMS-T149-->To verify that "OTP" text field should not accept the alphabets
+		// and special characters
+		String invalid_value = AwtUtilities.genrateRandomAlphaBets(1, 3) + "&";
+		forgot_password_panel.enterOtp(invalid_value);
+		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
+		// it should not accept
+		asert.assertNotEquals(acutal_otp_text_field_value, numeric_value,
+				"To verify that OTP text field should not accept the alphabets and special characters", "APMS-T149");
+		
+		
+	}
 }
