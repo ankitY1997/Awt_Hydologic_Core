@@ -36,10 +36,13 @@ public class ForgotPasswordPanel {
 	@FindAll({ @FindBy(xpath = "//*[local-name()='svg' and @data-pc-section='closebuttonicon']") })
 	public WebElement close_reset_password_panel;
 
-	// **Error Message**/
+	// ** Email Error Message**/
 	@FindAll({ @FindBy(xpath = "//input[@id='email' and @data-pc-name='inputtext']/following-sibling::small") })
-	public WebElement error_message;
+	public WebElement email_error_message;
 
+	// **New Password Error Message**/
+	@FindAll({ @FindBy(xpath = "// input[@id='newPassword']/following-sibling::small") })
+	public WebElement new_password_error_message;
 	/** driver ****/
 	WebDriver driver = null;
 
@@ -117,8 +120,8 @@ public class ForgotPasswordPanel {
 	 * Get Error Message from forgot password panel
 	 */
 	public String getInvalidEmailErrorMessage() {
-		action.waitForVisibility(error_message, action.implicit_wait);
-		return action.getText(error_message).trim();
+		action.waitForVisibility(email_error_message, action.implicit_wait);
+		return action.getText(email_error_message).trim();
 	}
 
 	// *************************Reset Password Panel*******************************/
@@ -180,7 +183,7 @@ public class ForgotPasswordPanel {
 	 * @return New Password Text Field Value
 	 */
 	public String getNewPasswordTextFieldValue() {
-		return action.getAttributeValue(otp_text_field, "value").trim();
+		return action.getAttributeValue(new_password_text_field, "value").trim();
 	}
 
 	/**
@@ -189,5 +192,19 @@ public class ForgotPasswordPanel {
 	public void closeResetPasswordPanel() {
 		action.waitForVisibility(close_reset_password_panel, action.implicit_wait);
 		action.clickOn(close_reset_password_panel);
+	}
+
+	/**
+	 * Get Error Message from new password text field
+	 */
+	public String getNewPasswordTextFieldErrorMessage() {
+		String error_message = null;
+		try {
+			action.waitForVisibility(new_password_error_message,5);
+			error_message = new_password_error_message.getText().trim();
+		} catch (Exception e) {
+			error_message = " ";
+		}
+		return error_message;
 	}
 }

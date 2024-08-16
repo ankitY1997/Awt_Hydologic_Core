@@ -11,6 +11,7 @@ import com.awt.testbase.MyLogger;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.Description;
 import com.awt.utills.reusablecomponents.ExcelOperations;
+import com.awt.utills.reusablecomponents.GMailApi;
 import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
@@ -29,6 +30,7 @@ public class LoginPageTest extends BaseTest {
 	private ParentLandingPage home_page = null;
 	private ForgotPasswordPanel forgot_password_panel = null;
 	private String valid_email = null;
+	private String valid_username = null;
 
 	/**
 	 * Navigate To Login Page
@@ -119,7 +121,7 @@ public class LoginPageTest extends BaseTest {
 		// APMS-T134-->To verify that a valid user can log in with correct "username"
 		// and "password".
 		// Enter Valid User name and Valid password--> then click on login button
-		String valid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "APMS-T134");
+		valid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "APMS-T134");
 		String valid_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
 		home_page = login_page.logInToTheApplication(valid_username, valid_password);
 		// verify "ParentLandingpage" is visible
@@ -191,6 +193,8 @@ public class LoginPageTest extends BaseTest {
 
 		// Verify Forgot Password Panel
 		verifyForgotPasswordPanel();
+		// verify reset password panel
+		verifyResetPasswordPanel();
 		asert.assertAll();
 
 	}
@@ -302,8 +306,114 @@ public class LoginPageTest extends BaseTest {
 		forgot_password_panel.enterOtp(invalid_value);
 		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
 		// it should not accept
-		asert.assertNotEquals(acutal_otp_text_field_value, numeric_value,
+		asert.assertNotEquals(acutal_otp_text_field_value, invalid_value,
 				"To verify that OTP text field should not accept the alphabets and special characters", "APMS-T149");
+
+		// APMS-T150-->To verify that "OTP" text field should accept only up to "six
+		// (6)" number of digits.
+		// Enter Only 6 number of digit
+		String valid_number = AwtUtilities.genrateRandomNumber(6);
+		forgot_password_panel.enterOtp(valid_number);
+		// Get Actual Otp Text Field Value
+		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
+		asert.assertEquals(valid_number, acutal_otp_text_field_value,
+				"To verify that OTP text field should accept only up to six(6) number of digits.", "APMS-T150");
+
+		// APMS-T151-->To verify that "OTP" text field should not accept more than "six"
+		// number of digits.
+		// Enter Only 6 number of digit
+		String invalid_number = AwtUtilities.genrateRandomNumber(8);
+		forgot_password_panel.enterOtp(invalid_number);
+		// Get Actual Otp Text Field Value
+		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
+		asert.assertNotEquals(invalid_number, acutal_otp_text_field_value,
+				"To verify that OTP text field should not accept more than  six(6) number of digits.", "APMS-T151");
+
+		// APMS-T153-->To Verify that the "New Password" field only accepts passwords
+		// with at least 8 characters, including one uppercase letter, one lowercase
+		// letter, one special character, and one number.
+		String valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T153");
+		// Enter Valid New Password
+		forgot_password_panel.enterNewPassword(valid_Password);
+		// click on submit button
+		forgot_password_panel.clickOnSubmitButton();
+		// Check Error Message is visible
+		String new_password_error_message = forgot_password_panel.getNewPasswordTextFieldErrorMessage();
+		asert.assertNotEquals(new_password_error_message,
+				"Password must be at least 8 characters long, include one uppercase letter, one digit, and one special character",
+				"To Verify that the New Password field only accepts passwords with at least 8 characters, including one uppercase letter, one lowercase letter, one special character, and one number.",
+				"APMS-T153");
+
+		// APMS-T154-->To verify that New Password text field should accepts only
+		// passwords with a maximum of 15 characters.
+		// Enter Only 15 Character Password
+		valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T154");
+		forgot_password_panel.enterNewPassword(valid_Password);
+		// It should accept
+		String act_new_pass_text_value = forgot_password_panel.getNewPasswordTextFieldValue();
+		// actutal password value should be equal to valid password
+		asert.assertEquals(act_new_pass_text_value, valid_Password,
+				"To verify that New Password text field should accepts only passwords with a maximum of 15 characters.",
+				"APMS-T154");
+
+		// APMS-T155-->To verify that the "New Password" text field should not exceeds
+		// more than 15
+		// characters.
+		// Enter 17 character password
+		String inValidPassword = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T155");
+		forgot_password_panel.enterNewPassword(inValidPassword);
+		// It should not accept
+		act_new_pass_text_value = forgot_password_panel.getNewPasswordTextFieldValue();
+		// actual value should not be equal to enter invalid password
+		asert.assertNotEquals(act_new_pass_text_value, inValidPassword,
+				"To verify that the New Password text field  should not exceeds more than 15 characters.", "APMS-T155");
+
+		// APMS-T156-->To verify the functionality of the Submit button with valid "OTP"
+		// and "New Password".
+
+		// Enter Valid OTP
+		String valid_otp = GMailApi.getGmailOtp();
+		forgot_password_panel.enterOtp(valid_otp);
+		// Enter valid password
+		forgot_password_panel.enterNewPassword(valid_Password);
+		// click on submit button
+		forgot_password_panel.clickOnSubmitButton();
+
+		// Log in With Changed Password
+		login_page.enterUsername(valid_username);
+		login_page.enterPassword(valid_Password);
+		// click on login button
+		login_page.clicOnLoginButton();
+		// verify "ParentLandingpage" is visible
+		String home_page_url = home_page.getHomePageUrl();
+		asert.assertTrue(home_page_url.contains("parentLandingpage"),
+				"To verify that  a valid user can log in with correct username and password.", "APMS-T134");
+		// click on logout button
+		home_page.clickOnLogoutButton();
+		
+		
+		
+
+	}
+	
+	/**
+	 * Update Old Password
+	 */
+	public void updateOldPassword() {
+		// Navigate to login page
+		navigateToLoginPage();
+		// Click On Forgot Password Button
+		login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
+		// Enter Email
+		forgot_password_panel.enterEmail(valid_email);
+		// Click On Submit button
+		forgot_password_panel.clickOnSubmitButton();
+		// Enter otp
+		String otp=GMailApi.getGmailOtp();
+		forgot_password_panel.enterOtp(otp);
+		//Enter Old Password Password
+		String old_password=ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
+		
 		
 		
 	}
