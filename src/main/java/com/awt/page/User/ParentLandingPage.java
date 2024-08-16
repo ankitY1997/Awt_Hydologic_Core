@@ -51,7 +51,7 @@ public class ParentLandingPage {
 	 * @return
 	 */
 	public String getHomePageUrl() {
-		AwtUtilities.waitFor(500);
+		AwtUtilities.waitFor(1000);
 		return action.getUrl(driver).trim();
 	}
 

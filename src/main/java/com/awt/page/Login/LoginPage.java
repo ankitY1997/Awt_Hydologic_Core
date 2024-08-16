@@ -231,7 +231,7 @@ public class LoginPage {
 	 * @return
 	 */
 	public String getErrorMessage() {
-		AwtUtilities.waitFor(200);
+		AwtUtilities.waitFor(1000);
 		action.waitForVisibility(error_message, action.implicit_wait);
 		return AwtUtilities.getTextUsingJavaScriptExecutor(driver, error_message);
 	}

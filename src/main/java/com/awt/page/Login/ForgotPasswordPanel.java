@@ -43,6 +43,10 @@ public class ForgotPasswordPanel {
 	// **New Password Error Message**/
 	@FindAll({ @FindBy(xpath = "// input[@id='newPassword']/following-sibling::small") })
 	public WebElement new_password_error_message;
+
+	// ********Otp Error Message****/
+	@FindAll({ @FindBy(xpath = "//input[@id='otp']/following-sibling::small") })
+	public WebElement otp_error_message;
 	/** driver ****/
 	WebDriver driver = null;
 
@@ -117,6 +121,14 @@ public class ForgotPasswordPanel {
 	}
 
 	/**
+	 * With Help Of This Method We Can Click On Submit button
+	 */
+	public void clickOnResetPanelSubmitButton() {
+		action.waitForVisibility(button_submit, action.implicit_wait);
+		action.clickOn(button_submit);
+	}
+
+	/**
 	 * Get Error Message from forgot password panel
 	 */
 	public String getInvalidEmailErrorMessage() {
@@ -134,6 +146,16 @@ public class ForgotPasswordPanel {
 	public boolean isOTPTextFieldVisible() {
 		action.waitForVisibility(otp_text_field, action.implicit_wait);
 		return action.isDisplay(otp_text_field);
+	}
+
+	/**
+	 * To Get All Otp Text field related error message
+	 * 
+	 * @return String
+	 */
+	public String getOtpErrorMessage() {
+		action.waitForVisibility(otp_error_message, action.implicit_wait);
+		return action.getText(otp_error_message).trim();
 	}
 
 	/**
@@ -200,7 +222,7 @@ public class ForgotPasswordPanel {
 	public String getNewPasswordTextFieldErrorMessage() {
 		String error_message = null;
 		try {
-			action.waitForVisibility(new_password_error_message,5);
+			action.implictWait(5);
 			error_message = new_password_error_message.getText().trim();
 		} catch (Exception e) {
 			error_message = " ";

@@ -46,12 +46,13 @@ public class LoginPageTest extends BaseTest {
 	}
 
 	/**
-	 * Description: Perform the verification of Login Page <br>
+	 * Description: Perform the verification of Login Page,Forgot Password <br>
 	 * TestMethodName: verifyLoginPage <br>
-	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
-	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
-	 * "APMS-T98", "APMS-T99", "APMS-T100",
-	 * "APMS-T101","APMS-T102","APMS-T103","APMS-T104"<br>
+	 * ManualTestCases: "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131",
+	 * "APMS-T132", "APMS-T133", "APMS-T134", "APMS-T135", "APMS-T136", "APMS-T137",
+	 * "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143", "APMS-T144",
+	 * "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150",
+	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -63,7 +64,9 @@ public class LoginPageTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Log in")
 	@TestCaseId(id = { "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131", "APMS-T132", "APMS-T133", "APMS-T134",
-			"APMS-T135", "APMS-T136", "APMS-T137", "APMS-T138" })
+			"APMS-T135", "APMS-T136", "APMS-T137", "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143",
+			"APMS-T144", "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150", "APMS-T151",
+			"APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -126,6 +129,7 @@ public class LoginPageTest extends BaseTest {
 		home_page = login_page.logInToTheApplication(valid_username, valid_password);
 		// verify "ParentLandingpage" is visible
 		String home_page_url = home_page.getHomePageUrl();
+		System.out.println(home_page_url);
 		asert.assertTrue(home_page_url.contains("parentLandingpage"),
 				"To verify that  a valid user can log in with correct username and password.", "APMS-T134");
 		// click on logout button
@@ -263,6 +267,9 @@ public class LoginPageTest extends BaseTest {
 
 	}
 
+	/**
+	 * In This Method We Are Validating Reset Password Panel
+	 */
 	public void verifyResetPasswordPanel() {
 
 		// APMS-T145-->To verify that "OTP" text field should be present in the "Reset
@@ -336,7 +343,7 @@ public class LoginPageTest extends BaseTest {
 		// Enter Valid New Password
 		forgot_password_panel.enterNewPassword(valid_Password);
 		// click on submit button
-		forgot_password_panel.clickOnSubmitButton();
+		forgot_password_panel.clickOnResetPanelSubmitButton();
 		// Check Error Message is visible
 		String new_password_error_message = forgot_password_panel.getNewPasswordTextFieldErrorMessage();
 		asert.assertNotEquals(new_password_error_message,
@@ -377,7 +384,7 @@ public class LoginPageTest extends BaseTest {
 		// Enter valid password
 		forgot_password_panel.enterNewPassword(valid_Password);
 		// click on submit button
-		forgot_password_panel.clickOnSubmitButton();
+		forgot_password_panel.clickOnResetPanelSubmitButton();
 
 		// Log in With Changed Password
 		login_page.enterUsername(valid_username);
@@ -387,19 +394,19 @@ public class LoginPageTest extends BaseTest {
 		// verify "ParentLandingpage" is visible
 		String home_page_url = home_page.getHomePageUrl();
 		asert.assertTrue(home_page_url.contains("parentLandingpage"),
-				"To verify that  a valid user can log in with correct username and password.", "APMS-T134");
+				"To verify the functionality of the Submit button with valid OTP and New Password.", "APMS-T156");
 		// click on logout button
 		home_page.clickOnLogoutButton();
-		
-		
-		
-
+		// Again Update Old Password
+		updateOldPassword();
 	}
-	
+
 	/**
 	 * Update Old Password
 	 */
 	public void updateOldPassword() {
+		// APMS-T157-->To verify the error message when an invalid "OTP" is entered and
+		// the "Submit" button is clicked
 		// Navigate to login page
 		navigateToLoginPage();
 		// Click On Forgot Password Button
@@ -408,13 +415,24 @@ public class LoginPageTest extends BaseTest {
 		forgot_password_panel.enterEmail(valid_email);
 		// Click On Submit button
 		forgot_password_panel.clickOnSubmitButton();
-		// Enter otp
-		String otp=GMailApi.getGmailOtp();
+		// Enter in correct otp and Valid Password
+		String inValidOtp = AwtUtilities.genrateRandomNumber(6);
+		forgot_password_panel.enterOtp(inValidOtp);
+		// Enter Old Password Password
+		String old_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
+		forgot_password_panel.enterNewPassword(old_password);
+		// click on submit button
+		forgot_password_panel.clickOnResetPanelSubmitButton();
+		// In valid otp message should be visible
+		String actual_otp_error_message = forgot_password_panel.getOtpErrorMessage();
+		asert.assertEquals(actual_otp_error_message, "Invalid OTP",
+				"To verify the error message when an invalid OTP is entered and the Submit button is clicked",
+				"APMS-T157");
+		// Then Again Enter the correct otp
+		String otp = GMailApi.getGmailOtp();
 		forgot_password_panel.enterOtp(otp);
-		//Enter Old Password Password
-		String old_password=ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
-		
-		
-		
+		// click on submit button
+		forgot_password_panel.clickOnResetPanelSubmitButton();
+
 	}
 }
