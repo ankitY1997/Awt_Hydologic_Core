@@ -129,7 +129,6 @@ public class LoginPageTest extends BaseTest {
 		home_page = login_page.logInToTheApplication(valid_username, valid_password);
 		// verify "ParentLandingpage" is visible
 		String home_page_url = home_page.getHomePageUrl();
-		System.out.println(home_page_url);
 		asert.assertTrue(home_page_url.contains("parentLandingpage"),
 				"To verify that  a valid user can log in with correct username and password.", "APMS-T134");
 		// click on logout button

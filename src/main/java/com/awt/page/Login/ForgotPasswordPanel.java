@@ -76,6 +76,7 @@ public class ForgotPasswordPanel {
 	 * @return name of the panel
 	 */
 	public String getResetPasswordPanelName() {
+		AwtUtilities.waitFor(2000);
 		action.waitForVisibility(panel_heading, action.implicit_wait);
 		return action.getText(panel_heading).trim();
 
@@ -116,7 +117,7 @@ public class ForgotPasswordPanel {
 	 */
 	public void clickOnSubmitButton() {
 		action.waitForVisibility(button_submit, action.implicit_wait);
-		action.clickOn(button_submit);
+		action.clickOn(button_submit,"Submit");
 		AwtUtilities.waitFor(10000);
 	}
 
@@ -125,7 +126,7 @@ public class ForgotPasswordPanel {
 	 */
 	public void clickOnResetPanelSubmitButton() {
 		action.waitForVisibility(button_submit, action.implicit_wait);
-		action.clickOn(button_submit);
+		action.clickOn(button_submit,"Submit");
 	}
 
 	/**

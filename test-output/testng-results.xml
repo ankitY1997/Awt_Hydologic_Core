@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-16T17:06:04 IST" name="Demo" finished-at="2024-08-16T17:08:27 IST" duration-ms="142429">
+  <suite started-at="2024-08-16T17:32:50 IST" name="Demo" finished-at="2024-08-16T17:35:08 IST" duration-ms="137818">
     <groups>
       <group name="Functional">
         <method signature="LoginPageTest.verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" name="verifyLoginPage" class="com.awt.test.Login.LoginPageTest"/>
@@ -11,9 +11,9 @@
         <method signature="LoginPageTest.verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" name="verifyLoginPage" class="com.awt.test.Login.LoginPageTest"/>
       </group> <!-- Log In -->
     </groups>
-    <test started-at="2024-08-16T17:06:04 IST" name="Test" finished-at="2024-08-16T17:08:27 IST" duration-ms="142429">
+    <test started-at="2024-08-16T17:32:50 IST" name="Test" finished-at="2024-08-16T17:35:08 IST" duration-ms="137818">
       <class name="com.awt.test.Login.LoginPageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:06:05 IST" name="launchBrowser" finished-at="2024-08-16T17:06:08 IST" duration-ms="3825" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:32:51 IST" name="launchBrowser" finished-at="2024-08-16T17:32:53 IST" duration-ms="2244" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,11 +24,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:06:08 IST" name="verifyLoginPage" finished-at="2024-08-16T17:08:26 IST" duration-ms="137880" status="PASS">
+        <test-method signature="verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:32:53 IST" name="verifyLoginPage" finished-at="2024-08-16T17:35:08 IST" duration-ms="134984" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginPage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:08:26 IST" name="tearUp" finished-at="2024-08-16T17:08:27 IST" duration-ms="357" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:35:08 IST" name="tearUp" finished-at="2024-08-16T17:35:08 IST" duration-ms="306" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
