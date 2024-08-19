@@ -52,7 +52,7 @@ public class LoginPageTest extends BaseTest {
 	 * "APMS-T132", "APMS-T133", "APMS-T134", "APMS-T135", "APMS-T136", "APMS-T137",
 	 * "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143", "APMS-T144",
 	 * "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150",
-	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156"<br>
+	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156","APMS-T157"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -66,7 +66,7 @@ public class LoginPageTest extends BaseTest {
 	@TestCaseId(id = { "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131", "APMS-T132", "APMS-T133", "APMS-T134",
 			"APMS-T135", "APMS-T136", "APMS-T137", "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143",
 			"APMS-T144", "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150", "APMS-T151",
-			"APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156" })
+			"APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156","APMS-T157" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
