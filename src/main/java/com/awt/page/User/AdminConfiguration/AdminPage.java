@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.awt.page.User.ParentLandingPage;
+import com.awt.page.User.AdminConfiguration.Settings.Report_Template.AdminReportTemplatePage;
 import com.awt.page.User.AdminConfiguration.User.CreateRole.AdminAddRolePage;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
 import com.awt.utills.reusablecomponents.AwtUtilities;
@@ -62,7 +63,8 @@ public class AdminPage extends ParentLandingPage {
 	}
 
 	/**
-	 * By Help Of This Method We Can navigate To Admin Role Page
+	 * By Help Of This Method We Can navigate To Admin Role Page,which is present
+	 * under the "User" menus
 	 * 
 	 * @return Admin Add Role Page Object
 	 */
@@ -73,7 +75,8 @@ public class AdminPage extends ParentLandingPage {
 	}
 
 	/**
-	 * By Help Of This Method We Can navigate To Admin Add User Page
+	 * By Help Of This Method We Can navigate To Admin Add User Page, which is
+	 * present under the "User" menus
 	 * 
 	 * @return instance of AdminAddUserPage
 	 */
@@ -83,4 +86,15 @@ public class AdminPage extends ParentLandingPage {
 		return new AdminAddUserPage(driver);
 	}
 
+	/**
+	 * By Help Of This Method We Can navigate To "Admin Report Template Page", which
+	 * present under the "Setting" menus
+	 * 
+	 * @return instance of AdminAddUserPage
+	 */
+	public AdminReportTemplatePage navigateToAdminReportTemplatePage() {
+		// select the Setting module and click on Report Template options
+		selectDropDownOptions(settings, report_template);
+		return new AdminReportTemplatePage(driver);
+	}
 }
