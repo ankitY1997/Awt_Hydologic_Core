@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-16T17:32:50 IST" name="Demo" finished-at="2024-08-16T17:35:08 IST" duration-ms="137818">
+  <suite started-at="2024-08-21T17:31:21 IST" name="Demo" finished-at="2024-08-21T17:32:38 IST" duration-ms="76823">
     <groups>
       <group name="Functional">
-        <method signature="LoginPageTest.verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" name="verifyLoginPage" class="com.awt.test.Login.LoginPageTest"/>
+        <method signature="AdminReportTemplate.verifyAdminReportTemplate()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate@4562e04d]" name="verifyAdminReportTemplate" class="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate"/>
       </group> <!-- Functional -->
-      <group name="Log In">
-        <method signature="LoginPageTest.verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" name="verifyLoginPage" class="com.awt.test.Login.LoginPageTest"/>
-      </group> <!-- Log In -->
+      <group name="Admin">
+        <method signature="AdminReportTemplate.verifyAdminReportTemplate()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate@4562e04d]" name="verifyAdminReportTemplate" class="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate"/>
+      </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-08-16T17:32:50 IST" name="Test" finished-at="2024-08-16T17:35:08 IST" duration-ms="137818">
-      <class name="com.awt.test.Login.LoginPageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:32:51 IST" name="launchBrowser" finished-at="2024-08-16T17:32:53 IST" duration-ms="2244" status="PASS">
+    <test started-at="2024-08-21T17:31:21 IST" name="Test" finished-at="2024-08-21T17:32:38 IST" duration-ms="76823">
+      <class name="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate@4562e04d]" started-at="2024-08-21T17:31:21 IST" name="launchBrowser" finished-at="2024-08-21T17:31:23 IST" duration-ms="2090" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,15 +24,45 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyLoginPage()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:32:53 IST" name="verifyLoginPage" finished-at="2024-08-16T17:35:08 IST" duration-ms="134984" status="PASS">
+        <test-method signature="verifyAdminReportTemplate()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate@4562e04d]" started-at="2024-08-21T17:31:23 IST" name="verifyAdminReportTemplate" finished-at="2024-08-21T17:32:37 IST" duration-ms="73841" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [OMS-Door] but found [OMS - Door]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [OMS-Door] but found [OMS - Door]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
+at com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate.verifyAdminReportTemplate(AdminReportTemplate.java:91)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:842)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginPage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Login.LoginPageTest@4135c3b]" started-at="2024-08-16T17:35:08 IST" name="tearUp" finished-at="2024-08-16T17:35:08 IST" duration-ms="306" status="PASS">
+        </test-method> <!-- verifyAdminReportTemplate -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate@4562e04d]" started-at="2024-08-21T17:32:37 IST" name="tearUp" finished-at="2024-08-21T17:32:38 IST" duration-ms="293" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
-      </class> <!-- com.awt.test.Login.LoginPageTest -->
+      </class> <!-- com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate -->
     </test> <!-- Test -->
   </suite> <!-- Demo -->
 </testng-results>

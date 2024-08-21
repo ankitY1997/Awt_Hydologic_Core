@@ -40,8 +40,12 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	public WebElement show_set_value_checkbox;
 
 	// ******* Filter Data Drop Down*************/
-	@FindAll({ @FindBy(xpath = "//label[text()='Show Set Value']/preceding-sibling::div") })
+	@FindAll({ @FindBy(xpath = "//h6[text()='Filter Data']/../following-sibling::div//*[local-name()='svg']") })
 	public WebElement filter_data_drop_down;
+
+	// ******* Report Field Drop Down*************/
+	@FindAll({ @FindBy(xpath = "//label[text()='Report Field*']") })
+	public WebElement report_field_drop_down;
 
 	// *** Submit Button*******/
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='Submit']") })
@@ -71,7 +75,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * 
 	 * @return if its is visible its return true otherwise it's return false
 	 */
-	public boolean isDeviceProfileDropDownButtonIsVisible() {
+	public boolean isDeviceProfileDropDownIsVisible() {
 		action.implicitWait(device_parameter_drop_down, action.implicit_wait);
 		return action.isDisplay(device_parameter_drop_down);
 
@@ -82,7 +86,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * 
 	 * @return if its is visible its return true otherwise it's return false
 	 */
-	public boolean isDeviceParameterDropDownButtonIsVisible() {
+	public boolean isDeviceParameterDropDownIsVisible() {
 		action.implicitWait(template_name_text_field, action.implicit_wait);
 		return action.isDisplay(template_name_text_field);
 
@@ -103,9 +107,20 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * 
 	 * @return if its is visible its return true otherwise it's return false
 	 */
-	public boolean isMenuLevelDropDownButtonIsVisible() {
+	public boolean isMenuLevelDropDownIsVisible() {
 		action.implicitWait(menu_level_drop_down, action.implicit_wait);
 		return action.isDisplay(menu_level_drop_down);
+
+	}
+
+	/**
+	 * Check The Presence of Report Field drop down
+	 * 
+	 * @return if its is visible its return true otherwise it's return false
+	 */
+	public boolean isReportFieldDropDownIsVisible() {
+		action.implicitWait(report_field_drop_down, action.implicit_wait);
+		return action.isDisplay(report_field_drop_down);
 
 	}
 
@@ -165,6 +180,16 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	}
 
 	/**
+	 * By This Method We Can Enter A Template Name
+	 * 
+	 * @param temp_name
+	 */
+	public void enterTemplateName(String temp_name) {
+		action.waitForVisibility(template_name_text_field, action.implicit_wait);
+		action.type(template_name_text_field, "Template Name", temp_name);
+	}
+
+	/**
 	 * This Method Is Used To Select Any drop down Options Which Is Present in "Add
 	 * new Report" panel.
 	 * 
@@ -180,6 +205,24 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 		action.waitForVisibility(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + option_name + "']")),
 				action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + option_name + "']")));
+
+	}
+
+	/**
+	 * With Help Of This Method We Can Know Which Option Is Currently Selected In
+	 * Particular drop down
+	 *
+	 * @return {If Option Is Selected It's return the name of option otherwise it's
+	 *         return empty
+	 * @param drop_down
+	 * @implNote Please Pass The drop-down name very carefully it should be same as
+	 *           web page
+	 */
+	public String getSelectedOptionName(String drop_down) {
+		action.waitForVisibility(driver.findElement(By.xpath("//h6[contains(text(),'" + drop_down
+				+ "')]/../following-sibling::div//span[@data-pc-section='input']")), action.implicit_wait);
+		return action.getText(driver.findElement(By.xpath("//h6[contains(text(),'" + drop_down
+				+ "')]/../following-sibling::div//span[@data-pc-section='input']")));
 
 	}
 
@@ -207,7 +250,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * @param checkbox
 	 * @return if its present its throw yes and if its not its throw no
 	 */
-	public boolean isCheckboxUnderParameterStatus(String checkbox) {
+	public boolean isCheckboxPresentUnderParameterStatus(String checkbox) {
 		boolean flag = false;
 		for (String checkbox_name : getNameOfParameterStatusCheckBox()) {
 			if (checkbox_name.contains(checkbox)) {
@@ -224,7 +267,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * @param parameter_checkbox
 	 * @implNote always pass the correct name of the checkbox
 	 */
-	public void selectParameterCheckBox(String option) {
+	public void selectParameterStatusCheckBox(String option) {
 
 		action.waitForVisibility(driver
 				.findElement(By.xpath("//label[text()='Parameter Status*']/..//div/following-sibling::label[text()='"
@@ -247,9 +290,11 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 				"//label[contains(text(),'Parameter Status*')]/..//div/following-sibling::label[contains(text(),'"
 						+ option + "')]/preceding-sibling::div")),
 				action.implicit_wait);
-		return action.isSelected(driver.findElement(By.xpath(
+		String value = action.getAttributeValue(driver.findElement(By.xpath(
 				"//label[contains(text(),'Parameter Status*')]/..//div/following-sibling::label[contains(text(),'"
-						+ option + "')]/preceding-sibling::div")));
+						+ option + "')]/preceding-sibling::div")),
+				"class");
+		return value.contains("checked");
 
 	}
 
@@ -277,7 +322,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * @param checkbox
 	 * @return if its present its throw yes and if its not its throw no
 	 */
-	public boolean isCheckboxUnderReportField(String checkbox) {
+	public boolean isCheckboxPresentUnderReportField(String checkbox) {
 		boolean flag = false;
 		for (String checkbox_name : getNameOfParameterStatusCheckBox()) {
 			if (checkbox_name.contains(checkbox)) {
@@ -317,9 +362,11 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 				By.xpath("//label[contains(text(),'Report Field*')]/..//div/following-sibling::label[contains(text(),'"
 						+ option + "')]/preceding-sibling::div")),
 				action.implicit_wait);
-		return action.isSelected(driver.findElement(
+		String value = action.getAttributeValue(driver.findElement(
 				By.xpath("//label[contains(text(),'Report Field*')]/..//div/following-sibling::label[contains(text(),'"
-						+ option + "')]/preceding-sibling::div")));
+						+ option + "')]/preceding-sibling::div")),
+				"class");
+		return value.contains("checked");
 
 	}
 
@@ -340,7 +387,8 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 */
 	public boolean isShowSerialNumberCheckBoxSelected() {
 		action.waitForVisibility(show_sr_no_checkbox, action.implicit_wait);
-		return action.isSelected(show_sr_no_checkbox);
+		String value = action.getAttributeValue(show_sr_no_checkbox, "class");
+		return value.contains("checked");
 	}
 
 	/**
@@ -359,7 +407,8 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 */
 	public boolean isShowSetValueCheckBoxSelected() {
 		action.waitForVisibility(show_set_value_checkbox, action.implicit_wait);
-		return action.isSelected(show_set_value_checkbox);
+		String value = action.getAttributeValue(show_set_value_checkbox, "class");
+		return value.contains("checked");
 	}
 
 	/**
@@ -368,6 +417,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 */
 	public void selectFilterDataCheckBox(String option) {
 		action.waitForVisibility(filter_data_drop_down, action.implicit_wait);
+		action.performMoveToElement(filter_data_drop_down);
 		action.clickOn(filter_data_drop_down);
 		action.clickOn(driver.findElement(
 				By.xpath("//ul[@role='listbox']/li/span[text()='" + option + "']/preceding-sibling::div")));
@@ -382,12 +432,18 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 *         return false}
 	 */
 	public boolean isFilterDataCheckBoxSelected(String check_box_name) {
-		action.waitForVisibility(
-				driver.findElement(By.xpath(
-						"//ul[@role='listbox']/li/span[text()='" + check_box_name + "']/preceding-sibling::div")),
-				action.implicit_wait);
-		return action.isSelected(driver.findElement(
-				By.xpath("//ul[@role='listbox']/li/span[text()='" + check_box_name + "']/preceding-sibling::div")));
+		List<WebElement> selected_checkbox_list = driver.findElements(
+				By.xpath("//h6[text()='Filter Data']/../following-sibling::div//span[@data-pc-section='tokenlabel']"));
+		String name = null;
+		boolean flag = false;
+		for (WebElement check_box_list : selected_checkbox_list) {
+			action.waitForVisibility(check_box_list, action.implicit_wait);
+			name = action.getText(check_box_list).trim();
+			if (name.equals(check_box_name.trim())) {
+				flag = true;
+			}
+		}
+		return flag;
 	}
 
 	/**

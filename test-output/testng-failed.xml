@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="3" parallel="methods" name="Test(failed)">
     <classes>
-      <class name="com.awt.test.Login.LoginPageTest">
+      <class name="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate">
         <methods>
-          <include name="verifyLoginPage"/>
+          <include name="verifyAdminReportTemplate"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.Login.LoginPageTest -->
+      </class> <!-- com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

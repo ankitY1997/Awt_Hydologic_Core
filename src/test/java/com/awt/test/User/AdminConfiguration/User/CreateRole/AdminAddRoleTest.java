@@ -40,7 +40,7 @@ public class AdminAddRoleTest extends BaseTest {
 
 	/**
 	 * 
-	 * Navigate To Add New Role Panel Details Panel
+	 * Navigate To ParentLandingPage
 	 * 
 	 */
 	public void navigateToParentLandingPage() {
