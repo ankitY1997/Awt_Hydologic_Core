@@ -55,11 +55,12 @@ public class AdminReportTemplateTest extends BaseTest {
 	/**
 	 * Description: Perform the verification of Admin Report Template Page <br>
 	 * TestMethodName: verifyAdminReportTemplate <br>
-	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
-	 * "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164",
-	 * "APMS-T165", "APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170",
-	 * "APMS-T171", "APMS-172", "APMS-T173", "APMS-T174", "APMS-T175", "APMS-T176",
-	 * "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227"
+	 * ManualTestCases: "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162",
+	 * "APMS-T163", "APMS-T164", "APMS-T165", "APMS-T166", "APMS-T167", "APMS-T168",
+	 * "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173", "APMS-T174",
+	 * "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227",
+	 * "APMS-T179", "APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186",
+	 * "APMS-T187", "APMS-T188", "APMS-T189", "APMS-T190"
 	 * 
 	 * @author ankit
 	 */
@@ -72,7 +73,9 @@ public class AdminReportTemplateTest extends BaseTest {
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164", "APMS-T165",
 			"APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173",
-			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227" })
+			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227", "APMS-T179",
+			"APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186", "APMS-T187", "APMS-T188", "APMS-T189",
+			"APMS-T190" })
 	public void verifyAdminReportTemplate() {
 
 		// logger instance
@@ -401,12 +404,12 @@ public class AdminReportTemplateTest extends BaseTest {
 		boolean isNextPaginationButtonVisible = admin_report_temp_page.isNextPaginationButtonIsVisible();
 		asert.assertTrue(isNextPaginationButtonVisible, "To veify Next Pagination Button Should Be Visible",
 				"APMS-T187");
-		// APMS-T187-->To verify that "Previous" pagination button should be visible in
+		// APMS-T188-->To verify that "Previous" pagination button should be visible in
 		// the "Report Template" table
 		// check previous pagination button is visible
 		boolean isPreviousPaginationButtonVisible = admin_report_temp_page.isPreviousPaginationButtonIsVisible();
 		asert.assertTrue(isPreviousPaginationButtonVisible, "To veify Previous Pagination Button Should Be Visible",
-				"APMS-T187");
+				"APMS-T188");
 		// APMS-T189-->To verify that "Last" pagination button should be visible in the
 		// "Report Template" table
 		// check last pagination button is visible
