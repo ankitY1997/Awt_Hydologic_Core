@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Demo" class="navigator-link">
-              <span class="suite-name border-failed">Demo</span>
+              <span class="suite-name border-passed">Demo</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Demo" class="hide-methods failed suite-Demo"> (hide)</a> <!-- hide-methods failed suite-Demo -->
-                      <a href="#" panel-name="suite-Demo" class="show-methods failed suite-Demo"> (show)</a> <!-- show-methods failed suite-Demo -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Demo" class="hide-methods passed suite-Demo"> (hide)</a> <!-- hide-methods passed suite-Demo -->
+                      <a href="#" panel-name="suite-Demo" class="show-methods passed suite-Demo"> (show)</a> <!-- show-methods passed suite-Demo -->
                     </span>
-                    <div class="method-list-content failed suite-Demo">
+                    <div class="method-list-content passed suite-Demo">
                       <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Demo" title="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate" class="method navigator-link" hash-for-method="verifyAdminReportTemplate">verifyAdminReportTemplate</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest" class="method navigator-link" hash-for-method="verifyAdminReportTemplate">verifyAdminReportTemplate</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Demo -->
+                    </div> <!-- method-list-content passed suite-Demo -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,10 +119,10 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Demo" class="panel Demo">
-          <div class="suite-Demo-class-failed">
+          <div class="suite-Demo-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate</span>
+              <img src="passed.png"/>
+              <span class="class-name">com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -130,19 +130,10 @@
                   <a name="verifyAdminReportTemplate">
                   </a> <!-- verifyAdminReportTemplate -->
                   <span class="method-name">verifyAdminReportTemplate</span>
-                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
-	expected [OMS-Door] but found [OMS - Door]
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate.verifyAdminReportTemplate(AdminReportTemplate.java:91)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 14 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Demo-class-failed -->
+          </div> <!-- suite-Demo-class-passed -->
         </div> <!-- panel Demo -->
         <div panel-name="test-xml-Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -159,11 +150,11 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate&quot;&gt;
+      &lt;class name=&quot;com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest&quot;&gt;
         &lt;methods&gt;
           &lt;include name=&quot;verifyAdminReportTemplate&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate --&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Demo --&gt;
@@ -222,13 +213,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyAdminReportTemplate')
-data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate')
-data.setCell(0, 3, 73841);
+data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest')
+data.setCell(0, 3, 176842);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -254,20 +245,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplate</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.awt.test.User.AdminConfiguration.Settings.ReportTemplate.AdminReportTemplateTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchBrowser(0)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">verifyAdminReportTemplate</span>
-                <span class="method-start">2092 ms</span>
+                <span class="method-start">2661 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">76211 ms</span>
+                <span class="method-start">179507 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

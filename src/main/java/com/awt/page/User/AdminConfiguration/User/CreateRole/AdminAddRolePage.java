@@ -292,6 +292,7 @@ public class AdminAddRolePage extends AdminPage {
 			if (flag == false) {
 				// click on next page
 				try {
+					action.performMoveToElement(enable_next_page);
 					enable_next_page.click();
 					AwtUtilities.waitFor(1000);
 				} catch (Exception e) {

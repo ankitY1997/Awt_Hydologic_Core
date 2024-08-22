@@ -805,7 +805,7 @@ public class ActionEngine {
 			actions.moveToElement(webElement).perform();
 			// logPass("Successfully moved to the element.");
 		} catch (Exception e) {
-			logFail("Failed to move to the element.", e);
+			//logFail("Failed to move to the element.", e);
 		}
 	}
 

@@ -31,6 +31,10 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	@FindAll({ @FindBy(xpath = "//input[@placeholder='Enter Template Name']") })
 	public WebElement template_name_text_field;
 
+	// ******* Template Name Text Field Error Message *************/
+	@FindAll({ @FindBy(xpath = "//input[@placeholder='Enter Template Name']/following-sibling::small") })
+	public WebElement template_name_text_field_error_message;
+
 	// ******* Show Serial Number Checkbox*************/
 	@FindAll({ @FindBy(xpath = "//label[text()='Show Serial Number']/preceding-sibling::div") })
 	public WebElement show_sr_no_checkbox;
@@ -177,6 +181,23 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	public String getDefaultValueFromTemplateNameTextField() {
 		action.implicitWait(template_name_text_field, action.implicit_wait);
 		return action.getAttributeValue(template_name_text_field, "value").trim();
+	}
+
+	/**
+	 * By this method we get template name text field error message
+	 * 
+	 * @return if there is error we can get error message otherwise it will return
+	 *         empty string
+	 */
+	public String getTemplateNameTextErrorMessage() {
+		String error_message = "";
+		try {
+			action.waitForVisibility(template_name_text_field_error_message, action.implicit_wait);
+			error_message = action.getText(template_name_text_field_error_message);
+		} catch (Exception e) {
+			error_message = " ";
+		}
+		return error_message;
 	}
 
 	/**

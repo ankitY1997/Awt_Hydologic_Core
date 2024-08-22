@@ -1,5 +1,9 @@
 package com.awt.test.User.AdminConfiguration.Settings.ReportTemplate;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 import com.awt.page.Login.LoginPage;
@@ -31,6 +35,7 @@ public class AdminReportTemplateTest extends BaseTest {
 	AdminPage admin_page = null;
 	AdminReportTemplatePage admin_report_temp_page = null;
 	AddNewReportPanel add_new_report_panel = null;
+	String templateName = null;
 
 	/**
 	 * 
@@ -88,6 +93,8 @@ public class AdminReportTemplateTest extends BaseTest {
 
 		// validate add new role panel
 		verifyAddNewReportPanel();
+		// Validating Report Template Details Table
+		verifyReportTemplateTable();
 
 		asert.assertAll();
 	}
@@ -149,8 +156,8 @@ public class AdminReportTemplateTest extends BaseTest {
 
 		// APMS-T166-->Ensure that the "Template Name" is automatically displayed based
 		// on the selected "Device profile" and "Device parameter".
-		String act_template_name = add_new_report_panel.getDefaultValueFromTemplateNameTextField();
-		asert.assertEquals(act_template_name, device_profile_selected_option + "-" + device_parameter_selected_option,
+		String act_template_name = add_new_report_panel.getDefaultValueFromTemplateNameTextField().trim();
+		asert.assertEquals(act_template_name, device_profile_selected_option + " - " + device_parameter_selected_option,
 				"Ensure that the Template Name is automatically displayed based on the selected Device profile and Device parameter.",
 				"APMS-T166");
 
@@ -282,7 +289,7 @@ public class AdminReportTemplateTest extends BaseTest {
 		// APMS-T178-->To verify that "created report" should be visible in the "Report
 		// Template" table.
 		// -> Enter Template Name
-		String templateName = AwtUtilities.genrateRandomAlphaBets(1, 10);
+		templateName = AwtUtilities.genrateRandomAlphaBets(6);
 		add_new_report_panel.enterTemplateName(templateName);
 		// -> click on submit button
 		add_new_report_panel.clickOnSubmitButton();
@@ -293,12 +300,119 @@ public class AdminReportTemplateTest extends BaseTest {
 				templateName);
 		asert.assertEquals(actual_template_name, templateName,
 				"To verify that created report should be visible in the Report Template table.", "APMS-T178");
+
+		// APMS-T190-->To verify that Duplicate "Template Name" should not accept in the
+		// "Add New Report" Panel.
+		// -> Click on "New" button.
+		admin_report_temp_page.clickOnNewButtonAndNavigateToAddNewReportPanel();
+		// Enter All Mandatory details
+		// ->Select Device profile
+		add_new_report_panel.selectDropDown("Device Profile*", "OMS");
+		// ->Select Device Parameter
+		add_new_report_panel.selectDropDown("Device Parameter*", "Door");
+		// ->Enter Template Name
+		add_new_report_panel.enterTemplateName(templateName);
+		// -> Select Menu Level
+		add_new_report_panel.selectDropDown("Menu Level*", "Report");
+		// -> Select Parameter Status
+		add_new_report_panel.selectParameterStatusCheckBox("Door close");
+		// ->Select Report Field
+		add_new_report_panel.selectReportFieldCheckBox("device_id");
+		// Click On Submit Button
+		add_new_report_panel.clickOnSubmitButton();
+		// Check Duplicate Error Message
+		String act_error_message = add_new_report_panel.getTemplateNameTextErrorMessage().trim();
+		asert.assertEquals(act_error_message, "Template Name should not be Duplicate",
+				"To verify that Duplicate Template Name should not accept in the  Add New Report Panel.", "APMS-T190");
+		add_new_report_panel.closePanel();
 	}
 
 	/**
 	 * In this method we are validating report template table test cases
 	 */
 	public void verifyReportTemplateTable() {
+
+		// APMS-T179-->To verify that "Report Template" table contains the "SNo,
+		// Template
+		// Name, Device type, Report Type, Show Serial Number , Show Set Value, Action"
+		// Columns.
+		String[] report_temp_table_columns = { "SNO", "Template Name", "Device Type", "Report Type",
+				"Show Serial Number", "Show Set Value", "Action" };
+		// Check All Columns Should be Visible
+		List<String> list_of_actual_column = admin_report_temp_page.listOfReportTemplateTableColumns();
+		asert.assertEquals(list_of_actual_column, new ArrayList(Arrays.asList(report_temp_table_columns)),
+				"To verify that Report Template table contains the SNo, Template Name, Device type, Report Type, Show Serial Number , Show Set Value, Action  Columns.",
+				"APMS-T179");
+
+		// APMS-T180-->To verify that "delete" button should be present under the
+		// "Action" column
+		// Verify "Delete" button is present
+		boolean isDeleteButtonVisible = admin_report_temp_page.isDeleteButtonIsVisible();
+		asert.assertTrue(isDeleteButtonVisible,
+				"To verify that  delete button should be present under the Action column", "APMS-T180");
+
+		// APMS-T183-->To verify that Search text field should be visible in the
+		// "admin-ReportTemplate" page.
+		// Verify "Search Text Field" is visible
+		boolean isSearchTextFieldVisible = admin_report_temp_page.isSearchTextFieldVisible();
+		asert.assertTrue(isSearchTextFieldVisible,
+				"To verify that Search  text field should be visible in the admin-ReportTemplate page.", "APMS-T183");
+
+		// APMS-T183 -->To Verify the "search text field" Functionality
+		// ->Enter a Template Name
+		admin_report_temp_page.search(templateName);
+		// Check Template Name value visible in first row
+		boolean isSearchValueInFirstRow = admin_report_temp_page.isSearchValueInFirstRow(templateName);
+		asert.assertTrue(isSearchValueInFirstRow, "To Verify the search text field Functionality", "APMS-T183");
+		// ->clear search text field
+		admin_report_temp_page.clearSearchTextField();
+
+		// APMS-T182-->To verify the functionality of the "delete" button.
+		// -> Delete The Created Template Name
+		admin_report_temp_page.clickOnDeleteButton(templateName);
+		// Template Name Should Not Be Present in the table
+		asert.assertNotEquals(templateName,
+				admin_report_temp_page.getDataFromReportTemplateTable("Template Name", templateName),
+				"To verify the functionality of the delete button.", "APMS-T182");
+		// APMS-T184-->To verify that Rows Per Page should be visible in the
+		// "admin-Report Template" page
+		// Verify "Rows Per Page" drop-down is visible
+		boolean isRowsPerPageDropDownVisible = admin_report_temp_page.isRowsPerPageDropDownIsVisible();
+		asert.assertTrue(isRowsPerPageDropDownVisible,
+				"To verify that Rows Per Page should be visible in the admin-Report Template page", "APMS-T184");
+
+		// APMS-T185-->To verify that "Rows Per Page" should be visible in the
+		// "admin-Report Template" page
+		// Enter Number Of Rows Per Page and Check is Table Is Update
+		boolean isTableUpdated = admin_report_temp_page.isUpdateTheTable("10");
+		asert.assertTrue(isTableUpdated,
+				"To verify that changing the numbers of rows per page drop down , updates the table accordingly",
+				"APMS-T185");
+
+		// APMS-T186-->To verify that "first" pagination button should be visible in the
+		// "Report Template" table
+		// Check Fist pagination button is visible
+		boolean isFirsPaginationButtonVisible = admin_report_temp_page.isFirstPaginationButtonIsVisible();
+		asert.assertTrue(isFirsPaginationButtonVisible, "To veify First Pagination Button Should Be Visible",
+				"APMS-T186");
+		// APMS-T187-->To verify that "Next" pagination button should be visible in the
+		// "Report Template" table
+		// check next pagination button is visible
+		boolean isNextPaginationButtonVisible = admin_report_temp_page.isNextPaginationButtonIsVisible();
+		asert.assertTrue(isNextPaginationButtonVisible, "To veify Next Pagination Button Should Be Visible",
+				"APMS-T187");
+		// APMS-T187-->To verify that "Previous" pagination button should be visible in
+		// the "Report Template" table
+		// check previous pagination button is visible
+		boolean isPreviousPaginationButtonVisible = admin_report_temp_page.isPreviousPaginationButtonIsVisible();
+		asert.assertTrue(isPreviousPaginationButtonVisible, "To veify Previous Pagination Button Should Be Visible",
+				"APMS-T187");
+		// APMS-T189-->To verify that "Last" pagination button should be visible in the
+		// "Report Template" table
+		// check last pagination button is visible
+		boolean isLastPaginationButtonVisible = admin_report_temp_page.isLastPaginationButtonIsVisible();
+		asert.assertTrue(isLastPaginationButtonVisible, "To veify Last Pagination Button Should Be Visible",
+				"APMS-T189");
 
 	}
 
