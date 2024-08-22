@@ -20,7 +20,7 @@ import com.awt.utills.reusablecomponents.TestCaseId;
 import com.awt.utills.reusablecomponents.Version;
 import com.awt.utills.reusablecomponents.WorkArea;
 
-public class AdminReportTemplate extends BaseTest {
+public class AdminReportTemplateTest extends BaseTest {
 
 	// Instance Variable ///
 	public static final String url = PropertiesOperations.getPropertyValueByKey("USERURL");
@@ -49,11 +49,12 @@ public class AdminReportTemplate extends BaseTest {
 
 	/**
 	 * Description: Perform the verification of Admin Report Template Page <br>
-	 * TestMethodName: verifyAdminAddRolePage <br>
+	 * TestMethodName: verifyAdminReportTemplate <br>
 	 * ManualTestCases: "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91",
-	 * "APMS-T92", "APMS-T93", "APMS-T94", "APMS-T95", "APMS-T96", "APMS-T97",
-	 * "APMS-T98", "APMS-T99", "APMS-T100",
-	 * "APMS-T101","APMS-T102","APMS-T103","APMS-T104"<br>
+	 * "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164",
+	 * "APMS-T165", "APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170",
+	 * "APMS-T171", "APMS-172", "APMS-T173", "APMS-T174", "APMS-T175", "APMS-T176",
+	 * "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227"
 	 * 
 	 * @author ankit
 	 */
@@ -64,9 +65,9 @@ public class AdminReportTemplate extends BaseTest {
 	@Story(story = "Create Role ")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T87", "APMS-T88", "APMS-T89", "APMS-T90", "APMS-T91", "APMS-T92", "APMS-T93", "APMS-T94",
-			"APMS-T95", "APMS-T96", "APMS-T97", "APMS-T98", "APMS-T99", "APMS-T100", "APMS-T101", "APMS-T102",
-			"APMS-T103", "APMS-T104" })
+	@TestCaseId(id = { "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164", "APMS-T165",
+			"APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173",
+			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227" })
 	public void verifyAdminReportTemplate() {
 
 		// logger instance
@@ -292,6 +293,13 @@ public class AdminReportTemplate extends BaseTest {
 				templateName);
 		asert.assertEquals(actual_template_name, templateName,
 				"To verify that created report should be visible in the Report Template table.", "APMS-T178");
+	}
+
+	/**
+	 * In this method we are validating report template table test cases
+	 */
+	public void verifyReportTemplateTable() {
 
 	}
+
 }
