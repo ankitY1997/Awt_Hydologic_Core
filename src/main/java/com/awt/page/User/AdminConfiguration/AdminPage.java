@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.awt.page.User.ParentLandingPage;
+import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
 import com.awt.page.User.AdminConfiguration.Settings.Report_Template.AdminReportTemplatePage;
 import com.awt.page.User.AdminConfiguration.User.CreateRole.AdminAddRolePage;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
@@ -22,6 +23,7 @@ public class AdminPage extends ParentLandingPage {
 	public static final String notification_settings = "Notification Settings";
 	public static final String page_permission = "Page Permission";
 	public static final String report_template = "Report Template";
+	public static boolean flag=false;
 
 	/**
 	 * 
@@ -39,6 +41,7 @@ public class AdminPage extends ParentLandingPage {
 	 *                        drop-down
 	 */
 	public void selectDropDownOptions(String dropDownName, String dropDownOptions) {
+	
 		// Wait For Page Load
 		AwtUtilities.waitForPageLoading(driver);
 		// wait for Element
@@ -46,7 +49,7 @@ public class AdminPage extends ParentLandingPage {
 				driver.findElement(
 						By.xpath("(//ul[@role='menu'])[1]/li//span[text()='" + dropDownName + "']/./parent::a")),
 				action.implicit_wait);
-		// click on drop down menu
+		// click on admin main menu
 		action.clickOn(
 				driver.findElement(
 						By.xpath("(//ul[@role='menu'])[1]/li//span[text()='" + dropDownName + "']/./parent::a")),
@@ -56,11 +59,17 @@ public class AdminPage extends ParentLandingPage {
 				driver.findElement(By
 						.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")),
 				action.implicit_wait);
+		flag = true;
 		// select a options
 		action.clickOn(driver.findElement(
 				By.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")));
 
 	}
+	
+
+	
+	
+	
 
 	/**
 	 * By Help Of This Method We Can navigate To Admin Role Page,which is present
@@ -97,4 +106,17 @@ public class AdminPage extends ParentLandingPage {
 		selectDropDownOptions(settings, report_template);
 		return new AdminReportTemplatePage(driver);
 	}
+
+	/**
+	 * By Help Of This Method We Can navigate To "Admin Report Template Page", which
+	 * present under the "Setting" menus
+	 * 
+	 * @return instance of AdminAddUserPage
+	 */
+	public AdminMasterCreationPage navigateToAdminMasterCrationPage() {
+		// select the Setting module and click on Report Template options
+		selectDropDownOptions(settings, master_creation);
+		return new AdminMasterCreationPage(driver);
+	}
+
 }

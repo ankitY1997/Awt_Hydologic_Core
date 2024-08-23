@@ -11,11 +11,12 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.awt.page.User.ParentLandingPage;
+import com.awt.page.User.AdminConfiguration.AdminPage;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AddUsersPanel;
 import com.awt.testbase.MyLogger;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
-public class AdminReportTemplatePage extends ParentLandingPage {
+public class AdminReportTemplatePage extends AdminPage {
 
 	// ********New Button**********/
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='New']") })
