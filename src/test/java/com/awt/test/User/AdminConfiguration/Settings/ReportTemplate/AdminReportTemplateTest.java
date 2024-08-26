@@ -68,7 +68,7 @@ public class AdminReportTemplateTest extends BaseTest {
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
 	@Description(description = "Perform the verfication on  Admin Report Template")
-	@Story(story = "Create Role ")
+	@Story(story = "Report Template")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164", "APMS-T165",

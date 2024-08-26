@@ -26,6 +26,30 @@ public class AdminMasterCreationPage extends AdminPage {
 	@FindAll({ @FindBy(xpath = "//ul[@id='search_list']/li") })
 	public List<WebElement> mode_list;
 
+	// ******select mode ellipsis button ********/
+	@FindAll({ @FindBy(xpath = "//label[text()='Select Mode']/../div//button[not(@aria-label='Select Mode')]") })
+	public WebElement select_mode_ellipsis_button;
+
+	// ***Master Name Auto Suggestive Drop Down**/
+	@FindAll({ @FindBy(xpath = "//label[contains(text(),'Master Name')]") })
+	public WebElement master_name_auto_sugg_drop_down_button;
+
+	// ***Master Name Auto Suggestive Drop Down Text**/
+	@FindAll({ @FindBy(xpath = "//span[@id='masterName']/input") })
+	public WebElement master_name_auto_text;
+
+	// ***Current Field Name**/
+	@FindAll({ @FindBy(xpath = "//span[@id='masterName']/input") })
+	public WebElement master_name_curr_field_name;
+
+	// **Description Text Field**/
+	@FindAll({ @FindBy(xpath = "//label[text()='Description']/following-sibling::input") })
+	public WebElement description_text_field;
+
+	// **Save Button**/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Save']") })
+	public WebElement save_button;
+
 	// ***Constructor***/
 	public AdminMasterCreationPage(WebDriver driver) {
 		super(driver);
@@ -46,9 +70,100 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * 
 	 * @return
 	 */
-	public boolean isSelectModeVisible() {
+	public boolean isSelectModeDropDownVisible() {
 		action.waitForVisibility(select_mode, action.implicit_wait);
 		return action.isDisplay(select_mode);
+	}
+
+	/**
+	 * By This Method We Can Check "Select Mode" ellipsis button Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSelectEllipsisButtonVisible() {
+		action.waitForVisibility(select_mode_ellipsis_button, action.implicit_wait);
+		return action.isDisplay(select_mode_ellipsis_button);
+	}
+
+	/**
+	 * By This Method We Can Check "Master Name" AutoSuggestive drop down Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isMasterNameAutoSuggestiveDropDownVisible() {
+		action.waitForVisibility(master_name_auto_sugg_drop_down_button, action.implicit_wait);
+		return action.isDisplay(master_name_auto_sugg_drop_down_button);
+	}
+
+	/**
+	 * By This Method We Can Check "Description" text Field Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isDescriptionTextFieldVisible() {
+		action.waitForVisibility(description_text_field, action.implicit_wait);
+		return action.isDisplay(description_text_field);
+	}
+
+	/**
+	 * By This Method We Can Check "Description" text Field Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSaveButtonVisible() {
+		action.waitForVisibility(save_button, action.implicit_wait);
+		return action.isDisplay(save_button);
+	}
+
+	/**
+	 * By This Method We Can Get Current Master Field Name
+	 * 
+	 * @return
+	 */
+	public String getCurrentNameOfMasterField() {
+		action.waitForVisibility(master_name_curr_field_name, action.implicit_wait);
+		return action.getText(master_name_curr_field_name);
+	}
+
+	/**
+	 * By this method we can enter the Master Name Text Field
+	 * 
+	 * @param value
+	 */
+	public void enterMasteName(String value) {
+		action.waitForVisibility(master_name_auto_text, action.implicit_wait);
+		action.type(master_name_auto_text, getCurrentNameOfMasterField(), value);
+	}
+
+	/**
+	 * By This Method We Can Get The "Master Name" Text Field Value
+	 * 
+	 * @return
+	 */
+	public String getValueOfMasterNameAutoSuggestiveField() {
+		action.waitForVisibility(master_name_auto_text, action.implicit_wait);
+		return action.getAttributeValue(master_name_auto_text, "value");
+	}
+
+	/**
+	 * By This Method We Can Enter The Description
+	 * 
+	 * @param description
+	 */
+	public void enterDescription(String description) {
+		if (isDescriptionTextFieldVisible()) {
+			action.type(description_text_field, "Description ", description);
+		}
+	}
+
+	/**
+	 * By This Method We Can Get The "Description" Text Field Value
+	 * 
+	 * @return
+	 */
+	public String getValueOfDescriptionTextField() {
+		action.waitForVisibility(description_text_field, action.implicit_wait);
+		return action.getAttributeValue(description_text_field, "value");
 	}
 
 	/**
@@ -107,7 +222,7 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * @param drop_down_name { drop_down_name should be same as it's in webpage}
 	 * 
 	 */
-	public void clickOnMasterCreationDropDown(String drop_down_name) {
+	public void clickOnAnyMasterCreationDropDown(String drop_down_name) {
 		action.waitForVisibility(
 				driver.findElement(
 						By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
@@ -166,4 +281,14 @@ public class AdminMasterCreationPage extends AdminPage {
 				"value").trim();
 
 	}
+
+	/**
+	 * Click On Save Button
+	 */
+	public void clickOnSaveButton() {
+		if (isSaveButtonVisible()) {
+			action.clickOn(save_button);
+		}
+	}
+
 }
