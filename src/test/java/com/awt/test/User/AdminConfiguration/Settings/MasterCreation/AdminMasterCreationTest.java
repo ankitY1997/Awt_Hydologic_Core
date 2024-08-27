@@ -95,6 +95,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(url.trim().contains("MasterCreation"),
 				"To verify that Master Creation button should be visible under the Settings menu", admin_project);
 
+		verifySystemMaster();
 	}
 
 	public void verifySystemMaster() {
@@ -217,6 +218,8 @@ public class AdminMasterCreationTest extends BaseTest {
 		boolean isSaveButtonVisible = admin_master_creation_page.isSaveButtonVisible();
 		asert.assertTrue(isSaveButtonVisible,
 				"To verify that Save button should be visible in the Master Creation panel.", "SU-T16");
+		
+		
 
 	}
 
