@@ -28,7 +28,7 @@ public class AdminMasterCreationPage extends AdminPage {
 
 	// ******select mode ellipsis button ********/
 	@FindAll({ @FindBy(xpath = "//label[text()='Select Mode']/../div//button[not(@aria-label='Select Mode')]") })
-	public WebElement select_mode_ellipsis_button;
+	public WebElement ellipsis_button;
 
 	// ***Master Name Auto Suggestive Drop Down**/
 	@FindAll({ @FindBy(xpath = "//label[contains(text(),'Master Name')]") })
@@ -81,8 +81,8 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * @return boolean
 	 */
 	public boolean isSelectEllipsisButtonVisible() {
-		action.waitForVisibility(select_mode_ellipsis_button, action.implicit_wait);
-		return action.isDisplay(select_mode_ellipsis_button);
+		action.waitForVisibility(ellipsis_button, action.implicit_wait);
+		return action.isDisplay(ellipsis_button);
 	}
 
 	/**
@@ -289,6 +289,19 @@ public class AdminMasterCreationPage extends AdminPage {
 		if (isSaveButtonVisible()) {
 			action.clickOn(save_button);
 		}
+	}
+
+	/**
+	 * By This Method We Can Navigate System Moder Master pnael
+	 * 
+	 * @return object of SystemModeMasterPanel
+	 */
+	public SystemModeMasterPanel clickOnElipsisButtonNavigateToSystemModeMasterPanel() {
+		clickOnRadioButton("System Master");
+		if (isSelectEllipsisButtonVisible()) {
+			action.clickOn(ellipsis_button);
+		}
+		return new SystemModeMasterPanel(driver);
 	}
 
 }

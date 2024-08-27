@@ -95,7 +95,11 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(url.trim().contains("MasterCreation"),
 				"To verify that Master Creation button should be visible under the Settings menu", "SU-T2");
 
+		// *****Verify System Master***/
 		verifySystemMaster();
+
+		// *assert All**/
+		asert.assertAll();
 	}
 
 	public void verifySystemMaster() {
@@ -130,36 +134,39 @@ public class AdminMasterCreationTest extends BaseTest {
 				"To verify that by default any one radio button should be selected,  between System Master,User Defined,and External in Master Creation panel.",
 				"SU-T6");
 
-		// SU-T7-->To verify that "Select Mode" drop down should be visible in the
-		// "Master Creation" panel.
+		// SU-T7-->To verify that after selecting "System Radio" button ,"Select Mode"
+		// drop down should be visible in the "Master Creation" panel.
+		// -> Select System Master Radio Button
+		admin_master_creation_page.clickOnRadioButton("System Master");
 		// Check "Select Mode" drop-dwon is visible
 		boolean isSelectModeDropDownVisible = admin_master_creation_page.isSelectModeDropDownVisible();
 		asert.assertTrue(isSelectModeDropDownVisible,
 				"To verify that Select Mode drop down should be visible in the Master Creation panel.", "SU-T7");
 
 		// SU-T8-->To verify that the "Select Mode" drop-down displays the list of
-		// options based on the selected radio button
-		// -> First Select "System Master"
-		admin_master_creation_page.clickOnRadioButton("System Master");
+		// options based on the selected "System Radio" button
 		// -> Click on "Select Mode" drop-down
 		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
 		// Check "Notification Type" mode is visible
 		boolean isNotificationTypeModeVisible = admin_master_creation_page.isModePresent("Notification Type");
+		// For closing drop down click on the "System Master" radio button
+		admin_master_creation_page.clickOnRadioButton("System Master");
 		asert.assertTrue(isNotificationTypeModeVisible,
-				"To verify that the Select Mode drop-down displays the  list of options based on the selected radio button",
+				"To verify that the Select Mode drop-down displays the  list of options based on the sselected System Radio button",
 				"SU-T8");
 
-		// SU-T9-->To verify that "Select Mode" ellipsis button should be visible in the
-		// "Master Creation" panel.
+		// SU-T9-->To verify that after selecting "System Radio" button, "Select Mode"
+		// ellipsis button should be visible in the "Master Creation" panel.
 		boolean isSelectModeEllipsisButtonVisible = admin_master_creation_page.isSelectEllipsisButtonVisible();
 		asert.assertTrue(isSelectModeEllipsisButtonVisible,
-				"To verify that Select Mode ellipsis button should be visible in the Master Creation panel.", "SU-T9");
+				"To verify that after selecting System Radio button, Select Mode ellipsis button should be visible in the Master Creation panel.",
+				"SU-T9");
 
-		// SU-T10-->To verify that by default user should able to see the "Master Name"
-		// auto suggestive drop down.
+		// SU-T10-->To verify that after selecting "System Master", by default user
+		// should able to see the "Master Name" auto suggestive drop down.
 		boolean isMasterNameDropDownVisible = admin_master_creation_page.isMasterNameAutoSuggestiveDropDownVisible();
 		asert.assertTrue(isMasterNameDropDownVisible,
-				"To verify that  by default  user should able to see the Master Name auto suggestive drop down.",
+				"To verify that after selecting System Master, by default user should able to see the Master Name auto suggestive drop down.",
 				"SU-T10");
 
 		// SU-T11-->To verify that "Master Name" auto suggestive drop down should accept
@@ -169,7 +176,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		admin_master_creation_page.enterMasteName(validValue);
 		// ->Check the alpha numeric it's accepting
 		String actual_value_of_master_name_text = admin_master_creation_page.getValueOfMasterNameAutoSuggestiveField();
-		asert.assertEquals(validValue, actual_value_of_master_name_text,
+		asert.assertEquals(actual_value_of_master_name_text, validValue,
 				"To verify that Master Name auto suggestive drop down should accept only the alphanumeric", "SU-T11");
 
 		// SU-T12-->To verify that "Master Name" auto suggestive drop down should not
@@ -191,7 +198,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		admin_master_creation_page.enterMasteName(inValidValue);
 		// It should not accept more than 30 character
 		actual_value_of_master_name_text = admin_master_creation_page.getValueOfMasterNameAutoSuggestiveField();
-		asert.assertEquals(actual_value_of_master_name_text, inValidValue,
+		asert.assertNotEquals(actual_value_of_master_name_text, inValidValue,
 				"To verify that Master Name text field should  not exceed more than 30 characters.", "SU-T13");
 
 		// SU-T14-->To verify that "Description" text field should be visible in the
@@ -209,7 +216,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// ->Take Actual Value From "Description Text Field
 		String actValueOfDescriptionTextField = admin_master_creation_page.getValueOfDescriptionTextField();
 		// It Should Not Be Accept more than 100 character
-		asert.assertEquals(actValueOfDescriptionTextField, inValidValue,
+		asert.assertNotEquals(actValueOfDescriptionTextField, inValidValue,
 				"To verify that Description text field  should not exceed more than 100 characters.", "SU-T15");
 
 		// SU-T16-->To verify that "Save" button should be visible in the "Master
@@ -218,9 +225,9 @@ public class AdminMasterCreationTest extends BaseTest {
 		boolean isSaveButtonVisible = admin_master_creation_page.isSaveButtonVisible();
 		asert.assertTrue(isSaveButtonVisible,
 				"To verify that Save button should be visible in the Master Creation panel.", "SU-T16");
-		
-		
 
+		// SU-T17-->To verify that after clicking on the "Ellipsis" button ,user should
+		// redirect to the Mode Master Panel.
 	}
 
 }

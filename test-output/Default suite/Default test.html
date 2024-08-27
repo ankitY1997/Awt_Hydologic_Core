@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Aug 16 11:19:04 IST 2024</td>
+<td>Started on:</td><td>Tue Aug 27 14:37:00 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>37 seconds (37662 ms)</td>
+<tr><td>Total time:</td><td>6 seconds (6738 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,23 +75,9 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.awt.test.Login.LoginPageTest.verifyLoginPage()'><b>verifyLoginPage</b><br>Test class: com.awt.test.Login.LoginPageTest</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //input[@name=&apos;email&apos;],By.xpath: //input[@id=&apos;email&apos;],By.xpath: //input[@placeholder=&apos;User name&apos;]})
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy39.isDisplayed(Unknown Source)
-	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:369)
-	at com.awt.page.Login.LoginPage.isUserNameTextFieldVisible(LoginPage.java:70)
-	at com.awt.test.Login.LoginPageTest.verifyLoginPage(LoginPageTest.java:74)
+<td title='com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation()'><b>verifyAdminMasterCreation</b><br>Test class: com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:78)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -118,25 +104,11 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.TestNG.runSuites(TestNG.java:1063)
 	at org.testng.TestNG.run(TestNG.java:1031)
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1055300312", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1055300312'><pre>org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //input[@name=&apos;email&apos;],By.xpath: //input[@id=&apos;email&apos;],By.xpath: //input[@placeholder=&apos;User name&apos;]})
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
-Driver info: driver.version: RemoteWebDriver
-	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy39.isDisplayed(Unknown Source)
-	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:369)
-	at com.awt.page.Login.LoginPage.isUserNameTextFieldVisible(LoginPage.java:70)
-	at com.awt.test.Login.LoginPageTest.verifyLoginPage(LoginPageTest.java:74)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2189588", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2189588'><pre>java.lang.NullPointerException: Cannot invoke &quot;com.awt.page.User.ParentLandingPage.goToProjectPage(String)&quot; because &quot;this.parent_landing_page&quot; is null
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:78)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -163,11 +135,11 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.TestNG.runSuites(TestNG.java:1063)
 	at org.testng.TestNG.run(TestNG.java:1031)
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>34</td>
-<td>com.awt.test.Login.LoginPageTest@689604d9</td></tr>
+<td>3</td>
+<td>com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@4562e04d</td></tr>
 </table><p>
 </body>
 </html>

@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Demo" class="navigator-link">
-              <span class="suite-name border-passed">Demo</span>
+              <span class="suite-name border-failed">Demo</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Demo" class="hide-methods passed suite-Demo"> (hide)</a> <!-- hide-methods passed suite-Demo -->
-                      <a href="#" panel-name="suite-Demo" class="show-methods passed suite-Demo"> (show)</a> <!-- show-methods passed suite-Demo -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Demo" class="hide-methods failed suite-Demo"> (hide)</a> <!-- hide-methods failed suite-Demo -->
+                      <a href="#" panel-name="suite-Demo" class="show-methods failed suite-Demo"> (show)</a> <!-- show-methods failed suite-Demo -->
                     </span>
-                    <div class="method-list-content passed suite-Demo">
+                    <div class="method-list-content failed suite-Demo">
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Demo" title="com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest" class="method navigator-link" hash-for-method="verifyAdminMasterCreation">verifyAdminMasterCreation</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Demo -->
+                    </div> <!-- method-list-content failed suite-Demo -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,9 +119,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Demo" class="panel Demo">
-          <div class="suite-Demo-class-passed">
+          <div class="suite-Demo-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -130,10 +130,21 @@
                   <a name="verifyAdminMasterCreation">
                   </a> <!-- verifyAdminMasterCreation -->
                   <span class="method-name">verifyAdminMasterCreation</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	did not expect [DWaaD -&amp;&amp;] but found [DWaaD -&amp;&amp;],
+	did not expect [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d] but found [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d],
+	did not expect [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L] but found [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L]
+	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:102)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+... Removed 14 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Demo-class-passed -->
+          </div> <!-- suite-Demo-class-failed -->
         </div> <!-- panel Demo -->
         <div panel-name="test-xml-Demo" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -214,12 +225,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyAdminMasterCreation')
 data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest')
-data.setCell(0, 3, 27311);
+data.setCell(0, 3, 31407);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 27 seconds</span>
+              <span class="suite-total-time">Total running time: 31 seconds</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -251,12 +262,14 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">verifyAdminMasterCreation</span>
-                <span class="method-start">3025 ms</span>
+                <span class="method-start">18538 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">30340 ms</span>
+                <span class="method-start">50464 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
