@@ -208,7 +208,7 @@ public class AdminMasterCreationPage extends AdminPage {
 		String value = null;
 		boolean flag = false;
 		for (WebElement element : list_radio_button) {
-			value = action.getAttributeValue(element, "value");
+			value = action.getAttributeValue(element, "class");
 			if (value.trim().contains("checked")) {
 				flag = true;
 			}

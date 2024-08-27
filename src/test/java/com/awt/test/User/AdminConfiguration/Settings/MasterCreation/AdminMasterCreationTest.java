@@ -93,7 +93,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Check "admin-Master Creation" page is visible
 		String url = DriverFactory.iuiDriver().getDriver().getCurrentUrl();
 		asert.assertTrue(url.trim().contains("MasterCreation"),
-				"To verify that Master Creation button should be visible under the Settings menu", admin_project);
+				"To verify that Master Creation button should be visible under the Settings menu", "SU-T2");
 
 		verifySystemMaster();
 	}
