@@ -50,6 +50,10 @@ public class AdminMasterCreationPage extends AdminPage {
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='Save']") })
 	public WebElement save_button;
 
+	// **Cancel Button**/
+	@FindAll({ @FindBy(xpath = "//button[@aria-label='Cancel']") })
+	public WebElement cancel_button;
+
 	// ***Constructor***/
 	public AdminMasterCreationPage(WebDriver driver) {
 		super(driver);
@@ -106,13 +110,23 @@ public class AdminMasterCreationPage extends AdminPage {
 	}
 
 	/**
-	 * By This Method We Can Check "Description" text Field Is Visible
+	 * By This Method We Can Check "Save" button Is Visible
 	 * 
 	 * @return boolean
 	 */
 	public boolean isSaveButtonVisible() {
 		action.waitForVisibility(save_button, action.implicit_wait);
 		return action.isDisplay(save_button);
+	}
+
+	/**
+	 * By This Method We Can Check "Cancel" button Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCancelButtonVisible() {
+		action.waitForVisibility(cancel_button, action.implicit_wait);
+		return action.isDisplay(cancel_button);
 	}
 
 	/**
@@ -291,6 +305,14 @@ public class AdminMasterCreationPage extends AdminPage {
 		}
 	}
 
+	/**
+	 * Click On Cancel Button
+	 */
+	public void clickOnCancelButton() {
+		if (isCancelButtonVisible()) {
+			action.clickOn(cancel_button);
+		}
+	}
 	/**
 	 * By This Method We Can Navigate System Moder Master pnael
 	 * 

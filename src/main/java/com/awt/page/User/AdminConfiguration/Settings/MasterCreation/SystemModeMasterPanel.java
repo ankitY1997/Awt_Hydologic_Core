@@ -28,6 +28,15 @@ public class SystemModeMasterPanel extends AdminMasterCreationPage {
 	@FindAll({ @FindBy(xpath = "//label[contains(text(),'Parent Mode ')]/../div//*[local-name()='svg']") })
 	public WebElement parent_mode_drop_down;
 
+	// ***Close Button***/
+	@FindAll({ @FindBy(xpath = "//button[@data-pc-section='closebutton']//*[local-name()='svg']") })
+	public WebElement close_button;
+
+	// ***Mode Master Save button***/
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='content']//button[@aria-label='Save']") })
+	public WebElement mode_master_save_button;
+
+	// **Constructor**/
 	public SystemModeMasterPanel(WebDriver driver) {
 		super(driver);
 	}
@@ -63,6 +72,26 @@ public class SystemModeMasterPanel extends AdminMasterCreationPage {
 	}
 
 	/**
+	 * By This Method We Can Check "Close" button is visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCloseButtonIsVisible() {
+		action.waitForVisibility(close_button, action.implicit_wait);
+		return action.isDisplay(close_button);
+	}
+
+	/**
+	 * By This Method We Can Check Mode Master Panel"Save" button Is Visible
+	 * 
+	 * @return boolean
+	 */
+	public boolean isModeMasterSaveButtonVisible() {
+		action.waitForVisibility(mode_master_save_button, action.implicit_wait);
+		return action.isDisplay(mode_master_save_button);
+	}
+
+	/**
 	 * By this method we can click on parent mode drop down
 	 */
 	public void clickOnParentModeDropDown() {
@@ -87,6 +116,28 @@ public class SystemModeMasterPanel extends AdminMasterCreationPage {
 				"//div[text()='Mode Master']/../following-sibling::div//div[@data-pc-name='radiobutton']/following-sibling::label[contains(text(),'"
 						+ radio_button_name + "')]")));
 
+	}
+
+	/**
+	 * By this method we can click on close button which present in the "Mode
+	 * Master" panel
+	 * 
+	 */
+	public void clickOnCloseButton() {
+		if (isCloseButtonIsVisible()) {
+			action.clickOn(close_button);
+		}
+	}
+
+	/**
+	 * By this method we can click on close button which present in the "Mode
+	 * Master" panel
+	 * 
+	 */
+	public void clickOnModeMasterSaveButton() {
+		if (isModeMasterSaveButtonVisible()) {
+			action.clickOn(mode_master_save_button);
+		}
 	}
 
 	/**

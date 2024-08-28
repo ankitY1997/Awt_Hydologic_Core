@@ -295,6 +295,67 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(isParentModeDropDownVisible,
 				"To verify that while selecting System Master radio button, Parent Mode drop down should be visible in the Mode Master panel",
 				"SU-T26");
+
+		// SU-T27-->To verify that "Save" button should be visible in the "Mode Master"
+		// panel .
+		// Check "Save" button is visible
+		boolean isSaveButtonIsVisible = sys_mode_master_panel.isModeMasterSaveButtonVisible();
+		asert.assertTrue(isSaveButtonIsVisible,
+				"To verify that Save button should be visible in the Mode Master panel .", "SU-T27");
+
+		// SU-T28-->To verify that "Close" svg button should be visible in the the "Mode
+		// Master" Panel.
+		boolean isCloseSvgButtonIsVisible = sys_mode_master_panel.isCloseButtonIsVisible();
+		asert.assertTrue(isCloseSvgButtonIsVisible,
+				"To verify that Close svg button should be visible in the the Mode Master Panel.", "SU-T28");
+
+		// SU-T29-->To verify that After selecting the "System Master" radio button,
+		// Created "Mode Name" should be visible under the "Select Mode" drop down in
+		// the "Master Creation" panel
+		// -> Enter Mode Name
+		String mode_name = "Data Base Notification" + AwtUtilities.genrateRandomAlphaNeumric(3) + "_Table Report";
+		sys_mode_master_panel.enterModeName(mode_name);
+		// -> Click On Save Button
+		sys_mode_master_panel.clickOnModeMasterSaveButton();
+		// -> Then Select System Master Radio Button under Master Creation Panel
+		admin_master_creation_page.clickOnRadioButton("System Master");
+		// --> Then Click on Select Mode Drop-dwon and Check Create Mode Is Visible
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		boolean isCreatedModeIsPresent = admin_master_creation_page.isModePresent(mode_name);
+		asert.assertTrue(isCreatedModeIsPresent,
+				"To verify that After selecting the System Master radio button, Created Mode Name should be visible under the Select Mode drop down in the Master Creation panel",
+				"SU-T29");
+
+		// SU-T31-->To verify that after clicking on "close" button, user should be able
+		// to redirect to "Master Creation" panel
+		// -> Click On Ellipsis button
+		admin_master_creation_page.clickOnElipsisButtonNavigateToSystemModeMasterPanel();
+		// -> Then click on "Close" svg button
+		sys_mode_master_panel.clickOnCloseButton();
+		// -> and validate user is reached master creation panel or not
+		isSelectModeDropDownVisible = admin_master_creation_page.isSelectModeDropDownVisible();
+		asert.assertTrue(isSelectModeDropDownVisible,
+				"To verify that after clicking on close button, user should be able to redirect to Master Creation panel",
+				"SU-T31");
+
+		// SU-T127-->To verify that after selecting "System Master" radio button, "Save"
+		// button should be visible in the "Master Creation" panel.
+		// -> Select System Master Radio Button
+		admin_master_creation_page.clickOnRadioButton("System Master");
+		// Verify "Save" button is visible
+		isSaveButtonVisible = admin_master_creation_page.isSaveButtonVisible();
+		asert.assertTrue(isSaveButtonVisible,
+				"To verify that after selecting System Master radio button, Save button should be visible in the Master Creation panel.",
+				"SU-T127");
+
+		// SU-T176-->To verify that after selecting "System Master" radio button,
+		// "Cancel" button should be visible in the "Master Creation" panel.
+		// Check "Cancel button is visible
+		boolean isCancelButtonVisible = admin_master_creation_page.isCancelButtonVisible();
+		asert.assertTrue(isCancelButtonVisible,
+				"To verify that after selecting System Master radio button, Cancel button should be visible in the Master Creation panel.",
+				"SU-T176");
+
 	}
 
 }
