@@ -110,11 +110,11 @@ public class SystemModeMasterPanel extends AdminMasterCreationPage {
 
 		action.waitForVisibility(driver.findElement(By.xpath(
 				"//div[text()='Mode Master']/../following-sibling::div//div[@data-pc-name='radiobutton']/following-sibling::label[contains(text(),'"
-						+ radio_button_name + "')]")),
+						+ radio_button_name + "')]/preceding-sibling::div[1]")),
 				action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath(
 				"//div[text()='Mode Master']/../following-sibling::div//div[@data-pc-name='radiobutton']/following-sibling::label[contains(text(),'"
-						+ radio_button_name + "')]")));
+						+ radio_button_name + "')]/preceding-sibling::div[1]")));
 
 	}
 

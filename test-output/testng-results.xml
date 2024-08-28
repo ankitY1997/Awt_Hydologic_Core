@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-27T14:47:21 IST" name="Demo" finished-at="2024-08-27T14:48:13 IST" duration-ms="52541">
+  <suite started-at="2024-08-28T16:01:00 IST" name="Demo" finished-at="2024-08-28T16:02:19 IST" duration-ms="78552">
     <groups>
       <group name="Functional">
         <method signature="AdminMasterCreationTest.verifyAdminMasterCreation()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" name="verifyAdminMasterCreation" class="com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest"/>
@@ -11,9 +11,9 @@
         <method signature="AdminMasterCreationTest.verifyAdminMasterCreation()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" name="verifyAdminMasterCreation" class="com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2024-08-27T14:47:21 IST" name="Test" finished-at="2024-08-27T14:48:13 IST" duration-ms="52541">
+    <test started-at="2024-08-28T16:01:00 IST" name="Test" finished-at="2024-08-28T16:02:19 IST" duration-ms="78552">
       <class name="com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-27T14:47:21 IST" name="launchBrowser" finished-at="2024-08-27T14:47:40 IST" duration-ms="18526" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-28T16:01:01 IST" name="launchBrowser" finished-at="2024-08-28T16:01:03 IST" duration-ms="2764" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,23 +24,25 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyAdminMasterCreation()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-27T14:47:40 IST" name="verifyAdminMasterCreation" finished-at="2024-08-27T14:48:11 IST" duration-ms="31407" status="FAIL">
+        <test-method signature="verifyAdminMasterCreation()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-28T16:01:03 IST" name="verifyAdminMasterCreation" finished-at="2024-08-28T16:02:17 IST" duration-ms="73496" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-did not expect [DWaaD -&&] but found [DWaaD -&&],
-did not expect [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d] but found [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d],
-did not expect [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L] but found [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L]]]>
+did not expect [qJcFB -&&] but found [qJcFB -&&],
+did not expect [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR] but found [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR],
+did not expect [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q] but found [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q],
+expected [For Testing Purpose Only] but found []]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-did not expect [DWaaD -&&] but found [DWaaD -&&],
-did not expect [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d] but found [XEI9oLwVH6hf66BjGhOYqYM5ug3i77Pz17d],
-did not expect [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L] but found [47rKzkTatrfk2f5vRxTInZveDAzY7ewwngwcIcsvD4npH1IXEib5X5BJOPeaGwpHecbq3C7OS2YLWlhOal8aiyItF0keoQ9Y5xquOdo9L]
+did not expect [qJcFB -&&] but found [qJcFB -&&],
+did not expect [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR] but found [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR],
+did not expect [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q] but found [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q],
+expected [For Testing Purpose Only] but found []
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
 at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:102)
+at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:108)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -62,7 +64,7 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAdminMasterCreation -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-27T14:48:12 IST" name="tearUp" finished-at="2024-08-27T14:48:13 IST" duration-ms="1502" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7]" started-at="2024-08-28T16:02:17 IST" name="tearUp" finished-at="2024-08-28T16:02:19 IST" duration-ms="1508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->

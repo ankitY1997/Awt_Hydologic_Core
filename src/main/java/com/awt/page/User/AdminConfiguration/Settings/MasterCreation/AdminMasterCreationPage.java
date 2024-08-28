@@ -1,5 +1,6 @@
 package com.awt.page.User.AdminConfiguration.Settings.MasterCreation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -25,6 +26,10 @@ public class AdminMasterCreationPage extends AdminPage {
 	// ******List Of Mode ********/
 	@FindAll({ @FindBy(xpath = "//ul[@id='search_list']/li") })
 	public List<WebElement> mode_list;
+
+	// ******List Of Master Name ********/
+	@FindAll({ @FindBy(xpath = "//ul[@id='masterName_list']/li") })
+	public List<WebElement> master_name_list;
 
 	// ******select mode ellipsis button ********/
 	@FindAll({ @FindBy(xpath = "//label[text()='Select Mode']/../div//button[not(@aria-label='Select Mode')]") })
@@ -84,7 +89,7 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * 
 	 * @return boolean
 	 */
-	public boolean isSelectEllipsisButtonVisible() {
+	public boolean isSelectModeEllipsisButtonVisible() {
 		action.waitForVisibility(ellipsis_button, action.implicit_wait);
 		return action.isDisplay(ellipsis_button);
 	}
@@ -237,12 +242,18 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * 
 	 */
 	public void clickOnAnyMasterCreationDropDown(String drop_down_name) {
-		action.waitForVisibility(
-				driver.findElement(
-						By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
-				action.implicit_wait);
-		action.clickOn(driver
-				.findElement(By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
+		if (drop_down_name.equalsIgnoreCase("Select Mode")) {
+			action.waitForVisibility(
+					driver.findElement(
+							By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(
+					By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
+		} else if (drop_down_name.equalsIgnoreCase("Master Name")) {
+			action.waitForVisibility(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")));
+		}
 	}
 
 	/**
@@ -297,6 +308,43 @@ public class AdminMasterCreationPage extends AdminPage {
 	}
 
 	/**
+	 * By This Method We Can Check Passed Master Name Is Present In Master Name
+	 * DropDown List Or Not
+	 * 
+	 * @param exp_mode_name
+	 * @implNote Correct Master Name
+	 * @return boolean
+	 */
+	public boolean isMasterNamePresent(String exp_master_name) {
+		action.waitForVisibility(master_name_list.get(0), action.implicit_wait);
+		boolean flag = false;
+		String act_mode_name = null;
+		for (WebElement element : master_name_list) {
+			act_mode_name = element.getText().trim();
+			if (act_mode_name.equals(exp_master_name)) {
+				flag = true;
+			}
+		}
+		return flag;
+	}
+
+	/**
+	 * By This Method We Can Select Master Name From Select Master Name DropDown
+	 * 
+	 * @param master_name
+	 */
+	public void selectMasterName(String master_name) {
+		action.waitForVisibility(
+				driver.findElement(
+						By.xpath("//ul[@id='masterName_list' or @role='listbox']/li[text()='" + master_name + "']")),
+				action.implicit_wait);
+		action.performMoveToElement(driver.findElement(
+				By.xpath("//ul[@id='masterName_list' or @role='listbox']/li[text()='" + master_name + "']")));
+		action.clickOn(driver.findElement(
+				By.xpath("//ul[@id='masterName_list' or @role='listbox']/li[text()='" + master_name + "']")));
+	}
+
+	/**
 	 * Click On Save Button
 	 */
 	public void clickOnSaveButton() {
@@ -313,6 +361,7 @@ public class AdminMasterCreationPage extends AdminPage {
 			action.clickOn(cancel_button);
 		}
 	}
+
 	/**
 	 * By This Method We Can Navigate System Moder Master pnael
 	 * 
@@ -320,10 +369,40 @@ public class AdminMasterCreationPage extends AdminPage {
 	 */
 	public SystemModeMasterPanel clickOnElipsisButtonNavigateToSystemModeMasterPanel() {
 		clickOnRadioButton("System Master");
-		if (isSelectEllipsisButtonVisible()) {
+		if (isSelectModeEllipsisButtonVisible()) {
 			action.clickOn(ellipsis_button);
 		}
 		return new SystemModeMasterPanel(driver);
+	}
+	// ****User Defined Radio Button Related Methods*********/
+
+	/**
+	 * By this method we can get all fields name which present when we are selecting
+	 * "User Defined" radio button
+	 * 
+	 * @return all fields name
+	 */
+	public List<String> getAllUserDefinedFieldName() {
+
+		List<WebElement> fields_name = driver.findElements(By.xpath("//div[@class='field']/label"));
+		List<String> actual_fields_name = new ArrayList<String>();
+		for (WebElement element : fields_name) {
+			actual_fields_name.add(element.getText());
+		}
+		return actual_fields_name;
+	}
+	
+	/**
+	 * By This Method We Can Navigate User Defined Mode Master panel
+	 * 
+	 * @return object of SystemModeMasterPanel
+	 */
+	public UserDefinedModeMasterPanel clickOnElipsisButtonNavigateToUserDefinedMasterPanel() {
+		clickOnRadioButton("User Defined");
+		if (isSelectModeEllipsisButtonVisible()) {
+			action.clickOn(ellipsis_button);
+		}
+		return new UserDefinedModeMasterPanel(driver);
 	}
 
 }
