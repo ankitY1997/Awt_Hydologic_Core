@@ -72,6 +72,24 @@ public class SystemModeMasterPanel extends AdminMasterCreationPage {
 	}
 
 	/**
+	 * By This Method User Can Click On or Select Any Radio Button By Providing Name
+	 * Of Radio Button
+	 * 
+	 * @param radio_button_name {same as it's web page}
+	 */
+	public void clickOnModeMasterRadioButton(String radio_button_name) {
+
+		action.waitForVisibility(driver.findElement(By.xpath(
+				"//div[text()='Mode Master']/../following-sibling::div//div[@data-pc-name='radiobutton']/following-sibling::label[contains(text(),'"
+						+ radio_button_name + "')]")),
+				action.implicit_wait);
+		action.clickOn(driver.findElement(By.xpath(
+				"//div[text()='Mode Master']/../following-sibling::div//div[@data-pc-name='radiobutton']/following-sibling::label[contains(text(),'"
+						+ radio_button_name + "')]")));
+
+	}
+
+	/**
 	 * By this method we can get mode master panel radio buttons name
 	 * 
 	 * @return

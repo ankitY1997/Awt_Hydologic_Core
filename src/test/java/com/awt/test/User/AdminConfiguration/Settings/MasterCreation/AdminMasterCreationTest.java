@@ -1,11 +1,16 @@
 package com.awt.test.User.AdminConfiguration.Settings.MasterCreation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 import com.awt.page.Login.LoginPage;
 import com.awt.page.User.ParentLandingPage;
 import com.awt.page.User.AdminConfiguration.AdminPage;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
+import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.SystemModeMasterPanel;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
@@ -29,6 +34,7 @@ public class AdminMasterCreationTest extends BaseTest {
 	ParentLandingPage parent_landing_page = null;
 	AdminPage admin_page = null;
 	AdminMasterCreationPage admin_master_creation_page = null;
+	public SystemModeMasterPanel sys_mode_master_panel = null;
 
 	/**
 	 * 
@@ -228,6 +234,67 @@ public class AdminMasterCreationTest extends BaseTest {
 
 		// SU-T17-->To verify that after clicking on the "Ellipsis" button ,user should
 		// redirect to the Mode Master Panel.
+		// -> click on ellipsis button and navigate to mode maste panel
+		sys_mode_master_panel = admin_master_creation_page.clickOnElipsisButtonNavigateToSystemModeMasterPanel();
+		// Check "Mode Master" panel is visible
+		String actual_panel_name = sys_mode_master_panel.getSytemMasterPanelName();
+		asert.assertEquals(actual_panel_name, "Mode Master",
+				"To verify that after clicking on the Ellipsis button ,user shouldredirect to the Mode Master Panel.",
+				"SU-T17");
+
+		// SU-T21-->To verify that after clicking on the "Ellipsis" button ,user should
+		// be able to see "System Master", "User Defined", "External Radio" buttons
+		String[] exp_radio_butons = { "System Master", "User Defined", "External" };
+		List<String> act_radio_buttons = sys_mode_master_panel.getModeMasterRadioButtonNames();
+		asert.assertEquals(act_radio_buttons, new ArrayList<String>(Arrays.asList(exp_radio_butons)),
+				"To verify that after clicking on the Ellipsis button ,user should be able to see System Master, User Defined, External Radio buttons",
+				"SU-T21");
+
+		// SU-T22-->To verify that by default any one radio button should be selected,
+		// between "System Master," "User Defined," and "External" in Mode Master panel.
+		// Check by default any radio button is selcted
+		isByDefaultAnyRadioButtonSelected = sys_mode_master_panel.isByDefaultModeMasterPanelAnyRadioButtonIsChecked();
+		asert.assertTrue(isByDefaultAnyRadioButtonSelected,
+				"To verify that by default any one radio button should be selected,  between System Master,User Defined,and External in Mode Master panel.",
+				"SU-T22");
+
+		// SU-T23-->To verify that while selecting "System Master " radio button, "Mode
+		// name " text field should be visible in the "Mode Master" panel.
+		// ->click on "System Master" Radio Button
+		sys_mode_master_panel.clickOnModeMasterRadioButton("System Master");
+		// Check "Mode Name" text field visible
+		boolean isModeNameTextFieldIsVisible = sys_mode_master_panel.isModeNameTextFieldVisible();
+		asert.assertTrue(isModeNameTextFieldIsVisible,
+				"To verify that while selecting System Master  radio button, Mode name  text field should be visible in the Mode Master panel.",
+				"SU-T23");
+
+		// SU-T24-->To verify that "Mode name " text field should accept only the
+		// alphanumeric
+		// ->Enter Alpha numeric
+		String alpha_numeric = AwtUtilities.genrateRandomAlphaNeumric(6);
+		sys_mode_master_panel.enterModeName(alpha_numeric);
+		// -> Get Actual "Mode Name" text field value
+		String actual_mode_name_field_value = sys_mode_master_panel.getModeNameTextFieldValue().trim();
+		asert.assertEquals(actual_mode_name_field_value, alpha_numeric,
+				"To verify that Mode name  text field should accept only the alphanumeric", "SU-T24");
+
+		// SU-T25-->To verify that "Mode name " text field should not accept more than
+		// 30 characters
+		// ->Enter More than "30" character
+		String inValidChar = AwtUtilities.genrateRandomAlphaBets(35);
+		sys_mode_master_panel.enterModeName(alpha_numeric);
+		// -> Get Actual "Mode Name" text field value
+		actual_mode_name_field_value = sys_mode_master_panel.getModeNameTextFieldValue().trim();
+		asert.assertNotEquals(actual_mode_name_field_value, inValidChar,
+				"To verify that Mode name text field should not accept more than 30 characters", "SU-T25");
+
+		// SU-T26-->To verify that while selecting "System Master" radio button, "Parent
+		// Mode " drop down should be visible in the "Mode Master" panel
+		// Check Parent Mode drop-down visible
+		boolean isParentModeDropDownVisible = sys_mode_master_panel.isParentModeDropDownVisible();
+		asert.assertTrue(isParentModeDropDownVisible,
+				"To verify that while selecting System Master radio button, Parent Mode drop down should be visible in the Mode Master panel",
+				"SU-T26");
 	}
 
 }
