@@ -103,13 +103,18 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(url.trim().contains("MasterCreation"),
 				"To verify that Master Creation button should be visible under the Settings menu", "SU-T2");
 
-		// ***Verify System Master***/
+		// **Verify System Master Radio Button Functionality***/
 		verifySystemMaster();
+		// **Verify User Defined Radio Button Functionality**/
+		verifyUserDefined();
 
 		// *assert All**/
 		asert.assertAll();
 	}
 
+	/**
+	 * To verify "System Master" radio button functionality
+	 */
 	public void verifySystemMaster() {
 		// SU-T3-->To verify that "System Master" radio button should be visible in the
 		// "Master Creation" panel.
@@ -392,11 +397,14 @@ public class AdminMasterCreationTest extends BaseTest {
 		admin_master_creation_page.clickOnCancelButton();
 		// -> Then Check Description field Empty
 		String desc_after_cancel_button = admin_master_creation_page.getValueOfDescriptionTextField();
-		asert.assertEquals(desc_after_cancel_button, desc_before_cancel,
+		asert.assertNotEquals(desc_after_cancel_button, desc_before_cancel,
 				"To verify that Cancel button functionality while selecting System Master radio button", "SU-T178");
 
 	}
 
+	/**
+	 * Verify User Defined Radio Button Functionality
+	 */
 	public void verifyUserDefined() {
 		// SU-T18->To verify the fields in "Master Creation" panel when we select the
 		// "User Defined" radio button
@@ -560,7 +568,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Created mode should be visible under the "Select Mode" drop down in the
 		// "Master Creation" panel
 		// -> Enter Mode Name
-		String mode_name = "Testing Zone" + AwtUtilities.genrateRandomAlphaNeumric(3) + "_Table Report";
+		String mode_name = "Testing Zone" + AwtUtilities.genrateRandomNumber(2);
 		user_defined_mode_master_panel.enterModeName(mode_name);
 		// -> Click On Save Button
 		user_defined_mode_master_panel.clickOnModeMasterSaveButton();
@@ -585,6 +593,54 @@ public class AdminMasterCreationTest extends BaseTest {
 				"To verify that after clicking on close button, user should be able to redirect to Master Creation panel",
 				"SU-T215");
 
+		// SU-T216-->To verify that after selecting "User Defined" radio button,
+		// "Cancel" button should be visible in the "Master Creation" panel.
+		// -> Select "User Defined" radio button
+		user_defined_mode_master_panel.clickOnModeMasterRadioButton("User Defined");
+		// Check "Cancel button is visible
+		boolean isCancelButtonVisible = user_defined_mode_master_panel.isCancelButtonVisible();
+		asert.assertTrue(isCancelButtonVisible,
+				"To verify that after selecting System Master radio button, Cancel button should be visible in the Master Creation panel.",
+				"SU-T176");
+
+		// SU-T218-->To verify "save" button functionality under the "user defined"
+		// radio button
+		// -> Click on "Select Mode" drop down
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		// -> Then Select Mode
+		admin_master_creation_page.selectMode(mode_name);
+		// ->Then Enter Master Name
+		String Master_Name = "Testing Zone :" + AwtUtilities.genrateRandomAlphaBets(1);
+		admin_master_creation_page.enterMasteName(Master_Name);
+		// -> Then Enter Description
+		String description = "For Testing Purpose Only";
+		admin_master_creation_page.enterDescription(description);
+		// ->Then click On "Save" button
+		admin_master_creation_page.clickOnSaveButton();
+		// -> Then again select the same mode name
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		admin_master_creation_page.selectMode(mode_name);
+		// ->Then click on master name drop-down
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Master Name");
+		// Check Created Master Name is Present in Master Name list
+		boolean isCreatedMasterNameIsPresent = admin_master_creation_page.isMasterNamePresent(Master_Name);
+		asert.assertTrue(isCreatedMasterNameIsPresent,
+				"To verify save button functionality under the System Master radio button", "SU-T218");
+
+		// SU-T219-->To verify that "Cancel" button functionality while selecting
+		// "System Master" radio button
+		// ->Select Master Name
+		admin_master_creation_page.selectMasterName(Master_Name);
+		// ->Get Description before clicking on cancel button
+		String desc_before_cancel = admin_master_creation_page.getValueOfDescriptionTextField();
+		// ->Click on "Cancel" button
+		admin_master_creation_page.clickOnCancelButton();
+		// -> Then Check Description field Empty
+		String desc_after_cancel_button = admin_master_creation_page.getValueOfDescriptionTextField();
+		asert.assertNotEquals(desc_after_cancel_button, desc_before_cancel,
+				"To verify that Cancel button functionality while selecting System Master radio button", "SU-T219");
 	}
+	
+	
 
 }

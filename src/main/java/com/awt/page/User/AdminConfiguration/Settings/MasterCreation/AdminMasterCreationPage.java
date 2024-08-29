@@ -268,6 +268,7 @@ public class AdminMasterCreationPage extends AdminPage {
 		boolean flag = false;
 		String act_mode_name = null;
 		for (WebElement element : mode_list) {
+			action.performMoveToElement(element);
 			act_mode_name = element.getText().trim();
 			if (act_mode_name.equals(exp_mode_name)) {
 				flag = true;
@@ -391,11 +392,11 @@ public class AdminMasterCreationPage extends AdminPage {
 		}
 		return actual_fields_name;
 	}
-	
+
 	/**
 	 * By This Method We Can Navigate User Defined Mode Master panel
 	 * 
-	 * @return object of SystemModeMasterPanel
+	 * @return object of UserDefinedModeMasterPanel
 	 */
 	public UserDefinedModeMasterPanel clickOnElipsisButtonNavigateToUserDefinedMasterPanel() {
 		clickOnRadioButton("User Defined");

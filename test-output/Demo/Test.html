@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Aug 28 16:01:00 IST 2024</td>
+<td>Started on:</td><td>Thu Aug 29 09:51:58 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>78 seconds (78552 ms)</td>
+<tr><td>Total time:</td><td>168 seconds (168115 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,26 +76,44 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation()'><b>verifyAdminMasterCreation</b><br>Test class: com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	did not expect [qJcFB -&amp;&amp;] but found [qJcFB -&amp;&amp;],
-	did not expect [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR] but found [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR],
-	did not expect [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q] but found [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q],
-	expected [For Testing Purpose Only] but found []
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:108)
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //label[contains(text(),&apos;Master Name&apos;)]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy40.isDisplayed(Unknown Source)
+	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:369)
+	at com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage.isMasterNameAutoSuggestiveDropDownVisible(AdminMasterCreationPage.java:104)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyUserDefined(AdminMasterCreationTest.java:443)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:109)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1981024949", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1981024949'><pre>java.lang.AssertionError: The following asserts failed:
-	did not expect [qJcFB -&amp;&amp;] but found [qJcFB -&amp;&amp;],
-	did not expect [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR] but found [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR],
-	did not expect [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q] but found [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q],
-	expected [For Testing Purpose Only] but found []
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:108)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1424872564", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1424872564'><pre>org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //label[contains(text(),&apos;Master Name&apos;)]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy40.isDisplayed(Unknown Source)
+	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:369)
+	at com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage.isMasterNameAutoSuggestiveDropDownVisible(AdminMasterCreationPage.java:104)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyUserDefined(AdminMasterCreationTest.java:443)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:109)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -112,8 +130,8 @@ function toggleAllBoxes() {
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
 </pre></div></td>
-<td>73</td>
-<td>com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@6f1de4c7</td></tr>
+<td>163</td>
+<td>com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest@459e9125</td></tr>
 </table><p>
 </body>
 </html>

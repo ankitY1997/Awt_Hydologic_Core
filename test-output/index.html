@@ -130,17 +130,27 @@
                   <a name="verifyAdminMasterCreation">
                   </a> <!-- verifyAdminMasterCreation -->
                   <span class="method-name">verifyAdminMasterCreation</span>
-                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
-	did not expect [qJcFB -&amp;&amp;] but found [qJcFB -&amp;&amp;],
-	did not expect [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR] but found [XKaCh8mIkn5y09FOT0cdsr9PnFS3n66DTDR],
-	did not expect [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q] but found [ANJuZl1LcgtsUQQABigywCaPc9cwvkC1DggkHdtdX3aKqKO7IpHzWU9eNBWEI9FFonEQ4HNnQBRJAfcNyuR0m4sTYsaA2HNysn9ehqF4q],
-	expected [For Testing Purpose Only] but found []
-	at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
-	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:108)
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //label[contains(text(),&apos;Master Name&apos;)]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy40.isDisplayed(Unknown Source)
+	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:369)
+	at com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage.isMasterNameAutoSuggestiveDropDownVisible(AdminMasterCreationPage.java:104)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyUserDefined(AdminMasterCreationTest.java:443)
+	at com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest.verifyAdminMasterCreation(AdminMasterCreationTest.java:109)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 14 stack frames
+... Removed 12 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -226,12 +236,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyAdminMasterCreation')
 data.setCell(0, 2, 'com.awt.test.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationTest')
-data.setCell(0, 3, 73496);
+data.setCell(0, 3, 163726);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -266,11 +276,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">verifyAdminMasterCreation</span>
-                <span class="method-start">2766 ms</span>
+                <span class="method-start">3687 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">76657 ms</span>
+                <span class="method-start">167451 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
