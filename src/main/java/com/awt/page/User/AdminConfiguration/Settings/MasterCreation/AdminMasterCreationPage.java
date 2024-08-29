@@ -234,6 +234,7 @@ public class AdminMasterCreationPage extends AdminPage {
 			value = action.getAttributeValue(element, "class");
 			if (value.trim().contains("checked")) {
 				flag = true;
+				break;
 			}
 		}
 		return flag;
@@ -285,6 +286,7 @@ public class AdminMasterCreationPage extends AdminPage {
 			act_mode_name = element.getText().trim();
 			if (act_mode_name.equals(exp_mode_name)) {
 				flag = true;
+				break;
 			}
 		}
 		return flag;
@@ -338,6 +340,7 @@ public class AdminMasterCreationPage extends AdminPage {
 			act_mode_name = element.getText().trim();
 			if (act_mode_name.equals(exp_master_name)) {
 				flag = true;
+				break;
 			}
 		}
 		return flag;
@@ -470,8 +473,21 @@ public class AdminMasterCreationPage extends AdminPage {
 			act_mode_name = element.getText().trim();
 			if (act_mode_name.equals(exp_parent_name)) {
 				flag = true;
+				break;
 			}
 		}
 		return flag;
+	}
+
+	/**
+	 * By this method we can select option which is present under the external
+	 * parent drop down
+	 * 
+	 * @param parent_name
+	 */
+	public void selectExtrnalParent(String parent_name) {
+		action.waitForVisibility(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + parent_name + "']")),
+				action.implicit_wait);
+		action.clickOn(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + parent_name + "']")));
 	}
 }
