@@ -68,7 +68,7 @@ public class AdminMasterCreationTest extends BaseTest {
 
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
-	@Description(description = "Perform the verfication on  Admin Report Template")
+	@Description(description = "Perform the verfication on  AdminMasterCreation Page")
 	@Story(story = "Master Creation")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
@@ -679,6 +679,8 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(isEllipsisButtonVisible,
 				"To verify that after selecting User defined radio button, Select Mode ellipsis button should be visible in the Master Creation panel.",
 				"SU-T221");
+		
+		
 	}
 
 }
