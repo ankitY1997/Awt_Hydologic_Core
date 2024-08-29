@@ -113,7 +113,8 @@ public class AdminMasterCreationTest extends BaseTest {
 	}
 
 	/**
-	 * To verify "System Master" radio button functionality
+	 * By this method we are validating System Master radio button and it's
+	 * functionality
 	 */
 	public void verifySystemMaster() {
 		// SU-T3-->To verify that "System Master" radio button should be visible in the
@@ -403,15 +404,17 @@ public class AdminMasterCreationTest extends BaseTest {
 	}
 
 	/**
-	 * Verify User Defined Radio Button Functionality
+	 * By this method we are validating User Defined radio button and it's
+	 * functionality
 	 */
 	public void verifyUserDefined() {
 		// SU-T18->To verify the fields in "Master Creation" panel when we select the
 		// "User Defined" radio button
 		// -> Select "User Defined" radio button
 		admin_master_creation_page.clickOnRadioButton("User Defined");
-		// Check User Defined Fields
+		// Expected Fields Under The User Defined Panel
 		String[] exp_UserDefinedFields = { "Select Mode", "Master Name", "Description" };
+		// Actual Fields Under The User Defined Panel
 		List<String> user_defined_fields_name = admin_master_creation_page.getAllUserDefinedFieldName();
 		asert.assertEquals(user_defined_fields_name, new ArrayList<String>(Arrays.asList(exp_UserDefinedFields)), url,
 				"SU-T18");
@@ -640,7 +643,42 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertNotEquals(desc_after_cancel_button, desc_before_cancel,
 				"To verify that Cancel button functionality while selecting System Master radio button", "SU-T219");
 	}
-	
-	
+
+	/**
+	 * By this method we are validating External radio button and it's functionality
+	 */
+	public void verifyExternal() {
+
+		// SU-T19-->To verify the fields in the "Master Creation" panel when we select
+		// the "External" radio button
+		// -> Select "External" Radio Button
+		admin_master_creation_page.clickOnRadioButton("External");
+		// Expected Fields Under the external Panel
+		String[] exp_fields = { "Select Mode", "External Parent", "Enter Device Property", "Description" };
+		// Actual Fields Under the External panel
+		List<String> actual_fields = admin_master_creation_page.getAllExternalFieldName();
+		// Compare both fields is matching
+		asert.assertEquals(actual_fields, new ArrayList<String>(Arrays.asList(exp_fields)),
+				"To verify the fields in the  Master Creation panel when we select the External radio button",
+				"SU-T19");
+
+		// SU-T220-->To verify that the "Select Mode" drop-down displays the list of
+		// options based on the selected "External" Radio button
+		// -> click on "Select Mode" drop down button
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		// Check "Device Parameter" is visible under the "Select Mode" drop down
+		boolean isDeviceParameterOptionIsPresent = admin_master_creation_page.isModePresent("Device Parameter Status");
+		asert.assertTrue(isDeviceParameterOptionIsPresent,
+				"To verify that the Select Mode drop-down displays the  list of options based on the selected External Radio button",
+				"SU-T220");
+
+		// SU-T221-->To verify that after selecting "External" radio button, "Select
+		// Mode" ellipsis button should be visible in the "Master Creation" panel.
+		// Check ellipsis button is visible
+		boolean isEllipsisButtonVisible = admin_master_creation_page.isSelectModeEllipsisButtonVisible();
+		asert.assertTrue(isEllipsisButtonVisible,
+				"To verify that after selecting User defined radio button, Select Mode ellipsis button should be visible in the Master Creation panel.",
+				"SU-T221");
+	}
 
 }

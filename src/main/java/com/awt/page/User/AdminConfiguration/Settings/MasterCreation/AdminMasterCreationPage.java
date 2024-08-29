@@ -242,17 +242,26 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * 
 	 */
 	public void clickOnAnyMasterCreationDropDown(String drop_down_name) {
-		if (drop_down_name.equalsIgnoreCase("Select Mode")) {
+		try {
+			if (drop_down_name.equalsIgnoreCase("Select Mode")) {
+				action.waitForVisibility(
+						driver.findElement(
+								By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
+						action.implicit_wait);
+				action.clickOn(driver.findElement(
+						By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
+			} else if (drop_down_name.equalsIgnoreCase("Master Name")) {
+				action.waitForVisibility(
+						driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")),
+						action.implicit_wait);
+				action.clickOn(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")));
+			}
+		} catch (Exception e) {
 			action.waitForVisibility(
-					driver.findElement(
-							By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
+					driver.findElement(By.xpath("//label[text()='" + drop_down_name + "']/..//*[local-name()='svg']")),
 					action.implicit_wait);
-			action.clickOn(driver.findElement(
-					By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
-		} else if (drop_down_name.equalsIgnoreCase("Master Name")) {
-			action.waitForVisibility(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")),
-					action.implicit_wait);
-			action.clickOn(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")));
+			action.clickOn(
+					driver.findElement(By.xpath("//label[text()='" + drop_down_name + "']/..//*[local-name()='svg']")));
 		}
 	}
 
@@ -404,6 +413,24 @@ public class AdminMasterCreationPage extends AdminPage {
 			action.clickOn(ellipsis_button);
 		}
 		return new UserDefinedModeMasterPanel(driver);
+	}
+
+	// *****External Radio Button Related Methods*****//
+
+	/**
+	 * By this method we can get all fields name which present when we are selecting
+	 * "User Defined" radio button
+	 * 
+	 * @return all fields name
+	 */
+	public List<String> getAllExternalFieldName() {
+
+		List<WebElement> fields_name = driver.findElements(By.xpath("//div[@class='field']/label"));
+		List<String> actual_fields_name = new ArrayList<String>();
+		for (WebElement element : fields_name) {
+			actual_fields_name.add(element.getText());
+		}
+		return actual_fields_name;
 	}
 
 }
