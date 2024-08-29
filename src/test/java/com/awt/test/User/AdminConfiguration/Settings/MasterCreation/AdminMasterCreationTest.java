@@ -10,6 +10,7 @@ import com.awt.page.Login.LoginPage;
 import com.awt.page.User.ParentLandingPage;
 import com.awt.page.User.AdminConfiguration.AdminPage;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
+import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.ExternalModeMasterPanel;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.SystemModeMasterPanel;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.UserDefinedModeMasterPanel;
 import com.awt.testbase.BaseTest;
@@ -37,6 +38,7 @@ public class AdminMasterCreationTest extends BaseTest {
 	AdminMasterCreationPage admin_master_creation_page = null;
 	public SystemModeMasterPanel sys_mode_master_panel = null;
 	UserDefinedModeMasterPanel user_defined_mode_master_panel = null;
+	ExternalModeMasterPanel external_mode_master_panel = null;
 
 	/**
 	 * 
@@ -550,7 +552,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Check ParentMode Drop Down Button is visible
 		boolean isParentModeDropDownVisible = user_defined_mode_master_panel.isParentModeDropDownVisible();
 		asert.assertTrue(isParentModeDropDownVisible,
-				"To verify that while selecting System Master radio button, Parent Mode drop down should be visible in the Mode Master panel",
+				"To verify that while selecting user defined radio button, Parent Mode drop down should be visible in the Mode Master panel",
 				"SU-T211");
 
 		// SU-T212-->To verify that "Save" button should be visible in the "Mode Master"
@@ -679,8 +681,159 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(isEllipsisButtonVisible,
 				"To verify that after selecting User defined radio button, Select Mode ellipsis button should be visible in the Master Creation panel.",
 				"SU-T221");
+
+		// SU-T222-->To verify that user can select the "External Parent" drop-down only
+		// after selection of the "Select Mode" drop down.
+		// -> Click On "Select Mode" drop down
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		// -> Select "Device Parameter" Option
+		admin_master_creation_page.selectMode("Device Parameter");
+		// -> Click On "External Parent " drop down
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("External Parent");
+		// Check in External Parent drop down "OMS" option is present
+		boolean isOMSOptionIsPresent = admin_master_creation_page.isExternalParentPresent("OMS");
+		asert.assertTrue(isOMSOptionIsPresent,
+				"To verify that user can select the External Parent drop-down only after selection of the Select Mode drop down.",
+				"SU-T222");
+
+		// SU-T224-->To verify that "Master Name" auto suggestive drop down should
+		// accept only the alphanumeric
+		// Enter alpha numeric
+		String validValue = AwtUtilities.genrateRandomAlphaNeumric(6) + "-";
+		admin_master_creation_page.enterMasteName(validValue);
+		// ->Check the alpha numeric it's accepting
+		String actual_value_of_master_name_text = admin_master_creation_page.getValueOfMasterNameAutoSuggestiveField();
+		asert.assertEquals(actual_value_of_master_name_text, validValue,
+				"To verify that Master Name auto suggestive drop down should accept only the alphanumeric", "SU-T224");
+
+		// SU-T225-->To verify that "Master Name" auto suggestive drop down should not
+		// accept any special characters except "hyphen" and "Space"
+		// -> Enter Special Character And Hyphen
+		String inValidValue = AwtUtilities.genrateRandomAlphaNeumric(5) + " " + "-" + "&&";
+		admin_master_creation_page.enterMasteName(inValidValue);
+		// -> Take The Actual Value From Master Name Text Auto Sugg Text Field
+		actual_value_of_master_name_text = admin_master_creation_page.getValueOfMasterNameAutoSuggestiveField();
+		// -->InvalidValue and Actual Value Should Not be Equal
+		asert.assertNotEquals(actual_value_of_master_name_text, inValidValue,
+				"To verify that Master Name auto suggestive drop down should  not accept any special characters  except  hyphen and Space",
+				"SU-T225");
+
+		// SU-T226-->To verify that "Master Name" text field should not exceed more than
+		// 30 characters.
+		// -> Enter More than "30" character
+		inValidValue = AwtUtilities.genrateRandomAlphaNeumric(35);
+		admin_master_creation_page.enterMasteName(inValidValue);
+		// It should not accept more than 30 character
+		actual_value_of_master_name_text = admin_master_creation_page.getValueOfMasterNameAutoSuggestiveField();
+		asert.assertNotEquals(actual_value_of_master_name_text, inValidValue,
+				"To verify that Master Name text field should  not exceed more than 30 characters.", "SU-T226");
+
+		// SU-T228-->To verify that "Description" text field should not exceed more than
+		// 100 characters.
+		// ->Enter More Than "100" character in Description text field
+		inValidValue = AwtUtilities.genrateRandomAlphaNeumric(105);
+		admin_master_creation_page.enterDescription(inValidValue);
+		// ->Take Actual Value From "Description Text Field
+		String actValueOfDescriptionTextField = admin_master_creation_page.getValueOfDescriptionTextField();
+		// It Should Not Be Accept more than 100 character
+		asert.assertNotEquals(actValueOfDescriptionTextField, inValidValue,
+				"To verify that Description text field  should not exceed more than 100 characters.", "SU-T228");
+
+		// SU-T229-->To verify that after selecting "External" radio button, "Save"
+		// button should be visible in the "Master Creation" panel.
+		// Check 'save' button is visible
+		boolean isSaveButtonVisible = admin_master_creation_page.isSaveButtonVisible();
+		asert.assertTrue(isSaveButtonVisible,
+				"To verify that after selecting user defined radio button, Save button should be visible in the Master Creation panel.",
+				"SU-T229");
+
+		// SU-T230-->To verify that after clicking on the "Ellipsis" button ,user should
+		// redirect to the Mode Master Panel.
+		// -> Click On Select Mode Ellipsis button
+		external_mode_master_panel = admin_master_creation_page.clickOnElipsisButtonNavigateToExternalModeMasterPanel();
+		// Check "Mode Master" panel is visible
+		String actual_panel_name = external_mode_master_panel.getUserDefinedMasterPanelName();
+		asert.assertEquals(actual_panel_name, "Mode Master",
+				"To verify that after clicking on the Ellipsis button ,user shouldredirect to the Mode Master Panel.",
+				"SU-T230");
+
+		// SU-T231-->To verify that after clicking on the "Ellipsis" button ,user should
+		// be able to see "System Master", "User Defined", "External Radio" buttons
+		String[] exp_radio_butons = { "System Master", "User Defined", "External" };
+		List<String> act_radio_buttons = external_mode_master_panel.getModeMasterRadioButtonNames();
+		asert.assertEquals(act_radio_buttons, new ArrayList<String>(Arrays.asList(exp_radio_butons)),
+				"To verify that after clicking on the Ellipsis button ,user should be able to see System Master, User Defined, External Radio buttons",
+				"SU-T231");
+
+		// SU-T232-->To verify that while selecting "External" radio button, "Mode
+		// name " text field should be visible in the "Mode Master" panel.
+		// Click On "External" Radio button
+		external_mode_master_panel.clickOnModeMasterRadioButton("External");
+		boolean isModeNameTextFieldIsVisible = external_mode_master_panel.isModeNameTextFieldVisible();
+		asert.assertTrue(isModeNameTextFieldIsVisible,
+				"To verify that while selecting External  radio button, Mode name text field should be visible in the Mode Master panel.",
+				"SU-T232");
+
+		// SU-T233-->To verify that "Mode name " text field should not accept more than
+		// 30 characters
+		// ->Enter More than "30" character
+		String inValidChar = AwtUtilities.genrateRandomAlphaBets(35);
+		external_mode_master_panel.enterModeName(inValidChar);
+		// -> Get Actual "Mode Name" text field value
+		String actual_mode_name_field_value = external_mode_master_panel.getModeNameTextFieldValue().trim();
+		asert.assertNotEquals(actual_mode_name_field_value, inValidChar,
+				"To verify that Mode name text field should not accept more than 30 characters", "SU-T234");
+
+		// SU-T234-->To verify that while selecting "External" radio button, "External
+		// table" drop down should be visible in the "Mode Master" panel
+		// Check the visibility of External Table drop down button
+		boolean isExternalTableDropDownVisible = external_mode_master_panel.isExternalTableDropDownVisible();
+		asert.assertTrue(isExternalTableDropDownVisible,
+				"To verify that while selecting External radio button, External table drop down should be visible in the Mode Master panel",
+				"SU-T234");
+
+		// SU-T235-->To verify that while selecting "External" radio button, "Parent
+		// Mode " drop down should be visible in the "Mode Master" panel
+		boolean isParentModeDropDownVisible = external_mode_master_panel.isParentModeDropDownVisible();
+		asert.assertTrue(isParentModeDropDownVisible,
+				"To verify that while selecting External radio button, Parent Mode drop down should be visible in the Mode Master panel",
+				"SU-T235");
+
+		// SU-T236-->To verify that "Save" button should be visible in the "Mode Master"
+		// panel .
+		// Check "Save" button is visible
+		boolean isSaveButtonIsVisible = external_mode_master_panel.isModeMasterSaveButtonVisible();
+		asert.assertTrue(isSaveButtonIsVisible,
+				"To verify that Save button should be visible in the Mode Master panel .", "SU-T212");
+
+		// SU-T237-->To verify that "Close" svg button should be visible in the the
+		// "Mode Master" Panel.
+		// Check Close button is visible
+		boolean isCloseSvgButtonIsVisible = external_mode_master_panel.isCloseButtonIsVisible();
+		asert.assertTrue(isCloseSvgButtonIsVisible,
+				"To verify that Close svg button should be visible in the the Mode Master Panel.", "SU-T213");
+
+		// SU-T238-->To verify that After selecting the "External" radio button, Created
+		// mode should be visible under the "Select Mode" drop down in the "Master
+		// Creation" panel
+		// -> Enter Mode Name
+		String mode_name = "Testing Device Parameter :" + AwtUtilities.genrateRandomNumber(3);
+		external_mode_master_panel.enterModeName(mode_name);
+		// -> Select External Table
+		external_mode_master_panel.selectExtrnalTable("device_profiles");
+		// ->Click on save button
+		external_mode_master_panel.clickOnSaveButton();
+		// -> Select "External" Radio Button
+		admin_master_creation_page.clickOnRadioButton("External");
+		// -> Click on Select Mode drop down
+		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
+		// -> Check created mode name is visible
+		boolean isCreatedModeIsVisible = admin_master_creation_page.isModePresent(mode_name);
+		asert.assertTrue(isCreatedModeIsVisible,
+				"To verify that After selecting the External radio button, Created mode should be visible under the Select Mode drop down in the Master Creation panel",
+				"SU-T238");
 		
-		
+
 	}
 
 }

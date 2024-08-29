@@ -31,6 +31,10 @@ public class AdminMasterCreationPage extends AdminPage {
 	@FindAll({ @FindBy(xpath = "//ul[@id='masterName_list']/li") })
 	public List<WebElement> master_name_list;
 
+	// ******List Of External Parent Name ********/
+	@FindAll({ @FindBy(xpath = "//ul[@role='listbox']/li") })
+	public List<WebElement> external_parent__list;
+
 	// ******select mode ellipsis button ********/
 	@FindAll({ @FindBy(xpath = "//label[text()='Select Mode']/../div//button[not(@aria-label='Select Mode')]") })
 	public WebElement ellipsis_button;
@@ -321,7 +325,7 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * By This Method We Can Check Passed Master Name Is Present In Master Name
 	 * DropDown List Or Not
 	 * 
-	 * @param exp_mode_name
+	 * @param exp_master_name
 	 * @implNote Correct Master Name
 	 * @return boolean
 	 */
@@ -330,6 +334,7 @@ public class AdminMasterCreationPage extends AdminPage {
 		boolean flag = false;
 		String act_mode_name = null;
 		for (WebElement element : master_name_list) {
+			action.performMoveToElement(element);
 			act_mode_name = element.getText().trim();
 			if (act_mode_name.equals(exp_master_name)) {
 				flag = true;
@@ -412,10 +417,25 @@ public class AdminMasterCreationPage extends AdminPage {
 		if (isSelectModeEllipsisButtonVisible()) {
 			action.clickOn(ellipsis_button);
 		}
+		new SystemModeMasterPanel(driver).clickOnModeMasterRadioButton("User Defined");
 		return new UserDefinedModeMasterPanel(driver);
 	}
 
 	// *****External Radio Button Related Methods*****//
+
+	/**
+	 * By This Method We Can Navigate User Defined Mode Master panel
+	 * 
+	 * @return object of UserDefinedModeMasterPanel
+	 */
+	public ExternalModeMasterPanel clickOnElipsisButtonNavigateToExternalModeMasterPanel() {
+		clickOnRadioButton("External");
+		if (isSelectModeEllipsisButtonVisible()) {
+			action.clickOn(ellipsis_button);
+		}
+		new SystemModeMasterPanel(driver).clickOnModeMasterRadioButton("External");
+		return new ExternalModeMasterPanel(driver);
+	}
 
 	/**
 	 * By this method we can get all fields name which present when we are selecting
@@ -433,4 +453,25 @@ public class AdminMasterCreationPage extends AdminPage {
 		return actual_fields_name;
 	}
 
+	/**
+	 * By This Method We Can Check Passed Master Name Is Present In Master Name
+	 * DropDown List Or Not
+	 * 
+	 * @param exp_Parent_name
+	 * @implNote Pass the correct Parent Name
+	 * @return boolean
+	 */
+	public boolean isExternalParentPresent(String exp_parent_name) {
+		action.waitForVisibility(external_parent__list.get(0), action.implicit_wait);
+		boolean flag = false;
+		String act_mode_name = null;
+		for (WebElement element : master_name_list) {
+			action.performMoveToElement(element);
+			act_mode_name = element.getText().trim();
+			if (act_mode_name.equals(exp_parent_name)) {
+				flag = true;
+			}
+		}
+		return flag;
+	}
 }
