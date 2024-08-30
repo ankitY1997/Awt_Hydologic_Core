@@ -58,12 +58,15 @@ public class AdminMasterCreationTest extends BaseTest {
 	/**
 	 * Description: Perform the verification of AdminMasterCreation Page <br>
 	 * TestMethodName: verifyAdminMasterCreation <br>
-	 * ManualTestCases: "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162",
-	 * "APMS-T163", "APMS-T164", "APMS-T165", "APMS-T166", "APMS-T167", "APMS-T168",
-	 * "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173", "APMS-T174",
-	 * "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227",
-	 * "APMS-T179", "APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186",
-	 * "APMS-T187", "APMS-T188", "APMS-T189", "APMS-T190"
+	 * ManualTestCases: "SU-T1", "SU-T2", "SU-T3", "SU-T4", "SU-T5", "SU-T6",
+	 * "SU-T7", "SU-T8", "SU-T9", "SU-T10", "SU-T11", "SU-T12", "SU-T13", "SU-T14",
+	 * "SU-T15", "SU-T16", "SU-T17", "SU-T21", "SU-T22", "SU-T23", "SU-T24",
+	 * "SU-T25", "SU-T26", "SU-T177", "SU-T178", "SU-T18", "SU-T179", "SU-T193",
+	 * "SU-T200", "SU-T201", "SU-T202", "SU-T210", "SU-T211", "SU-T212", "SU-T213",
+	 * "SU-T214", "SU-T215", "SU-T216", "SU-T218", "SU-T219", "SU-T220", "SU-T221",
+	 * "SU-T222", "SU-T228", "SU-T229", "SU-T230", "SU-T231", "SU-T232", "SU-T233",
+	 * "SU-T234", "SU-T235", "SU-T236", "SU-T237", "SU-T238", "SU-T241", "SU-T242",
+	 * "SU-T243"
 	 * 
 	 * @author ankit
 	 */
@@ -74,11 +77,12 @@ public class AdminMasterCreationTest extends BaseTest {
 	@Story(story = "Master Creation")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164", "APMS-T165",
-			"APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173",
-			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227", "APMS-T179",
-			"APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186", "APMS-T187", "APMS-T188", "APMS-T189",
-			"APMS-T190" })
+	@TestCaseId(id = { "SU-T1", "SU-T2", "SU-T3", "SU-T4", "SU-T5", "SU-T6", "SU-T7", "SU-T8", "SU-T9", "SU-T10",
+			"SU-T11", "SU-T12", "SU-T13", "SU-T14", "SU-T15", "SU-T16", "SU-T17", "SU-T21", "SU-T22", "SU-T23",
+			"SU-T24", "SU-T25", "SU-T26", "SU-T177", "SU-T178", "SU-T18", "SU-T179", "SU-T193", "SU-T200", "SU-T201",
+			"SU-T202", "SU-T210", "SU-T211", "SU-T212", "SU-T213", "SU-T214", "SU-T215", "SU-T216", "SU-T218",
+			"SU-T219", "SU-T220", "SU-T221", "SU-T222", "SU-T228", "SU-T229", "SU-T230", "SU-T231", "SU-T232",
+			"SU-T233", "SU-T234", "SU-T235", "SU-T236", "SU-T237", "SU-T238", "SU-T241", "SU-T242", "SU-T243" })
 	public void verifyAdminMasterCreation() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -105,10 +109,12 @@ public class AdminMasterCreationTest extends BaseTest {
 		asert.assertTrue(url.trim().contains("MasterCreation"),
 				"To verify that Master Creation button should be visible under the Settings menu", "SU-T2");
 
-		// **Verify System Master Radio Button Functionality***/
+		// **Verify System Master Panel Functionality***/
 		verifySystemMaster();
-		// **Verify User Defined Radio Button Functionality**/
+		// **Verify User Defined Panel Functionality**/
 		verifyUserDefined();
+		// **Verify External Panel Functionality**/
+		verifyExternal();
 
 		// *assert All**/
 		asert.assertAll();
@@ -222,7 +228,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Check "Description" text field visible
 		boolean isDescriptionTextFieldVisible = admin_master_creation_page.isDescriptionTextFieldVisible();
 		asert.assertTrue(isDescriptionTextFieldVisible,
-				"To verify that Description text field  should be visible in the Master Creation panel.", "SU-T15");
+				"To verify that Description text field  should be visible in the Master Creation panel.", "SU-T14");
 
 		// SU-T15-->To verify that "Description" text field should not exceed more than
 		// 100 characters.
@@ -500,7 +506,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		String actValueOfDescriptionTextField = admin_master_creation_page.getValueOfDescriptionTextField();
 		// It Should Not Be Accept more than 100 character
 		asert.assertNotEquals(actValueOfDescriptionTextField, inValidValue,
-				"To verify that Description text field  should not exceed more than 100 characters.", "SU-T15");
+				"To verify that Description text field  should not exceed more than 100 characters.", "SU-T205");
 
 		// SU-T206-->To verify that after selecting "user defined" radio button, "Save"
 		// button should be visible in the "Master Creation" panel.
@@ -611,7 +617,7 @@ public class AdminMasterCreationTest extends BaseTest {
 
 		// SU-T218-->To verify "save" button functionality under the "user defined"
 		// radio button
-		//Select "User Defined" radio button
+		// Select "User Defined" radio button
 		admin_master_creation_page.clickOnRadioButton("User Defined");
 		// -> Click on "Select Mode" drop down
 		admin_master_creation_page.clickOnAnyMasterCreationDropDown("Select Mode");
@@ -701,6 +707,8 @@ public class AdminMasterCreationTest extends BaseTest {
 
 		// SU-T224-->To verify that "Master Name" auto suggestive drop down should
 		// accept only the alphanumeric
+		// -> Select "External" Radio Button
+		admin_master_creation_page.clickOnRadioButton("External");
 		// Enter alpha numeric
 		String validValue = AwtUtilities.genrateRandomAlphaNeumric(6) + "-";
 		admin_master_creation_page.enterMasteName(validValue);
@@ -785,7 +793,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// -> Get Actual "Mode Name" text field value
 		String actual_mode_name_field_value = external_mode_master_panel.getModeNameTextFieldValue().trim();
 		asert.assertNotEquals(actual_mode_name_field_value, inValidChar,
-				"To verify that Mode name text field should not accept more than 30 characters", "SU-T234");
+				"To verify that Mode name text field should not accept more than 30 characters", "SU-T233");
 
 		// SU-T234-->To verify that while selecting "External" radio button, "External
 		// table" drop down should be visible in the "Mode Master" panel
@@ -807,14 +815,14 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Check "Save" button is visible
 		boolean isSaveButtonIsVisible = external_mode_master_panel.isModeMasterSaveButtonVisible();
 		asert.assertTrue(isSaveButtonIsVisible,
-				"To verify that Save button should be visible in the Mode Master panel .", "SU-T212");
+				"To verify that Save button should be visible in the Mode Master panel .", "SU-T236");
 
 		// SU-T237-->To verify that "Close" svg button should be visible in the the
 		// "Mode Master" Panel.
 		// Check Close button is visible
 		boolean isCloseSvgButtonIsVisible = external_mode_master_panel.isCloseButtonIsVisible();
 		asert.assertTrue(isCloseSvgButtonIsVisible,
-				"To verify that Close svg button should be visible in the the Mode Master Panel.", "SU-T213");
+				"To verify that Close svg button should be visible in the the Mode Master Panel.", "SU-T237");
 
 		// SU-T238-->To verify that After selecting the "External" radio button, Created
 		// mode should be visible under the "Select Mode" drop down in the "Master
@@ -825,7 +833,10 @@ public class AdminMasterCreationTest extends BaseTest {
 		// -> Select External Table
 		external_mode_master_panel.selectExtrnalTable("device_profiles");
 		// ->Click on save button
-		external_mode_master_panel.clickOnSaveButton();
+		external_mode_master_panel.clickOnModeMasterSaveButton();
+		;
+//		//-> Cancel The Panel
+//		external_mode_master_panel.clickOnCloseButton();
 		// -> Select "External" Radio Button
 		admin_master_creation_page.clickOnRadioButton("External");
 		// -> Click on Select Mode drop down
@@ -880,7 +891,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// -> Then Check Description field Empty
 		String desc_after_cancel_button = admin_master_creation_page.getValueOfDescriptionTextField();
 		asert.assertNotEquals(desc_after_cancel_button, desc_before_cancel,
-				"To verify that Cancel button functionality while selecting System Master radio button", "SU-T219");
+				"To verify that Cancel button functionality while selecting System Master radio button", "SU-T243");
 
 	}
 

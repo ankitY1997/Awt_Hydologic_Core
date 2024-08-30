@@ -247,21 +247,20 @@ public class AdminMasterCreationPage extends AdminPage {
 	 * 
 	 */
 	public void clickOnAnyMasterCreationDropDown(String drop_down_name) {
-		try {
-			if (drop_down_name.equalsIgnoreCase("Select Mode")) {
-				action.waitForVisibility(
-						driver.findElement(
-								By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
-						action.implicit_wait);
-				action.clickOn(driver.findElement(
-						By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
-			} else if (drop_down_name.equalsIgnoreCase("Master Name")) {
-				action.waitForVisibility(
-						driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")),
-						action.implicit_wait);
-				action.clickOn(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")));
-			}
-		} catch (Exception e) {
+
+		if (drop_down_name.equalsIgnoreCase("Select Mode") && ((!drop_down_name.equalsIgnoreCase("Master Name")
+				&& !drop_down_name.equalsIgnoreCase("External Parent")))) {
+			action.waitForVisibility(
+					driver.findElement(
+							By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(
+					By.xpath("//label[text()='" + drop_down_name + "']/..//button//*[local-name()='svg']")));
+		} else if (drop_down_name.equalsIgnoreCase("Master Name")) {
+			action.waitForVisibility(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(By.xpath("//span[@id='masterName']//*[local-name()='svg']")));
+		} else if (drop_down_name.equalsIgnoreCase("External Parent")) {
 			action.waitForVisibility(
 					driver.findElement(By.xpath("//label[text()='" + drop_down_name + "']/..//*[local-name()='svg']")),
 					action.implicit_wait);
@@ -281,12 +280,21 @@ public class AdminMasterCreationPage extends AdminPage {
 		action.waitForVisibility(mode_list.get(0), action.implicit_wait);
 		boolean flag = false;
 		String act_mode_name = null;
-		for (WebElement element : mode_list) {
-			action.performMoveToElement(element);
-			act_mode_name = element.getText().trim();
-			if (act_mode_name.equals(exp_mode_name)) {
-				flag = true;
-				break;
+		int count = 0;
+		for (int i = 0; i < mode_list.size(); i++) {
+			try {
+				action.performMoveToElement(mode_list.get(i));
+				act_mode_name = mode_list.get(i).getText().trim();
+				if (act_mode_name.equals(exp_mode_name)) {
+					flag = true;
+					break;
+				}
+			} catch (Exception e) {
+				if (count == 3) {
+					break;
+				}
+				i = i - 1;
+				count++;
 			}
 		}
 		return flag;
