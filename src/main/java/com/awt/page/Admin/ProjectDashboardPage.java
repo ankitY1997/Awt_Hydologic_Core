@@ -19,9 +19,13 @@ public class ProjectDashboardPage {
 
 	// ************Xpaths ***************************//
 
-	// ** xpath for project management drop down button **/
+	// ** project menu**/
 	@FindAll({ @FindBy(xpath = "//span[text()='Project Management']") })
 	private WebElement project_mang_drop_down;
+
+	// ** Profile Icon Button **/
+	@FindAll({ @FindBy(xpath = "//li[@id='profile']/button") })
+	private WebElement profile_icon_button;
 
 	// ** Number Of Project **/
 
@@ -42,6 +46,25 @@ public class ProjectDashboardPage {
 		action = new ActionEngine(driver);
 		// PageFactory Methods to initialize the Admin Page Web Element
 		PageFactory.initElements(driver, this);
+	}
+
+	/**
+	 * To Check The Project Management Button Is VIsible
+	 * 
+	 * @return
+	 */
+	public boolean isProjectManagmentButtonPresent() {
+		action.implicitWait(project_mang_drop_down, action.implicit_wait);
+		return action.isDisplay(project_mang_drop_down);
+	}
+
+	/**
+	 * To get home Page Title
+	 * 
+	 * @return
+	 */
+	public String getHomePageTitle() {
+		return driver.getTitle().trim();
 	}
 
 	/**
@@ -93,21 +116,14 @@ public class ProjectDashboardPage {
 	}
 
 	/**
-	 * To Check The Project Management Button Is VIsible
+	 * By This Method we Can Click On Profile Icon and Select Profile Icon options
 	 * 
-	 * @return
+	 * @param menu_name
 	 */
-	public boolean isProjectManagmentButtonPresent() {
-		action.implicitWait(project_mang_drop_down, action.implicit_wait);
-		return action.isDisplay(project_mang_drop_down);
+	public void clickOnProfileIconAndselectProfileOption(String menu_name) {
+		// Click On Profile Icon
+		action.clickOn(profile_icon_button);
+		// Select Options
+		action.clickOn(driver.findElement(By.xpath("//li[@id='profile']//li//span[text()='" + menu_name + "']/..")));
 	}
-
-	/**
-	 * To get home Page Title
-	 * @return
-	 */
-	public String getHomePageTitle() {
-		return driver.getTitle().trim();
-	}
-
 }

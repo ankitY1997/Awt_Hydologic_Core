@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.bouncycastle.util.Properties;
@@ -19,6 +21,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -347,16 +350,21 @@ public class AwtUtilities {
 	public static void createNewProject(WebDriver driver, String projectName, String userName, String password,
 			String[]... module_name) {
 		LoginPage lp = new LoginPage(driver);
+		String mainWindow = driver.getWindowHandle();
 		// Enter the Project Name and login and navigate to the home page
-		ProjectDashboardPage admin_page = lp.loginAndProjectDashboardPage(Properties.getPropertyValue("ADMINURL"));
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get(PropertiesOperations.getPropertyValueByKey("ADMINURL"));
+		lp.logInToTheApplication(PropertiesOperations.getPropertyValueByKey("Create_Project_USERNAME"),
+				PropertiesOperations.getPropertyValueByKey("Create_Project_PASSWORD"));
 		// click on project menu and Select "Project Setting" menu
-		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage("Project", "Project Settings");
-		// * Click on Create Project Button --> Navigate to "New Project Details Panel
-		NewProjectDetailsPanel newProject_DetailsPanel = admin_create_page
-				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+		ProjectDashboardPage projectDashboardPage = new ProjectDashboardPage(driver);
+		projectDashboardPage.selectProjectManagementMenuItem("Project", "Project Settings");
 
+		// * Click on Create Project Button --> Navigate to "New Project Details Panel
+		AdminCreateProjectPage admin_create_project_page = new AdminCreateProjectPage(driver);
+		admin_create_project_page.clickOnCreateProject();
 		// Take The Details From "New Project Details.
+		NewProjectDetailsPanel newProject_DetailsPanel = new NewProjectDetailsPanel(driver);
 		String clientName = ExcelOperations.getCellData("New_Poject_Details", "Client Name", "APMS-T48");
 		String clientImagePath = ExcelOperations.getCellData("New_Poject_Details", "Client Image Path", "APMS-T48");
 		String consultantName = ExcelOperations.getCellData("New_Poject_Details", "Consultant Name", "APMS-T48");
@@ -378,30 +386,44 @@ public class AwtUtilities {
 				actualCompletionDate, module_name);
 		// click on Add Project Button
 		newProject_DetailsPanel.clickAddProject();
+		// Log Out From The Application
+		projectDashboardPage.clickOnProfileIconAndselectProfileOption("Logout");
 		// close the browser
 		driver.close();
+		// again switch to the main window
+		driver.switchTo().window(mainWindow);
 
 	}
 
 	/**
 	 * With Help Of This Method We Can Delete the project Name
+	 * 
 	 * @param driver
 	 * @param projectName
 	 */
 	public static void deleteTheProject(WebDriver driver, String projectName) {
 		LoginPage lp = new LoginPage(driver);
+		String mainWindow = driver.getWindowHandle();
 		// Enter the Project Name and login and navigate to the home page
-		ProjectDashboardPage admin_page = lp.loginAndProjectDashboardPage(Properties.getPropertyValue("ADMINURL"));
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get(PropertiesOperations.getPropertyValueByKey("ADMINURL"));
+		lp.logInToTheApplication(PropertiesOperations.getPropertyValueByKey("Create_Project_USERNAME"),
+				PropertiesOperations.getPropertyValueByKey("Create_Project_PASSWORD"));
 		// click on project menu and Select "Project Setting" menu
-		AdminCreateProjectPage admin_create_page = admin_page
-				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage("Project", "Project Settings");
+		ProjectDashboardPage projectDashboardPage = new ProjectDashboardPage(driver);
+		projectDashboardPage.selectProjectManagementMenuItem("Project", "Project Settings");
 		// click on delete the project
+		AdminCreateProjectPage admin_create_page = new AdminCreateProjectPage(driver);
 		admin_create_page.deleteProjectDetails(projectName);
 		// accept pop-up
 		NewProjectDetailsPanel newProject_DetailsPanel = new NewProjectDetailsPanel(driver);
 		newProject_DetailsPanel.acceptPopup();
+		// Log Out From The Application
+		projectDashboardPage.clickOnProfileIconAndselectProfileOption("Logout");
 		// close the browser
 		driver.close();
+		// again switch to main window
+		driver.switchTo().window(mainWindow);
 	}
 
 	/**

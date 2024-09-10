@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.awt.page.User.ParentLandingPage;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
+import com.awt.page.User.AdminConfiguration.Settings.Page_Permission.AdminMenuPermissionPage;
 import com.awt.page.User.AdminConfiguration.Settings.Report_Template.AdminReportTemplatePage;
 import com.awt.page.User.AdminConfiguration.User.CreateRole.AdminAddRolePage;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
@@ -23,7 +24,7 @@ public class AdminPage extends ParentLandingPage {
 	public static final String notification_settings = "Notification Settings";
 	public static final String page_permission = "Page Permission";
 	public static final String report_template = "Report Template";
-	public static boolean flag=false;
+	public static boolean flag = false;
 
 	/**
 	 * 
@@ -41,7 +42,7 @@ public class AdminPage extends ParentLandingPage {
 	 *                        drop-down
 	 */
 	public void selectDropDownOptions(String dropDownName, String dropDownOptions) {
-	
+
 		// Wait For Page Load
 		AwtUtilities.waitForPageLoading(driver);
 		// wait for Element
@@ -65,11 +66,6 @@ public class AdminPage extends ParentLandingPage {
 				By.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")));
 
 	}
-	
-
-	
-	
-	
 
 	/**
 	 * By Help Of This Method We Can navigate To Admin Role Page,which is present
@@ -119,4 +115,15 @@ public class AdminPage extends ParentLandingPage {
 		return new AdminMasterCreationPage(driver);
 	}
 
+	/**
+	 * By Help Of This Method We Can navigate To "Admin Menu Permission Page", which
+	 * present under the "Setting" menus
+	 * 
+	 * @return instance of AdminMenuPermissionPage
+	 */
+	public AdminMenuPermissionPage navigateToAdminMenuPermissionPage() {
+		// select the Setting module and click on Report Template options
+		selectDropDownOptions(settings, page_permission);
+		return new AdminMenuPermissionPage(driver);
+	}
 }
