@@ -242,13 +242,13 @@ public class LoginPage {
 	 *
 	 * @return
 	 */
-	public ProjectDashboardPage loginAndProjectDashboardPage(String url, String projectName) {
+	public ProjectDashboardPage loginAndProjectDashboardPage(String url) {
 		// enterProjectName(projectName);
 		try {
 			driver.get(url);
 			AwtUtilities.waitForPageLoading(driver);
-			logInToTheApplication(PropertiesOperations.getPropertyValueByKey("SUPERADMIN_USERNAME"),
-					PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
+			logInToTheApplication(PropertiesOperations.getPropertyValueByKey("Create_Project_USERNAME"),
+					PropertiesOperations.getPropertyValueByKey("Create_Project_PASSWORD"));
 			System.out.println("*********************Sucessfully Navigate To The Url*********************");
 			return new ProjectDashboardPage(driver);
 		} catch (Exception e) {

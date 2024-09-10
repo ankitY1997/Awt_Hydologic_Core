@@ -52,7 +52,7 @@ public class AdminCreatePageTest extends BaseTest {
 		// log in Page instance
 		LoginPage lp = new LoginPage(DriverFactory.iuiDriver().getDriver());
 		// Enter the Project Name and login and navigate to the home page
-		admin_page = lp.loginAndProjectDashboardPage(url, LoginPageConstants.project_name);
+		admin_page = lp.loginAndProjectDashboardPage(url);
 		// verify Home Page Title
 		asert.assertEquals(admin_page.getHomePageTitle(), ProjectDashboardPageConstants.expected_home_page_title,
 				"verify Home Page Title Should Be Display Correct", "APMS-T0");

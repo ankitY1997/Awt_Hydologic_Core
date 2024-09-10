@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.bouncycastle.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,12 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.awt.page.Admin.ProjectDashboardPage;
+import com.awt.page.Admin.Project.ProjectSettings.AdminCreateProjectPage;
+import com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel;
+import com.awt.page.Login.LoginPage;
+import com.awt.testbase.DriverFactory;
 
 /**
  * Utilities Only For This Project
@@ -329,6 +336,75 @@ public class AwtUtilities {
 	}
 
 	/**
+	 * By this method we can create new project
+	 * 
+	 * @param driver
+	 * @param projectName
+	 * @param userName
+	 * @param password
+	 * @param module_name
+	 */
+	public static void createNewProject(WebDriver driver, String projectName, String userName, String password,
+			String[]... module_name) {
+		LoginPage lp = new LoginPage(driver);
+		// Enter the Project Name and login and navigate to the home page
+		ProjectDashboardPage admin_page = lp.loginAndProjectDashboardPage(Properties.getPropertyValue("ADMINURL"));
+		// click on project menu and Select "Project Setting" menu
+		AdminCreateProjectPage admin_create_page = admin_page
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage("Project", "Project Settings");
+		// * Click on Create Project Button --> Navigate to "New Project Details Panel
+		NewProjectDetailsPanel newProject_DetailsPanel = admin_create_page
+				.clickCreateProjectButtonAndNavigateToNewProjectDetailPanel();
+
+		// Take The Details From "New Project Details.
+		String clientName = ExcelOperations.getCellData("New_Poject_Details", "Client Name", "APMS-T48");
+		String clientImagePath = ExcelOperations.getCellData("New_Poject_Details", "Client Image Path", "APMS-T48");
+		String consultantName = ExcelOperations.getCellData("New_Poject_Details", "Consultant Name", "APMS-T48");
+		String consultantImagePath = ExcelOperations.getCellData("New_Poject_Details", "Consultant Image Path",
+				"APMS-T48");
+		String licensesKey = ExcelOperations.getCellData("New_Poject_Details", "Licenses Key", "APMS-T48");
+		String mobNumber = AwtUtilities.genrateRandomNumber(10);
+		String emailAddress = AwtUtilities.genrateRandomAlphaNeumric(1, 5) + "@gmail.com";
+		String startDate = ExcelOperations.getCellData("New_Poject_Details", "Start Date", "APMS-T48");
+		String expectedDate = ExcelOperations.getCellData("New_Poject_Details", "Expected Date", "APMS-T48");
+		// Actual Completion Date
+		LocalDate current_Date = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		String actualCompletionDate = current_Date.format(formatter);
+
+		// Enter All Mandatory Details
+		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
+				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
+				actualCompletionDate, module_name);
+		// click on Add Project Button
+		newProject_DetailsPanel.clickAddProject();
+		// close the browser
+		driver.close();
+
+	}
+
+	/**
+	 * With Help Of This Method We Can Delete the project Name
+	 * @param driver
+	 * @param projectName
+	 */
+	public static void deleteTheProject(WebDriver driver, String projectName) {
+		LoginPage lp = new LoginPage(driver);
+		// Enter the Project Name and login and navigate to the home page
+		ProjectDashboardPage admin_page = lp.loginAndProjectDashboardPage(Properties.getPropertyValue("ADMINURL"));
+		// click on project menu and Select "Project Setting" menu
+		AdminCreateProjectPage admin_create_page = admin_page
+				.clickCreateProjectButtonAndNavigateToAdminCreateProjectPage("Project", "Project Settings");
+		// click on delete the project
+		admin_create_page.deleteProjectDetails(projectName);
+		// accept pop-up
+		NewProjectDetailsPanel newProject_DetailsPanel = new NewProjectDetailsPanel(driver);
+		newProject_DetailsPanel.acceptPopup();
+		// close the browser
+		driver.close();
+	}
+
+	/**
 	 * Help of this method we can get the time difference between if actual date is
 	 * there
 	 * 
@@ -474,4 +550,5 @@ public class AwtUtilities {
 		}
 		return list;
 	}
+
 }

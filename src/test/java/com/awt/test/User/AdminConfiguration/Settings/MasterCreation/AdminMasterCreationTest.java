@@ -895,4 +895,55 @@ public class AdminMasterCreationTest extends BaseTest {
 
 	}
 
+	/**
+	 * Description: Perform the verification of AdminMasterCreation Page <br>
+	 * TestMethodName: adminMasterCreationPageInterigationTest <br>
+	 * ManualTestCases: "SU-T1", "SU-T2", "SU-T3", "SU-T4", "SU-T5", "SU-T6",
+	 * "SU-T7", "SU-T8", "SU-T9", "SU-T10", "SU-T11", "SU-T12", "SU-T13", "SU-T14",
+	 * "SU-T15", "SU-T16", "SU-T17", "SU-T21", "SU-T22", "SU-T23", "SU-T24",
+	 * "SU-T25", "SU-T26", "SU-T177", "SU-T178", "SU-T18", "SU-T179", "SU-T193",
+	 * "SU-T200", "SU-T201", "SU-T202", "SU-T210", "SU-T211", "SU-T212", "SU-T213",
+	 * "SU-T214", "SU-T215", "SU-T216", "SU-T218", "SU-T219", "SU-T220", "SU-T221",
+	 * "SU-T222", "SU-T228", "SU-T229", "SU-T230", "SU-T231", "SU-T232", "SU-T233",
+	 * "SU-T234", "SU-T235", "SU-T236", "SU-T237", "SU-T238", "SU-T241", "SU-T242",
+	 * "SU-T243"
+	 * 
+	 * @author ankit
+	 */
+
+	@Version(number = "V-0.1")
+	@Test(groups = { "Admin", "Interigation" })
+	@Description(description = "Perform the verfication on  AdminMasterCreation Page")
+	@Story(story = "Master Creation")
+	@Owner(name = "Ankit")
+	@WorkArea(areaName = "Admin")
+	@TestCaseId(id = { "SU-T1", "SU-T2", "SU-T3", "SU-T4", "SU-T5", "SU-T6", "SU-T7", "SU-T8", "SU-T9", "SU-T10",
+			"SU-T11", "SU-T12", "SU-T13", "SU-T14", "SU-T15", "SU-T16", "SU-T17", "SU-T21", "SU-T22", "SU-T23",
+			"SU-T24", "SU-T25", "SU-T26", "SU-T177", "SU-T178", "SU-T18", "SU-T179", "SU-T193", "SU-T200", "SU-T201",
+			"SU-T202", "SU-T210", "SU-T211", "SU-T212", "SU-T213", "SU-T214", "SU-T215", "SU-T216", "SU-T218",
+			"SU-T219", "SU-T220", "SU-T221", "SU-T222", "SU-T228", "SU-T229", "SU-T230", "SU-T231", "SU-T232",
+			"SU-T233", "SU-T234", "SU-T235", "SU-T236", "SU-T237", "SU-T238", "SU-T241", "SU-T242", "SU-T243" })
+	public void adminMasterCreationPageInterigationTest() {
+		// logger instance
+		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
+		// Navigate To New
+		navigateToParentLandingPage();
+		// -> click Admin button and Navigate To Admin Page
+		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		// -> Go To Settings Menus And Select "Master Creation" and navigate to Admin
+		// Master Creation Page
+		admin_master_creation_page = admin_page.navigateToAdminMasterCrationPage();
+		// -> Select System Master Radio Button
+		admin_master_creation_page.clickOnRadioButton("System Master");
+		// ->Select the "Notification Type"
+		admin_master_creation_page.selectDropDownOptions("Select Mode", "Notification Type");
+		// ->Enter "Testing Notification Parmater"
+		String masterName = "Testing Email:" + AwtUtilities.genrateRandomNumber(3);
+		admin_master_creation_page.enterMasteName(masterName);
+		// -> Enter Description
+		admin_master_creation_page.enterDescription("For Testing Purpose Only");
+		// -> Click On Save Button
+		admin_master_creation_page.clickOnSaveButton();
+
+	}
 }
