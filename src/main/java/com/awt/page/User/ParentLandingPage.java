@@ -74,7 +74,7 @@ public class ParentLandingPage {
 					driver.findElement(By.xpath("//div[@id='mainbox']/div//*[text()='Admin']/../preceding-sibling::a")),
 					project_name);
 			return new AdminPage(driver);
-		case "irrigation":
+		case "Irrigation":
 			action.waitForVisibility(
 					driver.findElement(
 							By.xpath("//div[@id='mainbox']/div//*[text()='Irrigation']/../preceding-sibling::a")),
@@ -101,4 +101,6 @@ public class ParentLandingPage {
 			return null;
 		}
 	}
+
+	
 }

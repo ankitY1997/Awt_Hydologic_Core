@@ -2,6 +2,9 @@ package com.awt.page.User.AdminConfiguration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
 
 import com.awt.page.User.ParentLandingPage;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
@@ -26,6 +29,10 @@ public class AdminPage extends ParentLandingPage {
 	public static final String report_template = "Report Template";
 	public static boolean flag = false;
 
+	// ** Profile Icon Button **/
+	@FindAll({ @FindBy(xpath = "//li[@id='profile']/button") })
+	private WebElement profile_icon_button;
+
 	/**
 	 * 
 	 * @param driver
@@ -34,6 +41,19 @@ public class AdminPage extends ParentLandingPage {
 		super(driver);
 	}
 
+	/**
+	 * By This Method we Can Click On Profile Icon and Select Profile Icon options
+	 * 
+	 * @param menu_name
+	 */
+	public void clickOnProfileIconAndselectProfileOption(String menu_name) {
+		// Click On Profile Icon
+		action.clickOn(profile_icon_button);
+		// Select Options
+		action.clickOn(driver.findElement(By.xpath("//li[@id='profile']//li//span[text()='" + menu_name + "']/..")));
+	}
+	
+	
 	/**
 	 * help Of This Method We Can Chose Any Options Under Drop-Down
 	 * 
@@ -126,4 +146,6 @@ public class AdminPage extends ParentLandingPage {
 		selectDropDownOptions(settings, page_permission);
 		return new AdminMenuPermissionPage(driver);
 	}
+	
+	
 }

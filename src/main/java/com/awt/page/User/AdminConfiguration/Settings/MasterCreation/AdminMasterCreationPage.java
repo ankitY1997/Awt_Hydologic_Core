@@ -78,15 +78,7 @@ public class AdminMasterCreationPage extends AdminPage {
 		return flag;
 	}
 
-	/**
-	 * By This Method We Can Check Page Permission button is visible or not
-	 * 
-	 * @return if it's visible then its return true and if its not visible then it's
-	 *         return false
-	 */
-	public boolean isPagePermissionOptionVisible() {
-		return flag;
-	}
+
 
 	/**
 	 * By This Method We Can Check "Select Mode" Drop Down Is Visible
