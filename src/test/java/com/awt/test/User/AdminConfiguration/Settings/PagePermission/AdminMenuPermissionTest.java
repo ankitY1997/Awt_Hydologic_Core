@@ -10,6 +10,8 @@ import com.awt.page.User.AdminConfiguration.User.CreateRole.AddNewRolePanel;
 import com.awt.page.User.AdminConfiguration.User.CreateRole.AdminAddRolePage;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AddUsersPanel;
 import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
+import com.awt.page.User.Irrigation.MainDashboardPage;
+import com.awt.page.User.Irrigation.OMS.OMSAdminDashboardPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
@@ -41,6 +43,8 @@ public class AdminMenuPermissionTest extends BaseTest {
 	String[] module_name = { "OMS", "Pump House" };
 	AdminAddUserPage admin_add_user_page = null;
 	AddUsersPanel add_user_panel = null;
+	MainDashboardPage main_dashboard_page = null;
+	OMSAdminDashboardPage oms_admin_dashboards_page = null;
 
 	/**
 	 * 
@@ -102,7 +106,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 		// credentials
 		navigateToParentLandingPage();
 		// -> click Admin button and Navigate To Admin Page
-		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		admin_page = (AdminPage) parent_landing_page.selectProject(admin_project);
 		// -> Create A New Role
 		String role_name = "Tester" + AwtUtilities.genrateRandomAlphaBets(3);
 		createNewRole(role_name);
@@ -234,7 +238,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 		// -> Verify "OMS Details Dashboard" "Alter Data" check box is selcted
 		boolean isOmsDetailsAlterDataCheckBoxSelected = admin_menu_permission_page
 				.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-		asert.assertTrue(isOmsDetailsViewDataCheckBoxSelected,
+		asert.assertTrue(isOmsDetailsAlterDataCheckBoxSelected,
 				"To verify that Alter Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
 				"APMS-T120");
 		// -> Unchecked "OMS Details Dashboard" "Alter Data" check box
@@ -246,7 +250,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 		// ->Select "OMS Details Dash board" "Delete Data" check box under the OMS
 		// Dash boards Main Menu
 		admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-		// -> Select "OMS Details Dash board" "Delete Data" check box under the OMS
+		// -> De Select "OMS Details Dash board" "Delete Data" check box under the OMS
 		// Dashboard menu
 		admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
 		// ->Click on Save Button
@@ -262,25 +266,25 @@ public class AdminMenuPermissionTest extends BaseTest {
 		// -> Verify "OMS Details Dashboard" "Delete Data" check box is selcted
 		boolean isOmsDetailsDelteDataCheckBoxSelected = admin_menu_permission_page
 				.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-		asert.assertFalse(isOmsDetailsViewDataCheckBoxSelected,
+		asert.assertFalse(isOmsDetailsDelteDataCheckBoxSelected,
 				"To verify that Delete Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
 				"APMS-T121");
 
 		// APMS-T124-->To verify the "RoleBased" Menu Access Control
-		// -> Then Create New User and Assign The Current Role
+
 		// -> Click on "User" menu and click on "Create User" Button
 		admin_add_user_page = admin_page.navigateToAdminAddUserPage();
 		add_user_panel = admin_add_user_page.clickOnNewButtonAndNavigateToAddUserPanel();
 		// -> Enter User Name
-		String username = "Automation Tester" + AwtUtilities.genrateRandomAlphaBets(3);
+		String username = "Tester" + AwtUtilities.genrateRandomAlphaBets(5);
 		add_user_panel.enterUserName(username);
 		// -> Enter Email
 		String email = "Testing" + AwtUtilities.genrateRandomAlphaBets(2) + "@gmail.com";
 		add_user_panel.enterEmail(email);
 		// -> Enter Password
 		String password = AwtUtilities.genrateRandomAlphaBets(3).toUpperCase()
-				+ AwtUtilities.genrateRandomAlphaBets(2).toLowerCase() + "@"
-				+ AwtUtilities.genrateRandomAlphaNeumric(1)+AwtUtilities.genrateRandomNumber(3);
+				+ AwtUtilities.genrateRandomAlphaBets(2).toLowerCase() + "@" + AwtUtilities.genrateRandomAlphaNeumric(1)
+				+ AwtUtilities.genrateRandomNumber(3);
 		add_user_panel.enterPassword(password);
 		// -> Select Role
 		add_user_panel.selectRole(role_name);
@@ -301,9 +305,19 @@ public class AdminMenuPermissionTest extends BaseTest {
 		lp.enterPassword(password);
 		// -> Click On Login Button
 		lp.clicOnLoginButton();
-		// -> Select "Irrigation" project
-		parent_landing_page.goToProjectPage("Irrigation");
+		// -> Select "Irrigation" project and Navigate to "Main Dashobard Page
+		main_dashboard_page = (MainDashboardPage) parent_landing_page.selectProject("Irrigation");
+		;
+		// ->Select "OMS" Menu
+		OMSAdminDashboardPage oms_admin_dashboards_page = main_dashboard_page.navigateToOmsAdminDashboardPage();
+		// Check under the OMS Dashborad Menu ,OMS Details Dasboard option is Present Or
+		// Not
+		boolean isOMSDetailsDashbordIsVisible = oms_admin_dashboards_page.isOptionIsVisible("OMS Dashboard",
+				"OMS Details Dashboard");
+		asert.assertTrue(isOMSDetailsDashbordIsVisible, "To verify the RoleBased Menu Access Control", "APMS-T124");
+		// Delete the created project
 		AwtUtilities.deleteTheProject(DriverFactory.iuiDriver().getDriver(), projectName);
+		// Asset all
 		asert.assertAll();
 
 	}

@@ -27,6 +27,7 @@ public class AdminPage extends ParentLandingPage {
 	public static final String notification_settings = "Notification Settings";
 	public static final String page_permission = "Page Permission";
 	public static final String report_template = "Report Template";
+	// *********Variable Name************/
 	public static boolean flag = false;
 
 	// ** Profile Icon Button **/
@@ -52,8 +53,7 @@ public class AdminPage extends ParentLandingPage {
 		// Select Options
 		action.clickOn(driver.findElement(By.xpath("//li[@id='profile']//li//span[text()='" + menu_name + "']/..")));
 	}
-	
-	
+
 	/**
 	 * help Of This Method We Can Chose Any Options Under Drop-Down
 	 * 
@@ -146,6 +146,5 @@ public class AdminPage extends ParentLandingPage {
 		selectDropDownOptions(settings, page_permission);
 		return new AdminMenuPermissionPage(driver);
 	}
-	
-	
+
 }

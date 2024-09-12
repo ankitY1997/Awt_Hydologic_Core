@@ -8,11 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.awt.page.User.AdminConfiguration.AdminPage;
+import com.awt.page.User.Irrigation.MainDashboardPage;
 import com.awt.testbase.MyLogger;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
-
-import io.reactivex.rxjava3.functions.Action;
 
 public class ParentLandingPage {
 
@@ -61,7 +60,7 @@ public class ParentLandingPage {
 	 * @param project_name
 	 * @return
 	 */
-	public ParentLandingPage goToProjectPage(String project_name) {
+	public ParentLandingPage selectProject(String project_name) {
 		// wait For page Load
 		AwtUtilities.waitForPageLoading(driver);
 
@@ -74,7 +73,7 @@ public class ParentLandingPage {
 					driver.findElement(By.xpath("//div[@id='mainbox']/div//*[text()='Admin']/../preceding-sibling::a")),
 					project_name);
 			return new AdminPage(driver);
-		case "Irrigation":
+		case "irrigation":
 			action.waitForVisibility(
 					driver.findElement(
 							By.xpath("//div[@id='mainbox']/div//*[text()='Irrigation']/../preceding-sibling::a")),
@@ -83,7 +82,7 @@ public class ParentLandingPage {
 					driver.findElement(
 							By.xpath("//div[@id='mainbox']/div//*[text()='Irrigation']/../preceding-sibling::a")),
 					project_name);
-			return new AdminPage(driver);
+			return new MainDashboardPage(driver);
 
 		case "water supply":
 			action.waitForVisibility(
@@ -102,5 +101,4 @@ public class ParentLandingPage {
 		}
 	}
 
-	
 }

@@ -83,7 +83,7 @@ public class AdminReportTemplateTest extends BaseTest {
 		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin button and Navigate To Admin Page
-		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		admin_page = (AdminPage) parent_landing_page.selectProject(admin_project);
 		// Go To Settings Menus And Click On Report Template
 		admin_report_temp_page = admin_page.navigateToAdminReportTemplatePage();
 

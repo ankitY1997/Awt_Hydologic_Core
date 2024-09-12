@@ -79,7 +79,7 @@ public class AdminAddRoleTest extends BaseTest {
 		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin project and Navigate To Admin Page
-		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		admin_page = (AdminPage) parent_landing_page.selectProject(admin_project);
 		// Then -->Click On User Drop-Down And Select The Create Role
 		admin_add_role_page = admin_page.navigateToAdminAddRolePage();
 		// APMS-T87-->To verify that "New" button should present in the "admin-addrole"

@@ -89,7 +89,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Navigate To New
 		navigateToParentLandingPage();
 		// click Admin button and Navigate To Admin Page
-		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		admin_page = (AdminPage) parent_landing_page.selectProject(admin_project);
 
 		// SU-T1-->To verify that "Master Creation" button should be visible under the
 		// "Settings" menu
@@ -929,7 +929,7 @@ public class AdminMasterCreationTest extends BaseTest {
 		// Navigate To New
 		navigateToParentLandingPage();
 		// -> click Admin button and Navigate To Admin Page
-		admin_page = (AdminPage) parent_landing_page.goToProjectPage(admin_project);
+		admin_page = (AdminPage) parent_landing_page. selectProject(admin_project);
 		// -> Go To Settings Menus And Select "Master Creation" and navigate to Admin
 		// Master Creation Page
 		admin_master_creation_page = admin_page.navigateToAdminMasterCrationPage();
