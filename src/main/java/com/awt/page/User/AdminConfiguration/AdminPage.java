@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.awt.page.User.ParentLandingPage;
 import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
+import com.awt.page.User.AdminConfiguration.Settings.NotificationSettings.AdminNotificationSettingsPage;
 import com.awt.page.User.AdminConfiguration.Settings.Page_Permission.AdminMenuPermissionPage;
 import com.awt.page.User.AdminConfiguration.Settings.Report_Template.AdminReportTemplatePage;
 import com.awt.page.User.AdminConfiguration.User.CreateRole.AdminAddRolePage;
@@ -62,7 +63,6 @@ public class AdminPage extends ParentLandingPage {
 	 *                        drop-down
 	 */
 	public void selectDropDownOptions(String dropDownName, String dropDownOptions) {
-
 		// Wait For Page Load
 		AwtUtilities.waitForPageLoading(driver);
 		// wait for Element
@@ -145,6 +145,18 @@ public class AdminPage extends ParentLandingPage {
 		// select the Setting module and click on Report Template options
 		selectDropDownOptions(settings, page_permission);
 		return new AdminMenuPermissionPage(driver);
+	}
+
+	/**
+	 * By Help Of This Method We Can navigate To "Admin Notification Settings Page",
+	 * which present under the "Setting" menus
+	 * 
+	 * @return instance of AdminNotificationSettingsPage
+	 */
+	public AdminNotificationSettingsPage navigateToAdminNotificationSettingsPage() {
+		// select the Setting module and click on Report Template options
+		selectDropDownOptions(settings, notification_settings);
+		return new AdminNotificationSettingsPage(driver);
 	}
 
 }
