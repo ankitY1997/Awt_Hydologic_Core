@@ -33,7 +33,8 @@ import com.google.api.services.gmail.model.Thread;
 import io.restassured.path.json.JsonPath;
 
 /**
- * @author AWT Tester
+ * This Class Is Specially Designed For Get The OTP From GMail
+ * @author Ankit Yadav
  */
 public class GMailApi {
 

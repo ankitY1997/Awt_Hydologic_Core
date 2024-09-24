@@ -22,7 +22,7 @@ public class NotificationDetailsPanel extends AdminNotificationSettingsPage {
 	}
 
 	/**
-	 * Help of this method we can check the visibility of Devie Profile Drop down
+	 * Help of this method we can check the visibility of Device Profile Drop down
 	 * button
 	 * 
 	 * @return {if it's visible then it returns true otherwise it returns false}

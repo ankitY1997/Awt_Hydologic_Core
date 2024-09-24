@@ -355,6 +355,7 @@ public class ActionEngine {
 	 *         it will return false
 	 */
 	public boolean isEnabled(WebElement element) {
+		waitForVisibility(element,ActionEngine.implicit_wait);
 		return element.isEnabled();
 	}
 
@@ -366,6 +367,7 @@ public class ActionEngine {
 	 *         otherwise it will return false
 	 */
 	public boolean isDisplay(WebElement element) {
+		waitForVisibility(element,ActionEngine.implicit_wait);
 		return element.isDisplayed();
 	}
 
@@ -376,6 +378,7 @@ public class ActionEngine {
 	 * @return Point-> location
 	 */
 	public Point getLocation(WebElement element) {
+		waitForVisibility(element,ActionEngine.implicit_wait);
 		return element.getLocation();
 	}
 
@@ -386,6 +389,7 @@ public class ActionEngine {
 	 * @return
 	 */
 	public int getXLocation(WebElement element) {
+		waitForVisibility(element,ActionEngine.implicit_wait);
 		return getLocation(element).getX();
 	}
 
@@ -396,6 +400,7 @@ public class ActionEngine {
 	 * @return
 	 */
 	public int getYLocation(WebElement element) {
+		waitForVisibility(element,ActionEngine.implicit_wait);
 		return getLocation(element).getY();
 	}
 
