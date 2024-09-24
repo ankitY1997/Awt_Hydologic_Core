@@ -13,9 +13,7 @@ public class AdminNotificationSettingsPage extends AdminPage {
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='New']") })
 	private WebElement btn_new;
 
-	/* xpath for new button */
-	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headertitle']") })
-	private WebElement panel_name;
+
 
 	// **Constructor**//
 	public AdminNotificationSettingsPage(WebDriver driver) {
@@ -53,8 +51,9 @@ public class AdminNotificationSettingsPage extends AdminPage {
 	 * With help of this method we can click on "New" button and redirecting to the
 	 * Notification details panel
 	 */
-	public void clickOnNewButtonAndNavigateToNotificationDetailsPanel() {
+	public NotificationDetailsPanel clickOnNewButtonAndNavigateToNotificationDetailsPanel() {
 		clickOnNewButton();
+		return new NotificationDetailsPanel(driver);
 	}
 
 }

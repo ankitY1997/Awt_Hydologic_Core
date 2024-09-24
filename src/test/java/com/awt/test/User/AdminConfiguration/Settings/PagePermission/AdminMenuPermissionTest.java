@@ -92,7 +92,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 	@Story(story = "Report Template")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162", "APMS-T163", "APMS-T164", "APMS-T165",
+	@TestCaseId(id = { "APMS-T108", "APMS-T109", "APMS-T110", "APMS-T111", "APMS-T163", "APMS-T164", "APMS-T165",
 			"APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173",
 			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227", "APMS-T179",
 			"APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186", "APMS-T187", "APMS-T188", "APMS-T189",
@@ -127,7 +127,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 		String url = DriverFactory.iuiDriver().getDriver().getCurrentUrl();
 		asert.assertTrue(url.trim().contains("admin-MenuPermission"),
 				"To verify that after clicking on the Page Permission button user should redirect to the admin-MenuPermission Page.",
-				"SU-T109");
+				"APMS-T109");
 
 		// APMS-T110-->To verify that fields in the "admin-MenuPermission" page
 		// Check "Select Role " drop down is visible
