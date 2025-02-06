@@ -34,6 +34,7 @@ import io.restassured.path.json.JsonPath;
 
 /**
  * This Class Is Specially Designed For Get The OTP From GMail
+ * 
  * @author Ankit Yadav
  */
 public class GMailApi {
@@ -208,7 +209,8 @@ public class GMailApi {
 	 * By This Method We Can Get Otp from Gmail Mail Id Is : "awtindia.sc@gmail.com"
 	 * mail
 	 * 
-	 * @return
+	 * @author Ankit Yadav
+	 * @return otp number.
 	 */
 	public static String getGmailOtp() {
 		HashMap<String, String> hm = getGmailData("subject:Password Reset Instructions");

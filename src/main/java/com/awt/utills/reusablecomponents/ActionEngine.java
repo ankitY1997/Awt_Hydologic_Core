@@ -32,7 +32,7 @@ public class ActionEngine {
 	public static final int implicit_wait = 10;
 	// Explicit time
 	public static final int explicit_wait = 10;
-	/** xpath of Project Created Sucessfully pop-up *****/
+	/** x path of Project Created Successfully pop-up *****/
 	@FindAll({ @FindBy(xpath = "//button[text()='OK']"), @FindBy(xpath = "//div[@role='dialog']//*[text()='OK']") })
 	private WebElement accept_popup;
 
@@ -679,13 +679,13 @@ public class ActionEngine {
 	 *
 	 * @param webElement The WebElement to click.
 	 */
-	public void performClick(WebElement webElement) {
+	public void performClick(WebElement webElement,String... element_name) {
 		try {
 			Actions actions = new Actions(driver);
 			actions.click(webElement).perform();
-			logPass("Successfully performed click action.");
+			logPass("Successfully click On "+ element_name);
 		} catch (Exception e) {
-			logFail("Failed to perform click action.", e);
+			logFail("Failed to click on "+element_name, e);
 		}
 	}
 

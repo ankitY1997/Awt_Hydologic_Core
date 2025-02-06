@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="3" parallel="methods" name="Test(failed)">
     <classes>
-      <class name="com.awt.test.User.AdminConfiguration.Settings.PagePermission.AdminMenuPermissionTest">
+      <class name="com.awt.test.Irrigation.Login.LoginPageTest">
         <methods>
-          <include name="verifyAdminMenuPermission"/>
           <include name="launchBrowser"/>
+          <include name="verifyLoginPage"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.User.AdminConfiguration.Settings.PagePermission.AdminMenuPermissionTest -->
+      </class> <!-- com.awt.test.Irrigation.Login.LoginPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

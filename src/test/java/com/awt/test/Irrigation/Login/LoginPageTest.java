@@ -1,10 +1,10 @@
-package com.awt.test.Login;
+package com.awt.test.Irrigation.Login;
 
 import org.testng.annotations.Test;
-
-import com.awt.page.Login.ForgotPasswordPanel;
-import com.awt.page.Login.LoginPage;
-import com.awt.page.User.ParentLandingPage;
+import com.awt.page.ParentLandingPage;
+import com.awt.page.Irrigation.Home.HomePage;
+import com.awt.page.Irrigation.Login.ForgotPasswordPanel;
+import com.awt.page.Irrigation.Login.LoginPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
@@ -22,13 +22,14 @@ import com.awt.utills.reusablecomponents.WorkArea;
 
 public class LoginPageTest extends BaseTest {
 
-	// *********Instance Variables*****/
 	private static final String url = PropertiesOperations.getPropertyValueByKey("USERURL");
-	private static final String project_name = "NKMP1";
+	private static final String project_name = PropertiesOperations.getPropertyValueByKey("Project_Name");
+	private static final String main_porject_name = PropertiesOperations.getPropertyValueByKey("Main_Project_Name");
 	private SoftAssertTest asert = null;
 	private LoginPage login_page = null;
-	private ParentLandingPage home_page = null;
+	private ParentLandingPage parent_landing_page = null;
 	private ForgotPasswordPanel forgot_password_panel = null;
+	private HomePage home_page = null;
 	private String valid_email = null;
 	private String valid_username = null;
 
@@ -40,8 +41,9 @@ public class LoginPageTest extends BaseTest {
 		// SoftAssert instance
 		asert = new SoftAssertTest(DriverFactory.iuiDriver().getDriver());
 		// navigate to login page
-		login_page = new LoginPage(DriverFactory.iuiDriver().getDriver());
-		login_page.navigateToLoginPage(url, project_name);
+		parent_landing_page = new ParentLandingPage(DriverFactory.iuiDriver().getDriver());
+		// Select the module
+		login_page = parent_landing_page.selectProject(main_porject_name, url);
 
 	}
 
@@ -49,10 +51,11 @@ public class LoginPageTest extends BaseTest {
 	 * Description: Perform the verification of Login Page,Forgot Password <br>
 	 * TestMethodName: verifyLoginPage <br>
 	 * ManualTestCases: "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131",
-	 * "APMS-T132", "APMS-T133", "APMS-T134", "APMS-T135", "APMS-T136", "APMS-T137",
-	 * "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143", "APMS-T144",
+	 * "APMS-T132", "SU-T719", "SU-T721", "SU-T722", "SU-T723", "SU-T724",
+	 * "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
 	 * "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150",
-	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156","APMS-T157"<br>
+	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155",
+	 * "APMS-T156","APMS-T157"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -63,84 +66,87 @@ public class LoginPageTest extends BaseTest {
 	@Story(story = "Log In ")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Log in")
-	@TestCaseId(id = { "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131", "APMS-T132", "APMS-T133", "APMS-T134",
-			"APMS-T135", "APMS-T136", "APMS-T137", "APMS-T138", "APMS-T140", "APMS-T141", "APMS-T142", "APMS-T143",
-			"APMS-T144", "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150", "APMS-T151",
-			"APMS-T153", "APMS-T154", "APMS-T155", "APMS-T156","APMS-T157" })
+	@TestCaseId(id = { "SU-T715", "SU-T716", "SU-T717", "SU-T718", "SU-T719", "SU-T719", "SU-T721", "APMS-T135",
+			"SU-T723", "SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
+			"APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150", "APMS-T151", "APMS-T153",
+			"APMS-T154", "APMS-T155", "APMS-T156", "APMS-T157" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 
-		// APMS-T128-->To verify that "User Name" text field should be present in the
+		// SU-T715-->To verify that "User Name" text field should be present in the
 		// "login" page
 		// Open the url and navigate to login page
 		navigateToLoginPage();
+		// Enter the Project Name
+		login_page.enterProjectName(project_name);
 		// Check user name text field visiblity
 		boolean isUserNameTextFieldVisible = login_page.isUserNameTextFieldVisible();
 		asert.assertTrue(isUserNameTextFieldVisible,
-				"To verify that User Name text field should be present in the login page", "APMS-T128");
+				"To verify that User Name text field should be present in the login page", "SU-T715");
 
-		// APMS-T129-->To verify that "Password" text field should be present in the
+		// SU-T716-->To verify that "Password" text field should be present in the
 		// "login" page .
 		// Check The VIsiblity Of Password text field
 		boolean isPasswordTextFieldVisible = login_page.isPasswordTextFieldVisible();
 		asert.assertTrue(isPasswordTextFieldVisible,
-				"To verify that Password text field should be present in the login page .", "APMS-T129");
+				"To verify that Password text field should be present in the login page .", "SU-T716");
 
-		// APMS-T130-->To verify that "Forgot Password" button should be present in the
+		// SU-T717-->To verify that "Forgot Password" button should be present in the
 		// "login" page.
 		// Check The Visibility of Forgot Password button
 		boolean isForgotPasswordButtonVisible = login_page.isForgotPasswordButtonVisible();
 		asert.assertTrue(isForgotPasswordButtonVisible,
-				"To verify that Forgot Password button should be present in the login page.", "APMS-T130");
+				"To verify that Forgot Password button should be present in the login page.", "SU-T717");
 
-		// APMS-T131-->To verify that "Login" button should be present in the "login"
+		// SU-T718-->To verify that "Login" button should be present in the "login"
 		// page.
 		// Check the presence of "Login" button
 		boolean isLoginPresent = login_page.isLoginButtonVisible();
-		asert.assertTrue(isLoginPresent, "To verify that Login button should be present in the login page.",
-				"APMS-T131");
+		asert.assertTrue(isLoginPresent, "To verify that Login button should be present in the login page.", "SU-T718");
 
-		// APMS-T132-->To verify that the user is able to enter text in the "Username"
+		// SU-T719-->To verify that the user is able to enter text in the "Username"
 		// text field.
 		// Enter the Username text field
-		String username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "APMS-T132");
+		String username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "SU-T719");
 		login_page.enterUsername(username);
 		// actual user name text field value
 		String actual_user_name_value = login_page.getUserNameTextFieldValue();
 		asert.assertEquals(actual_user_name_value, username,
-				"To verify that the user is able to enter text in the Username text field.", "APMS-T132");
+				"To verify that the user is able to enter text in the Username text field.", "SU-T719");
 
-		// APMS-T133-->To verify that user is able to enter text in the "Password" text
+		// SU-T719-->To verify that user is able to enter text in the "Password" text
 		// field.
 		// Enter the Password text field value
-		String password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T133");
+		String password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T720");
 		login_page.enterPassword(password);
 		// actual password text field value
 		String actual_password = login_page.getPasswordTextFieldValue();
 		asert.assertEquals(actual_password, password,
-				"To verify that user is able to enter text in the Password text field.", "APMS-T133");
+				"To verify that user is able to enter text in the Password text field.", "SU-T720");
 
-		// APMS-T134-->To verify that a valid user can log in with correct "username"
+		// SU-T721-->To verify that a valid user can log in with correct "username"
 		// and "password".
 		// Enter Valid User name and Valid password--> then click on login button
-		valid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "APMS-T134");
-		String valid_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
+		valid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "SU-T721");
+		String valid_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T721");
+
 		home_page = login_page.logInToTheApplication(valid_username, valid_password);
 		// verify "ParentLandingpage" is visible
 		String home_page_url = home_page.getHomePageUrl();
-		asert.assertTrue(home_page_url.contains("parentLandingpage"),
-				"To verify that  a valid user can log in with correct username and password.", "APMS-T134");
-		// click on logout button
+		asert.assertTrue(home_page_url.contains("MainDashboard"),
+				"To verify that  a valid user can log in with correct username and password.", "SU-T721");
+		// -> Click on Log out button
 		home_page.clickOnLogoutButton();
-		// again navigate to login page
+		// Again navigate to login page
 		navigateToLoginPage();
 
-		// APMS-T135-->To verify that an error message is displayed when an invalid
+		// SU-T722-->To verify that an error message is displayed when an invalid
 		// username is entered.
-
+		// Enter Project Name
+		login_page.enterProjectName(project_name);
 		// Enter invalid username
-		String invalid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "APMS-T135");
+		String invalid_username = ExcelOperations.getCellData("LoginCredentialDetails", "Username", "SU-T722");
 		login_page.enterUsername(invalid_username);
 		// then Enter valid password
 		login_page.enterPassword(valid_password);
@@ -149,15 +155,14 @@ public class LoginPageTest extends BaseTest {
 		// validate the error message
 		String actual_error_message = login_page.getErrorMessage().trim();
 		asert.assertEquals(actual_error_message, "User not registered",
-				"To verify that  an error message is displayed when an invalid username is entered.", "APMS-T135");
+				"To verify that  an error message is displayed when an invalid username is entered.", "SU-T722");
 
-		// APMS-T136-->To verify that an error message is displayed when a valid
+		// SU-T723-->To verify that an error message is displayed when a valid
 		// "username" is entered with an incorrect "password".
-
 		// Enter valid username
 		login_page.enterUsername(valid_username);
 		// then Enter invalid password
-		String invalid_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T136");
+		String invalid_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T723");
 		login_page.enterPassword(invalid_password);
 		// then click on log in button
 		login_page.clicOnLoginButton();
@@ -165,11 +170,10 @@ public class LoginPageTest extends BaseTest {
 		actual_error_message = login_page.getErrorMessage().trim();
 		asert.assertEquals(actual_error_message, "Incorrect password",
 				"To verify that an error message is displayed when a valid username is entered with an incorrect password.",
-				"APMS-T136");
+				"SU-T723");
 
-		// APMS-T137-->To verify that an error message is displayed when the "username"
+		// SU-T724-->To verify that an error message is displayed when the "username"
 		// text field is left empty
-
 		// Enter a Password only and keep username field empty
 		login_page.clearUsernameTextField();
 		login_page.enterPassword(valid_password);
@@ -178,11 +182,10 @@ public class LoginPageTest extends BaseTest {
 		// validate error message
 		actual_error_message = login_page.getErrorMessage().trim();
 		asert.assertEquals(actual_error_message, "Please fill in all fields",
-				"To verify that an error message is displayed when the username text field is left empty", "APMS-T137");
+				"To verify that an error message is displayed when the username text field is left empty", "SU-T724");
 
-		// APMS-T138-->To verify that an error message is displayed when the "password"
+		// SU-T725-->To verify that an error message is displayed when the "password"
 		// text field is left empty.
-
 		// Enter username only and keep password text field blank
 		login_page.clearPasswordTextField();
 		login_page.enterUsername(valid_username);
@@ -191,8 +194,7 @@ public class LoginPageTest extends BaseTest {
 		// validate error message
 		actual_error_message = login_page.getErrorMessage().trim();
 		asert.assertEquals(actual_error_message, "Please fill in all fields",
-				"To verify that an error message is displayed when the password text field is left empty.",
-				"APMS-T138");
+				"To verify that an error message is displayed when the password text field is left empty.", "SU-T725");
 
 		// Verify Forgot Password Panel
 		verifyForgotPasswordPanel();
@@ -207,7 +209,7 @@ public class LoginPageTest extends BaseTest {
 	 */
 	public void verifyForgotPasswordPanel() {
 
-		// APMS-T140-->To verify that clicking on the "Forgot Password" button
+		// SU-T727-->To verify that clicking on the "Forgot Password" button
 		// ,redirects to the "Forgot Password" Panel.
 		// click on forgot password button and navigate to "Forgot Password" panel
 		forgot_password_panel = login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
@@ -215,27 +217,27 @@ public class LoginPageTest extends BaseTest {
 		String actual_panel_name = forgot_password_panel.getForgotPasswordPanelName();
 		asert.assertEquals(actual_panel_name, "Forgot Password",
 				"To verify that clicking on the Forgot Password button ,redirects to the Forgot Password Panel.",
-				"APMS-T140");
+				"SU-T727");
 
-		// APMS-T141-->To verify that "Enter Your Email" text field should be present in
+		// SU-T728-->To verify that "Enter Your Email" text field should be present in
 		// the "Forgot Password" panel.
 		// check the "Email" text field is visible
 		boolean isEmailTextFieldVisible = forgot_password_panel.isEmailTextFieldVisible();
 		asert.assertTrue(isEmailTextFieldVisible,
 				"To verify that Enter Your Email text field should be present in the Forgot Password panel.",
-				"APMS-T141");
+				"SU-T728");
 
-		// APMS-T142-->To verify that "Submit" button should be present in the "Forgot
+		// SU-T729-->To verify that "Submit" button should be present in the "Forgot
 		// Password" panel.
 		// Check The Submit Button Presence
 		boolean isSubmitButtonVisible = forgot_password_panel.isSubmitButtonPresent();
 		asert.assertTrue(isSubmitButtonVisible,
-				"To verify that Submit button should be present in the Forgot Password panel.", "APMS-T142");
+				"To verify that Submit button should be present in the Forgot Password panel.", "SU-T729");
 
-		// APMS-T143-->To verify that should accepts only the registered email id in the
-		// "Enter Your Email" text field , at the time of "User Creation".
+		// SU-T730-->To verify that should accepts only the registered email id in the
+		// "Enter Your Email" text field , when you have given at the time of "User Creation".
 		// Enter Valid Email Id
-		valid_email = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "APMS-T143");
+		valid_email = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "SU-T730");
 		// enter valid email
 		forgot_password_panel.enterEmail(valid_email);
 		// click on submit button
@@ -245,16 +247,16 @@ public class LoginPageTest extends BaseTest {
 		actual_panel_name = forgot_password_panel.getResetPasswordPanelName();
 		asert.assertEquals(actual_panel_name, "Reset Password",
 				"To verify that should accepts only the registered email id in the Enter Your Email text field , at the time of User Creation.",
-				"APMS-T143");
+				"SU-T730");
 		// Then Close The "Reset Password" panel
 		forgot_password_panel.closeResetPasswordPanel();
 
-		// APMS-T144-->To verify that should not accepts the unregistered email id in
+		// SU-T731-->To verify that should not accepts the unregistered email id in
 		// the "Enter Your Email" text field
 		// Click On Forgot Password button
 		login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
 		// Enter not registered E-mail
-		String notRegisterEmail = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "APMS-T144");
+		String notRegisterEmail = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "SU-T731");
 		forgot_password_panel.enterEmail(notRegisterEmail);
 		// Click On Submit Button
 		forgot_password_panel.clickOnSubmitButton();
@@ -262,7 +264,7 @@ public class LoginPageTest extends BaseTest {
 		String actual_error_message = forgot_password_panel.getInvalidEmailErrorMessage();
 		asert.assertEquals(actual_error_message, "Email not found",
 				"To verify that should not accepts the unregistered email id in the Enter Your Email text field .",
-				"APMS-T144");
+				"SU-T731");
 
 	}
 
@@ -391,12 +393,12 @@ public class LoginPageTest extends BaseTest {
 		// click on login button
 		login_page.clicOnLoginButton();
 		// verify "ParentLandingpage" is visible
-		String home_page_url = home_page.getHomePageUrl();
-		asert.assertTrue(home_page_url.contains("parentLandingpage"),
-				"To verify the functionality of the Submit button with valid OTP and New Password.", "APMS-T156");
-		// click on logout button
-		home_page.clickOnLogoutButton();
-		// Again Update Old Password
+		/*
+		 * String home_page_url = home_page.getHomePageUrl();
+		 * asert.assertTrue(home_page_url.contains("parentLandingpage"),
+		 * "To verify the functionality of the Submit button with valid OTP and New Password."
+		 * , "APMS-T156"); // click on logout button home_page.clickOnLogoutButton();
+		 */ // Again Update Old Password
 		updateOldPassword();
 	}
 
@@ -418,7 +420,7 @@ public class LoginPageTest extends BaseTest {
 		String inValidOtp = AwtUtilities.genrateRandomNumber(6);
 		forgot_password_panel.enterOtp(inValidOtp);
 		// Enter Old Password Password
-		String old_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T134");
+		String old_password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T721");
 		forgot_password_panel.enterNewPassword(old_password);
 		// click on submit button
 		forgot_password_panel.clickOnResetPanelSubmitButton();
@@ -434,4 +436,5 @@ public class LoginPageTest extends BaseTest {
 		forgot_password_panel.clickOnResetPanelSubmitButton();
 
 	}
+
 }

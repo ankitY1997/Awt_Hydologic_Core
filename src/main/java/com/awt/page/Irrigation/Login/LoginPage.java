@@ -1,4 +1,4 @@
-package com.awt.page.Login;
+package com.awt.page.Irrigation.Login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,12 +7,10 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.awt.page.Admin.ProjectDashboardPage;
-import com.awt.page.User.ParentLandingPage;
-import com.awt.testbase.DriverFactory;
+import com.awt.page.ParentLandingPage;
+import com.awt.page.Irrigation.Home.HomePage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
-import com.awt.utills.reusablecomponents.PropertiesOperations;
 
 public class LoginPage {
 
@@ -196,7 +194,7 @@ public class LoginPage {
 	 * 
 	 * @author Ankit
 	 */
-	public ParentLandingPage logInToTheApplication(String username, String password) {
+	public HomePage logInToTheApplication(String username, String password) {
 //		// Enter the Project Name
 //		enterProjectName(Properties.getPropertyValue("Project_Name"));
 		// enter username
@@ -205,7 +203,7 @@ public class LoginPage {
 		action.type(txt_password, "password", password);
 		// click on login button
 		action.clickOn(btn_login, "login");
-		return new ParentLandingPage(driver);
+		return new HomePage(driver);
 	}
 
 	/**
@@ -219,10 +217,7 @@ public class LoginPage {
 		// enter the project name
 		action.type(txt_entr_project_name, "Project Name", projectName);
 		// select the project name
-		action.performClick(driver.findElement(By.xpath("//div[@role='listbox']/div[text()='" + projectName + "']")));
-		// click on get start button
-		action.clickOn(btn_get_started, "Get Started");
-
+		action.performClick(driver.findElement(By.xpath("//div[@role='listbox']/div[text()='" + projectName + "']")),projectName);
 	}
 
 	/**
@@ -241,37 +236,36 @@ public class LoginPage {
 	 * DashboardsPage
 	 *
 	 * @return
-	 */
-	public ProjectDashboardPage loginAndProjectDashboardPage(String url) {
-		// enterProjectName(projectName);
-		try {
-			driver.get(url);
-			AwtUtilities.waitForPageLoading(driver);
-			logInToTheApplication(PropertiesOperations.getPropertyValueByKey("Create_Project_USERNAME"),
-					PropertiesOperations.getPropertyValueByKey("Create_Project_PASSWORD"));
-			System.out.println("*********************Sucessfully Navigate To The Url*********************");
-			return new ProjectDashboardPage(driver);
-		} catch (Exception e) {
-			System.out.println("*********************Unable To Navigate  The Url*********************");
-			return null;
-		}
-	}
+	 * @deprecated
+	 *//*
+		 * public ProjectDashboardPage loginAndProjectDashboardPage(String url, String
+		 * projectName) { // enterProjectName(projectName); try { driver.get(url);
+		 * AwtUtilities.waitForPageLoading(driver);
+		 * logInToTheApplication(PropertiesOperations.getPropertyValueByKey(
+		 * "SUPERADMIN_USERNAME"),
+		 * PropertiesOperations.getPropertyValueByKey("SUPERADMIN_PASSWORD"));
+		 * System.out.
+		 * println("*********************Sucessfully Navigate To The Url*********************"
+		 * ); return new ProjectDashboardPage(driver); } catch (Exception e) {
+		 * System.out.
+		 * println("*********************Unable To Navigate  The Url*********************"
+		 * ); return null; } }
+		 */
 
 	/**
 	 * this methods helps we can directly navigate to the login Page-->Parent
 	 * Landing Page
 	 *
-	 * @return
+	 * @return 
 	 */
-	public ParentLandingPage loginAndNavigateToTheParentLandingPage(String url, String projectName, String username,
-			String password) {
+	public HomePage loginAndNavigateToHomePage(String url, String projectName,
+			String username, String password) {
 		try {
-			driver.get(url);
 			AwtUtilities.waitForPageLoading(driver);
 			enterProjectName(projectName);
 			logInToTheApplication(username, password);
-			System.out.println("*********************Sucessfully Navigate To The Url*********************");
-			return new ParentLandingPage(driver);
+			System.out.println("*********************Sucessfully Navigate To  Url*********************");
+			return new HomePage(driver);
 		}
 
 		catch (Exception e) {
@@ -285,17 +279,15 @@ public class LoginPage {
 	 * 
 	 * @param url
 	 * @return
+	 * @deprecated
 	 */
-	public void navigateToLoginPage(String url, String projectName) {
-		try {
-			driver.get(url);
-			AwtUtilities.waitForPageLoading(driver);
-			enterProjectName(projectName);
-			System.out.println("*********************Sucessfully Navigate To The Url*********************");
-		} catch (Exception e) {
-			System.out.println("*********************Unable To Navigate  The Url*********************");
-		}
-	}
-	
-	
+	/*
+	 * public void navigateToLoginPage(String url, String projectName) { try {
+	 * driver.get(url); AwtUtilities.waitForPageLoading(driver);
+	 * enterProjectName(projectName); System.out.
+	 * println("*********************Sucessfully Navigate To The Url*********************"
+	 * ); } catch (Exception e) { System.out.
+	 * println("*********************Unable To Navigate  The Url*********************"
+	 * ); } }
+	 */
 }
