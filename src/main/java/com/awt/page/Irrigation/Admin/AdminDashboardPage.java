@@ -3,13 +3,10 @@ package com.awt.page.Irrigation.Admin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.awt.page.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplatePage;
 import com.awt.page.Irrigation.Admin.User.CreateRole.AdminAddRolePage;
+import com.awt.page.Irrigation.Admin.User.CreateUser.AdminAddUserPage;
 import com.awt.page.Irrigation.Home.HomePage;
-import com.awt.page.User.AdminConfiguration.Settings.MasterCreation.AdminMasterCreationPage;
-import com.awt.page.User.AdminConfiguration.Settings.NotificationSettings.AdminNotificationSettingsPage;
-import com.awt.page.User.AdminConfiguration.Settings.Page_Permission.AdminMenuPermissionPage;
-import com.awt.page.User.AdminConfiguration.Settings.Report_Template.AdminReportTemplatePage;
-import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class AdminDashboardPage extends HomePage {

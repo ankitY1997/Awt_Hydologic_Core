@@ -6,11 +6,9 @@ import java.util.List;
 
 import org.testng.annotations.Test;
 
-import com.awt.page.Login.LoginPage;
-import com.awt.page.User.ParentLandingPage;
-import com.awt.page.User.AdminConfiguration.AdminPage;
-import com.awt.page.User.AdminConfiguration.User.CreateUser.AddUsersPanel;
-import com.awt.page.User.AdminConfiguration.User.CreateUser.AdminAddUserPage;
+import com.awt.page.ParentLandingPage;
+import com.awt.page.Irrigation.Login.LoginPage;
+
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
