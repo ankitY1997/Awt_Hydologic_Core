@@ -53,9 +53,9 @@ public class LoginPageTest extends BaseTest {
 	 * ManualTestCases: "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131",
 	 * "APMS-T132", "SU-T719", "SU-T721", "SU-T722", "SU-T723", "SU-T724",
 	 * "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
-	 * "APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150",
-	 * "APMS-T151", "APMS-T153", "APMS-T154", "APMS-T155",
-	 * "APMS-T156","APMS-T157"<br>
+	 * "SU-T732", "SU-T733", "SU-T734", "SU-T735", "SU-T736", "SU-T737",
+	 * "SU-T738", "SU-T742", "SU-T742", "SU-T742",
+	 * "SU-T743","APMS-T157"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -68,8 +68,8 @@ public class LoginPageTest extends BaseTest {
 	@WorkArea(areaName = "Log in")
 	@TestCaseId(id = { "SU-T715", "SU-T716", "SU-T717", "SU-T718", "SU-T719", "SU-T719", "SU-T721", "APMS-T135",
 			"SU-T723", "SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
-			"APMS-T145", "APMS-T146", "APMS-T147", "APMS-T148", "APMS-T149", "APMS-T150", "APMS-T151", "APMS-T153",
-			"APMS-T154", "APMS-T155", "APMS-T156", "APMS-T157" })
+			"SU-T732", "SU-T733", "SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742",
+			"SU-T742", "SU-T742", "SU-T743", "APMS-T157" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -273,7 +273,7 @@ public class LoginPageTest extends BaseTest {
 	 */
 	public void verifyResetPasswordPanel() {
 
-		// APMS-T145-->To verify that "OTP" text field should be present in the "Reset
+		// SU-T732-->To verify that "OTP" text field should be present in the "Reset
 		// Password" Panel
 		// Enter valid email
 		forgot_password_panel.enterEmail(valid_email);
@@ -282,23 +282,23 @@ public class LoginPageTest extends BaseTest {
 		// Check "OTP" text field is visible
 		boolean isOtpTextFieldVisible = forgot_password_panel.isOTPTextFieldVisible();
 		asert.assertTrue(isOtpTextFieldVisible,
-				"To verify that OTP text field should be present in the Reset Password Panel", "APMS-T145");
+				"To verify that OTP text field should be present in the Reset Password Panel", "SU-T732");
 
-		// APMS-T146-->To verify that "New Password" text field should be present in the
+		// SU-T733-->To verify that "New Password" text field should be present in the
 		// "Reset Password" Panel
 		// Check the "New Password" Text Field is Visible
 		boolean isNewPasswordTextFieldVisible = forgot_password_panel.isNewPasswordTextFieldVisible();
 		asert.assertTrue(isNewPasswordTextFieldVisible,
-				"To verify that New Password text field should be present in the Reset Password Panel", "APMS-T146");
+				"To verify that New Password text field should be present in the Reset Password Panel", "SU-T733");
 
-		// APMS-T147-->To verify that "Submit" button should be present in the "Reset
+		// SU-T734-->To verify that "Submit" button should be present in the "Reset
 		// Password" Panel
 		// Check The presence of submit button
 		boolean isSubmitButtonPresent = forgot_password_panel.isSubmitButtonPresent();
 		asert.assertTrue(isSubmitButtonPresent,
-				"To verify that Submit button should be present in the Reset Password Panel", "APMS-T147");
+				"To verify that Submit button should be present in the Reset Password Panel", "SU-T734");
 
-		// APMS-T148-->To verify that "OTP" text field should accepts only the numeric
+		// SU-T735-->To verify that "OTP" text field should accepts only the numeric
 		// values
 		// Enter Only Numeric Value in OTP Text Field
 		String numeric_value = AwtUtilities.genrateRandomNumber(4);
@@ -306,18 +306,18 @@ public class LoginPageTest extends BaseTest {
 		String acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
 		// it should accept
 		asert.assertEquals(acutal_otp_text_field_value, numeric_value,
-				"To verify that OTP text field should accepts only the numeric values", "APMS-T148");
+				"To verify that OTP text field should accepts only the numeric values", "SU-T735");
 
-		// APMS-T149-->To verify that "OTP" text field should not accept the alphabets
+		// SU-T736-->To verify that "OTP" text field should not accept the alphabets
 		// and special characters
 		String invalid_value = AwtUtilities.genrateRandomAlphaBets(1, 3) + "&";
 		forgot_password_panel.enterOtp(invalid_value);
 		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
 		// it should not accept
 		asert.assertNotEquals(acutal_otp_text_field_value, invalid_value,
-				"To verify that OTP text field should not accept the alphabets and special characters", "APMS-T149");
+				"To verify that OTP text field should not accept the alphabets and special characters", "SU-T736");
 
-		// APMS-T150-->To verify that "OTP" text field should accept only up to "six
+		// SU-T737-->To verify that "OTP" text field should accept only up to "six
 		// (6)" number of digits.
 		// Enter Only 6 number of digit
 		String valid_number = AwtUtilities.genrateRandomNumber(6);
@@ -325,9 +325,9 @@ public class LoginPageTest extends BaseTest {
 		// Get Actual Otp Text Field Value
 		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
 		asert.assertEquals(valid_number, acutal_otp_text_field_value,
-				"To verify that OTP text field should accept only up to six(6) number of digits.", "APMS-T150");
+				"To verify that OTP text field should accept only up to six(6) number of digits.", "SU-T737");
 
-		// APMS-T151-->To verify that "OTP" text field should not accept more than "six"
+		// SU-T738-->To verify that "OTP" text field should not accept more than "six"
 		// number of digits.
 		// Enter Only 6 number of digit
 		String invalid_number = AwtUtilities.genrateRandomNumber(8);
@@ -335,12 +335,12 @@ public class LoginPageTest extends BaseTest {
 		// Get Actual Otp Text Field Value
 		acutal_otp_text_field_value = forgot_password_panel.getOtpTextFieldValue();
 		asert.assertNotEquals(invalid_number, acutal_otp_text_field_value,
-				"To verify that OTP text field should not accept more than  six(6) number of digits.", "APMS-T151");
+				"To verify that OTP text field should not accept more than  six(6) number of digits.", "SU-T738");
 
-		// APMS-T153-->To Verify that the "New Password" field only accepts passwords
+		// SU-T742-->To Verify that the "New Password" field only accepts passwords
 		// with at least 8 characters, including one uppercase letter, one lowercase
 		// letter, one special character, and one number.
-		String valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T153");
+		String valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T742");
 		// Enter Valid New Password
 		forgot_password_panel.enterNewPassword(valid_Password);
 		// click on submit button
@@ -350,33 +350,33 @@ public class LoginPageTest extends BaseTest {
 		asert.assertNotEquals(new_password_error_message,
 				"Password must be at least 8 characters long, include one uppercase letter, one digit, and one special character",
 				"To Verify that the New Password field only accepts passwords with at least 8 characters, including one uppercase letter, one lowercase letter, one special character, and one number.",
-				"APMS-T153");
+				"SU-T742");
 
-		// APMS-T154-->To verify that New Password text field should accepts only
+		// SU-T742-->To verify that New Password text field should accepts only
 		// passwords with a maximum of 15 characters.
 		// Enter Only 15 Character Password
-		valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T154");
+		valid_Password = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T742");
 		forgot_password_panel.enterNewPassword(valid_Password);
 		// It should accept
 		String act_new_pass_text_value = forgot_password_panel.getNewPasswordTextFieldValue();
 		// actutal password value should be equal to valid password
 		asert.assertEquals(act_new_pass_text_value, valid_Password,
 				"To verify that New Password text field should accepts only passwords with a maximum of 15 characters.",
-				"APMS-T154");
+				"SU-T742");
 
-		// APMS-T155-->To verify that the "New Password" text field should not exceeds
+		// SU-T742-->To verify that the "New Password" text field should not exceeds
 		// more than 15
 		// characters.
 		// Enter 17 character password
-		String inValidPassword = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "APMS-T155");
+		String inValidPassword = ExcelOperations.getCellData("LoginCredentialDetails", "Password", "SU-T742");
 		forgot_password_panel.enterNewPassword(inValidPassword);
 		// It should not accept
 		act_new_pass_text_value = forgot_password_panel.getNewPasswordTextFieldValue();
 		// actual value should not be equal to enter invalid password
 		asert.assertNotEquals(act_new_pass_text_value, inValidPassword,
-				"To verify that the New Password text field  should not exceeds more than 15 characters.", "APMS-T155");
+				"To verify that the New Password text field  should not exceeds more than 15 characters.", "SU-T742");
 
-		// APMS-T156-->To verify the functionality of the Submit button with valid "OTP"
+		// SU-T743-->To verify the functionality of the Submit button with valid "OTP"
 		// and "New Password".
 
 		// Enter Valid OTP
@@ -393,12 +393,12 @@ public class LoginPageTest extends BaseTest {
 		// click on login button
 		login_page.clicOnLoginButton();
 		// verify "ParentLandingpage" is visible
-		/*
-		 * String home_page_url = home_page.getHomePageUrl();
-		 * asert.assertTrue(home_page_url.contains("parentLandingpage"),
-		 * "To verify the functionality of the Submit button with valid OTP and New Password."
-		 * , "APMS-T156"); // click on logout button home_page.clickOnLogoutButton();
-		 */ // Again Update Old Password
+		  String home_page_url = home_page.getHomePageUrl();
+		  asert.assertTrue(home_page_url.contains("parentLandingpage"),
+		  "To verify the functionality of the Submit button with valid OTP and New Password."
+		  , "SU-T743"); // click on logout button 
+		  home_page.clickOnLogoutButton();
+		 // Again Update Old Password
 		updateOldPassword();
 	}
 
@@ -410,6 +410,8 @@ public class LoginPageTest extends BaseTest {
 		// the "Submit" button is clicked
 		// Navigate to login page
 		navigateToLoginPage();
+		// Enter the Project Name
+		 login_page.enterProjectName(project_name);
 		// Click On Forgot Password Button
 		login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
 		// Enter Email

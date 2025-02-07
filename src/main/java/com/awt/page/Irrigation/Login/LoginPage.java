@@ -217,7 +217,8 @@ public class LoginPage {
 		// enter the project name
 		action.type(txt_entr_project_name, "Project Name", projectName);
 		// select the project name
-		action.performClick(driver.findElement(By.xpath("//div[@role='listbox']/div[text()='" + projectName + "']")),projectName);
+		action.performClick(driver.findElement(By.xpath("//div[@role='listbox']/div[text()='" + projectName + "']")),
+				projectName);
 	}
 
 	/**
@@ -253,13 +254,10 @@ public class LoginPage {
 		 */
 
 	/**
-	 * this methods helps we can directly navigate to the login Page-->Parent
-	 * Landing Page
-	 *
-	 * @return 
+	 * By Using This Method We Can Directly Navigate To The Home Page
+	 * @return instance of Home Page
 	 */
-	public HomePage loginAndNavigateToHomePage(String url, String projectName,
-			String username, String password) {
+	public HomePage loginAndNavigateToHomePage(String projectName, String username, String password) {
 		try {
 			AwtUtilities.waitForPageLoading(driver);
 			enterProjectName(projectName);

@@ -7,23 +7,24 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.awt.page.Irrigation.Admin.AdminDashboardPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
 public class HomePage {
 
 	/* xpath for log out button */
 	@FindAll({ @FindBy(xpath = "//span[text()='Logout']/parent::button") })
-	private WebElement btn_logout;
+	public WebElement btn_logout;
 
 	/* xpath for profile icon button */
 	@FindAll({ @FindBy(xpath = "//li[@id='profile']/button") })
-	private WebElement btn_profile_icon;
+	public WebElement btn_profile_icon;
 
 	/** ActionEngine instance **/
-	ActionEngine action = null;
+	public ActionEngine action = null;
 
 	/** WebDriver instance **/
-	WebDriver driver = null;
+	public WebDriver driver = null;
 
 	// ***** Constanst********/
 
@@ -101,5 +102,19 @@ public class HomePage {
 				option_name);
 
 	}
+
+	
+	/**
+	 *By using this method we can go to admin Dasboard page
+	 * 
+	 * @return instance of AdminDashboardPage
+	 */
+	public AdminDashboardPage navigateToAdminDashboardPage() {
+		selectOptionFromProfile(admin);
+		return new AdminDashboardPage(driver);
+
+	}
+	
+	
 
 }

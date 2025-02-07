@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="3" parallel="methods" name="Test(failed)">
     <classes>
-      <class name="com.awt.test.Irrigation.Login.LoginPageTest">
+      <class name="com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest">
         <methods>
+          <include name="verifyAdminAddRolePage"/>
           <include name="launchBrowser"/>
-          <include name="verifyLoginPage"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.Irrigation.Login.LoginPageTest -->
+      </class> <!-- com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

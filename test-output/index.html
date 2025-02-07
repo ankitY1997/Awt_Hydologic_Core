@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Demo">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Irrigation.Login.LoginPageTest" class="method navigator-link" hash-for-method="verifyLoginPage">verifyLoginPage</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest" class="method navigator-link" hash-for-method="verifyAdminAddRolePage">verifyAdminAddRolePage</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Demo -->
@@ -122,37 +122,35 @@
           <div class="suite-Demo-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.awt.test.Irrigation.Login.LoginPageTest</span>
+              <span class="class-name">com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyLoginPage">
-                  </a> <!-- verifyLoginPage -->
-                  <span class="method-name">verifyLoginPage</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: invalid session id
+                  <a name="verifyAdminAddRolePage">
+                  </a> <!-- verifyAdminAddRolePage -->
+                  <span class="method-name">verifyAdminAddRolePage</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //div[@role=&apos;combobox&apos;]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [ee2c6040bd6856d2a151aceed4ca1e19, setTimeout {implicit=10000}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 132.0.6834.160, chrome: {chromedriverVersion: 132.0.6834.159 (2d77d3fc445..., userDataDir: C:\Users\AWTTES~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61555}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61555/devtoo..., se:cdpVersion: 132.0.6834.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ee2c6040bd6856d2a151aceed4ca1e19
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:934)
-	at com.awt.utills.reusablecomponents.ActionEngine.waitForVisibility(ActionEngine.java:272)
-	at com.awt.page.Irrigation.Login.ForgotPasswordPanel.isEmailTextFieldVisible(ForgotPasswordPanel.java:89)
-	at com.awt.test.Irrigation.Login.LoginPageTest.verifyForgotPasswordPanel(LoginPageTest.java:231)
-	at com.awt.test.Irrigation.Login.LoginPageTest.verifyLoginPage(LoginPageTest.java:206)
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy40.isDisplayed(Unknown Source)
+	at com.awt.utills.reusablecomponents.ActionEngine.isDisplay(ActionEngine.java:371)
+	at com.awt.page.Irrigation.Admin.User.CreateRole.AdminAddRolePage.isRowsPerPageDropDownIsVisible(AdminAddRolePage.java:165)
+	at com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest.verifyRoleDetailsTable(AdminAddRoleTest.java:298)
+	at com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest.verifyAdminAddRolePage(AdminAddRoleTest.java:102)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 17 stack frames
+... Removed 12 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -174,11 +172,11 @@ Session ID: ee2c6040bd6856d2a151aceed4ca1e19
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.awt.test.Irrigation.Login.LoginPageTest&quot;&gt;
+      &lt;class name=&quot;com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verifyLoginPage&quot;/&gt;
+          &lt;include name=&quot;verifyAdminAddRolePage&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.awt.test.Irrigation.Login.LoginPageTest --&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Demo --&gt;
@@ -203,18 +201,18 @@ Session ID: ee2c6040bd6856d2a151aceed4ca1e19
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">Functional</span>
+              <span class="test-group-name">Admin</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyLoginPage</span>
+                <span class="method-in-group-name">verifyAdminAddRolePage</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
             <div class="test-group">
-              <span class="test-group-name">Log In</span>
+              <span class="test-group-name">Functional</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyLoginPage</span>
+                <span class="method-in-group-name">verifyAdminAddRolePage</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -236,14 +234,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyLoginPage')
-data.setCell(0, 2, 'com.awt.test.Irrigation.Login.LoginPageTest')
-data.setCell(0, 3, 59935);
+data.setCell(0, 1, 'verifyAdminAddRolePage')
+data.setCell(0, 2, 'com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest')
+data.setCell(0, 3, 299059);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 59 seconds</span>
+              <span class="suite-total-time">Total running time: 4 minutes</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -269,7 +267,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.awt.test.Irrigation.Login.LoginPageTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.awt.test.Irrigation.Admin.User.CreateRole.AdminAddRoleTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchBrowser(0)</span>
                 <span class="method-start">0 ms</span>
@@ -277,12 +275,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifyLoginPage</span>
-                <span class="method-start">2839 ms</span>
+                <span class="method-name">verifyAdminAddRolePage</span>
+                <span class="method-start">2577 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">62804 ms</span>
+                <span class="method-start">301931 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

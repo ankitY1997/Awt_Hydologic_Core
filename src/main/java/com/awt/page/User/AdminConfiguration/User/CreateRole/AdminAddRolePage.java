@@ -14,7 +14,7 @@ import com.awt.page.User.AdminConfiguration.AdminPage;
 import com.awt.testbase.MyLogger;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
-public class AdminAddRolePage extends AdminPage {
+public class AdminAddRolePage extends AdminDasboardPage {
 
 	// ********New Button**********/
 	@FindAll({ @FindBy(xpath = "//button[@aria-label='New']") })
