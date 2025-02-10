@@ -2,12 +2,15 @@ package com.awt.page.Irrigation.Admin.Settings.ReportTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+
+/**
+ * @author Ankit yadav
+ */
 
 public class AddNewReportPanel extends AdminReportTemplatePage{
 

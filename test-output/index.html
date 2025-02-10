@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Demo">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest" class="method navigator-link" hash-for-method="verifyAdminReportTemplate">verifyAdminReportTemplate</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Demo" title="com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest" class="method navigator-link" hash-for-method="verifyAdminMenuPermission">verifyAdminMenuPermission</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Demo -->
@@ -122,17 +122,32 @@
           <div class="suite-Demo-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest</span>
+              <span class="class-name">com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyAdminReportTemplate">
-                  </a> <!-- verifyAdminReportTemplate -->
-                  <span class="method-name">verifyAdminReportTemplate</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because the return value of &quot;com.awt.page.Irrigation.Admin.Settings.ReportTemplate.AddNewReportPanel.getTemplateNameTextErrorMessage()&quot; is null
-	at com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest.verifyAddNewReportPanel(AdminReportTemplateTest.java:347)
-	at com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest.verifyAdminReportTemplate(AdminReportTemplateTest.java:103)
+                  <a name="verifyAdminMenuPermission">
+                  </a> <!-- verifyAdminMenuPermission -->
+                  <span class="method-name">verifyAdminMenuPermission</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //input[@type=&apos;file&apos; and @name=&apos;client_logo&apos;]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.17.0&apos;, revision: &apos;e52b1be057*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy40.sendKeys(Unknown Source)
+	at com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel.uploadLogo(NewProjectDetailsPanel.java:241)
+	at com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel.enterProjectDetails(NewProjectDetailsPanel.java:280)
+	at com.awt.utills.reusablecomponents.AwtUtilities.createNewProject(AwtUtilities.java:386)
+	at com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest.createProject(AdminMenuPermissionTest.java:74)
+	at com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest.verifyAdminMenuPermission(AdminMenuPermissionTest.java:106)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
@@ -158,11 +173,11 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;3&quot; parallel=&quot;methods&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest&quot;&gt;
+      &lt;class name=&quot;com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;verifyAdminReportTemplate&quot;/&gt;
+          &lt;include name=&quot;verifyAdminMenuPermission&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest --&gt;
+      &lt;/class&gt; &lt;!-- com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Demo --&gt;
@@ -190,7 +205,7 @@
               <span class="test-group-name">Admin</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAdminReportTemplate</span>
+                <span class="method-in-group-name">verifyAdminMenuPermission</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -198,7 +213,7 @@
               <span class="test-group-name">Functional</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyAdminReportTemplate</span>
+                <span class="method-in-group-name">verifyAdminMenuPermission</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -220,14 +235,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyAdminReportTemplate')
-data.setCell(0, 2, 'com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest')
-data.setCell(0, 3, 297361);
+data.setCell(0, 1, 'verifyAdminMenuPermission')
+data.setCell(0, 2, 'com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest')
+data.setCell(0, 3, 47039);
 window.suiteTableData['Demo']= { tableData: data, tableDiv: 'times-div-Demo'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 4 minutes</span>
+              <span class="suite-total-time">Total running time: 47 seconds</span>
               <div id="times-div-Demo">
               </div> <!-- times-div-Demo -->
             </div> <!-- times-div -->
@@ -253,7 +268,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchBrowser(0)</span>
                 <span class="method-start">0 ms</span>
@@ -261,12 +276,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifyAdminReportTemplate</span>
-                <span class="method-start">3126 ms</span>
+                <span class="method-name">verifyAdminMenuPermission</span>
+                <span class="method-start">2227 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearUp</span>
-                <span class="method-start">300969 ms</span>
+                <span class="method-start">49599 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

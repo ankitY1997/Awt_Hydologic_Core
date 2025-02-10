@@ -11,6 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
+/**
+ * @author Ankit yadav
+ */
 public class AddNewRolePanel extends AdminAddRolePage{
 	
 	// ******Panel heading****/

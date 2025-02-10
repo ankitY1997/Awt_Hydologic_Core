@@ -2,18 +2,18 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-02-10T14:51:27 IST" name="Demo" finished-at="2025-02-10T14:56:29 IST" duration-ms="301750">
+  <suite started-at="2025-02-10T17:11:48 IST" name="Demo" finished-at="2025-02-10T17:12:38 IST" duration-ms="50244">
     <groups>
       <group name="Functional">
-        <method signature="AdminReportTemplateTest.verifyAdminReportTemplate()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest@459e9125]" name="verifyAdminReportTemplate" class="com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest"/>
+        <method signature="AdminMenuPermissionTest.verifyAdminMenuPermission()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest@459e9125]" name="verifyAdminMenuPermission" class="com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest"/>
       </group> <!-- Functional -->
       <group name="Admin">
-        <method signature="AdminReportTemplateTest.verifyAdminReportTemplate()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest@459e9125]" name="verifyAdminReportTemplate" class="com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest"/>
+        <method signature="AdminMenuPermissionTest.verifyAdminMenuPermission()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest@459e9125]" name="verifyAdminMenuPermission" class="com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest"/>
       </group> <!-- Admin -->
     </groups>
-    <test started-at="2025-02-10T14:51:27 IST" name="Test" finished-at="2025-02-10T14:56:29 IST" duration-ms="301750">
-      <class name="com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest@459e9125]" started-at="2025-02-10T14:51:27 IST" name="launchBrowser" finished-at="2025-02-10T14:51:30 IST" duration-ms="3126" status="PASS">
+    <test started-at="2025-02-10T17:11:48 IST" name="Test" finished-at="2025-02-10T17:12:38 IST" duration-ms="50244">
+      <class name="com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest@459e9125]" started-at="2025-02-10T17:11:49 IST" name="launchBrowser" finished-at="2025-02-10T17:11:51 IST" duration-ms="2225" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,15 +24,34 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyAdminReportTemplate()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest@459e9125]" started-at="2025-02-10T14:51:30 IST" name="verifyAdminReportTemplate" finished-at="2025-02-10T14:56:28 IST" duration-ms="297361" status="FAIL">
-          <exception class="java.lang.NullPointerException">
+        <test-method signature="verifyAdminMenuPermission()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest@459e9125]" started-at="2025-02-10T17:11:51 IST" name="verifyAdminMenuPermission" finished-at="2025-02-10T17:12:38 IST" duration-ms="47039" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[Cannot invoke "String.trim()" because the return value of "com.awt.page.Irrigation.Admin.Settings.ReportTemplate.AddNewReportPanel.getTemplateNameTextErrorMessage()" is null]]>
+              <![CDATA[Cannot locate an element using By.all({By.xpath: //input[@type='file' and @name='client_logo']})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
+Driver info: driver.version: RemoteWebDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "String.trim()" because the return value of "com.awt.page.Irrigation.Admin.Settings.ReportTemplate.AddNewReportPanel.getTemplateNameTextErrorMessage()" is null
-at com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest.verifyAddNewReportPanel(AdminReportTemplateTest.java:347)
-at com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest.verifyAdminReportTemplate(AdminReportTemplateTest.java:103)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.all({By.xpath: //input[@type='file' and @name='client_logo']})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
+Driver info: driver.version: RemoteWebDriver
+at org.openqa.selenium.support.pagefactory.ByAll.findElement(ByAll.java:57)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy40.sendKeys(Unknown Source)
+at com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel.uploadLogo(NewProjectDetailsPanel.java:241)
+at com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel.enterProjectDetails(NewProjectDetailsPanel.java:280)
+at com.awt.utills.reusablecomponents.AwtUtilities.createNewProject(AwtUtilities.java:386)
+at com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest.createProject(AdminMenuPermissionTest.java:74)
+at com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest.verifyAdminMenuPermission(AdminMenuPermissionTest.java:106)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -50,15 +69,15 @@ at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecut
 at java.base/java.lang.Thread.run(Thread.java:842)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAdminReportTemplate -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest@459e9125]" started-at="2025-02-10T14:56:28 IST" name="tearUp" finished-at="2025-02-10T14:56:29 IST" duration-ms="391" status="PASS">
+        </test-method> <!-- verifyAdminMenuPermission -->
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest@459e9125]" started-at="2025-02-10T17:12:38 IST" name="tearUp" finished-at="2025-02-10T17:12:38 IST" duration-ms="325" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
-      </class> <!-- com.awt.test.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplateTest -->
+      </class> <!-- com.awt.test.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionTest -->
     </test> <!-- Test -->
   </suite> <!-- Demo -->
 </testng-results>

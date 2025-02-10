@@ -19,6 +19,9 @@ import com.awt.utills.reusablecomponents.AwtUtilities;
 
 import jdk.internal.org.jline.utils.Log;
 
+/**
+ * @author Ankit yadav
+ */
 public class NewProjectDetailsPanel {
 
 	// **New Project Details Panel xpath**/
@@ -34,8 +37,8 @@ public class NewProjectDetailsPanel {
 	private WebElement project_name_txt;
 
 	// **client Name text field xpath**/
-	@FindAll({ @FindBy(xpath = "//input[@id='client_name']") })
-	private WebElement client_name_txt;
+	@FindAll({ @FindBy(xpath = "//label[contains(text(),'Short Project Name')]/following-sibling::input") })
+	private WebElement short_project_name_txt;
 
 	// **client Logo File Upload Xpath**/
 	@FindAll({ @FindBy(xpath = "//input[@type='file' and @name='client_logo']") })
@@ -157,10 +160,10 @@ public class NewProjectDetailsPanel {
 	 * 
 	 * @param clientName
 	 */
-	public void enterClientName(String clientName) {
-		action.implicitWait(client_name_txt, action.implicit_wait);
+	public void enterShortProjectNametName(String projectName) {
+		action.implicitWait(short_project_name_txt, action.implicit_wait);
 		// enter the client name
-		action.type(client_name_txt, "Client Name", clientName);
+		action.type(short_project_name_txt, "Client Name", projectName);
 	}
 
 	/**
@@ -269,14 +272,14 @@ public class NewProjectDetailsPanel {
 	 * @author Ankit Yadav
 	 * 
 	 */
-	public void enterProjectDetails(String project_name, String client_name, String client_image_path,
+	public void enterProjectDetails(String project_name, String shortProj_name, String client_image_path,
 			String consultant_name, String consultant_image_path, String license_key, String username, String password,
 			String mob_num, String email_add, String start_date, String expected_date, String actual_completion_date,
 			String[]... module_name) {
 		// wait for loading new project details panel
 		waitForLoadingNewProjectDetails();
 		enterProjectName(project_name);
-		enterClientName(client_name);
+		enterShortProjectNametName(shortProj_name);
 		uploadLogo(ProjectDashboardPageConstants.clientLogo, client_image_path);
 		enterConsultantName(consultant_name);
 		uploadLogo(ProjectDashboardPageConstants.consultantLogo, consultant_image_path);

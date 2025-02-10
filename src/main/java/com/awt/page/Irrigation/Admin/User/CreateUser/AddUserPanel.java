@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * @author Ankit yadav
+ */
 public class AddUserPanel extends AdminAddUserPage {
 
 	// *******Panel Name*************/
