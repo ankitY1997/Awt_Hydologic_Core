@@ -2,7 +2,9 @@ package com.awt.page.Irrigation.Admin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import com.awt.page.Irrigation.Admin.Settings.MasterCreation.AdminMasterCreationPage;
+import com.awt.page.Irrigation.Admin.Settings.NotificationSettings.NotificationSettingsPage;
+import com.awt.page.Irrigation.Admin.Settings.PagePermission.AdminMenuPermissionPage;
 import com.awt.page.Irrigation.Admin.Settings.ReportTemplate.AdminReportTemplatePage;
 import com.awt.page.Irrigation.Admin.User.CreateRole.AdminAddRolePage;
 import com.awt.page.Irrigation.Admin.User.CreateUser.AdminAddUserPage;
@@ -101,10 +103,10 @@ public class AdminDashboardPage extends HomePage {
 		 * 
 		 * @return instance of AdminNotificationSettingsPage
 		 */
-		public AdminNotificationSettingsPage navigateToAdminNotificationSettingsPage() {
+		public NotificationSettingsPage navigateToAdminNotificationSettingsPage() {
 			// select the Setting module and click on Report Template options
 			selectDropDownOptions(settings, notification_settings);
-			return new AdminNotificationSettingsPage(driver);
+			return new NotificationSettingsPage(driver);
 		}
 
 

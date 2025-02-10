@@ -30,7 +30,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.awt.page.Admin.ProjectDashboardPage;
 import com.awt.page.Admin.Project.ProjectSettings.AdminCreateProjectPage;
 import com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel;
-import com.awt.page.Login.LoginPage;
+import com.awt.page.Irrigation.Login.LoginPage;
 import com.awt.testbase.DriverFactory;
 
 /**

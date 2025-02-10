@@ -1,4 +1,4 @@
-package com.awt.page.User.AdminConfiguration.Settings.Report_Template;
+package com.awt.page.Irrigation.Admin.Settings.ReportTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-public class AddNewReportPanel extends AdminReportTemplatePage {
+public class AddNewReportPanel extends AdminReportTemplatePage{
 
 	// *******Panel Name*************/
 	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headertitle']") })
@@ -110,6 +110,7 @@ public class AddNewReportPanel extends AdminReportTemplatePage {
 	 * Check The Presence of menu level drop down
 	 * 
 	 * @return if its is visible its return true otherwise it's return false
+	 * @deprecated
 	 */
 	public boolean isMenuLevelDropDownIsVisible() {
 		action.implicitWait(menu_level_drop_down, action.implicit_wait);
