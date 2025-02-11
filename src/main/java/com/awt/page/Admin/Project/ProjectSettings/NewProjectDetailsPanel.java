@@ -36,20 +36,29 @@ public class NewProjectDetailsPanel {
 	@FindAll({ @FindBy(xpath = "//input[@id='project_name']") })
 	private WebElement project_name_txt;
 
+	// ** Project Type drop down button xpath**/
+	@FindAll({ @FindBy(xpath = "//div[@aria-label='Select project type']//*[local-name()='svg']") })
+	private WebElement project_type_btn;
+
 	// **client Name text field xpath**/
 	@FindAll({ @FindBy(xpath = "//label[contains(text(),'Short Project Name')]/following-sibling::input") })
 	private WebElement short_project_name_txt;
 
-	// **client Logo File Upload Xpath**/
-	@FindAll({ @FindBy(xpath = "//input[@type='file' and @name='client_logo']") })
-	private WebElement client_logo;
-	// **consultant logo File Upload Xpath**/
-	@FindAll({ @FindBy(xpath = "//input[contains(@id,'consultant_logo')]") })
-	private WebElement consultant_logo;
+	// **department Logo File Upload Xpath**/
+	@FindAll({ @FindBy(xpath = "//input[@id='department_logo']") })
+	private WebElement department_logo;
 
-	// **consultant Name text field xpath**/
-	@FindAll({ @FindBy(xpath = "//input[@id='consultant_name']") })
-	private WebElement consultant_name_txt;
+	// **consultant logo File Upload Xpath**/
+	@FindAll({ @FindBy(xpath = "//input[@id='main_contractor_logo']") })
+	private WebElement main_contractor_logo;
+
+	// **department Name text field xpath**/
+	@FindAll({ @FindBy(xpath = "//input[@id='department_name']") })
+	private WebElement department_name_txt;
+
+	// **main contractor Name text field xpath**/
+	@FindAll({ @FindBy(xpath = "//input[@id='main_contractor_name']") })
+	private WebElement main_contractor_name_txt;
 
 	// **license key text field xpath**/
 	@FindAll({ @FindBy(xpath = "//input[@id='license_key']") })
@@ -167,14 +176,40 @@ public class NewProjectDetailsPanel {
 	}
 
 	/**
-	 * To enter the consultant name
+	 * To select the project type
+	 * 
+	 * @param projectName
+	 */
+	public void selectProjectType(String projectName) {
+		// click on project type drop down
+		action.clickOn(project_type_btn);
+		// Select the projec type
+		action.clickOn(
+				driver.findElement(By.xpath("//ul[@role='listbox']/li[normalize-space()='" + projectName + "']")),
+				projectName);
+
+	}
+
+	/**
+	 * To enter the department name
 	 * 
 	 * @param consultantName
 	 */
-	public void enterConsultantName(String consultantName) {
-		action.implicitWait(consultant_name_txt, action.implicit_wait);
+	public void enterDepartmentName(String departmenttName) {
+		action.implicitWait(department_name_txt, action.implicit_wait);
 		// enter the consultant name
-		action.type(consultant_name_txt, "Consultant Name", consultantName);
+		action.type(department_name_txt, "Department Name", departmenttName);
+	}
+
+	/**
+	 * To enter the main contractor name
+	 * 
+	 * @param mainContractorName
+	 */
+	public void enterMainContractorName(String mainContractorName) {
+		action.implicitWait(main_contractor_name_txt, action.implicit_wait);
+		// enter the consultant name
+		action.type(main_contractor_name_txt, "Main COntractor Name", mainContractorName);
 	}
 
 	/**
@@ -240,11 +275,11 @@ public class NewProjectDetailsPanel {
 	 */
 	public void uploadLogo(String logoName, String imagePath) {
 		switch (logoName) {
-		case "Client Logo":
-			client_logo.sendKeys(System.getProperty("user.dir") + imagePath);
+		case "Department Logo":
+			department_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
-		case "Consultant Logo":
-			consultant_logo.sendKeys(System.getProperty("user.dir") + imagePath);
+		case "Main Contractor Logo":
+			main_contractor_logo.sendKeys(System.getProperty("user.dir") + imagePath);
 			break;
 		default:
 			System.out.println("Please Enter The Correct Logo Name You Have Entered Wrong Logo :" + logoName);
@@ -254,47 +289,69 @@ public class NewProjectDetailsPanel {
 	}
 
 	/**
-	 * By help of this method we can enter the project details while creating a
-	 * project details
+	 * By help of this method we can create a new project
 	 * 
 	 * @param project_name
-	 * @param client_name
-	 * @param consultant_name
+	 * @param shortProj_name
+	 * @param project_type
+	 * @param department_name
+	 * @param main_contractor_name
+	 * @param department_image_path
+	 * @param main_contractor_image_path
 	 * @param license_key
 	 * @param username
 	 * @param password
-	 * @param module_name
 	 * @param mob_num
 	 * @param email_add
 	 * @param start_date
 	 * @param expected_date
 	 * @param actual_completion_date
-	 * @author Ankit Yadav
+	 * @param module_name
 	 * 
+	 * 
+	 * @author Ankit Yadav
 	 */
-	public void enterProjectDetails(String project_name, String shortProj_name, String client_image_path,
-			String consultant_name, String consultant_image_path, String license_key, String username, String password,
-			String mob_num, String email_add, String start_date, String expected_date, String actual_completion_date,
+	public void enterProjectDetails(String project_name, String shortProj_name, String project_type,
+			String department_name, String main_contractor_name, String department_image_path,
+			String main_contractor_image_path, String license_key, String username, String password, String mob_num,
+			String email_add, String start_date, String expected_date, String actual_completion_date,
 			String[]... module_name) {
 		// wait for loading new project details panel
 		waitForLoadingNewProjectDetails();
+		// Enter Project Name
 		enterProjectName(project_name);
+		// Enter the short project name
 		enterShortProjectNametName(shortProj_name);
-		uploadLogo(ProjectDashboardPageConstants.clientLogo, client_image_path);
-		enterConsultantName(consultant_name);
-		uploadLogo(ProjectDashboardPageConstants.consultantLogo, consultant_image_path);
+		// Select the Project Type
+		selectProjectType(project_type);
+		// Enter the department Name
+		enterDepartmentName(department_name);
+		// Enter the main Contractor name
+		enterMainContractorName(main_contractor_name);
+		// Upload the department logo
+		uploadLogo(ProjectDashboardPageConstants.department_logo, department_image_path);
+		// upload the main contractor logo
+		uploadLogo(ProjectDashboardPageConstants.main_contractor_logo, main_contractor_image_path);
+		// enter the license key
 		enterLicenseKey(license_key);
 		if (module_name.length == 0) {
 			// do nothing
 		} else {
 			selectModuleName(module_name[0]);
 		}
+		// enter the username
 		enterUsername(username);
+		// enter the password
 		enterPassword(password);
+		// entet the mobile num
 		enterMobileNum(mob_num);
+		// enter the email add
 		enterEmailAdd(email_add);
+		// selecting Start Date
 		datePicker(ProjectDashboardPageConstants.startDate, start_date);
+		// selecting Expected End Date
 		datePicker(ProjectDashboardPageConstants.ExpectedDate, expected_date);
+		// selecting actual completion date
 		datePicker(ProjectDashboardPageConstants.actualCompletionDate, actual_completion_date);
 
 	}
@@ -587,10 +644,10 @@ public class NewProjectDetailsPanel {
 		switch (field_name.trim()) {
 		case "Project Name":
 			return action.getAttributeValue(project_name_txt, "value").trim();
-		case "Client Name":
-			return action.getAttributeValue(client_name_txt, "value").trim();
-		case "Consultant Name":
-			return action.getAttributeValue(consultant_name_txt, "value").trim();
+		case "Short Project Name":
+			return action.getAttributeValue(short_project_name_txt, "value").trim();
+		case "Department Name":
+			return action.getAttributeValue(department_name_txt, "value").trim();
 		case "License Key":
 			return action.getAttributeValue(license_key_txt, "value").trim();
 		case "User Name":

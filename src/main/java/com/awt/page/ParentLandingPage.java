@@ -51,5 +51,33 @@ public class ParentLandingPage {
 		}
 
 	}
+	
+	
+	/**
+	 * This method is used to select the project name
+	 * 
+	 * @param project_name {we need to passs the project )
+	 * @return LoginPage instance
+	 * @author Ankit Yadav
+	 */
+	public  LoginPage selectProject(String project_name) {
+
+		try {
+			//AwtUtilities.waitForPageLoading(driver);
+			action.waitForVisibility(
+					driver.findElement(By.xpath("//h2[text()='" + project_name + "']/../preceding-sibling::a")),
+					action.implicit_wait);
+			action.clickOn(driver.findElement(By.xpath("//h2[text()='" + project_name + "']/../preceding-sibling::a")),
+					project_name);
+			System.out.println(
+					"*********************Sucessfully Navigate To The Irrigation Project Url*********************");
+			return new LoginPage(driver);
+		} catch (Exception e) {
+			System.out.println(
+					"*********************Failed To Navigate To The Irrigation Project The Url*********************");
+			return null;
+		}
+
+	}
 
 }

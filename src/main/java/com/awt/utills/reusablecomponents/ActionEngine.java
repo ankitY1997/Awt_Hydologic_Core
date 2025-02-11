@@ -683,7 +683,7 @@ public class ActionEngine {
 		try {
 			Actions actions = new Actions(driver);
 			actions.click(webElement).perform();
-			logPass("Successfully click On "+ element_name);
+			logPass("Successfully click On "+ element_name[0]);
 		} catch (Exception e) {
 			logFail("Failed to click on "+element_name, e);
 		}

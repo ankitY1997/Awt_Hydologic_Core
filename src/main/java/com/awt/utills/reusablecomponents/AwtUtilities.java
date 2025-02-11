@@ -367,10 +367,13 @@ public class AwtUtilities {
 		admin_create_project_page.clickOnCreateProject();
 		// Take The Details From "New Project Details.
 		NewProjectDetailsPanel newProject_DetailsPanel = new NewProjectDetailsPanel(driver);
-		String clientName = ExcelOperations.getCellData("New_Poject_Details", "Client Name", "APMS-T48");
-		String clientImagePath = ExcelOperations.getCellData("New_Poject_Details", "Client Image Path", "APMS-T48");
-		String consultantName = ExcelOperations.getCellData("New_Poject_Details", "Consultant Name", "APMS-T48");
-		String consultantImagePath = ExcelOperations.getCellData("New_Poject_Details", "Consultant Image Path",
+		String shortProjectName = ExcelOperations.getCellData("New_Poject_Details", "Short project name", "APMS-T48");
+		String projectType = ExcelOperations.getCellData("New_Poject_Details", "Project Type", "APMS-T48");
+		String department_name = ExcelOperations.getCellData("New_Poject_Details", "Department name", "APMS-T48");
+		String main_contractor_name = ExcelOperations.getCellData("New_Poject_Details", "Main contractor name",
+				"APMS-T48");
+		String departmentImagePath = ExcelOperations.getCellData("New_Poject_Details", "Department Image Path", "APMS-T48");
+		String mainContractorImagePath = ExcelOperations.getCellData("New_Poject_Details", "Main contractor Image path",
 				"APMS-T48");
 		String licensesKey = ExcelOperations.getCellData("New_Poject_Details", "Licenses Key", "APMS-T48");
 		String mobNumber = AwtUtilities.genrateRandomNumber(10);
@@ -383,9 +386,9 @@ public class AwtUtilities {
 		String actualCompletionDate = current_Date.format(formatter);
 
 		// Enter All Mandatory Details
-		newProject_DetailsPanel.enterProjectDetails(projectName, clientName, clientImagePath, consultantName,
-				consultantImagePath, licensesKey, userName, password, mobNumber, emailAddress, startDate, expectedDate,
-				actualCompletionDate, module_name);
+		newProject_DetailsPanel.enterProjectDetails(projectName, shortProjectName, projectType,department_name,
+				main_contractor_name, departmentImagePath,mainContractorImagePath, licensesKey, userName, password, mobNumber, emailAddress,
+				startDate, expectedDate, actualCompletionDate, module_name);
 		// click on Add Project Button
 		newProject_DetailsPanel.clickAddProject();
 		// Log Out From The Application

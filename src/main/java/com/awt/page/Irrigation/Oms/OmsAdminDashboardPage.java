@@ -1,15 +1,15 @@
-package com.awt.page.User.Irrigation.OMS;
+package com.awt.page.Irrigation.Oms;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.awt.page.User.Irrigation.MainDashboardPage;
+import com.awt.page.Irrigation.Home.HomePage;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
-public class OMSAdminDashboardPage extends MainDashboardPage {
+public class OmsAdminDashboardPage extends HomePage {
 
-	// **Constructor **/
-	public OMSAdminDashboardPage(WebDriver driver) {
+	// ** Custom Constructor**//
+	public OmsAdminDashboardPage(WebDriver driver) {
 		super(driver);
 	}
 
@@ -46,7 +46,9 @@ public class OMSAdminDashboardPage extends MainDashboardPage {
 	}
 
 	/**
-	 * help Of This Method We Can Check Any Option Visibility Under The OMS Admin Dashboard Page
+	 * help Of This Method We Can Check Any Option Visibility Under The OMS Admin
+	 * Dashboard Page
+	 * 
 	 * @param dropDownName
 	 * @param dropDownOptions
 	 * @return

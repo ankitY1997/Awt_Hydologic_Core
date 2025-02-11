@@ -11,8 +11,8 @@ import com.awt.page.Irrigation.Admin.User.CreateUser.AddUserPanel;
 import com.awt.page.Irrigation.Admin.User.CreateUser.AdminAddUserPage;
 import com.awt.page.Irrigation.Home.HomePage;
 import com.awt.page.Irrigation.Login.LoginPage;
+import com.awt.page.Irrigation.Oms.OmsAdminDashboardPage;
 import com.awt.page.User.Irrigation.MainDashboardPage;
-import com.awt.page.User.Irrigation.OMS.OMSAdminDashboardPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
@@ -37,17 +37,17 @@ public class AdminMenuPermissionTest extends BaseTest {
 	ParentLandingPage parent_landing_page = null;
 	AdminAddRolePage admin_add_role_page = null;
 	HomePage home_page = null;
-	AdminDashboardPage adminDashboard_page=null;
+	AdminDashboardPage adminDashboard_page = null;
 	AddNewRolePanel add_new_role_panel = null;
 	AdminMenuPermissionPage admin_menu_permission_page = null;
 	String projectName = null;
 	String username = null;
 	String password = null;
-	String[] module_name = { "OMS", "Pump House" };
+	String[] module_name = { "OMS", "CORE ADMIN" };
 	AdminAddUserPage admin_add_user_page = null;
 	AddUserPanel add_user_panel = null;
 	MainDashboardPage main_dashboard_page = null;
-	OMSAdminDashboardPage oms_admin_dashboards_page = null;
+	OmsAdminDashboardPage oms_admin_dashboards_page = null;
 
 	/**
 	 * Navigate To Login Page
@@ -94,232 +94,237 @@ public class AdminMenuPermissionTest extends BaseTest {
 	@Story(story = "Report Template")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
-	@TestCaseId(id = { "APMS-T108", "APMS-T109", "APMS-T110", "APMS-T111", "APMS-T163", "APMS-T164", "APMS-T165",
+	@TestCaseId(id = { "SU-T659", "SU-T660", "SU-T661", "SU-T662", "APMS-T163", "APMS-T164", "APMS-T165",
 			"APMS-T166", "APMS-T167", "APMS-T168", "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173",
 			"APMS-T174", "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227", "APMS-T179",
 			"APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186", "APMS-T187", "APMS-T188", "APMS-T189",
 			"APMS-T190" })
 	public void verifyAdminMenuPermission() {
-		// logger instance
-		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
-		// Create New Project
-		createProject();
-		// -> Enter the new created project name and login with newly project
-		// credentials
-		navigateToLoginPage();
-		//Login to the application and navigate to the home page
-		home_page = login_page.loginAndNavigateToHomePage(project_name,
-				PropertiesOperations.getPropertyValueByKey("User_USERNAME"),
-				PropertiesOperations.getPropertyValueByKey("User_PASSWORD"));
-		// -> click Admin button and Navigate To Admin Page
-		adminDashboard_page=home_page.navigateToAdminDashboardPage();
-		// -> Create A New Role
-		String role_name = "Tester" + AwtUtilities.genrateRandomAlphaBets(3);
-		createNewRole(role_name);
+		try {
+			// logger instance
+			MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
+			// Create New Project
+			createProject();
+			// -> Enter the new created project name and login with newly project
+			// credentials
+			navigateToLoginPage();
+			// Login to the application and navigate to the home page
+			home_page = login_page.loginAndNavigateToHomePage(projectName, username, password);
 
-		// APMS-T108-->To verify that "Page Permission" button should be visible under
-		// the "settings" menu
-		// -> Go To Settings Menus And Select "Page Permission" and navigate to Admin
-		// Menu Permission Page
-		admin_menu_permission_page = adminDashboard_page.navigateToAdminMenuPermissionPage();
-		// Verify "Page Permission" button is visible
-		boolean isPagePermissionPageVisible = admin_menu_permission_page.isPagePermissionButtonVisible();
-		asert.assertTrue(isPagePermissionPageVisible,
-				"To verify that Page Permission button should be visible under the settings menu", " APMS-T108");
+			// -> click Admin button and Navigate To Admin Page
+			adminDashboard_page = home_page.navigateToAdminDashboardPage();
+			// -> Create A New Role
+			String role_name = "Tester" + AwtUtilities.genrateRandomAlphaBets(3);
+			createNewRole(role_name);
 
-		// APMS-T109-->To verify that after clicking on the "Page Permission" button
-		// user should redirect to the "admin-MenuPermission" Page.
-		// Check "admin-MenuPermission" page is visible
-		String url = DriverFactory.iuiDriver().getDriver().getCurrentUrl();
-		asert.assertTrue(url.trim().contains("admin-MenuPermission"),
-				"To verify that after clicking on the Page Permission button user should redirect to the admin-MenuPermission Page.",
-				"APMS-T109");
+			// SU-T659-->To verify that "Page Permission" button should be visible under
+			// the "settings" menu
+			// -> Go To Settings Menus And Select "Page Permission" and navigate to Admin
+			// Menu Permission Page
+			admin_menu_permission_page = adminDashboard_page.navigateToAdminMenuPermissionPage();
+			// Verify "Page Permission" button is visible
+			boolean isPagePermissionPageVisible = admin_menu_permission_page.isPagePermissionButtonVisible();
+			asert.assertTrue(isPagePermissionPageVisible,
+					"To verify that Page Permission button should be visible under the settings menu", " SU-T659");
 
-		// APMS-T110-->To verify that fields in the "admin-MenuPermission" page
-		// Check "Select Role " drop down is visible
-		boolean isSelectRoleDropDownVisible = admin_menu_permission_page.isSelectRoleDropDownVisible();
-		asert.assertTrue(isSelectRoleDropDownVisible,
-				"To verify that Select Role drop down in the admin-MenuPermission page", "APMS-T110");
-		// Check "Select Module" drop down is visible
-		boolean isSelectModuleDropDownVisible = admin_menu_permission_page.isSelectModuleDropDownVisible();
-		asert.assertTrue(isSelectModuleDropDownVisible,
-				"To verify that Select Module drop down in the admin-MenuPermission page", "APMS-T110");
+			// SU-T660-->To verify that after clicking on the "Page Permission" button
+			// user should redirect to the "admin-MenuPermission" Page.
+			// Check "admin-MenuPermission" page is visible
+			String url = DriverFactory.iuiDriver().getDriver().getCurrentUrl();
+			asert.assertTrue(url.trim().contains("admin-MenuPermission"),
+					"To verify that after clicking on the Page Permission button user should redirect to the admin-MenuPermission Page.",
+					"SU-T660");
 
-		// APMS-T111-->To verify that Created "Role" should be visible in the "Role"
-		// dropdown
-		// -> click on role drop down
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-		// Check Created Role is visible
-		boolean isCreatedRoleVisible = admin_menu_permission_page.isRolePresent(role_name);
-		asert.assertTrue(isCreatedRoleVisible, "To verify that Created Role should be visible in the Role drop down",
-				"APMS-T111");
+			// SU-T661-->To verify that fields in the "admin-MenuPermission" page
+			// Check "Select Role " drop down is visible
+			boolean isSelectRoleDropDownVisible = admin_menu_permission_page.isSelectRoleDropDownVisible();
+			asert.assertTrue(isSelectRoleDropDownVisible,
+					"To verify that Select Role drop down in the admin-MenuPermission page", "SU-T661");
+			// Check "Select Module" drop down is visible
+			boolean isSelectModuleDropDownVisible = admin_menu_permission_page.isSelectModuleDropDownVisible();
+			asert.assertTrue(isSelectModuleDropDownVisible,
+					"To verify that Select Module drop down in the admin-MenuPermission page", "SU-T661");
 
-		// APMS-T112-->To Ensure a user can select a "role" from the "Role" drop down.
-		// -> Select "Role"
-		admin_menu_permission_page.selectRole(role_name);
-		// Check "Role" is Selected
-		String actual_SelctedRoleName = admin_menu_permission_page.getSelectedRole().trim();
-		asert.assertEquals(actual_SelctedRoleName, role_name,
-				"To Ensure a user can select a role from the Role drop down.", "APMS-T112");
+			// SU-T662-->To verify that Created "Role" should be visible in the "Role"
+			// dropdown
+			// -> click on role drop down
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			// Check Created Role is visible
+			boolean isCreatedRoleVisible = admin_menu_permission_page.isRolePresent(role_name);
+			asert.assertTrue(isCreatedRoleVisible,
+					"To verify that Created Role should be visible in the Role drop down", "SU-T662");
 
-		// APMS-T113-->To verify that "Module" drop down contains a list of modules
-		// name, according to the selected "project".
-		// -> Click On "Module" drop down
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-		// Check module names is present or nor
-		boolean isModuleNamesPresent = admin_menu_permission_page.isModuleNamePresent(module_name);
-		asert.assertTrue(isModuleNamesPresent,
-				"To verify that Module drop down contains a list of modules name, according to the selected project.",
-				"APMS-T113");
+			// SU-T663-->To Ensure a user can select a "role" from the "Role" drop down.
+			// -> Select "Role"
+			admin_menu_permission_page.selectRole(role_name);
+			// Check "Role" is Selected
+			String actual_SelctedRoleName = admin_menu_permission_page.getSelectedRole().trim();
+			asert.assertEquals(actual_SelctedRoleName, role_name,
+					"To Ensure a user can select a role from the Role drop down.", "SU-T663");
 
-		// APMS-T114-->Ensure that user can select a module from the Module drop-down.
-		// -> Select the "Module Name"
-		admin_menu_permission_page.selectModule("OMS");
-		// Check "OMS" module is selected
-		String actual_SelectedModuleName = admin_menu_permission_page.getSelectedModule().trim();
-		asert.assertEquals(actual_SelectedModuleName, "OMS",
-				"Ensure that user can select a module from the Module drop-down.", "APMS-T114");
+			// SU-T664-->To verify that "Module" drop down contains a list of modules
+			// name, according to the selected "project".
+			// -> Click On "Module" drop down
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			// Check module names is present or nor
+			boolean isModuleNamesPresent = admin_menu_permission_page.isModuleNamePresent(module_name);
+			asert.assertTrue(isModuleNamesPresent,
+					"To verify that Module drop down contains a list of modules name, according to the selected project.",
+					"SU-T664");
 
-		// APMS-T115-->To verify the functionality of the "Find" button.
-		// -> click on "Find" button
-		admin_menu_permission_page.clickOnFindButton();
-		// Check the "OMS Dashboard" Main Menus is present
-		boolean isMenuIsVisible = admin_menu_permission_page.isMainMenuPresent("OMS Dashboard");
-		asert.assertTrue(isMenuIsVisible, "To verify the functionality of the Find button.", "APMS-T115");
+			// SU-T665-->Ensure that user can select a module from the Module drop-down.
+			// -> Select the "Module Name"
+			admin_menu_permission_page.selectModule("OMS");
+			// Check "OMS" module is selected
+			String actual_SelectedModuleName = admin_menu_permission_page.getSelectedModule().trim();
+			asert.assertEquals(actual_SelectedModuleName, "OMS",
+					"Ensure that user can select a module from the Module drop-down.", "SU-T665");
 
-		// APMS-T116-->To verify that according to selected module "Menu items" should
-		// be displayed in the "Menu Permission" Panel.
-		// Check the "OMS Dashboard" Main Menus is present
-		boolean isOMSDashboardMenuIsVisible = admin_menu_permission_page.isMainMenuPresent("OMS Dashboard");
-		asert.assertTrue(isOMSDashboardMenuIsVisible,
-				"To verify that according to selected module Menu items should be displayed in the Menu Permission Panel.",
-				"APMS-T116");
+			// SU-T666-->To verify the functionality of the "Find" button.
+			// -> click on "Find" button
+			admin_menu_permission_page.clickOnFindButton();
+			// Check the "OMS Dashboard" Main Menus is present
+			boolean isMenuIsVisible = admin_menu_permission_page.isMainMenuPresent("OMS Dashboard");
+			asert.assertTrue(isMenuIsVisible, "To verify the functionality of the Find button.", "SU-T666");
 
-		// APMS-T118-->To verify that "Save" button present under the "Menu Items".
-		// Check "Save" button is visible
-		boolean isSaveButtonVisible = admin_menu_permission_page.isSaveButtonVisible();
-		asert.assertTrue(isSaveButtonVisible, "To verify that Save button present under the Menu Items.", "APMS-T118");
+			// SU-T667-->To verify that according to selected module "Menu items" should
+			// be displayed in the "Menu Permission" Panel.
+			// Check the "OMS Dashboard" Main Menus is present
+			boolean isOMSDashboardMenuIsVisible = admin_menu_permission_page.isMainMenuPresent("OMS Dashboard");
+			asert.assertTrue(isOMSDashboardMenuIsVisible,
+					"To verify that according to selected module Menu items should be displayed in the Menu Permission Panel.",
+					"SU-T667");
 
-		// APMS-T119-->To verify that "View Data" column checkboxes are
-		// checked/unchecked based on the saved data for the selected role.
+			// SU-T669-->To verify that "Save" button present under the "Menu Items".
+			// Check "Save" button is visible
+			boolean isSaveButtonVisible = admin_menu_permission_page.isSaveButtonVisible();
+			asert.assertTrue(isSaveButtonVisible, "To verify that Save button present under the Menu Items.",
+					"SU-T669");
 
-		// ->Select "OMS Details Dashboard" "View Data" check box under the OMS
-		// Dashboards Main
-		// Menu
-		admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "View Data");
-		// ->Click on Save Button
-		admin_menu_permission_page.clickOnSaveButton();
-		// ->Click on "Role" drop down and select same role
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-		admin_menu_permission_page.selectRole(role_name);
-		// ->Click on "Module" drop down and select same module
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-		admin_menu_permission_page.selectModule("OMS");
-		// -> Click on "Find" button
-		admin_menu_permission_page.clickOnFindButton();
-		// -> Verify "OMS Details Dashboard" "view data" check box is selcted
-		boolean isOmsDetailsViewDataCheckBoxSelected = admin_menu_permission_page
-				.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "View Data");
-		asert.assertTrue(isOmsDetailsViewDataCheckBoxSelected,
-				"To verify that View Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
-				"APMS-T119");
+			// SU-T670-->To verify that "View Data" column checkboxes are
+			// checked/unchecked based on the saved data for the selected role.
 
-		// APMS-T120-->To verify that "Alter Data" column checkboxes are
-		// checked/unchecked based on the saved data for the selected role.
+			// ->Select "OMS Details Dashboard" "View Data" check box under the OMS
+			// Dashboards Main
+			// Menu
+			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "View Data");
+			// ->Click on Save Button
+			admin_menu_permission_page.clickOnSaveButton();
+			// ->Click on "Role" drop down and select same role
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			admin_menu_permission_page.selectRole(role_name);
+			// ->Click on "Module" drop down and select same module
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			admin_menu_permission_page.selectModule("OMS");
+			// -> Click on "Find" button
+			admin_menu_permission_page.clickOnFindButton();
+			// -> Verify "OMS Details Dashboard" "view data" check box is selcted
+			boolean isOmsDetailsViewDataCheckBoxSelected = admin_menu_permission_page
+					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "View Data");
+			asert.assertTrue(isOmsDetailsViewDataCheckBoxSelected,
+					"To verify that View Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
+					"SU-T670");
 
-		// ->Select "OMS Details Dashboard" "Alter Data" check box under the OMS
-		// Dashboards Main
-		// Menu
-		admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-		// ->Click on Save Button
-		admin_menu_permission_page.clickOnSaveButton();
-		// ->Click on "Role" drop down and select same role
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-		admin_menu_permission_page.selectRole(role_name);
-		// ->Click on "Module" drop down and select same module
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-		admin_menu_permission_page.selectModule("OMS");
-		// -> Click on "Find" button
-		admin_menu_permission_page.clickOnFindButton();
-		// -> Verify "OMS Details Dashboard" "Alter Data" check box is selcted
-		boolean isOmsDetailsAlterDataCheckBoxSelected = admin_menu_permission_page
-				.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-		asert.assertTrue(isOmsDetailsAlterDataCheckBoxSelected,
-				"To verify that Alter Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
-				"APMS-T120");
-		// -> Unchecked "OMS Details Dashboard" "Alter Data" check box
-		admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
+			// SU-T671-->To verify that "Alter Data" column checkboxes are
+			// checked/unchecked based on the saved data for the selected role.
 
-		// APMS-T121-->To verify that "Delete Data" column check box are
-		// checked/unchecked based on the saved data for the selected role.
+			// ->Select "OMS Details Dashboard" "Alter Data" check box under the OMS
+			// Dashboards Main
+			// Menu
+			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
+			// ->Click on Save Button
+			admin_menu_permission_page.clickOnSaveButton();
+			// ->Click on "Role" drop down and select same role
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			admin_menu_permission_page.selectRole(role_name);
+			// ->Click on "Module" drop down and select same module
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			admin_menu_permission_page.selectModule("OMS");
+			// -> Click on "Find" button
+			admin_menu_permission_page.clickOnFindButton();
+			// -> Verify "OMS Details Dashboard" "Alter Data" check box is selcted
+			boolean isOmsDetailsAlterDataCheckBoxSelected = admin_menu_permission_page
+					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
+			asert.assertTrue(isOmsDetailsAlterDataCheckBoxSelected,
+					"To verify that Alter Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
+					"SU-T671");
+			// -> Unchecked "OMS Details Dashboard" "Alter Data" check box
+			admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
 
-		// ->Select "OMS Details Dash board" "Delete Data" check box under the OMS
-		// Dash boards Main Menu
-		admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-		// -> De Select "OMS Details Dash board" "Delete Data" check box under the OMS
-		// Dashboard menu
-		admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-		// ->Click on Save Button
-		admin_menu_permission_page.clickOnSaveButton();
-		// ->Click on "Role" drop down and select same role
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-		admin_menu_permission_page.selectRole(role_name);
-		// ->Click on "Module" drop down and select same module
-		admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-		admin_menu_permission_page.selectModule("OMS");
-		// -> Click on "Find" button
-		admin_menu_permission_page.clickOnFindButton();
-		// -> Verify "OMS Details Dashboard" "Delete Data" check box is selcted
-		boolean isOmsDetailsDelteDataCheckBoxSelected = admin_menu_permission_page
-				.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-		asert.assertFalse(isOmsDetailsDelteDataCheckBoxSelected,
-				"To verify that Delete Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
-				"APMS-T121");
+			// SU-T672-->To verify that "Delete Data" column check box are
+			// checked/unchecked based on the saved data for the selected role.
 
-		// APMS-T124-->To verify the "RoleBased" Menu Access Control
+			// ->Select "OMS Details Dash board" "Delete Data" check box under the OMS
+			// Dash boards Main Menu
+			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
+			// -> De Select "OMS Details Dash board" "Delete Data" check box under the OMS
+			// Dashboard menu
+			admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
+			// ->Click on Save Button
+			admin_menu_permission_page.clickOnSaveButton();
+			// ->Click on "Role" drop down and select same role
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			admin_menu_permission_page.selectRole(role_name);
+			// ->Click on "Module" drop down and select same module
+			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			admin_menu_permission_page.selectModule("OMS");
+			// -> Click on "Find" button
+			admin_menu_permission_page.clickOnFindButton();
+			// -> Verify "OMS Details Dashboard" "Delete Data" check box is selcted
+			boolean isOmsDetailsDelteDataCheckBoxSelected = admin_menu_permission_page
+					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
+			asert.assertFalse(isOmsDetailsDelteDataCheckBoxSelected,
+					"To verify that Delete Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
+					"SU-T672");
 
-		// -> Click on "User" menu and click on "Create User" Button
-		admin_add_user_page = adminDashboard_page.navigateToAdminAddUserPage();
-		add_user_panel = admin_add_user_page.clickOnNewButtonAndNavigateToAddUserPanel();
-		// -> Enter User Name
-		String username = "Tester" + AwtUtilities.genrateRandomAlphaBets(5);
-		add_user_panel.enterUserName(username);
-		// -> Enter Email
-		String email = "Testing" + AwtUtilities.genrateRandomAlphaBets(2) + "@gmail.com";
-		add_user_panel.enterEmail(email);
-		// -> Enter Password
-		String password = AwtUtilities.genrateRandomAlphaBets(3).toUpperCase()
-				+ AwtUtilities.genrateRandomAlphaBets(2).toLowerCase() + "@" + AwtUtilities.genrateRandomAlphaNeumric(1)
-				+ AwtUtilities.genrateRandomNumber(3);
-		add_user_panel.enterPassword(password);
-		// -> Select Role
-		add_user_panel.selectRole(role_name);
-		// -> Enter First Name
-		String first_name = "AutomationTester " + AwtUtilities.genrateRandomAlphaBets(4);
-		add_user_panel.enterFirstName(first_name);
-		// -> Click on "Create" button
-		add_user_panel.clickOnCreateButton();
-		// -> Close "Add User" Panel
-		add_user_panel.clickOnCancelButton();
-		// -> Click On Profile Icon and Log Out From application
-		adminDashboard_page.clickOnLogoutButton();
-		// -> Again Enter Same Project Name
-		login_page.enterProjectName(projectName);
-		// -> Enter Created user name
-		login_page.enterUsername(username);
-		// -> Enter Password
-		login_page.enterPassword(password);
-		// -> Click On Login Button
-		login_page.clicOnLoginButton();
-		// ->Select "OMS" Menu
-		OMSAdminDashboardPage oms_admin_dashboards_page = main_dashboard_page.navigateToOmsAdminDashboardPage();
-		// Check under the OMS Dashborad Menu ,OMS Details Dasboard option is Present Or
-		// Not
-		boolean isOMSDetailsDashbordIsVisible = oms_admin_dashboards_page.isOptionIsVisible("OMS Dashboard",
-				"OMS Details Dashboard");
-		asert.assertTrue(isOMSDetailsDashbordIsVisible, "To verify the RoleBased Menu Access Control", "APMS-T124");
-		// Delete the created project
-		AwtUtilities.deleteTheProject(DriverFactory.iuiDriver().getDriver(), projectName);
+			// SU-T674-->To verify the "RoleBased" Menu Access Control
+
+			// -> Click on "User" menu and click on "Create User" Button
+			admin_add_user_page = adminDashboard_page.navigateToAdminAddUserPage();
+			add_user_panel = admin_add_user_page.clickOnNewButtonAndNavigateToAddUserPanel();
+			// -> Enter User Name
+			String username = "Tester" + AwtUtilities.genrateRandomAlphaBets(5);
+			add_user_panel.enterUserName(username);
+			// -> Enter Email
+			String email = "Testing" + AwtUtilities.genrateRandomAlphaBets(2) + "@gmail.com";
+			add_user_panel.enterEmail(email);
+			// -> Enter Password
+			String password = AwtUtilities.genrateRandomAlphaBets(3).toUpperCase()
+					+ AwtUtilities.genrateRandomAlphaBets(2).toLowerCase() + "@"
+					+ AwtUtilities.genrateRandomAlphaNeumric(1) + AwtUtilities.genrateRandomNumber(3);
+			add_user_panel.enterPassword(password);
+			// -> Select Role
+			add_user_panel.selectRole(role_name);
+			// -> Enter First Name
+			String first_name = "AutomationTester " + AwtUtilities.genrateRandomAlphaBets(4);
+			add_user_panel.enterFirstName(first_name);
+			// -> Click on "Create" button
+			add_user_panel.clickOnCreateButton();
+			// -> Close "Add User" Panel
+			add_user_panel.clickOnCancelButton();
+			// -> Click On Profile Icon and Log Out From application
+			adminDashboard_page.clickOnLogoutButton();
+			// Select the main project name
+			parent_landing_page.selectProject(main_porject_name);
+			// -> Again Enter Same Project Name
+			login_page.enterProjectName(projectName);
+			// -> Enter Created user name
+			login_page.enterUsername(username);
+			// -> Enter Password
+			login_page.enterPassword(password);
+			// -> Click On Login Button
+			login_page.clicOnLoginButton();
+			// ->Select "OMS" Menu
+			OmsAdminDashboardPage oms_admin_dashboards_page = home_page.navigateToOmsAdminDashboardPage();
+			// Check under the OMS Dashborad Menu ,OMS Details Dasboard option is Present Or
+			// Not
+			boolean isOMSDetailsDashbordIsVisible = oms_admin_dashboards_page.isOptionIsVisible("OMS Dashboard",
+					"OMS Details Dashboard");
+			asert.assertTrue(isOMSDetailsDashbordIsVisible, "To verify the RoleBased Menu Access Control", "SU-T674");
+		} finally {
+			// Delete the created project
+			AwtUtilities.deleteTheProject(DriverFactory.iuiDriver().getDriver(), projectName);
+		}
 		// Asset all
 		asert.assertAll();
 

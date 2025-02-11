@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.awt.page.Irrigation.Admin.AdminDashboardPage;
+import com.awt.page.Irrigation.Oms.OmsAdminDashboardPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
+import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class HomePage {
 
@@ -22,6 +23,9 @@ public class HomePage {
 
 	/** ActionEngine instance **/
 	public ActionEngine action = null;
+
+	// *******Menu Name**************/
+	public static final String oms = "OMS";
 
 	/** WebDriver instance **/
 	public WebDriver driver = null;
@@ -103,9 +107,8 @@ public class HomePage {
 
 	}
 
-	
 	/**
-	 *By using this method we can go to admin Dasboard page
+	 * By using this method we can go to admin Dasboard page
 	 * 
 	 * @return instance of AdminDashboardPage
 	 */
@@ -115,6 +118,43 @@ public class HomePage {
 
 	}
 	
+	/**
+	 * By this method we can navigate to Oms Admin Dashboard Page
+	 * 
+	 * @return instance of OmsAdminDashboardPage
+	 */
+
+	public OmsAdminDashboardPage navigateToOmsAdminDashboardPage() {
+		// Select The Menu
+		selectMainMenu(oms);
+		return new OmsAdminDashboardPage(driver);
+
+	}
+
+	
+	
+	/**
+	 * help Of This Method We Can Chose Any Menu
+	 * 
+	 * @param menu_name { We need To Pass The Correct Menu Name}
+	 */
+	public void selectMainMenu(String menu_name) {
+
+		// Wait For Page Load
+		AwtUtilities.waitForPageLoading(driver);
+		// wait for Element
+		action.waitForVisibility(
+				driver.findElement(
+						By.xpath("(//ul[@role='menu'])[1]/li//span[text()='" + menu_name + "']/./parent::a")),
+				action.implicit_wait);
+		// click on admin main menu
+		action.clickOn(
+				driver.findElement(
+						By.xpath("(//ul[@role='menu'])[1]/li//span[text()='" + menu_name + "']/./parent::a")),
+				menu_name);
+
+	}
+
 	
 
 }
