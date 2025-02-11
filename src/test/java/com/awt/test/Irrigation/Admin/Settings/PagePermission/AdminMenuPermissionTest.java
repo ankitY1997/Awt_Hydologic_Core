@@ -78,12 +78,9 @@ public class AdminMenuPermissionTest extends BaseTest {
 	/**
 	 * Description: Perform the verification of Admin Menu Permission Page <br>
 	 * TestMethodName: verifyAdminMenuPermission <br>
-	 * ManualTestCases: "APMS-T159", "APMS-T160", "APMS-T161", "APMS-T162",
-	 * "APMS-T163", "APMS-T164", "APMS-T165", "APMS-T166", "APMS-T167", "APMS-T168",
-	 * "APMS-T169", "APMS-T170", "APMS-T171", "APMS-172", "APMS-T173", "APMS-T174",
-	 * "APMS-T175", "APMS-T176", "APMS-T177", "APMS-T178", "APMS-T226", "APMS-T227",
-	 * "APMS-T179", "APMS-T180", "APMS-T182", "APMS-T184", "APMS-T185", "APMS-T186",
-	 * "APMS-T187", "APMS-T188", "APMS-T189", "APMS-T190"
+	 * ManualTestCases: "SU-T659", "SU-T660", "SU-T661", "SU-T662", "SU-T663",
+	 * "SU-T664", "SU-T665", "SU-T666", "SU-T667", "SU-T669", "SU-T670", "SU-T671",
+	 * "SU-T672", "SU-T674"
 	 * 
 	 * @author ankit
 	 */
