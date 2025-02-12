@@ -1,4 +1,4 @@
-package com.awt.page.Admin;
+package com.awt.page.CreateProject.ProjectSettings;
 
 public class ProjectDashboardPageConstants {
 

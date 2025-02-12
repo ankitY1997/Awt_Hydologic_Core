@@ -1,4 +1,4 @@
-package com.awt.page.Admin.Project.ProjectSettings;
+package com.awt.page.CreateProject.ProjectSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,8 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.awt.page.Admin.ProjectDashboardPageConstants;
 import com.awt.testbase.ExtentFactory;
 import com.awt.utills.exceptions.Date_Format_Exception;
 import com.awt.utills.reusablecomponents.ActionEngine;

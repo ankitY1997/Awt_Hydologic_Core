@@ -1,5 +1,4 @@
-package com.awt.page.Admin.Project.ProjectSettings;
-
+package com.awt.page.CreateProject.ProjectSettings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;

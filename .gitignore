@@ -9,3 +9,5 @@ test-output/old/Demo/methods.html
 test-output/old/Demo/testng.xml.html
 test-output/testng-results.xml
 /Awt_Project_Managment/src/main/java/com/awt/utills/reusablecomponents/Genrate_Excel_Report.java
+/.apt_generated/
+/.apt_generated_tests/

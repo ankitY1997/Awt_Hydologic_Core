@@ -255,6 +255,7 @@ public class LoginPage {
 
 	/**
 	 * By Using This Method We Can Directly Navigate To The Home Page
+	 * 
 	 * @return instance of Home Page
 	 */
 	public HomePage loginAndNavigateToHomePage(String projectName, String username, String password) {
@@ -262,12 +263,12 @@ public class LoginPage {
 			AwtUtilities.waitForPageLoading(driver);
 			enterProjectName(projectName);
 			logInToTheApplication(username, password);
-			System.out.println("*********************Sucessfully Navigate To  Url*********************");
+			System.out.println("*********************Sucessfully Log In To The Application*********************");
 			return new HomePage(driver);
 		}
 
 		catch (Exception e) {
-			System.out.println("*********************Unable To Navigate  The Url*********************");
+			System.out.println("*********************Failed To log In To The Application*********************");
 			return null;
 		}
 	}

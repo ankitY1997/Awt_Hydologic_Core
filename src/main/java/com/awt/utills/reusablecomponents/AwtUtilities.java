@@ -27,9 +27,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.awt.page.Admin.ProjectDashboardPage;
-import com.awt.page.Admin.Project.ProjectSettings.AdminCreateProjectPage;
-import com.awt.page.Admin.Project.ProjectSettings.NewProjectDetailsPanel;
+import com.awt.page.CreateProject.ProjectSettings.AdminCreateProjectPage;
+import com.awt.page.CreateProject.ProjectSettings.NewProjectDetailsPanel;
+import com.awt.page.CreateProject.ProjectSettings.ProjectDashboardPage;
 import com.awt.page.Irrigation.Login.LoginPage;
 import com.awt.testbase.DriverFactory;
 

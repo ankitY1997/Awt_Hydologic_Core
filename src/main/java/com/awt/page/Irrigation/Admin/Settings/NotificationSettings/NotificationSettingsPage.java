@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import com.awt.page.Irrigation.Admin.AdminDashboardPage;
-import com.awt.page.User.AdminConfiguration.Settings.NotificationSettings.NotificationDetailsPanel;
 
 /**
  * @author Ankit yadav
