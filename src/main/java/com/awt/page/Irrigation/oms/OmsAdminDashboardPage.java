@@ -1,12 +1,18 @@
-package com.awt.page.Irrigation.Oms;
+package com.awt.page.Irrigation.oms;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.awt.page.Irrigation.Home.HomePage;
+import com.awt.page.Irrigation.oms.Master.Add_View_Village.VillageDetailsPage;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 
 public class OmsAdminDashboardPage extends HomePage {
+
+	// ********Constants**********/
+
+	public final String master = "Master";
+	public final String add_view_village = "Add/View Village";
 
 	// ** Custom Constructor**//
 	public OmsAdminDashboardPage(WebDriver driver) {
@@ -74,6 +80,18 @@ public class OmsAdminDashboardPage extends HomePage {
 
 		return action.isDisplay(driver.findElement(
 				By.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")));
+	}
+
+	/**
+	 * With help of this method we can navigate to the village details page
+	 * 
+	 * @return instance of VillageDetailsPage
+	 */
+	public VillageDetailsPage navigateToVillageDetailsPage() {
+
+		// Selecting a "Add/View village" options from Master drop down
+		selectOMSDropDownOptions(master, add_view_village);
+		return new VillageDetailsPage(driver);
 	}
 
 }

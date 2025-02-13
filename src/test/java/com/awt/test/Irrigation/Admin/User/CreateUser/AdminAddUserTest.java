@@ -401,9 +401,8 @@ public class AdminAddUserTest extends BaseTest {
 		// delete create project
 		admin_add_user_page.clickOnDeleteButton(expected_user_name);
 		// Check Deleted Role Name Should Not Be Visible Role Details Table
-		asert.assertNotEquals(expected_user_name,
-				admin_add_user_page.getUserDetailTableValue("Username", expected_user_name),
-				"To verify that functionality of the  delete button .", "SU-T600");
+		asert.assertNotEquals(admin_add_user_page.getUserDetailTableValue("Username", expected_user_name),
+				expected_user_name, "To verify that functionality of the  delete button .", "SU-T600");
 
 	}
 }

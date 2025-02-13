@@ -11,8 +11,7 @@ import com.awt.page.Irrigation.Admin.User.CreateUser.AddUserPanel;
 import com.awt.page.Irrigation.Admin.User.CreateUser.AdminAddUserPage;
 import com.awt.page.Irrigation.Home.HomePage;
 import com.awt.page.Irrigation.Login.LoginPage;
-import com.awt.page.Irrigation.Oms.OmsAdminDashboardPage;
-import com.awt.page.User.Irrigation.MainDashboardPage;
+import com.awt.page.Irrigation.oms.OmsAdminDashboardPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
@@ -46,7 +45,6 @@ public class AdminMenuPermissionTest extends BaseTest {
 	String[] module_name = { "OMS", "CORE ADMIN" };
 	AdminAddUserPage admin_add_user_page = null;
 	AddUserPanel add_user_panel = null;
-	MainDashboardPage main_dashboard_page = null;
 	OmsAdminDashboardPage oms_admin_dashboards_page = null;
 
 	/**
@@ -195,13 +193,13 @@ public class AdminMenuPermissionTest extends BaseTest {
 			asert.assertTrue(isSaveButtonVisible, "To verify that Save button present under the Menu Items.",
 					"SU-T669");
 
-			// SU-T670-->To verify that "View Data" column checkboxes are
+			// SU-T670-->To verify that "Show" column checkboxes are
 			// checked/unchecked based on the saved data for the selected role.
 
 			// ->Select "OMS Details Dashboard" "View Data" check box under the OMS
 			// Dashboards Main
 			// Menu
-			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "View Data");
+			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Show");
 			// ->Click on Save Button
 			admin_menu_permission_page.clickOnSaveButton();
 			// ->Click on "Role" drop down and select same role
@@ -214,62 +212,62 @@ public class AdminMenuPermissionTest extends BaseTest {
 			admin_menu_permission_page.clickOnFindButton();
 			// -> Verify "OMS Details Dashboard" "view data" check box is selcted
 			boolean isOmsDetailsViewDataCheckBoxSelected = admin_menu_permission_page
-					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "View Data");
+					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Show");
 			asert.assertTrue(isOmsDetailsViewDataCheckBoxSelected,
-					"To verify that View Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
+					"To verify that Show column checkboxes are checked/unchecked based on the saved data for the selected role.",
 					"SU-T670");
-
-			// SU-T671-->To verify that "Alter Data" column checkboxes are
-			// checked/unchecked based on the saved data for the selected role.
-
-			// ->Select "OMS Details Dashboard" "Alter Data" check box under the OMS
-			// Dashboards Main
-			// Menu
-			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-			// ->Click on Save Button
-			admin_menu_permission_page.clickOnSaveButton();
-			// ->Click on "Role" drop down and select same role
-			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-			admin_menu_permission_page.selectRole(role_name);
-			// ->Click on "Module" drop down and select same module
-			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-			admin_menu_permission_page.selectModule("OMS");
-			// -> Click on "Find" button
-			admin_menu_permission_page.clickOnFindButton();
-			// -> Verify "OMS Details Dashboard" "Alter Data" check box is selcted
-			boolean isOmsDetailsAlterDataCheckBoxSelected = admin_menu_permission_page
-					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-			asert.assertTrue(isOmsDetailsAlterDataCheckBoxSelected,
-					"To verify that Alter Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
-					"SU-T671");
-			// -> Unchecked "OMS Details Dashboard" "Alter Data" check box
-			admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Alter Data");
-
-			// SU-T672-->To verify that "Delete Data" column check box are
-			// checked/unchecked based on the saved data for the selected role.
-
-			// ->Select "OMS Details Dash board" "Delete Data" check box under the OMS
-			// Dash boards Main Menu
-			admin_menu_permission_page.selectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-			// -> De Select "OMS Details Dash board" "Delete Data" check box under the OMS
-			// Dashboard menu
-			admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-			// ->Click on Save Button
-			admin_menu_permission_page.clickOnSaveButton();
-			// ->Click on "Role" drop down and select same role
-			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
-			admin_menu_permission_page.selectRole(role_name);
-			// ->Click on "Module" drop down and select same module
-			admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
-			admin_menu_permission_page.selectModule("OMS");
-			// -> Click on "Find" button
-			admin_menu_permission_page.clickOnFindButton();
-			// -> Verify "OMS Details Dashboard" "Delete Data" check box is selcted
-			boolean isOmsDetailsDelteDataCheckBoxSelected = admin_menu_permission_page
-					.isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Delete Data");
-			asert.assertFalse(isOmsDetailsDelteDataCheckBoxSelected,
-					"To verify that Delete Data column checkboxes are checked/unchecked based on the saved data for the selected role.",
-					"SU-T672");
+			/**
+			 * @deprecated
+			 * 
+			 * // SU-T671-->To verify that "Alter Data" column checkboxes are //
+			 * checked/unchecked based on the saved data for the selected role.
+			 * 
+			 * // ->Select "OMS Details Dashboard" "Alter Data" check box under the OMS //
+			 * Dashboards Main // Menu admin_menu_permission_page.selectAnyCheckBox("OMS
+			 * Dashboard", "OMS Details Dashboard", "Alter Data"); // ->Click on Save Button
+			 * admin_menu_permission_page.clickOnSaveButton(); // ->Click on "Role" drop
+			 * down and select same role
+			 * admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			 * admin_menu_permission_page.selectRole(role_name); // ->Click on "Module" drop
+			 * down and select same module
+			 * admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			 * admin_menu_permission_page.selectModule("OMS"); // -> Click on "Find" button
+			 * admin_menu_permission_page.clickOnFindButton(); // -> Verify "OMS Details
+			 * Dashboard" "Alter Data" check box is selcted boolean
+			 * isOmsDetailsAlterDataCheckBoxSelected = admin_menu_permission_page
+			 * .isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Alter
+			 * Data"); asert.assertTrue(isOmsDetailsAlterDataCheckBoxSelected, "To verify
+			 * that Alter Data column checkboxes are checked/unchecked based on the saved
+			 * data for the selected role.", "SU-T671"); // -> Unchecked "OMS Details
+			 * Dashboard" "Alter Data" check box
+			 * admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details
+			 * Dashboard", "Alter Data");
+			 * 
+			 * // SU-T672-->To verify that "Delete Data" column check box are //
+			 * checked/unchecked based on the saved data for the selected role.
+			 * 
+			 * // ->Select "OMS Details Dash board" "Delete Data" check box under the OMS //
+			 * Dash boards Main Menu admin_menu_permission_page.selectAnyCheckBox("OMS
+			 * Dashboard", "OMS Details Dashboard", "Delete Data"); // -> De Select "OMS
+			 * Details Dash board" "Delete Data" check box under the OMS // Dashboard menu
+			 * admin_menu_permission_page.deSelectAnyCheckBox("OMS Dashboard", "OMS Details
+			 * Dashboard", "Delete Data"); // ->Click on Save Button
+			 * admin_menu_permission_page.clickOnSaveButton(); // ->Click on "Role" drop
+			 * down and select same role
+			 * admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("role");
+			 * admin_menu_permission_page.selectRole(role_name); // ->Click on "Module" drop
+			 * down and select same module
+			 * admin_menu_permission_page.clickAnyMenuPermissionPageDropDown("module");
+			 * admin_menu_permission_page.selectModule("OMS"); // -> Click on "Find" button
+			 * admin_menu_permission_page.clickOnFindButton(); // -> Verify "OMS Details
+			 * Dashboard" "Delete Data" check box is selcted boolean
+			 * isOmsDetailsDelteDataCheckBoxSelected = admin_menu_permission_page
+			 * .isSubMenuCheckBoxSelected("OMS Dashboard", "OMS Details Dashboard", "Delete
+			 * Data"); asert.assertFalse(isOmsDetailsDelteDataCheckBoxSelected, "To verify
+			 * that Delete Data column checkboxes are checked/unchecked based on the saved
+			 * data for the selected role.", "SU-T672");
+			 * 
+			 **/
 
 			// SU-T674-->To verify the "RoleBased" Menu Access Control
 

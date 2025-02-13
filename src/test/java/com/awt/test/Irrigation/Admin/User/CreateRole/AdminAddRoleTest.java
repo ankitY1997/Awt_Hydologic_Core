@@ -289,8 +289,7 @@ public class AdminAddRoleTest extends BaseTest {
 		// delete create project
 		admin_add_role_page.clickOnDeleteButton(vaild_role_name);
 		// Check Deleted Role Name Should Not Be Visible Role Details Table
-		asert.assertNotEquals(vaild_role_name,
-				admin_add_role_page.getRoleDetailTableValue("Role Name", vaild_role_name),
+		asert.assertNotEquals(admin_add_role_page.getRoleDetailTableValue("Role Name", vaild_role_name),vaild_role_name,
 				"To verify that functionality of the  delete button .", "SU-T617");
 		/**
 		 * @description ( Bug Number ->SU-635)

@@ -1,5 +1,4 @@
-package com.awt.page.Admin;
-
+package com.awt.page.CreateProject.ProjectSettings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +6,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.awt.page.Admin.Project.ProjectSettings.AdminCreateProjectPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 
 public class ProjectDashboardPage {

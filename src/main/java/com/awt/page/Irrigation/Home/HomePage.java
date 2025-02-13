@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.awt.page.Irrigation.Admin.AdminDashboardPage;
-import com.awt.page.Irrigation.Oms.OmsAdminDashboardPage;
+import com.awt.page.Irrigation.oms.OmsAdminDashboardPage;
 import com.awt.utills.reusablecomponents.ActionEngine;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 

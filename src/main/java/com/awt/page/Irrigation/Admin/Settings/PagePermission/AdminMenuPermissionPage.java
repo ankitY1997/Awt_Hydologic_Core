@@ -328,7 +328,7 @@ public class AdminMenuPermissionPage extends AdminDashboardPage {
 	 */
 	public Integer getCheckBoxIndexNumber(String check_box_name) {
 		LinkedHashMap<String, Integer> checkBoxIndexNum = new LinkedHashMap<String, Integer>();
-		checkBoxIndexNum.put("View Data", 1);
+		checkBoxIndexNum.put("Show", 1);
 		checkBoxIndexNum.put("Alter Data", 2);
 		checkBoxIndexNum.put("Delete Data", 3);
 
