@@ -21,14 +21,25 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 
 	}
 
+
 	/**
-	 * With help of this method we can check "Add/View Village Option is Visible
-	 * 
-	 * @return boolean
+	 * By help of this method we can navigate to the "New Village Details Panel"
 	 * 
 	 */
-	public boolean isAddViewVillageOptionVisible() {
-		return isOptionIsVisible(master, add_view_village);
+	public NewVillageDetailsPanel clickOnNewButtonAndNavigateToNewVillageDetaisPanel() {
+		
+		action.waitForVisibility(new_button, action.implicit_wait);
+		action.clickOn(new_button, "New");
+		
+		return new NewVillageDetailsPanel(driver);
 	}
-
+	
+	/**
+	 * With help of this method we can get to know "new" button is visble
+	 * @return {if it's visible it's return true otherwise it's return false
+	 */
+	public boolean isNewButtonIsVisible() {
+		return action.isDisplay(new_button);
+		
+	}
 }

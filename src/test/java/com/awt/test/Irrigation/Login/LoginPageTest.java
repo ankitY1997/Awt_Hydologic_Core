@@ -50,12 +50,11 @@ public class LoginPageTest extends BaseTest {
 	/**
 	 * Description: Perform the verification of Login Page,Forgot Password <br>
 	 * TestMethodName: verifyLoginPage <br>
-	 * ManualTestCases: "APMS-T128", "APMS-T129", "APMS-T130", "APMS-T131",
-	 * "APMS-T132", "SU-T719", "SU-T721", "SU-T722", "SU-T723", "SU-T724",
-	 * "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
-	 * "SU-T732", "SU-T733", "SU-T734", "SU-T735", "SU-T736", "SU-T737",
-	 * "SU-T738", "SU-T742", "SU-T742", "SU-T742",
-	 * "SU-T743","APMS-T157"<br>
+	 * ManualTestCases: "SU-T715", "SU-T716", "SU-T717", "SU-T718", "SU-T719",
+	 * "SU-T719", "SU-T721", "APMS-T135", "SU-T723", "SU-T724", "SU-T725",
+	 * "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731", "SU-T732", "SU-T733",
+	 * "SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742", "SU-T742",
+	 * "SU-T742", "SU-T743", "SU-T743"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -67,9 +66,9 @@ public class LoginPageTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Log in")
 	@TestCaseId(id = { "SU-T715", "SU-T716", "SU-T717", "SU-T718", "SU-T719", "SU-T719", "SU-T721", "APMS-T135",
-			"SU-T723", "SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731",
-			"SU-T732", "SU-T733", "SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742",
-			"SU-T742", "SU-T742", "SU-T743", "APMS-T157" })
+			"SU-T723", "SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731", "SU-T732",
+			"SU-T733", "SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742", "SU-T742", "SU-T742",
+			"SU-T743", "SU-T743" })
 	public void verifyLoginPage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -235,7 +234,8 @@ public class LoginPageTest extends BaseTest {
 				"To verify that Submit button should be present in the Forgot Password panel.", "SU-T729");
 
 		// SU-T730-->To verify that should accepts only the registered email id in the
-		// "Enter Your Email" text field , when you have given at the time of "User Creation".
+		// "Enter Your Email" text field , when you have given at the time of "User
+		// Creation".
 		// Enter Valid Email Id
 		valid_email = ExcelOperations.getCellData("LoginCredentialDetails", "Email", "SU-T730");
 		// enter valid email
@@ -393,12 +393,14 @@ public class LoginPageTest extends BaseTest {
 		// click on login button
 		login_page.clicOnLoginButton();
 		// verify "ParentLandingpage" is visible
-		  String home_page_url = home_page.getHomePageUrl();
-		  asert.assertTrue(home_page_url.contains("parentLandingpage"),
-		  "To verify the functionality of the Submit button with valid OTP and New Password."
-		  , "SU-T743"); // click on logout button 
-		  home_page.clickOnLogoutButton();
-		 // Again Update Old Password
+		String home_page_url = home_page.getHomePageUrl();
+		asert.assertTrue(home_page_url.contains("parentLandingpage"),
+				"To verify the functionality of the Submit button with valid OTP and New Password.", "SU-T743"); // click
+																													// on
+																													// logout
+																													// button
+		home_page.clickOnLogoutButton();
+		// Again Update Old Password
 		updateOldPassword();
 	}
 
@@ -406,12 +408,12 @@ public class LoginPageTest extends BaseTest {
 	 * Update Old Password
 	 */
 	public void updateOldPassword() {
-		// APMS-T157-->To verify the error message when an invalid "OTP" is entered and
+		// SU-T743-->To verify the error message when an invalid "OTP" is entered and
 		// the "Submit" button is clicked
 		// Navigate to login page
 		navigateToLoginPage();
 		// Enter the Project Name
-		 login_page.enterProjectName(project_name);
+		login_page.enterProjectName(project_name);
 		// Click On Forgot Password Button
 		login_page.clickOnForgotPasswordButtonAndNavigateToForgotPasswordPanel();
 		// Enter Email
@@ -430,7 +432,7 @@ public class LoginPageTest extends BaseTest {
 		String actual_otp_error_message = forgot_password_panel.getOtpErrorMessage();
 		asert.assertEquals(actual_otp_error_message, "Invalid OTP",
 				"To verify the error message when an invalid OTP is entered and the Submit button is clicked",
-				"APMS-T157");
+				"SU-T743");
 		// Then Again Enter the correct otp
 		String otp = GMailApi.getGmailOtp();
 		forgot_password_panel.enterOtp(otp);

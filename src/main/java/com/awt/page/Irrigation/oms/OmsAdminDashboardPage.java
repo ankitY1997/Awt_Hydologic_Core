@@ -94,4 +94,14 @@ public class OmsAdminDashboardPage extends HomePage {
 		return new VillageDetailsPage(driver);
 	}
 
+
+	/**
+	 * With help of this method we can check "Add/View Village Option is Visible
+	 * 
+	 * @return boolean
+	 * 
+	 */
+	public boolean isAddViewVillageOptionVisible() {
+		return isOptionIsVisible(master, add_view_village);
+	}
 }
