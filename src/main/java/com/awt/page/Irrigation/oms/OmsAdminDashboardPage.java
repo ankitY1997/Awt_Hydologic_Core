@@ -90,7 +90,7 @@ public class OmsAdminDashboardPage extends HomePage {
 	public VillageDetailsPage navigateToVillageDetailsPage() {
 
 		// Selecting a "Add/View village" options from Master drop down
-		selectOMSDropDownOptions(master, add_view_village);
+		selectMastersOptions( add_view_village);
 		return new VillageDetailsPage(driver);
 	}
 
@@ -103,5 +103,20 @@ public class OmsAdminDashboardPage extends HomePage {
 	 */
 	public boolean isAddViewVillageOptionVisible() {
 		return isOptionIsVisible(master, add_view_village);
+	}
+	
+	/**
+	 * By this method we can select only master options only
+	 * @param dropDownOptions
+	 */
+	public void selectMastersOptions(String dropDownOptions) {
+		// Wait For Load To Drop-Down Menus
+				action.waitForVisibility(
+						driver.findElement(By
+								.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")),
+						action.implicit_wait);
+				// select a options
+				action.clickOn(driver.findElement(
+						By.xpath("(//ul[@role='menu'])[1]/li//ul/li//span[text()='" + dropDownOptions + "']/parent::a")));
 	}
 }

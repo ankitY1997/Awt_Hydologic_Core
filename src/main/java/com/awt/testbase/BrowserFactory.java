@@ -1,6 +1,9 @@
 package com.awt.testbase;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,6 +11,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
+import com.awt.utills.reusablecomponents.PropertiesOperations;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -26,7 +31,10 @@ public class BrowserFactory {
 			config_list.add("-incognito");
 			config_list.add("--remote-allow-origins=*");
 			options.addArguments(config_list);
-			driver = new ChromeDriver();
+			Map<String, Object> download_prefs = new HashMap<String, Object>();
+			download_prefs.put("download.default_directory", System.getProperty("user.dir")+PropertiesOperations.getPropertyValueByKey("File_Download_path"));
+			options.setExperimentalOption("prefs", download_prefs);
+			driver = new ChromeDriver(options);
 			break;
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();

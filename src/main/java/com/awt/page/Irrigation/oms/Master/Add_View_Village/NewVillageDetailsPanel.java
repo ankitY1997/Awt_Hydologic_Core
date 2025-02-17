@@ -28,8 +28,7 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	@FindBy(xpath = "//div[@data-pc-section='headertitle']")
 	public WebElement panel_name;
 
-	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headertitle']/../following-sibling::div/div//label"),
-			@FindBy(xpath = "//label") })
+	@FindAll({ @FindBy(xpath = "//div[@data-pc-section='headertitle']/../following-sibling::div/div//label") })
 	public List<WebElement> field_name;
 
 	/** Xpath for clear button */
@@ -57,63 +56,61 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	}
 
 	/**
-	 * With help of this method we can know the command area dropdown text field is
-	 * visible or not
+	 * With help of this method we can know the command area dropdown text field name
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return return the drop down name
 	 */
-	public boolean isCommandAreaDropDownIsVisible() {
-		return getAllFieldName().contains(command_area);
+	public String getCommandAreaDropDownName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + command_area + "')]")));
 	}
 
 	/**
-	 * With help of this method we can know the District dropdown text field is
-	 * visible or not
+	 * With help of this method we can know the District dropdown text field name
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return distict drop down name
 	 */
-	public boolean isDistrictDropDownIsVisible() {
-		return getAllFieldName().contains(district);
+	public String getDistrictDropDownName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + district + "')]")));
 	}
 
 	/**
-	 * With help of this method we can know the village name text field is visible
+	 * With help of this method we can know the village name text field
 	 * or not
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return village name text field name
 	 */
-	public boolean isVillageNameTextFieldIsVisible() {
-		return getAllFieldName().contains(village_name);
+	public String getVillageNameTextFieldName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + village_name + "')]")));
 	}
 
 	/**
-	 * With help of this method we can know the village area text field is visible
-	 * or not
+	 * With help of this method we can get to know the village area text field name
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return  village area text field name
 	 */
-	public boolean isVillageAreaTextFieldIsVisible() {
-		return getAllFieldName().contains(village_area);
+	public String getVillageAreaTextFieldName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + village_area + "')]")));
 	}
 
 	/**
 	 * With help of this method we can know the contact person text field is visible
 	 * or not
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return contact person text field name
 	 */
-	public boolean isContactPersonTextFieldIsVisible() {
-		return getAllFieldName().contains(contact_person);
+	public String getContactPersonTextFieldName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + contact_person + "')]")));
+
 	}
 
 	/**
 	 * With help of this method we can know the contact number text field is visible
 	 * or not
 	 * 
-	 * @return if it's present return true and if it's not it returns false
+	 * @return contact number text field
 	 */
-	public boolean isContactNumberTextFieldIsVisible() {
-		return getAllFieldName().contains(contact_number);
+	public String getContactNumberTextFieldsName() {
+		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + contact_number + "')]")));
 	}
 
 	/**
@@ -129,6 +126,13 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	}
 
 	/**
+	 * With help of this method we can click on clear button
+	 */
+	public void clickOnClearButton() {
+		action.clickOn(clear_button);
+	}
+
+	/**
 	 * With help of this method we can get to know the add village button is visible
 	 * or not
 	 * 
@@ -137,6 +141,15 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	 */
 	public boolean isAddVillageButtonVisible() {
 		return action.isDisplay(add_village_button);
+	}
+
+	/**
+	 * With help of this method we can click on "Add Village" button
+	 * 
+	 */
+	public void clickOnAddVillageButton() {
+		action.clickOn(add_village_button);
+
 	}
 
 	/**
@@ -151,10 +164,29 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	/**
 	 * With help of this method we can enter the village area
 	 * 
-	 * @param name
+	 * @param area
 	 */
 	public void enterVillageArea(String area) {
 		enterValueOfTextField(village_area, area);
+	}
+
+	/**
+	 * With help of this method we can enter the contact person name
+	 * 
+	 * @param person_name
+	 */
+	public void enterContactPersonName(String person_name) {
+		enterValueOfTextField(contact_person, person_name);
+	}
+
+	/**
+	 * With help of this method we can enter the contact number
+	 * 
+	 * @param contact_number
+	 */
+	public void enterContactNumber(String contact_num) {
+		enterValueOfTextField(contact_number, contact_num);
+
 	}
 
 	/**
@@ -181,6 +213,14 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 		selectOptionFromDropDown(command_area, option);
 
 	}
+	
+	/**
+	 * By this method we can select the option from district area
+	 * @param option
+	 */
+	public void clickandSelectOptionFromDistrictDropDown(String option) {
+		selectOptionFromDropDown(district, option);
+	}
 
 	/**
 	 * With Help of this method we can get the selected options from command area
@@ -192,6 +232,43 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 
 		return getSelectedValueFromDropDown(command_area).trim();
 
+	}
+
+	/**
+	 * By this method we can get the actual value from village name text field
+	 * 
+	 * @return {Village name text field value
+	 */
+	public String getVillageNameTextFieldValue() {
+		return getValueFromTextFieldValue(village_name).trim();
+	}
+
+	/**
+	 * By this method we can get the actual value from village area text field
+	 * 
+	 * @return {Village area text field value}
+	 */
+	public String getVillageAreaTextFieldValue() {
+		return getValueFromTextFieldValue(village_area).trim();
+	}
+
+	/**
+	 * By this method we can get the actual value from contact person area text
+	 * field
+	 * 
+	 * @return {contact person area text field value}
+	 */
+	public String getContactPesronTextFieldValue() {
+		return getValueFromTextFieldValue(contact_person).trim();
+	}
+
+	/**
+	 * By this method we can get the actual value from contact number text field
+	 * 
+	 * @return {contact number text field value}
+	 */
+	public String getContactNumberTextFieldValue() {
+		return getValueFromTextFieldValue(contact_number).trim();
 	}
 
 	/**
@@ -282,11 +359,52 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	 */
 	public String getValueFromTextFieldValue(String text_field_name) {
 		action.waitForVisibility(
-				driver.findElement(By.xpath("//label[contains(text(),'Village Name ')]/following-sibling::input")),
+				driver.findElement(By.xpath("//label[contains(text(),'"+text_field_name+"')]/following-sibling::input")),
 				action.implicit_wait);
 		return action.getAttributeValue(
-				driver.findElement(By.xpath("//label[contains(text(),'Village Name ')]/following-sibling::input")),
+				driver.findElement(By.xpath("//label[contains(text(),'"+text_field_name+"')]/following-sibling::input")),
 				"value").trim();
+	}
+
+	/**
+	 * By help of this message we can get error message from the field
+	 * 
+	 * @param field_name {pass the field name}
+	 * @return error message of that field which you have passed in the drop down
+	 * @implNote {Enter the feild name as it's present in "the New Village Details
+	 *           Panel"}
+	 */
+	public String getErrorMessageFromTheField(String field_name) {
+		try {
+			return action.getText(driver
+					.findElement(By.xpath("//label[contains(text(),'" + field_name + "')]/following-sibling::small")));
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+	
+	/**
+	 * By this method we can enter the all the village details
+	 * @param command_area
+	 * @param district
+	 * @param village_name
+	 * @param contact_person
+	 * @param contact_number
+	 */
+	public void enterAllVillageDetails(String command_area,String district,String village_name,String contact_person,String contact_number) {
+		// Select the command area
+		clickandSelectOptionFromCommnadAreaDropDown(command_area);
+		//Select the district
+		clickandSelectOptionFromDistrictDropDown("Maksi");
+		// Enter village Name
+		enterVillageName(village_name);
+		// Enter contact person
+		enterContactPersonName(contact_person);
+		//Enter contact_number
+		enterContactNumber(contact_number);
+		
+		
 	}
 
 }
