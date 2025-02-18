@@ -1,5 +1,9 @@
 package com.awt.test.Irrigation.oms.Master.Add_View_Village;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 import com.awt.page.ParentLandingPage;
@@ -13,6 +17,7 @@ import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
 import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.Description;
+import com.awt.utills.reusablecomponents.ExcelOperations;
 import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
 import com.awt.utills.reusablecomponents.SoftAssertTest;
@@ -33,6 +38,7 @@ public class VillageDetailsPageTest extends BaseTest {
 	private OmsAdminDashboardPage oms_admin_dashboard_page = null;
 	private VillageDetailsPage village_details_page = null;
 	private NewVillageDetailsPanel new_village_details_panel = null;
+	private String village_name = null;
 
 	/**
 	 * Navigate To Login Page
@@ -386,8 +392,64 @@ public class VillageDetailsPageTest extends BaseTest {
 
 		// SU-T78-->To verify that created villages should be visible in the "Village
 		// Details" table
-		
-		
+
+		// Enter the village details
+		command_area = ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T78");
+		String district = ExcelOperations.getCellData("Add_View_Village_Details", "District", "SU-T78");
+		village_name = ExcelOperations.getCellData("Add_View_Village_Details", "Village Name", "SU-T78");
+		String village_area = ExcelOperations.getCellData("Add_View_Village_Details", "Village Area", "SU-T78");
+		String contact_person = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Person", "SU-T78");
+		String contact_number = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Number", "SU-T78");
+		new_village_details_panel.enterAllVillageDetails(command_area, district, village_name, village_area,
+				contact_person, contact_number);
+		// Move to the village details table and ensure the created village details
+		// visible
+		String actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
+		asert.assertEquals(actual_village_name, village_name,
+				"To verify that created villages should be visible in the 'Village Details' table", "SU-T78");
+
+	}
+
+	/**
+	 * This method is used to verify the village details table
+	 */
+	public void verifyVillageDetailsTable() {
+
+		// SU-T64-->To verify that columns like "S.NO, Command Area, District, Village
+		// Name, Village Area(Ha), Contact Person, Contact Number and Action" should be
+		// present in the "Villages Details" table.
+
+		// -> Expected column name
+		String[] exp_column_names = { "S.No", "District Name", "Command Area", "Village Name", "Village Area (Ha)",
+				"Contact Person", "Contact Number", "Actions" };
+		// -> Get the actual column names
+		List<String> acutal_coulmn_name = village_details_page.getVillageDetailsTableColumnName();
+		// -> Both column name should be match
+		asert.assertEquals(acutal_coulmn_name, new ArrayList<String>(Arrays.asList(exp_column_names)),
+				"To verify that columns like 'S.NO, Command Area, District, Village Name, Village Area(Ha), Contact Person, Contact Number and Action' should be present in the 'Villages Details' table.",
+				"SU-T64");
+
+		// SU-T68-->To verify that "edit" and "delete" button should be visible in the
+		// "Action" column
+
+		// -> Check the visiblity of "edit" button
+		boolean isEditButtonVisible = village_details_page.isEditButtonIsVisible();
+		asert.assertTrue(isEditButtonVisible, "To verify that 'edit' button should be visible in the 'Action' column",
+				"SU-T68");
+		// -> Check th visibility of "Delete" button
+		boolean isDeleteButtonVisible = village_details_page.isDeleteButtonIsVisible();
+		asert.assertTrue(isDeleteButtonVisible,
+				"To verify that 'delete' button should be visible in the 'Action' column", "SU-T68");
+
+		// SU-T69-->To verify that user can delete the record from the "Village details"
+		// table
+
+		// ->Delete the create project
+		village_details_page.clickOnDeleteButton(village_name);
+		// Vilage name should be visible in "Village Details" table
+		String actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
+		asert.assertNotEquals(acutal_coulmn_name, village_name,
+				"To verify that user can delete the record from the 'Village details' table", "SU-T69");
 
 	}
 

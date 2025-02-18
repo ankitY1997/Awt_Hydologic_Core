@@ -61,9 +61,8 @@ public class AdminAddRoleTest extends BaseTest {
 	 * Description: Perform the verification of AdminAddRole Page <br>
 	 * TestMethodName: verifyAdminAddRolePage <br>
 	 * ManualTestCases: "SU-T603", "SU-T604", "SU-T605", "SU-T606", "SU-T607",
-	 * "SU-T608", "SU-T609", "SU-T610", "SU-T611", "SU-T612", "SU-T613",
-	 * "SU-T614", "SU-T615", "SU-T616",
-	 * "SU-T617","SU-T618","SU-T619","SU-T620"<br>
+	 * "SU-T608", "SU-T609", "SU-T610", "SU-T611", "SU-T612", "SU-T613", "SU-T614",
+	 * "SU-T615", "SU-T616", "SU-T617","SU-T618","SU-T619","SU-T620"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -75,8 +74,8 @@ public class AdminAddRoleTest extends BaseTest {
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "SU-T603", "SU-T604", "SU-T605", "SU-T606", "SU-T607", "SU-T608", "SU-T609", "SU-T610",
-			"SU-T611", "SU-T612", "SU-T613", "SU-T614", "SU-T615", "SU-T616", "SU-T617", "SU-T618",
-			"SU-T619", "SU-T620" })
+			"SU-T611", "SU-T612", "SU-T613", "SU-T614", "SU-T615", "SU-T616", "SU-T617", "SU-T618", "SU-T619",
+			"SU-T620" })
 	public void verifyAdminAddRolePage() {
 		// logger instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -234,7 +233,8 @@ public class AdminAddRoleTest extends BaseTest {
 		asert.assertEquals(admin_role_panel.getDuplicateErrorMessage(), "Role name already exists under this project",
 				"To verify that User should not able to create a duplicate role.", "SU-T612");
 
-		// SU-T613--> To verify that "cross svg" button should be present in the "Add New Role" panel.
+		// SU-T613--> To verify that "cross svg" button should be present in the "Add
+		// New Role" panel.
 		// Check Cross Svg Button Is Visible
 		boolean isCrossSvgButtonVisible = admin_role_panel.isCrossSvgButtonIsVisible();
 		asert.assertTrue(isCrossSvgButtonVisible,
@@ -291,49 +291,49 @@ public class AdminAddRoleTest extends BaseTest {
 		// Check Deleted Role Name Should Not Be Visible Role Details Table
 		asert.assertNotEquals(admin_add_role_page.getRoleDetailTableValue("Role Name", vaild_role_name),vaild_role_name,
 				"To verify that functionality of the  delete button .", "SU-T617");
-		/**
-		 * @description ( Bug Number ->SU-635)
-		 * 
-		 *              // SU-T618-->To verify that "Rows per page" drop down button
-		 *              should be visible // under the "Role Details" table. // -->Check
-		 *              "Rows Per Page Drop Down" button is visible boolean
-		 *              isRowsPerPageButton =
-		 *              admin_add_role_page.isRowsPerPageDropDownIsVisible();
-		 *              asert.assertTrue(isRowsPerPageButton, "To verify that Rows per
-		 *              page drop down button should be visible under the Role Details
-		 *              table.", "SU-T618");
-		 * 
-		 *              // SU-T619-->To verify that changing the numbers of "rows per
-		 *              page" drop down // , updates the table accordingly // Enter
-		 *              Number Of Rows Per Page and Check is Table Is Update boolean
-		 *              isTableUpdated = admin_add_role_page.isUpdateTheTable("10");
-		 *              asert.assertTrue(isTableUpdated, "To verify that changing the
-		 *              numbers of rows per page drop down , updates the table
-		 *              accordingly", "SU-T619");
-		 * 
-		 *              // SU-T620-->To verify that "first, next, previous and last"
-		 *              pagination button // should be visible under the "Role Details"
-		 *              table. // Check Fist pagination button is visible boolean
-		 *              isFirsPaginationButtonVisible =
-		 *              admin_add_role_page.isFirstPaginationButtonIsVisible();
-		 *              asert.assertTrue(isFirsPaginationButtonVisible, "To veify First
-		 *              Pagination Button Should Be Visible", "SU-T620"); // check
-		 *              next pagination button is visible boolean
-		 *              isNextPaginationButtonVisible =
-		 *              admin_add_role_page.isNextPaginationButtonIsVisible();
-		 *              asert.assertTrue(isNextPaginationButtonVisible, "To veify Next
-		 *              Pagination Button Should Be Visible", "SU-T620"); // check
-		 *              previous pagination button is visible boolean
-		 *              isPreviousPaginationButtonVisible =
-		 *              admin_add_role_page.isPreviousPaginationButtonIsVisible();
-		 *              asert.assertTrue(isPreviousPaginationButtonVisible, "To veify
-		 *              Previous Pagination Button Should Be Visible", "SU-T620"); //
-		 *              check last pagination button is visible boolean
-		 *              isLastPaginationButtonVisible =
-		 *              admin_add_role_page.isLastPaginationButtonIsVisible();
-		 *              asert.assertTrue(isLastPaginationButtonVisible, "To veify Last
-		 *              Pagination Button Should Be Visible", "SU-T620");
-		 **/
+		
+		 
+		  
+		               // SU-T618-->To verify that "Rows per page" drop down button
+		               should be visible // under the "Role Details" table. // -->Check
+		               "Rows Per Page Drop Down" button is visible boolean
+		               isRowsPerPageButton =
+		               admin_add_role_page.isRowsPerPageDropDownIsVisible();
+		               asert.assertTrue(isRowsPerPageButton, "To verify that Rows per
+		               page drop down button should be visible under the Role Details
+		               table.", "SU-T618");
+		  
+		               // SU-T619-->To verify that changing the numbers of "rows per
+		               page" drop down // , updates the table accordingly // Enter
+		               Number Of Rows Per Page and Check is Table Is Update boolean
+		               isTableUpdated = admin_add_role_page.isUpdateTheTable("10");
+		               asert.assertTrue(isTableUpdated, "To verify that changing the
+		               numbers of rows per page drop down , updates the table
+		               accordingly", "SU-T619");
+		  
+		               // SU-T620-->To verify that "first, next, previous and last"
+		               pagination button // should be visible under the "Role Details"
+		               table. // Check Fist pagination button is visible boolean
+		               isFirsPaginationButtonVisible =
+		               admin_add_role_page.isFirstPaginationButtonIsVisible();
+		               asert.assertTrue(isFirsPaginationButtonVisible, "To veify First
+		               Pagination Button Should Be Visible", "SU-T620"); // check
+		               next pagination button is visible boolean
+		               isNextPaginationButtonVisible =
+		               admin_add_role_page.isNextPaginationButtonIsVisible();
+		               asert.assertTrue(isNextPaginationButtonVisible, "To veify Next
+		               Pagination Button Should Be Visible", "SU-T620"); // check
+		               previous pagination button is visible boolean
+		               isPreviousPaginationButtonVisible =
+		               admin_add_role_page.isPreviousPaginationButtonIsVisible();
+		               asert.assertTrue(isPreviousPaginationButtonVisible, "To veify
+		               Previous Pagination Button Should Be Visible", "SU-T620"); //
+		               check last pagination button is visible boolean
+		               isLastPaginationButtonVisible =
+		               admin_add_role_page.isLastPaginationButtonIsVisible();
+		               asert.assertTrue(isLastPaginationButtonVisible, "To veify Last
+		               Pagination Button Should Be Visible", "SU-T620");
+		 
 	}
 
 	/**

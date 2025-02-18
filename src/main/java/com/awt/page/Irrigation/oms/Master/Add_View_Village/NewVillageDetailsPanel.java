@@ -56,7 +56,8 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	}
 
 	/**
-	 * With help of this method we can know the command area dropdown text field name
+	 * With help of this method we can know the command area dropdown text field
+	 * name
 	 * 
 	 * @return return the drop down name
 	 */
@@ -74,8 +75,7 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	}
 
 	/**
-	 * With help of this method we can know the village name text field
-	 * or not
+	 * With help of this method we can know the village name text field or not
 	 * 
 	 * @return village name text field name
 	 */
@@ -86,7 +86,7 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	/**
 	 * With help of this method we can get to know the village area text field name
 	 * 
-	 * @return  village area text field name
+	 * @return village area text field name
 	 */
 	public String getVillageAreaTextFieldName() {
 		return action.getText(driver.findElement(By.xpath("//label[contains(text(),'" + village_area + "')]")));
@@ -213,9 +213,10 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 		selectOptionFromDropDown(command_area, option);
 
 	}
-	
+
 	/**
 	 * By this method we can select the option from district area
+	 * 
 	 * @param option
 	 */
 	public void clickandSelectOptionFromDistrictDropDown(String option) {
@@ -359,10 +360,12 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	 */
 	public String getValueFromTextFieldValue(String text_field_name) {
 		action.waitForVisibility(
-				driver.findElement(By.xpath("//label[contains(text(),'"+text_field_name+"')]/following-sibling::input")),
+				driver.findElement(
+						By.xpath("//label[contains(text(),'" + text_field_name + "')]/following-sibling::input")),
 				action.implicit_wait);
 		return action.getAttributeValue(
-				driver.findElement(By.xpath("//label[contains(text(),'"+text_field_name+"')]/following-sibling::input")),
+				driver.findElement(
+						By.xpath("//label[contains(text(),'" + text_field_name + "')]/following-sibling::input")),
 				"value").trim();
 	}
 
@@ -383,28 +386,31 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 		}
 
 	}
-	
+
 	/**
 	 * By this method we can enter the all the village details
+	 * 
 	 * @param command_area
 	 * @param district
 	 * @param village_name
 	 * @param contact_person
 	 * @param contact_number
 	 */
-	public void enterAllVillageDetails(String command_area,String district,String village_name,String contact_person,String contact_number) {
+	public void enterAllVillageDetails(String command_area, String district, String village_name, String village_area,
+			String contact_person, String contact_number) {
 		// Select the command area
 		clickandSelectOptionFromCommnadAreaDropDown(command_area);
-		//Select the district
+		// Select the district
 		clickandSelectOptionFromDistrictDropDown("Maksi");
 		// Enter village Name
 		enterVillageName(village_name);
+		// Enter village area
+		enterVillageArea(village_area);
 		// Enter contact person
 		enterContactPersonName(contact_person);
-		//Enter contact_number
+		// Enter contact_number
 		enterContactNumber(contact_number);
-		
-		
+
 	}
 
 }
