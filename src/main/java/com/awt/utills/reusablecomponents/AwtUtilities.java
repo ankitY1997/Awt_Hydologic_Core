@@ -1,5 +1,8 @@
 package com.awt.utills.reusablecomponents;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -32,6 +35,7 @@ import com.awt.page.CreateProject.ProjectSettings.NewProjectDetailsPanel;
 import com.awt.page.CreateProject.ProjectSettings.ProjectDashboardPage;
 import com.awt.page.Irrigation.Login.LoginPage;
 import com.awt.testbase.DriverFactory;
+import com.awt.testbase.MyLogger;
 
 /**
  * Utilities Only For This Project
@@ -372,7 +376,8 @@ public class AwtUtilities {
 		String department_name = ExcelOperations.getCellData("New_Poject_Details", "Department name", "APMS-T48");
 		String main_contractor_name = ExcelOperations.getCellData("New_Poject_Details", "Main contractor name",
 				"APMS-T48");
-		String departmentImagePath = ExcelOperations.getCellData("New_Poject_Details", "Department Image Path", "APMS-T48");
+		String departmentImagePath = ExcelOperations.getCellData("New_Poject_Details", "Department Image Path",
+				"APMS-T48");
 		String mainContractorImagePath = ExcelOperations.getCellData("New_Poject_Details", "Main contractor Image path",
 				"APMS-T48");
 		String licensesKey = ExcelOperations.getCellData("New_Poject_Details", "Licenses Key", "APMS-T48");
@@ -386,9 +391,9 @@ public class AwtUtilities {
 		String actualCompletionDate = current_Date.format(formatter);
 
 		// Enter All Mandatory Details
-		newProject_DetailsPanel.enterProjectDetails(projectName, shortProjectName, projectType,department_name,
-				main_contractor_name, departmentImagePath,mainContractorImagePath, licensesKey, userName, password, mobNumber, emailAddress,
-				startDate, expectedDate, actualCompletionDate, module_name);
+		newProject_DetailsPanel.enterProjectDetails(projectName, shortProjectName, projectType, department_name,
+				main_contractor_name, departmentImagePath, mainContractorImagePath, licensesKey, userName, password,
+				mobNumber, emailAddress, startDate, expectedDate, actualCompletionDate, module_name);
 		// click on Add Project Button
 		newProject_DetailsPanel.clickAddProject();
 		// Log Out From The Application
@@ -576,6 +581,66 @@ public class AwtUtilities {
 			list.add(arr.trim());
 		}
 		return list;
+	}
+
+	/**
+	 * By this method we can check the file is downloaded or not
+	 * 
+	 * @param file_name {we need to pass the file name which you want to search}
+	 * @return
+	 */
+	public static boolean isDownloadedFileVisible(String file_name) {
+
+		boolean file_found = false;
+		File file = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path") + "/" + file_name);
+		int waitTime = 30;
+		while (waitTime >= 0) {
+			try {
+				if (file.exists()) {
+					file_found = true;
+					break;
+				}
+				Thread.sleep(1000);
+			} catch (Exception e) {
+
+			}
+			--waitTime;
+		}
+		return file_found;
+
+	}
+
+	/**
+	 * With help Of This Method We Can Delete The File Name
+	 * 
+	 * @param file_name
+	 */
+	public static void deleteFile(String file_name) {
+		try {
+			File file = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path") + "/" + file_name);
+			if (file.exists()) {
+				file.delete();
+			}
+		} catch (Exception e) {
+			MyLogger.error("Please Pass The Correct File Name " + file_name + "  Exception :" + e.getMessage());
+		}
+	}
+
+	/**
+	 * This method is used to hadle the popup
+	 */
+	public static void handleDownloadPopup() {
+		try {
+			Robot robot = new Robot();
+			robot.delay(3000); // Wait for the dialog to appear
+
+			robot.keyPress(KeyEvent.VK_DOWN); // Navigate to "Save"
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			robot.keyPress(KeyEvent.VK_ENTER); // Press Enter to confirm download
+			robot.keyRelease(KeyEvent.VK_ENTER);
+		} catch (Exception e) {
+
+		}
 	}
 
 }

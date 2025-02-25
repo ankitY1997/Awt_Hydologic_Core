@@ -64,7 +64,7 @@ public class VillageDetailsPageTest extends BaseTest {
 			"SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731", "SU-T732", "SU-T733",
 			"SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742", "SU-T742", "SU-T742", "SU-T743",
 			"SU-T743" })
-	public void verifyVillageDetailsPage() {
+	public void verifyVillageDetailsPage() throws InterruptedException {
 		// Logger Instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
 		// -> Navigate To Login page
@@ -109,12 +109,15 @@ public class VillageDetailsPageTest extends BaseTest {
 		// Verify New Village Details Panel
 		verifyNewVillageDetailsPanel();
 
+		// Verify village details panel
+		verifyVillageDetailsTable();
+
 		// asert all
 		asert.assertAll();
 
 	}
 
-	public void verifyNewVillageDetailsPanel() {
+	public void verifyNewVillageDetailsPanel() throws InterruptedException {
 
 		// SU-T39-->To verify that after clicking on the "New" button user should
 		// redirect to the "New Villages Details" panel
@@ -312,7 +315,7 @@ public class VillageDetailsPageTest extends BaseTest {
 		// than 30 characters.
 
 		// Enter a more than 30 character
-		String inValidContactPerson = AwtUtilities.genrateRandomAlphaBets(31);
+		String inValidContactPerson = AwtUtilities.genrateRandomAlphaBets(32);
 		new_village_details_panel.enterContactPersonName(inValidContactPerson);
 		// it should not accept more than 30 character
 		asert.assertNotEquals(new_village_details_panel.getContactPesronTextFieldValue(), inValidContactPerson,
@@ -393,7 +396,7 @@ public class VillageDetailsPageTest extends BaseTest {
 		// SU-T78-->To verify that created villages should be visible in the "Village
 		// Details" table
 
-		// Enter the village details
+		//-> Enter the village details
 		command_area = ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T78");
 		String district = ExcelOperations.getCellData("Add_View_Village_Details", "District", "SU-T78");
 		village_name = ExcelOperations.getCellData("Add_View_Village_Details", "Village Name", "SU-T78");
@@ -402,7 +405,13 @@ public class VillageDetailsPageTest extends BaseTest {
 		String contact_number = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Number", "SU-T78");
 		new_village_details_panel.enterAllVillageDetails(command_area, district, village_name, village_area,
 				contact_person, contact_number);
-		// Move to the village details table and ensure the created village details
+		//-> Click on "Add Village" button
+		new_village_details_panel.clickOnAddVillageButton();
+		//-> Wait
+		Thread.sleep(2000);
+		//-> Refersh the page
+		DriverFactory.iuiDriver().getDriver().navigate().refresh();
+		//-> Move to the village details table and ensure the created village details
 		// visible
 		String actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
 		asert.assertEquals(actual_village_name, village_name,
@@ -412,8 +421,9 @@ public class VillageDetailsPageTest extends BaseTest {
 
 	/**
 	 * This method is used to verify the village details table
+	 * @throws InterruptedException 
 	 */
-	public void verifyVillageDetailsTable() {
+	public void verifyVillageDetailsTable() throws InterruptedException {
 
 		// SU-T64-->To verify that columns like "S.NO, Command Area, District, Village
 		// Name, Village Area(Ha), Contact Person, Contact Number and Action" should be
@@ -446,10 +456,81 @@ public class VillageDetailsPageTest extends BaseTest {
 
 		// ->Delete the create project
 		village_details_page.clickOnDeleteButton(village_name);
-		// Vilage name should be visible in "Village Details" table
+		// Vilage name should not be visible in "Village Details" table
 		String actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
-		asert.assertNotEquals(acutal_coulmn_name, village_name,
+		asert.assertNotEquals(actual_village_name, village_name,
 				"To verify that user can delete the record from the 'Village details' table", "SU-T69");
+
+		// SU-T70-->To verify that "Rows per page" drop down button should be visible
+		// under the "Village Details" table.
+
+		// ->Check Rows Per Page dropdown is visible or not
+		boolean isRowsPerPageButton = village_details_page.isRowsPerPageDropDownIsVisible();
+		asert.assertTrue(isRowsPerPageButton,
+				"To verify that Rows per page drop down button should be visible under the Role Detailstable.",
+				"SU-T70");
+
+		// SU-T71-->To verify that changing the number of rows in the "Rows per page"
+		// drop down, updates the table accordingly.
+		boolean isTableUpdated = village_details_page.isUpdateTheTable("10");
+		asert.assertTrue(isTableUpdated,
+				"To verify that changing the numbers of rows per page drop down , updates the table accordingly",
+				"SU-T71");
+
+		// SU-T1329-->To verify that 'First', 'Previous' ,'Next" and 'Last' Pagination
+		// button should be visible under the "Village Details" table.
+
+		// -> check the first pagination button
+		boolean isFirsPaginationButtonVisible = village_details_page.isFirstPaginationButtonIsVisible();
+		asert.assertTrue(isFirsPaginationButtonVisible, "To veify First Pagination Button Should Be Visible",
+				"SU-T1329");
+		// -> check next pagination button is visible
+		boolean isNextPaginationButtonVisible = village_details_page.isNextPaginationButtonIsVisible();
+		asert.assertTrue(isNextPaginationButtonVisible, "To veify Next Pagination Button Should Be Visible",
+				"SU-T1329");
+		// -> check previous pagination button is visible
+		boolean isPreviousPaginationButtonVisible = village_details_page.isPreviousPaginationButtonIsVisible();
+		asert.assertTrue(isPreviousPaginationButtonVisible, "To veify Previous Pagination Button Should Be Visible",
+				"SU-T1329");
+		// -> check last pagination button is visible
+		boolean isLastPaginationButtonVisible = village_details_page.isLastPaginationButtonIsVisible();
+		asert.assertTrue(isLastPaginationButtonVisible, "To veify Last Pagination Button Should Be Visible",
+				"SU-T1329");
+
+		// SU-T72-->To verify that "Export" drop down should be visible in the "Villages
+		// Details" table
+
+		// -> check the visibility of export button
+		boolean isExportButtonIsVisible = village_details_page.isExportButtonIsVisible();
+		asert.assertTrue(isExportButtonIsVisible,
+				"To verify that 'Export' drop down should be visible in the 'Villages Details' table", "SU-T72");
+
+		// SU-T73-->To verify that "pdf" and "excel" button should present in the
+		// "Export" drop down
+
+		// -> Click on the "Export" button
+		village_details_page.clickOnExportButton();
+		// ->Then check the "pdf" button is visible or not
+		boolean isPdfButtonIsVisible = village_details_page.isPdfButtonVisible();
+		asert.assertTrue(isPdfButtonIsVisible, "To verify that 'pdf' button should present in the Export Drop Down",
+				"SU-T73");
+
+		// ->Then check the "pdf" button is visible or not
+		boolean isExcelButtonIsVisible = village_details_page.isExcelButtonVisible();
+		asert.assertTrue(isExcelButtonIsVisible, "To verify that 'pdf' button should present in the Export Drop Down",
+				"SU-T73");
+
+		// SU-T74-->To verify that user should able to download the 'pdf' file
+		// -> click on "pdf" button
+		village_details_page.selectExportOptions("pdf");
+		//wait 
+		Thread.sleep(5000);
+		// ->Check Pdf File is Downloaded Or Not
+		boolean isFileDownloaded = AwtUtilities.isDownloadedFileVisible(
+				ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T74"));
+		asert.assertTrue(isFileDownloaded, "To verify that user should able to download the 'pdf' file", "SU-T74");
+		// -> delete the file
+		AwtUtilities.deleteFile(ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T74"));
 
 	}
 
