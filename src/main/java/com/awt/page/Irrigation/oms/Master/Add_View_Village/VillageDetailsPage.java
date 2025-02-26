@@ -80,6 +80,14 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 	@FindBy(xpath = "//span[text()='Excel']/..")
 	public WebElement excel_button;
 
+	// *********Search button**************/
+	@FindBy(xpath = "//input[@type='search']")
+	public WebElement search_button;
+	
+	// **Xpath for save changes button**/
+	@FindBy(xpath = "//button[@aria-label='Save Changes']")
+	public WebElement save_changes_button;
+
 	// **Custom Contructor**/
 
 	public VillageDetailsPage(WebDriver driver) {
@@ -126,6 +134,16 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 	public boolean isDeleteButtonIsVisible() {
 		action.waitForVisibility(delete_button, action.implicit_wait);
 		return action.isDisplay(delete_button);
+	}
+
+	/**
+	 * This method is used to get "search" button is visible or not
+	 * 
+	 * @return
+	 */
+	public boolean isSearchButtonIsVisible() {
+		action.waitForVisibility(search_button, action.implicit_wait);
+		return action.isDisplay(search_button);
 	}
 
 	/**
@@ -208,6 +226,14 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 	}
 
 	/**
+	 * This Method Is used To click on "save changes" button
+	 */
+	public void clickOnSaveChangesButton() {
+		action.waitForVisibility(save_changes_button, action.implicit_wait);
+		action.clickOn(save_changes_button);
+	}
+
+	/**
 	 * Please Pass the Correct Options
 	 * 
 	 * @param option_name
@@ -217,13 +243,13 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 		case "pdf":
 			action.waitForVisibility(driver.findElement(By.xpath("//span[text()='PDF']/..")), action.implicit_wait);
 			action.clickOn(driver.findElement(By.xpath("//span[text()='PDF']/..")), option_name);
-			AwtUtilities.handleDownloadPopup();
+			// AwtUtilities.handleDownloadPopup();
 			break;
 
 		case "excel":
 			action.waitForVisibility(driver.findElement(By.xpath("//span[text()='Excel']/..")), action.implicit_wait);
 			action.clickOn(driver.findElement(By.xpath("//span[text()='Excel']/..")), option_name);
-			AwtUtilities.handleDownloadPopup();
+			// AwtUtilities.handleDownloadPopup();
 			break;
 
 		default:
@@ -231,6 +257,17 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 			break;
 
 		}
+	}
+
+	/**
+	 * With help of this method we can enter the "text" in search text field
+	 * @param search_field
+	 */
+	public void enterTextInSearchTextField(String search_field) {
+		action.waitForVisibility(search_button, action.implicit_wait);
+		action.clickOn(search_button);
+		action.type(search_button, "Search", search_field);
+
 	}
 
 	/**
@@ -261,11 +298,11 @@ public class VillageDetailsPage extends OmsAdminDashboardPage {
 	 * 
 	 * @param projectName
 	 */
-	public void clickOnEditButton(String projectName) {
+	public void clickOnEditButton(String villageName) {
 		action.waitForVisibility(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-				+ getVillageNameRowNumber(projectName) + "]/td/div/button[1]")), action.implicit_wait);
+				+ getVillageNameRowNumber(villageName) + "]/td/div/button[1]")), action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath("//tr[@role='row' and @data-pc-section='row']["
-				+ getVillageNameRowNumber(projectName) + "]/td/div/button[1]")));
+				+ getVillageNameRowNumber(villageName) + "]/td/div/button[1]")));
 	}
 
 	/**

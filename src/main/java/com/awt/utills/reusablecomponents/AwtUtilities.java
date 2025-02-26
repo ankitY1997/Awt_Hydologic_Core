@@ -592,7 +592,8 @@ public class AwtUtilities {
 	public static boolean isDownloadedFileVisible(String file_name) {
 
 		boolean file_found = false;
-		File file = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path") + "/" + file_name);
+		File file = new File(
+				PropertiesOperations.getPropertyValueByKey("File_Download_path") + "/" + file_name + ".crdownload");
 		int waitTime = 30;
 		while (waitTime >= 0) {
 			try {
@@ -604,42 +605,46 @@ public class AwtUtilities {
 			} catch (Exception e) {
 
 			}
-			--waitTime;
+			waitTime--;
 		}
 		return file_found;
 
 	}
 
 	/**
-	 * With help Of This Method We Can Delete The File Name
+	 * With help Of This Method We Can Delete The File which is present under the
+	 * "Bulk Upload File".
 	 * 
 	 * @param file_name
 	 */
-	public static void deleteFile(String file_name) {
+	public static void deleteDownloadedFolderFile(String... file_name) {
+		boolean flag = false;
+		File file = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path"));
+		File file_path = null;
+		;
 		try {
-			File file = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path") + "/" + file_name);
-			if (file.exists()) {
-				file.delete();
+			Thread.sleep(10000);
+			for (String file_list : file_name) {
+
+				if (file_list.equalsIgnoreCase("All")) {
+
+					for (String list : file.list()) {
+						file_path = new File(
+								PropertiesOperations.getPropertyValueByKey("File_Download_path") + list.toString());
+						file_path.delete();
+					}
+				} else if (!file_list.equalsIgnoreCase("All")) {
+
+					for (String name_of_file : file.list()) {
+
+						file_path = new File(PropertiesOperations.getPropertyValueByKey("File_Download_path")
+								+ name_of_file.toString());
+						file_path.delete();
+					}
+				}
 			}
 		} catch (Exception e) {
-			MyLogger.error("Please Pass The Correct File Name " + file_name + "  Exception :" + e.getMessage());
-		}
-	}
-
-	/**
-	 * This method is used to hadle the popup
-	 */
-	public static void handleDownloadPopup() {
-		try {
-			Robot robot = new Robot();
-			robot.delay(3000); // Wait for the dialog to appear
-
-			robot.keyPress(KeyEvent.VK_DOWN); // Navigate to "Save"
-			robot.keyRelease(KeyEvent.VK_DOWN);
-			robot.keyPress(KeyEvent.VK_ENTER); // Press Enter to confirm download
-			robot.keyRelease(KeyEvent.VK_ENTER);
-		} catch (Exception e) {
-
+			MyLogger.info("Error :" + e.getMessage());
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.awt.utills.reusablecomponents;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +12,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.awt.utills.exceptions.EmptyFileException;
+
 /**
  * This Class Specially Designed For Doing Excel Operations
+ * 
  * @author Ankit Yadav
  */
 
@@ -152,6 +155,60 @@ public class ExcelOperations {
 		}
 		return data;
 
+	}
+
+	/**
+	 * By this method we can fetech all the column column data which you are passing
+	 * in the parameter
+	 * 
+	 * @param file         path-> excel file path
+	 * @param fileName->   excel file name
+	 * @param columnName-> column header name
+	 * @return List of all the data which present under the column
+	 **/
+
+	public synchronized static ArrayList<String> getColumnDataFromAnyExcelFile(String file_path, String fileName,
+			String columnName) {
+
+		FileInputStream fis = null;
+		XSSFWorkbook workbook = null;
+		String data = null;
+		String path = file_path + File.separator + fileName;
+		LinkedList<String> column_values = null;
+		try {
+			AwtUtilities.waitFor(5000);
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
+			XSSFSheet sheet = workbook.getSheetAt(0);
+			int totalRow = sheet.getLastRowNum();
+			int totalCoulmn = sheet.getRow(0).getLastCellNum();
+			int columnNumber = getColumnNum(columnName, path);
+			column_values = new LinkedList<String>();
+			for (int i = 0; i < totalRow; i++) {
+				try {
+					column_values.add(new DataFormatter().formatCellValue(sheet.getRow(i).getCell(columnNumber)));
+				} catch (Exception e) {
+					column_values.add("null");
+				}
+			}
+
+		} catch (IOException e) {
+			System.out.println("Unable To Find The FileName :" + fileName + " Due To This Exception :"
+					+ e.getMessage().toString());
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Unable To Read Excel File Due To This Exception " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			try {
+				fis.close();
+				workbook.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return new ArrayList<String>(column_values);
 	}
 
 	/**

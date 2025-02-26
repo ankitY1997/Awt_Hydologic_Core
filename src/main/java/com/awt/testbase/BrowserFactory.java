@@ -1,4 +1,5 @@
 package com.awt.testbase;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,16 +29,16 @@ public class BrowserFactory {
 			ChromeOptions options = new ChromeOptions();
 			List<String> config_list = new ArrayList<>();
 			// for incongantive session
-			//config_list.add("-incognito");
+			// config_list.add("-incognito");
 			config_list.add("--remote-allow-origins=*");
 			options.addArguments(config_list);
 			Map<String, Object> download_prefs = new HashMap<String, Object>();
-			download_prefs.put("profile.default_content_settings.popups", 0); //Disable the popup
+			download_prefs.put("download.prompt_for_download", false); // Disable Save As prompt
+			download_prefs.put("download.directory_upgrade", true);
 			download_prefs.put("safebrowsing.enabled", false); // Disable Safe Browsing
 			download_prefs.put("safebrowsing.disable_download_protection", true); // Allow all downloads
-			download_prefs.put("download.prompt_for_download", false); // Disable Save As dialog
-			download_prefs.put("profile.default_content_setting_values.automatic_downloads", 1);// Allow multiple file downloads
-			download_prefs.put("download.default_directory", System.getProperty("user.dir")+PropertiesOperations.getPropertyValueByKey("File_Download_path"));
+			download_prefs.put("download.default_directory",
+					System.getProperty("user.dir") + PropertiesOperations.getPropertyValueByKey("File_Download_path"));
 			options.setExperimentalOption("prefs", download_prefs);
 			driver = new ChromeDriver(options);
 			break;

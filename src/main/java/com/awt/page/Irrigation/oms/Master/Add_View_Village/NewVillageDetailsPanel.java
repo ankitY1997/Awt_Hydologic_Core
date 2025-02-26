@@ -38,6 +38,8 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	// **Xpath for add button**/
 	@FindBy(xpath = "//button[@aria-label='Add Village']")
 	public WebElement add_village_button;
+	
+	
 
 	// **Custom Constructor**/
 	public NewVillageDetailsPanel(WebDriver driver) {
@@ -149,6 +151,11 @@ public class NewVillageDetailsPanel extends VillageDetailsPage {
 	 */
 	public void clickOnAddVillageButton() {
 		action.clickOn(add_village_button);
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// do nothing
+		}
 
 	}
 

@@ -389,14 +389,14 @@ public class VillageDetailsPageTest extends BaseTest {
 		// click on clear button
 		new_village_details_panel.clickOnClearButton();
 		// selcted command area should not be visible
-		String actual_command_area = new_village_details_panel.getCommandAreaDropDownName();
-		asert.assertEquals(actual_command_area, command_area, "To verify the functionality of the  Clear button",
+		String actual_command_area = new_village_details_panel.getSelctedOptionFromCommandAreaDropDown();
+		asert.assertNotEquals(actual_command_area, command_area, "To verify the functionality of the  Clear button",
 				"SU-T63");
 
 		// SU-T78-->To verify that created villages should be visible in the "Village
 		// Details" table
 
-		//-> Enter the village details
+		// -> Enter the village details
 		command_area = ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T78");
 		String district = ExcelOperations.getCellData("Add_View_Village_Details", "District", "SU-T78");
 		village_name = ExcelOperations.getCellData("Add_View_Village_Details", "Village Name", "SU-T78");
@@ -405,13 +405,11 @@ public class VillageDetailsPageTest extends BaseTest {
 		String contact_number = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Number", "SU-T78");
 		new_village_details_panel.enterAllVillageDetails(command_area, district, village_name, village_area,
 				contact_person, contact_number);
-		//-> Click on "Add Village" button
+		// -> Click on "Add Village" button
 		new_village_details_panel.clickOnAddVillageButton();
-		//-> Wait
-		Thread.sleep(2000);
-		//-> Refersh the page
+		// -> Refersh the page
 		DriverFactory.iuiDriver().getDriver().navigate().refresh();
-		//-> Move to the village details table and ensure the created village details
+		// -> Move to the village details table and ensure the created village details
 		// visible
 		String actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
 		asert.assertEquals(actual_village_name, village_name,
@@ -421,7 +419,8 @@ public class VillageDetailsPageTest extends BaseTest {
 
 	/**
 	 * This method is used to verify the village details table
-	 * @throws InterruptedException 
+	 * 
+	 * @throws InterruptedException
 	 */
 	public void verifyVillageDetailsTable() throws InterruptedException {
 
@@ -523,14 +522,199 @@ public class VillageDetailsPageTest extends BaseTest {
 		// SU-T74-->To verify that user should able to download the 'pdf' file
 		// -> click on "pdf" button
 		village_details_page.selectExportOptions("pdf");
-		//wait 
-		Thread.sleep(5000);
 		// ->Check Pdf File is Downloaded Or Not
 		boolean isFileDownloaded = AwtUtilities.isDownloadedFileVisible(
-				ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T74"));
+				ExcelOperations.getCellData("Add_View_Village_Details", "File Name", "SU-T74"));
 		asert.assertTrue(isFileDownloaded, "To verify that user should able to download the 'pdf' file", "SU-T74");
-		// -> delete the file
-		AwtUtilities.deleteFile(ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T74"));
+
+		// SU-->T76 To verify that user should able to download the 'Excel' file
+
+		// -> Click on Export Button
+		village_details_page.clickOnExportButton();
+		// -> Select "Excel" options
+		village_details_page.selectExportOptions("excel");
+		// -> Check Excel File Downloaded or not
+		boolean isExcelFileDownloaded = AwtUtilities.isDownloadedFileVisible(
+				ExcelOperations.getCellData("Add_View_Village_Details", "File Name", "SU-T76"));
+		asert.assertTrue(isExcelFileDownloaded, "To verify that user should able to download the 'Excel' file",
+				"SU-T76");
+		// Delete All The Downloaded Files
+		AwtUtilities.deleteDownloadedFolderFile("all");
+
+		// SU-T77-->To verify that records present in the "village details" table ,same
+		// records are also available in the downloaded "excel" file
+
+		// -> Click on the new button
+		village_details_page.clickOnNewButtonAndNavigateToNewVillageDetaisPanel();
+		// -> Enter all the madatory details
+		String command_area = ExcelOperations.getCellData("Add_View_Village_Details", "Command Area", "SU-T77");
+		String district = ExcelOperations.getCellData("Add_View_Village_Details", "District", "SU-T77");
+		String village_name = ExcelOperations.getCellData("Add_View_Village_Details", "Village Name", "SU-T77");
+		String village_area = ExcelOperations.getCellData("Add_View_Village_Details", "Village Area", "SU-T77");
+		String contact_person = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Person", "SU-T77");
+		String contact_number = ExcelOperations.getCellData("Add_View_Village_Details", "Contact Number", "SU-T77");
+		new_village_details_panel.enterAllVillageDetails(command_area, district, village_name, village_area,
+				actual_village_name, contact_number);
+		// -> click on add village button
+		new_village_details_panel.clickOnAddVillageButton();
+		// -> refresh the page
+		DriverFactory.iuiDriver().getDriver().navigate().refresh();
+		// Wait
+		AwtUtilities.waitFor(4000);
+		// -> click on export button
+		village_details_page.clickOnExportButton();
+		// -> Download the Excel file
+		village_details_page.selectExportOptions("excel");
+		// Then check created village name should be present in the downloaded excel
+		// file
+		ArrayList<String> excel_village_name = ExcelOperations.getColumnDataFromAnyExcelFile(
+				PropertiesOperations.getPropertyValueByKey("File_Download_path"),
+				ExcelOperations.getCellData("Add_View_Village_Details", "File Name", "SU-T77"), "Village Name");
+		asert.assertTrue(excel_village_name.contains(village_name),
+				"To verify that records present in the village details table ,same records are also available in the downloaded excel file",
+				"SU-T77");
+		// delete all the files
+		AwtUtilities.deleteDownloadedFolderFile("all");
+
+		// SU-T79-->To verify that "search" text field should be visible in the "Village
+		// Details" table.
+
+		// Check the visibility of search button
+		boolean isSearchButtonVisible = village_details_page.isSearchButtonIsVisible();
+		asert.assertTrue(isSearchButtonVisible,
+				"To verify that 'search' text field should be visible in the 'Village Details' table.", "SU-T79");
+
+		// SU-T80-->To verify that user should able to search the data in the "search"
+		// text field .
+
+		// -> Enter the village name in search text field
+		village_details_page.enterTextInSearchTextField(village_name);
+		// -> check the search details should be visible or not
+		actual_village_name = village_details_page.getVillageDetailTableValue("Village Name", village_name);
+		asert.assertEquals(actual_village_name, village_name,
+				"To verify that user should able to search the data in the 'search' text field .", "SU-T80");
+
+		// SU-T81-->To verify that "edited" details should be updated in the "Village
+		// Details" table.
+
+		// -> Click on Edit button
+		village_details_page.clickOnEditButton(village_name);
+		// -> Change the village area
+		village_area = ExcelOperations.getCellData("Add_View_Village_Details", "Village Area", "SU-T81");
+		new_village_details_panel.enterVillageArea(village_area);
+		// click on save button
+		new_village_details_panel.clickOnSaveChangesButton();
+		// -> Check the updated details visible in the "village details" table
+		String actul_village_area = village_details_page.getVillageDetailTableValue("Village Area (Ha)", village_name);
+		asert.assertEquals(actul_village_area, village_area,
+				"To verify that 'edited' details should be updated  in the 'Village Details' table.", "SU-T81");
+
+		// SU-T1083-->To verify that 'District' dropdown should be present in the 'Edit
+		// village Details' Panel.
+
+		// -> Click on Edit button
+		village_details_page.clickOnEditButton(village_name);
+		// chack the visibility of district drop down
+		String actual_district_drop_down_name = new_village_details_panel.getDistrictDropDownName();
+		asert.assertEquals(actual_district_drop_down_name, "District *",
+				"To verify that 'District' dropdown should be present in the 'Edit village Details' Panel. ",
+				"SU-T1083");
+
+		// SU-T1084-->To verify that edited 'District' should be updated in the 'Village
+		// Details' table.
+
+		// -> Change the district name area
+		String district_name = ExcelOperations.getCellData("Add_View_Village_Details", "District", "SU-T1084");
+		new_village_details_panel.clickandSelectOptionFromDistrictDropDown(district_name);
+		// click on save button
+		new_village_details_panel.clickOnSaveChangesButton();
+		// -> Check the updated district details visible in the "village details" table
+		String actual_district_name = village_details_page.getVillageDetailTableValue("District Name",village_name);
+		asert.assertEquals(actual_district_name, district_name,
+				"To verify that edited 'District' should be updated in the 'Village Details' table. ", "SU-T1084");
+
+		// Delete the village details
+		village_details_page.clickOnDeleteButton(village_name);
+
+		// SU-T309-->To verify that "Command Area" drop down should be mandatory under
+		// the "New Villages Details" panel.
+
+		// ->Click on 'new" button
+		village_details_page.clickOnNewButtonAndNavigateToNewVillageDetaisPanel();
+		// ->fill all the mandatory details expect "command area"
+		// Select the district drop down
+		new_village_details_panel.clickandSelectOptionFromDistrictDropDown(district_name);
+		// Enter the village name
+		new_village_details_panel.enterVillageName(village_name);
+		// enter the village area
+		new_village_details_panel.enterVillageArea(village_area);
+		// -> click on add village button
+		new_village_details_panel.clickOnAddVillageButton();
+		// check the error message of command area drop down is visible or not
+		String acutal_error_message = new_village_details_panel.getErrorMessageFromTheField("Command Area ");
+		asert.assertEquals(acutal_error_message, "Command Area is required.",
+				"To verify that 'Command Area' drop down should be mandatory under the 'New Villages Details'  panel.",
+				"SU-T309");
+		// SU-T311-->To verify that "village name" text field should be mandatory under
+		// the "New Villages Details" panel.
+
+		// -> click on clear button
+		new_village_details_panel.clickOnClearButton();
+		// ->fill all the mandatory details expect "Village Name"
+		// Select the commnad area drop down
+		new_village_details_panel.clickandSelectOptionFromCommnadAreaDropDown(command_area);
+		// Select the district drop down
+		new_village_details_panel.clickandSelectOptionFromDistrictDropDown(district_name);
+		// enter the village area
+		new_village_details_panel.enterVillageArea(village_area);
+		// -> click on add village button
+		new_village_details_panel.clickOnAddVillageButton();
+		// check the error message of village name text field is visible or not
+		acutal_error_message = new_village_details_panel.getErrorMessageFromTheField("Village Name ");
+		asert.assertEquals(acutal_error_message, "Village Name must be at least 2 characters.",
+				"To verify that 'village name' text field should be mandatory under the 'New Villages Details'  panel.",
+				"SU-T311");
+
+		// SU-T312 -->To verify that "village area" text field should be mandatory under
+		// the
+		// "New Villages Details" panel.
+
+		// -> click on clear button
+		new_village_details_panel.clickOnClearButton();
+		// ->fill all the mandatory details expect "Village Area"
+		// Select the commnad area drop down
+		new_village_details_panel.clickandSelectOptionFromCommnadAreaDropDown(command_area);
+		// Select the district drop down
+		new_village_details_panel.clickandSelectOptionFromDistrictDropDown(district_name);
+		// Enter the village name
+		new_village_details_panel.enterVillageName(village_name);
+		// -> click on add village button
+		new_village_details_panel.clickOnAddVillageButton();
+		// check the error message of village area text filed is visible or not
+		acutal_error_message = new_village_details_panel.getErrorMessageFromTheField("Village Area (Ha) ");
+		asert.assertEquals(acutal_error_message, "Village Area is required.",
+				"To verify that 'village area' text field should be mandatory under the 'New Villages Details' panel.'  panel.",
+				"SU-T312");
+
+		// SU-T1081-->To verify that "District" dropdown should be mandatory under the
+		// "New Villages Details" panel.
+
+		// -> click on clear button
+		new_village_details_panel.clickOnClearButton();
+		// ->fill all the mandatory details expect "District"
+		// Select the commnad area drop down
+		new_village_details_panel.clickandSelectOptionFromCommnadAreaDropDown(command_area);
+		// Enter the village name
+		new_village_details_panel.enterVillageName(village_name);
+		// enter the village area
+		new_village_details_panel.enterVillageArea(village_area);
+		// -> click on add village button
+		new_village_details_panel.clickOnAddVillageButton();
+		// check the error message of command area drop down is visible or not
+		acutal_error_message = new_village_details_panel.getErrorMessageFromTheField("District ");
+		asert.assertEquals(acutal_error_message, "District is required.",
+				"To verify that 'District' dropdown should be mandatory under the 'New Villages Details'  panel. ",
+				"SU-T1081");
 
 	}
 

@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-02-25T18:17:55 IST" name="Demo" finished-at="2025-02-25T18:21:37 IST" duration-ms="222173">
+  <suite started-at="2025-02-26T17:49:57 IST" name="Demo" finished-at="2025-02-26T17:57:07 IST" duration-ms="429722">
     <groups>
       <group name="Functional">
         <method signature="VillageDetailsPageTest.verifyVillageDetailsPage()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" name="verifyVillageDetailsPage" class="com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest"/>
@@ -11,9 +11,9 @@
         <method signature="VillageDetailsPageTest.verifyVillageDetailsPage()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" name="verifyVillageDetailsPage" class="com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest"/>
       </group> <!-- Log In -->
     </groups>
-    <test started-at="2025-02-25T18:17:55 IST" name="Test" finished-at="2025-02-25T18:21:37 IST" duration-ms="222173">
+    <test started-at="2025-02-26T17:49:57 IST" name="Test" finished-at="2025-02-26T17:57:07 IST" duration-ms="429722">
       <class name="com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest">
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-25T18:17:55 IST" name="launchBrowser" finished-at="2025-02-25T18:17:58 IST" duration-ms="2788" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-26T17:49:58 IST" name="launchBrowser" finished-at="2025-02-26T17:50:04 IST" duration-ms="5915" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,19 +24,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="verifyVillageDetailsPage()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-25T18:17:58 IST" name="verifyVillageDetailsPage" finished-at="2025-02-25T18:21:36 IST" duration-ms="217355" status="FAIL">
+        <test-method signature="verifyVillageDetailsPage()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-26T17:50:04 IST" name="verifyVillageDetailsPage" finished-at="2025-02-26T17:57:05 IST" duration-ms="420601" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-did not expect [WxxpXsXspytbmtesGwYqbFWdVAxBCqMy] but found [WxxpXsXspytbmtesGwYqbFWdVAxBCqMy],
-expected [Bhopal] but found [Command Area *],
-To verify that user should able to download the 'pdf' file expected [true] but found [false]]]>
+did not expect [whQJHwJbUiyCBGzKmNfSyFfcVLUiGjkm] but found [whQJHwJbUiyCBGzKmNfSyFfcVLUiGjkm]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-did not expect [WxxpXsXspytbmtesGwYqbFWdVAxBCqMy] but found [WxxpXsXspytbmtesGwYqbFWdVAxBCqMy],
-expected [Bhopal] but found [Command Area *],
-To verify that user should able to download the 'pdf' file expected [true] but found [false]
+did not expect [whQJHwJbUiyCBGzKmNfSyFfcVLUiGjkm] but found [whQJHwJbUiyCBGzKmNfSyFfcVLUiGjkm]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
 at com.awt.utills.reusablecomponents.SoftAssertTest.assertAll(SoftAssertTest.java:212)
@@ -62,7 +58,7 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyVillageDetailsPage -->
-        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-25T18:21:36 IST" name="tearUp" finished-at="2025-02-25T18:21:37 IST" duration-ms="1181" status="PASS">
+        <test-method is-config="true" signature="tearUp()[pri:0, instance:com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest@459e9125]" started-at="2025-02-26T17:57:06 IST" name="tearUp" finished-at="2025-02-26T17:57:07 IST" duration-ms="1319" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearUp -->
