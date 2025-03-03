@@ -54,16 +54,31 @@ public class VillageDetailsPageTest extends BaseTest {
 
 	}
 
+	/**
+	 * Description: Perform the verification of getVillageArea Page <br>
+	 * TestMethodName: verifyVillageDetailsPage <br>
+	 * ManualTestCases: "SU-T36", "SU-T37", "SU-T38", "SU-T39", "SU-T40", "SU-T42",
+	 * "SU-T45", "SU-T46", "SU-T47", "SU-T49", "SU-T50", "SU-T51", "SU-T52",
+	 * "SU-T53", "SU-T54", "SU-T55", "SU-T56", "SU-T58", "SU-T59", "SU-T60",
+	 * "SU-T61", "SU-T62", "SU-T63", "SU-T64", "SU-T68", "SU-T69", "SU-T70",
+	 * "SU-T71", "SU-T72", "SU-T73", "SU-T74", "SU-T76", "SU-T77", "SU-T78",
+	 * "SU-T79", "SU-T80", "SU-T81", "SU-T311", "SU-T312", "SU-T1080", "SU-T1081",
+	 * "SU-T1083", "SU-T1084", "SU-T329"<br>
+	 * 
+	 * @author ankit
+	 */
+
 	@Version(number = "V-0.1")
-	@Test(groups = { "Log In", "Functional" })
-	@Description(description = "Perform the verfication on  Log In Page")
-	@Story(story = "Log In ")
+	@Test(groups = { "Add/View Village", "Functional" })
+	@Description(description = "Perform the verfication on  getVillageArea page")
+	@Story(story = "Add/View Village")
 	@Owner(name = "Ankit")
-	@WorkArea(areaName = "Log in")
-	@TestCaseId(id = { "SU-T36", "SU-T37", "SU-T38", "SU-T718", "SU-T719", "SU-T719", "SU-T721", "APMS-T135", "SU-T723",
-			"SU-T724", "SU-T725", "SU-T727", "SU-T728", "SU-T729", "SU-T730", "SU-T731", "SU-T732", "SU-T733",
-			"SU-T734", "SU-T735", "SU-T736", "SU-T737", "SU-T738", "SU-T742", "SU-T742", "SU-T742", "SU-T743",
-			"SU-T743" })
+	@WorkArea(areaName = "Add/View Village ")
+	@TestCaseId(id = { "SU-T36", "SU-T37", "SU-T38", "SU-T39", "SU-T40", "SU-T42", "SU-T45", "SU-T46", "SU-T47",
+			"SU-T49", "SU-T50", "SU-T51", "SU-T52", "SU-T53", "SU-T54", "SU-T55", "SU-T56", "SU-T58", "SU-T59",
+			"SU-T60", "SU-T61", "SU-T62", "SU-T63", "SU-T64", "SU-T68", "SU-T69", "SU-T70", "SU-T71", "SU-T72",
+			"SU-T73", "SU-T74", "SU-T76", "SU-T77", "SU-T78", "SU-T79", "SU-T80", "SU-T81", "SU-T311", "SU-T312",
+			"SU-T1080", "SU-T1081", "SU-T1083", "SU-T1084", "SU-T329" })
 	public void verifyVillageDetailsPage() throws InterruptedException {
 		// Logger Instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -73,7 +88,6 @@ public class VillageDetailsPageTest extends BaseTest {
 		home_page = login_page.loginAndNavigateToHomePage(PropertiesOperations.getPropertyValueByKey("Project_Name"),
 				PropertiesOperations.getPropertyValueByKey("User_USERNAME"),
 				PropertiesOperations.getPropertyValueByKey("User_PASSWORD"));
-
 		// ->Click on "OMS" module and Navigate To OmsAdminDashboardPage
 		oms_admin_dashboard_page = home_page.navigateToOmsAdminDashboardPage();
 
@@ -629,7 +643,7 @@ public class VillageDetailsPageTest extends BaseTest {
 		// click on save button
 		new_village_details_panel.clickOnSaveChangesButton();
 		// -> Check the updated district details visible in the "village details" table
-		String actual_district_name = village_details_page.getVillageDetailTableValue("District Name",village_name);
+		String actual_district_name = village_details_page.getVillageDetailTableValue("District Name", village_name);
 		asert.assertEquals(actual_district_name, district_name,
 				"To verify that edited 'District' should be updated in the 'Village Details' table. ", "SU-T1084");
 

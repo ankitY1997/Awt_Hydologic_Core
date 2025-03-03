@@ -68,7 +68,7 @@ public class AdminAddUserTest extends BaseTest {
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
 	@Description(description = "Perform the verfication on amin_add_user_page")
-	@Story(story = "Create User and View User")
+	@Story(story = "Create User")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "SU-T577", "SU-T578", "SU-T579", "SU-T580", "SU-T581", "SU-T582", "SU-T583", "SU-T584",

@@ -86,7 +86,7 @@ public class AdminMenuPermissionTest extends BaseTest {
 	@Version(number = "V-0.1")
 	@Test(groups = { "Admin", "Functional" })
 	@Description(description = " Perform the verification of Admin Menu Permission Page ")
-	@Story(story = "Report Template")
+	@Story(story = "Page Permission")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Admin")
 	@TestCaseId(id = { "SU-T659", "SU-T660", "SU-T661", "SU-T662", "SU-T663", "SU-T664", "SU-T665", "SU-T666",
