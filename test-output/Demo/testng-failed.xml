@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="3" parallel="methods" name="Failed suite [Demo]" guice-stage="DEVELOPMENT">
+<suite thread-count="3" parallel="classes" name="Failed suite [Demo]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="com.awt.utills.reusablecomponents.ITestListeners"/>
     <listener class-name="com.awt.utills.reusablecomponents.RetryListener"/>
   </listeners>
-  <test thread-count="3" parallel="methods" name="Test(failed)">
+  <test thread-count="3" parallel="classes" name="Test(failed)">
     <classes>
-      <class name="com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest">
+      <class name="com.awt.test.Irrigation.Admin.Settings.AddViewEquipments.EquipmentsDetailsTest">
         <methods>
-          <include name="verifyVillageDetailsPage"/>
+          <include name="verfiyEquipmentsDetailsPage"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest -->
+      </class> <!-- com.awt.test.Irrigation.Admin.Settings.AddViewEquipments.EquipmentsDetailsTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Demo] -->

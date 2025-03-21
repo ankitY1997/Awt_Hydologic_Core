@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest">
+      <class name="com.awt.test.Irrigation.Admin.Settings.AddViewEquipments.EquipmentsDetailsTest">
         <methods>
-          <include name="verifyVillageDetailsPage"/>
+          <include name="verfiyEquipmentsDetailsPage"/>
           <include name="launchBrowser"/>
           <include name="tearUp"/>
         </methods>
-      </class> <!-- com.awt.test.Irrigation.oms.Master.Add_View_Village.VillageDetailsPageTest -->
+      </class> <!-- com.awt.test.Irrigation.Admin.Settings.AddViewEquipments.EquipmentsDetailsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

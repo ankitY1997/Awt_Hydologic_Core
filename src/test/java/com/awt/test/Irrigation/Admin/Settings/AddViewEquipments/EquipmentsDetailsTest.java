@@ -15,6 +15,7 @@ import com.awt.page.Irrigation.Login.LoginPage;
 import com.awt.testbase.BaseTest;
 import com.awt.testbase.DriverFactory;
 import com.awt.testbase.MyLogger;
+import com.awt.utills.reusablecomponents.AwtUtilities;
 import com.awt.utills.reusablecomponents.Description;
 import com.awt.utills.reusablecomponents.Owner;
 import com.awt.utills.reusablecomponents.PropertiesOperations;
@@ -54,13 +55,10 @@ public class EquipmentsDetailsTest extends BaseTest {
 	/**
 	 * Description: Perform the verification of equipmentsdetailsPage <br>
 	 * TestMethodName: verifyVillageDetailsPage <br>
-	 * ManualTestCases: "SU-T36", "SU-T37", "SU-T38", "SU-T39", "SU-T40", "SU-T42",
-	 * "SU-T45", "SU-T46", "SU-T47", "SU-T49", "SU-T50", "SU-T51", "SU-T52",
-	 * "SU-T53", "SU-T54", "SU-T55", "SU-T56", "SU-T58", "SU-T59", "SU-T60",
-	 * "SU-T61", "SU-T62", "SU-T63", "SU-T64", "SU-T68", "SU-T69", "SU-T70",
-	 * "SU-T71", "SU-T72", "SU-T73", "SU-T74", "SU-T76", "SU-T77", "SU-T78",
-	 * "SU-T79", "SU-T80", "SU-T81", "SU-T311", "SU-T312", "SU-T1080", "SU-T1081",
-	 * "SU-T1083", "SU-T1084", "SU-T329"<br>
+	 * ManualTestCases: "SU-T359", "SU-T360", "SU-T1361", "SU-T1362", "SU-T1363",
+	 * "SU-T1364", "SU-T1365", "SU-T1366", "SU-T1367", "SU-T1368", "SU-T1369",
+	 * "SU-T1370", "SU-T1371", "SU-T1372", "SU-T1373", "SU-T1374", "SU-T1375",
+	 * "SU-T1376", "SU-T1377", "SU-T1378", "SU-T1380"<br>
 	 * 
 	 * @author ankit
 	 */
@@ -71,11 +69,11 @@ public class EquipmentsDetailsTest extends BaseTest {
 	@Story(story = "Add Equipment Details and properties")
 	@Owner(name = "Ankit")
 	@WorkArea(areaName = "Add/View Equipments")
-	@TestCaseId(id = { "SU-T36", "SU-T37", "SU-T38", "SU-T39", "SU-T40", "SU-T42", "SU-T45", "SU-T46", "SU-T47",
-			"SU-T49", "SU-T50", "SU-T51", "SU-T52", "SU-T53", "SU-T54", "SU-T55", "SU-T56", "SU-T58", "SU-T59",
-			"SU-T60", "SU-T61", "SU-T62", "SU-T63", "SU-T64", "SU-T68", "SU-T69", "SU-T70", "SU-T71", "SU-T72",
-			"SU-T73", "SU-T74", "SU-T76", "SU-T77", "SU-T78", "SU-T79", "SU-T80", "SU-T81", "SU-T311", "SU-T312",
-			"SU-T1080", "SU-T1081", "SU-T1083", "SU-T1084", "SU-T329" })
+	@TestCaseId(id = { "SU-T359", "SU-T360", "SU-T1361", "SU-T1362", "SU-T1363", "SU-T1364", "SU-T1365", "SU-T1366",
+			"SU-T1367", "SU-T1368", "SU-T1369", "SU-T1370", "SU-T1371", "SU-T1372", "SU-T1373", "SU-T1374", "SU-T1375",
+			"SU-T1376", "SU-T1377", "SU-T1378", "SU-T1380", "SU-T63", "SU-T64", "SU-T68", "SU-T69", "SU-T70", "SU-T71",
+			"SU-T72", "SU-T73", "SU-T74", "SU-T76", "SU-T77", "SU-T78", "SU-T79", "SU-T80", "SU-T81", "SU-T311",
+			"SU-T312", "SU-T1080", "SU-T1081", "SU-T1083", "SU-T1084", "SU-T329" })
 	public void verfiyEquipmentsDetailsPage() {
 		// Logger Instance
 		MyLogger.startTestCase(new Throwable().getStackTrace()[0].getMethodName());
@@ -134,6 +132,9 @@ public class EquipmentsDetailsTest extends BaseTest {
 		// verify New Equipments Details Panel
 		verifyNewEquipmentsDetailsPanel();
 
+		// asert all
+		asert.assertAll();
+
 	}
 
 	public void verifyNewEquipmentsDetailsPanel() {
@@ -142,6 +143,9 @@ public class EquipmentsDetailsTest extends BaseTest {
 
 	}
 
+	/**
+	 * verify the "Details Tab"
+	 */
 	public void verifyDetailsTab() {
 
 		// SU-T1363-->To verify that "Details" tab Should visible in the "New Equipments
@@ -207,7 +211,7 @@ public class EquipmentsDetailsTest extends BaseTest {
 		// -> select the "Gateway" from "Equipment Type" drop down
 		String option_name = "Gateway";
 		equipments_details_panel.selectDropdownOptionFromDetailsTab("Equipments Type", option_name);
-		String exp_text_field_name = option_name + " Name *";
+		String exp_text_field_name = option_name + " Name*";
 		// ->Check "Name" text field should be a "Gateway Name" text field
 		// -> Get the current name of "Name" text field name
 		String current_name_of_text_field_name = equipments_details_panel.getCurrentNameOfNameTextField().trim();
@@ -219,7 +223,7 @@ public class EquipmentsDetailsTest extends BaseTest {
 		// selected 'Equipment Type.'
 
 		// -> Check the "ID*" text field name should be "Gateway ID" text field
-		String exp_id_text_field_name = option_name + " ID *";
+		String exp_id_text_field_name = option_name + " ID*";
 		// -> get the current name of "ID" text field
 		String current_name_of_id_text_field = equipments_details_panel.getCurrentNameOfIdTextField();
 		// -> comapre the exp_id and curren_name of id text field
@@ -237,7 +241,7 @@ public class EquipmentsDetailsTest extends BaseTest {
 		List<String> actual_options = equipments_details_panel.getTheListOfOptionsFromDeviceProfileDropDown();
 		// -> "Battery OMS" options should be present under the "device
 		// profile" drop down
-		asert.assertTrue(actual_options.contains(new ArrayList<String>(Arrays.asList(expected_device_profile_option))),
+		asert.assertTrue(actual_options.contains((expected_device_profile_option[0].toString())),
 				"Ensure that the data displayed in the 'Device Profile' dropdown corresponds to the selected 'Equipment Type.'",
 				"SU-T1371");
 
@@ -253,13 +257,120 @@ public class EquipmentsDetailsTest extends BaseTest {
 		// SU-T1373-->To verify the mandatory fields in the 'Details' tab
 
 		// -> Check the mandatory fields from "Details" tab
-		String[] exp_mandatory_field_name = { "Equipments Type *", "Device Profile *", "OMS Controller Name *",
-				"OMS Controller ID *", "Map Coordinates *" };
+		String[] exp_mandatory_field_name = { "Equipments Type*", "Device Profile*", "OMS Controller Name*",
+				"OMS Controller ID*", "Map Coordinates*" };
 		// get the actual mandatory field name
 		List<String> actual_mandatory_field_name = equipments_details_panel.getMandatoryFieldNameFromDetailsTab();
 		// Expecte Mandatory field and actual Mandatory filed name should be equal
 		asert.assertEquals(actual_mandatory_field_name, new ArrayList<String>(Arrays.asList(exp_mandatory_field_name)),
 				"To verify the mandatory fields in the 'Details' tab", "SU-T1373");
+
+		// SU-T1374 --> To verify that "Map Coordinates" text field Should visible in
+		// the
+		// "New Equipments Details" Panel.
+
+		// check the "Map Coordinates*" text field is visible
+		boolean isMapCoordinatedTextFieldIsVisible = equipments_details_panel.isMapCoordinatedTextFieldIsVisible();
+		asert.assertTrue(isMapCoordinatedTextFieldIsVisible,
+				"To verify that 'Map Coordinates' text field Should visible in the 'New Equipments Details'  Panel.   ",
+				"SU-T1374");
+
+		// SU-T1375 -->To verify that 'Clear' button Should be visible in the 'Details'
+		// tab
+
+		// -> check the "clear" button is visible or not
+		boolean isClearButtonVisible = equipments_details_panel.isClearButtonVisible();
+		asert.assertTrue(isClearButtonVisible, "To verify that 'Clear' button Should be visible in the 'Details' tab",
+				"SU-T1375");
+
+		// SU-T1376--> To verify that 'Add Equipment' button Should be visible in the
+		// 'Details' tab
+
+		// -> check the visibility of "Add Equipment" button
+		boolean isAddEquipmentButtonVisible = equipments_details_panel.isAddEquipmentButtonVisible();
+		asert.assertTrue(isAddEquipmentButtonVisible,
+				"To verify that 'Add Equipment' button Should be visible in the 'Details' tab ", "SU-T1376");
+
+		// SU-T1377-->To verify that 'Cross SVG' button Should be visible in the 'New
+		// Equipments Details' Panel.
+
+		// -> check the visibility of "Cross SVG" button
+		boolean isCrossSvgButtonVisible = equipments_details_panel.isCrossSvgButtonVisible();
+		asert.assertTrue(isCrossSvgButtonVisible,
+				"To verify that 'Cross SVG' button Should be visible in the 'New Equipments Details' Panel.",
+				"SU-T1377");
+
+		// SU-T1378-->To verify that "Map Coordinates" Should be accept in the format of
+		// (X, Y).
+
+		// -> Enter the map cordinates in (X,Y) format
+		String map_cordinates = AwtUtilities.genrateRandomNumber(2) + ".378" + "," + AwtUtilities.genrateRandomNumber(2)
+				+ ".745";
+		equipments_details_panel.enterMapCordinates(map_cordinates);
+		// -> check the enter map coordinates is entered or not
+		// -> fetch the map coordinates from "map coordinates text field
+		String actual_coordinates = equipments_details_panel.getTheCurrentCoordinatesFromMapCoordinatesTextFieldValue();
+		asert.assertEquals(actual_coordinates, map_cordinates,
+				"To verify that 'Map Coordinates' Should be accept in the format of (X, Y).", "SU-T3178");
+
+		// SU-T1380-->To verify the functionality of the 'Clear' button .
+
+		// -> Fill All The Mandatory Details
+
+		// -> Select "Gateway" form the Equipment Type drop down
+		option_name = "Gateway";
+		equipments_details_panel.selectDropdownOptionFromDetailsTab("Equipments Type", option_name);
+		// -> Selec the "Gateway" from Device Profile drop down
+		option_name = "Gateway";
+		equipments_details_panel.selectDropdownOptionFromDetailsTab("Device Profile", option_name);
+		// -> Enter gateway name
+		String gateway_name = AwtUtilities.genrateRandomAlphaBets(2) + "-" + AwtUtilities.genrateRandomNumber(1);
+		equipments_details_panel.enterGatewayName(gateway_name);
+		// -> Enter gatay id
+		String gateway_id = AwtUtilities.genrateRandomAlphaNeumric(12);
+		equipments_details_panel.enterGatewayId(gateway_id);
+		// -> click on clear button
+		equipments_details_panel.clickOnClearButton();
+		// -> check all text field data should not be visible
+		// -> fetch the present value from the "Map Coordinates" text field
+		actual_coordinates = equipments_details_panel.getTheCurrentCoordinatesFromMapCoordinatesTextFieldValue();
+		// -> map coordinates text fiel should be empty
+		asert.assertNotEquals(actual_coordinates, map_cordinates, "To verify the functionality of the 'Clear' button .",
+				"SU-T1380");
+		// -> gateway Name text field should be empty
+		// -> fetch the acutal entred value of gateway name text field
+		String actual_gateway_name = equipments_details_panel.getCurrentValueOfNameTextField();
+		asert.assertNotEquals(actual_gateway_name, gateway_name, "To verify the functionality of the 'Clear' button .",
+				"SU-T1380");
+		// -> Gateway id text field should be empty
+		// -> fetch the acutal entered value of gateway id text field
+		String actual_id_value = equipments_details_panel.getCurrentValueOfIdTextField();
+		asert.assertNotEquals(actual_id_value, gateway_id, "To verify the functionality of the 'Clear' button .",
+				"SU-T1380");
+
+		// SU-T1381-->To verify that User can select the 'Device Profile' only after
+		// selecting the "Equipments Type" from the "Equipments Type" drop down .
+
+		// -> first click on "clear" button
+		equipments_details_panel.clickOnClearButton();
+		// -> then click on "device profile" drop down
+		equipments_details_panel.clickOnDropDown(NewEquipmentsDetailsPanel.details_tab, "Gateway");
+		// -> check user is able to see the options of "device profile" drop down
+		boolean isOptionVisible = equipments_details_panel.isOptionsIsVisble("Gateway");
+		asert.assertFalse(isOptionVisible,
+				"To verify that User can see the 'options' on the 'Device Profile' drop down only after selecting the 'Equipments ' from the 'Equipments Type' drop down .",
+				"SU-T1381");
+		// -> then select the Equipment from "Equipment Types" drop down
+		equipments_details_panel.selectDropdownOptionFromDetailsTab("Equipments Type", "Gateway");
+		// ->Check the options is "Gateway" is visible
+		isOptionVisible = equipments_details_panel.isOptionsIsVisble("Gateway");
+		asert.assertTrue(isOptionVisible,
+				"To verify that User can see the 'options' on the 'Device Profile' drop down only after selecting the 'Equipments ' from the 'Equipments Type' drop down .",
+				"SU-T1381");
+
+		// SU-T1382-->To verify the Columns like 'S.No , Equipment Type, Device Profile,
+		// Equipment Name, Equipment ID, Map Coordinates and Actions' Should visible in
+		// the "equipmentsdetails" Page.
 
 	}
 

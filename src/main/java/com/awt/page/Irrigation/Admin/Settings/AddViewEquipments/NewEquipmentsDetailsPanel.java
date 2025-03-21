@@ -12,6 +12,29 @@ import com.graphbuilder.struc.LinkedList;
 
 public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 
+	/**** constants Of New Details Panel ***/
+
+	// *******For Details Tab***********/
+	public static final String details_tab = "Details";
+	// *******For Properties Tab***********/
+	public static final String properties_tab = "Properties";
+	// *******For Notification Parameter Tab***********/
+	public static final String notification_Parameter_tab = "Properties";
+	// ***********Device profile Drop_down**************//
+	public static final String device_profile_drop_down_name = "Device Profile";
+	// *************** Map Coordinates Text Field Name*******/
+	public static final String map_coordinates = "Map Coordinates";
+	// *************** Gateway Name text Field Name*******/
+	public static final String gateway_name = "Gateway Name";
+	// *************** Gateway id text Field Name*******/
+	public static final String gateway_id = "Gateway ID";
+	// *************** Gateway Name text Field Name*******/
+	public static final String equipment_type = "Equipments Type";
+	// *************** Gateway id text Field Name*******/
+	public static final String device_profile = "Device Profile";
+
+	/********* X Path ****************/
+
 	// *** X path for Panel Name**/
 	@FindBy(xpath = "//div[@data-pc-section='headertitle']")
 	public WebElement panel_name;
@@ -40,20 +63,21 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 	@FindBy(xpath = "//input[@id='coordinates']")
 	public WebElement map_coordinates_text_field;
 
+	// *** X path for clear button text field**/
+	@FindBy(xpath = "//span[text()='Clear']/..")
+	public WebElement clear_button;
+
+	// *** X path for Add Equipment button text field**/
+	@FindBy(xpath = "//button[@aria-label='Add Equipment']")
+	public WebElement add_equipment_button;
+
 	// *** X path for details tab madatory field name**/
 	@FindBy(xpath = "//label")
 	public List<WebElement> detail_tab_field_name_list;
 
-	/**** Constants Of New Details Panel ***/
-
-	// *******For Details Tab***********/
-	public static final String details_tab = "Details";
-	// *******For Properties Tab***********/
-	public static final String properties_tab = "Properties";
-	// *******For Notification Parameter Tab***********/
-	public static final String notification_Parameter_tab = "Properties";
-	// ***********Device profile Drop_down**************//
-	public static final String device_profile_drop_down_name = "Device Profile";
+	// *** X path for cross svg button **/
+	@FindBy(xpath = "//button[@aria-label='Close']/*[local-name()='svg']")
+	public WebElement cross_svg_button;
 
 	// **Custom Constructor**/
 	public NewEquipmentsDetailsPanel(WebDriver driver) {
@@ -138,6 +162,102 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 	}
 
 	/**
+	 * By this method we can get "Id" text field is visible
+	 * 
+	 * @return {if it's visible then it's return true otherwise it's return false}
+	 */
+	public boolean isIdTextFieldIsVisible() {
+		action.waitForVisibility(id_text_field, action.implicit_wait);
+		return action.isDisplay(id_text_field);
+	}
+
+	/**
+	 * By this method we can get "Clear" button is visible
+	 * 
+	 * @return {if it's visible then it's return true otherwise it's return false}
+	 */
+	public boolean isClearButtonVisible() {
+		action.waitForVisibility(clear_button, action.implicit_wait);
+		return action.isDisplay(clear_button);
+	}
+
+	/**
+	 * By this method we can click on "clear" button
+	 */
+	public void clickOnClearButton() {
+		action.clickOn(clear_button, "Clear");
+	}
+
+	/**
+	 * By this method we can get "add_equipment_button" button is visible
+	 * 
+	 * @return {if it's visible then it's return true otherwise it's return false}
+	 */
+	public boolean isAddEquipmentButtonVisible() {
+		action.waitForVisibility(add_equipment_button, action.implicit_wait);
+		return action.isDisplay(add_equipment_button);
+	}
+
+	/**
+	 * By this method we can click on "Add Equipment" button
+	 */
+	public void clickOnAddEquipmentButton() {
+		action.clickOn(add_equipment_button, " Add Equipment");
+	}
+
+	/**
+	 * By this method we can get "Close Svg" button is visible
+	 * 
+	 * @return {if it's visible then it's return true otherwise it's return false}
+	 */
+	public boolean isCrossSvgButtonVisible() {
+		action.waitForVisibility(cross_svg_button, action.implicit_wait);
+		return action.isDisplay(cross_svg_button);
+	}
+
+	/**
+	 * By this method we can click on "Close Svg" button
+	 */
+	public void clickOnCloseSvgButton() {
+		action.clickOn(cross_svg_button, " Close Svg ");
+	}
+
+	/**
+	 * By this method we can enter the map coordinates in "Map Coordinates" text
+	 * field
+	 * 
+	 * @param coordinates
+	 */
+	public void enterMapCordinates(String coordinates) {
+		enterText(map_coordinates, coordinates);
+	}
+
+	/**
+	 * With help of this method we can fetch the entered value of "map coordinates"
+	 * text field
+	 * 
+	 * @return {Map Coordinates Text Field Value}
+	 */
+	public String getTheCurrentCoordinatesFromMapCoordinatesTextFieldValue() {
+		String value = "";
+
+		if (action.getAttributeValue(driver.findElement(By.xpath("//input[@id='coordinates']")), "value") != null) {
+			return action.getAttributeValue(driver.findElement(By.xpath("//input[@id='coordinates']")), "value");
+		} else
+			return value;
+	}
+
+	/**
+	 * With help of this method we can enter the gateway name in "gateway name text
+	 * field
+	 * 
+	 * @param gateway_name
+	 */
+	public void enterGatewayName(String name) {
+		enterText(gateway_name, name);
+	}
+
+	/**
 	 * By this method we can get the current "name" of "Name*" text field
 	 * 
 	 * @return { current name of "Name*" text field}
@@ -151,24 +271,77 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 	}
 
 	/**
-	 * By this method we can get "Id" text field is visible
+	 * By this method we can get the current name of "Id *" text field
 	 * 
-	 * @return {if it's visible then it's return true otherwise it's return false}
-	 */
-	public boolean isIdTextFieldIsVisible() {
-		action.waitForVisibility(id_text_field, action.implicit_wait);
-		return action.isDisplay(id_text_field);
-	}
-
-	/**
-	 * By this method we can get the current "name" of "ID*" text field
-	 * 
-	 * @return { current name of "ID*" text field}
+	 * @return { current name of "Name*" text field}
 	 */
 	public String getCurrentNameOfIdTextField() {
 		String current_name = "";
 		if (isNameTextFieldIsVisible()) {
 			current_name = action.getText(id_text_field);
+		}
+		return current_name;
+	}
+
+	/**
+	 * By this method we can get the current entered value inside "Name*" text field
+	 * 
+	 * @return { current name of "Name*" text field}
+	 */
+	public String getCurrentValueOfNameTextField() {
+		String current_name = "";
+		if (isNameTextFieldIsVisible()) {
+			current_name = action.getAttributeValue(
+					driver.findElement(By.xpath("//label[contains(text(),'Name')]/following-sibling::input")), "value");
+		}
+		return current_name;
+	}
+
+	/**
+	 * With help of this method we can enter the gateway id in gateway id text field
+	 * 
+	 * @param gateway_id
+	 */
+	public void enterGatewayId(String id) {
+		enterText(gateway_id, id);
+	}
+
+	/**
+	 * By help of this method we can fill all the properties which is avaiable under
+	 * the "Details" tab
+	 * 
+	 * @param equipmentType
+	 * @param deviceProfile
+	 * @param name
+	 * @param id
+	 * @param map_coordinates
+	 */
+	public void fillAllDetailsTabProperties(String equipmentType, String deviceProfile, String name, String id,
+			String map_coordinates) {
+
+		// select the equipment type
+		selectDropdownOptionFromDetailsTab(equipment_type, equipmentType);
+		// select the device profile
+		selectDropdownOptionFromDetailsTab(device_profile, deviceProfile);
+		// ente the name
+		enterText("Name", name);
+		// enter the id
+		enterText("ID", id);
+		// enter the Map Coordinates
+		enterMapCordinates(map_coordinates);
+
+	}
+
+	/**
+	 * By this method we can get the current entered id inside "ID*" text field
+	 * 
+	 * @return { current name of "ID*" text field}
+	 */
+	public String getCurrentValueOfIdTextField() {
+		String current_name = "";
+		if (isNameTextFieldIsVisible()) {
+			current_name = action.getAttributeValue(
+					driver.findElement(By.xpath("//label[contains(text(),'ID')]/following-sibling::input")), "value");
 		}
 		return current_name;
 	}
@@ -184,7 +357,7 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 
 		java.util.LinkedList<String> list = new java.util.LinkedList<String>();
 		// select a drop down
-		selectDropDown(details_tab, device_profile_drop_down_name);
+		clickOnDropDown(details_tab, device_profile_drop_down_name);
 		// wait for the element
 		action.waitForVisibility(options_list.get(0), action.implicit_wait);
 		for (WebElement ele : options_list) {
@@ -234,13 +407,34 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 	 */
 	public void selectDropdownOptionFromDetailsTab(String drop_down_name, String option_name) {
 		// Select drop down from details tab
-		selectDropDown(details_tab, drop_down_name);
+		clickOnDropDown(details_tab, drop_down_name);
 		// select options
 		action.waitForVisibility(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + option_name + "']")),
 				action.implicit_wait);
 		action.clickOn(driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + option_name + "']")),
 				option_name);
 
+	}
+
+	/**
+	 * By this method we can check user is able to see the drop down options is
+	 * visible down
+	 * 
+	 * @param drop_down_name
+	 * @param option_name
+	 * @return
+	 */
+	public boolean isOptionsIsVisble(String option_name) {
+		boolean isVisible = false;
+		try {
+			// select options
+			action.waitForVisibility(
+					driver.findElement(By.xpath("//ul[@role='listbox']/li[text()='" + option_name + "']")),
+					action.implicit_wait);
+			isVisible = true;
+		} catch (Exception e) {
+		}
+		return isVisible;
 	}
 
 	/**
@@ -252,7 +446,7 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 	 * @param drop_down_name{we need to pass the drop down which you want click}
 	 * 
 	 */
-	public void selectDropDown(String tab_name, String drop_down_name) {
+	public void clickOnDropDown(String tab_name, String drop_down_name) {
 
 		// Select the tab
 		selectTabFromNewEquipementDetailsPanel(tab_name);
@@ -297,5 +491,23 @@ public class NewEquipmentsDetailsPanel extends EquipmentDetailsPage {
 					tab_name);
 		}
 	}
+
+	/**
+	 * With help of this method we can enter a text at any field from details tab
+	 * 
+	 * @param field_name {you have to pass the correct field name same as ui
+	 * @param value      { what you value you want to enter inside the text field}
+	 */
+	public void enterText(String field_name, String value) {
+		action.implicitWait(
+				driver.findElement(By.xpath("//label[contains(text(),'" + field_name + "')]/following-sibling::input")),
+				action.implicit_wait);
+		action.type(
+				driver.findElement(By.xpath("//label[contains(text(),'" + field_name + "')]/following-sibling::input")),
+				field_name, value);
+	}
+	
+	
+	public List<String> getAllTH
 
 }

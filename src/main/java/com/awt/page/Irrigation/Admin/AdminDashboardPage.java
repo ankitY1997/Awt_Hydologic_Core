@@ -24,7 +24,7 @@ public class AdminDashboardPage extends HomePage {
 	public static final String user_restriction = "User Restriction";
 	public static final String master_creation = "Master Creation";
 	public static final String notification_settings = "Notification Settings";
-	public static final String add_view_equipments = "Notification Settings";
+	public static final String add_view_equipments = "Add/View Equipments";
 	public static final String page_permission = "Page Permission";
 	public static final String report_template = "Report Template";
 	// *********Variable Name************/
